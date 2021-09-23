@@ -1,0 +1,87 @@
+﻿#	Calculadora de Dias Úteis
+
+##	Como Editar ou Adicionar novos feriados
+
+Os feriados devem ficar todos no mesmo diretório, que pode ser esse, enviado 
+com a aplicação, ou um outro qualquer passado com o parâmetro "--calendars"
+no atalho dessa aplicação.
+
+Os arquivos de calendário devem sempre ser nomeados seguindo o padrão
+
+0000.calendar.nome.txt
+
+por exemplo:
+
+* 0010.calendar.br-BC.txt (que conterá um calendário chamado "br-BC")
+* 00A1.calendar.fórum-lapa.txt (que conterá um calendário chamado "fórum-lapa") 
+
+Os primeiros 4 caractéres do nome dão a ordenação em tela com que os calendários 
+aparecem. Em seguida deve vir ".calendar.", seguido de um nome curto, para o
+calendário, e sempre com a extensão txt.
+
+O conteúdo do arquivo é simples e pode ser construído usando-se o notepad, embora
+recomendemos o Notepad++ (livre, em https://notepad-plus-plus.org/) tomando-se o
+cuidado de salvar com a codificação UTF-8, que preserva os acentos, caso os use.
+
+A primeira linha do arquivo é sempre a "descrição" do calendário. Um nome maior,
+de até 50 caractéres, e que irá aparecer na tela da aplicação.
+
+As linhas seguintes devem conter **apenas os feriados** do calendário. Não é
+preciso informar sábados e domingos, mas se um feriado cair neles, não há mal
+algum em informar (ou deixar de informar). Cada data deve ser formatada com o
+formato yyyyMMdd (e apenas esse formato é aceito). Por exemplo a data "22 de 
+Julho de 2012" deve ser escrita como "20120722". Qualquer data não reconhecida
+será silenciosamente ignorada.
+
+Pode-se pular linhas, ou comentar linhas as iniciando com "--". 
+
+Caso queira colocar anotações após um feriado, como por exemplo "Natal", 
+"Carnaval" etc, após a data basta colocar ";" para identificar um novo campo
+e escrever a descrição desejada. Descrições são opcionais.
+
+**Atenção!** Sempre que editar, remover ou criar calendários, feche e abra a aplicação.
+É só no momento em que ela inicializa que os calendários são lidos.
+
+## Calendários Fornecidos
+
+A aplicação é enviada com 4 calendários produzidos pela Elekto
+
+* 0010.calendar.br-BC.txt, correspondendo aos feriados do Banco Central do Brasil
+* 0020.calendar.br-SP.txt, correspondendo aos feriados da B3, a Bolsa de Valores
+de São Paulo.
+* 0030.calendar.us-NYC.txt, correspondendo aos feriados bancários de NY, US
+* 0040.calendar.gb-LND.txt, correspondendo aos feriados bancários da City de Londres
+
+Nossos mehores esforços foram colocados para que esses dados estejam corretos, no 
+entanto você, que usa o sistema, é o responsável, e em hipótese alguma a Elekto
+será responsável por prejuízos, de qualquer natureza, advindos do uso, correto ou não,
+da aplicação e dos dados enviados.
+
+## Usando um diretório alternativo de feriados
+
+É possível fazer com que a aplicação busque os feriados num local alternativo.
+
+Para tal crie um atalho para o executável e edite o atalho acrescentando ao "target" 
+(ou alvo) o parâmetro --calendars "Caminho\Para\O\DirDos\Calendarios" (por exemplo).
+
+Não esqueça de colocar o caminho entre aspas, caso ele contenha espaços.
+
+## Resolvendo Erros
+
+1) Criei um calendário, mas ele não aparece.
+	a) Feche a aplicação e a abra novamente. É só no momento em que ela é carregada
+	que os feriados são lidos.
+	b) Verifique se o arquivo está corretamente nomeado, conforme explicado acima.
+2) Editei feriados, mas não fez efeito.
+	a) Feche a aplicação e a abra novamente. É só no momento em que ela é carregada
+	que os feriados são lidos.
+	b) A linha com o feriado está no formado yyyyMMdd, começando exatamente no começo de
+	uma linha?
+	c) O feriado adicionado não está num sábado ou domingo? Se sim nada mudaria, já era
+	um dia não-útil.
+3) Aparece uma mensagem ao abrir o programa
+	a) Tente executar diretamente pelo programa, sem parâmetros de linha de comando, funciona?
+	Se sim, então há algum problema no diretório fornecido. Ele tem calendários no formato correto?
+	O usuário pode acessar esse diretório para leitura?
+
+

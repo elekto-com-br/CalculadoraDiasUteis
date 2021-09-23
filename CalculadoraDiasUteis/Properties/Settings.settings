@@ -1,0 +1,21 @@
+﻿<?xml version='1.0' encoding='utf-8'?>
+<SettingsFile xmlns="http://schemas.microsoft.com/VisualStudio/2004/01/settings" CurrentProfile="(Default)" GeneratedClassNamespace="Elekto.Properties" GeneratedClassName="Settings">
+  <Profiles />
+  <Settings>
+    <Setting Name="LastCalendar" Type="System.String" Scope="User">
+      <Value Profile="(Default)" />
+    </Setting>
+    <Setting Name="LastCalculationType" Type="System.String" Scope="User">
+      <Value Profile="(Default)">Financial</Value>
+    </Setting>
+    <Setting Name="LastPeriodType" Type="System.String" Scope="User">
+      <Value Profile="(Default)">WorkDays</Value>
+    </Setting>
+    <Setting Name="LastFinalDateAdjust" Type="System.String" Scope="User">
+      <Value Profile="(Default)">None</Value>
+    </Setting>
+    <Setting Name="LastTerm" Type="System.Int32" Scope="User">
+      <Value Profile="(Default)">252</Value>
+    </Setting>
+  </Settings>
+</SettingsFile>
