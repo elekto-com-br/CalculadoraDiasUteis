@@ -1,4 +1,63 @@
-﻿                    GNU GENERAL PUBLIC LICENSE
+﻿                         LICENÇA DE USO
+                     Calculadora de Dias Úteis
+        Copyright (C) 2021 Elekto Produtos Financeiros
+
+ Este programa usa a Licença Pública Geral GNU, Versão 3 de 2007-06-29
+que segue na sua versão original em Inglês, mais abaixo, e cuja 
+tradução livre poderá ser lida no arquivo licença.html que será 
+instalado com a aplicação, ou lida online agora em 
+https://licencas.softwarelivre.org/gpl-3.0.pt-br.html.
+
+ Em resumo:
+   * Você é livre para usar esse software para qualquer fim;
+   * Você é livre para modificar esse sofware para que se adeque a 
+     suas necessidades;
+   * Você é livre para compartilhar esse software com quem desejar;
+   * Você é livre para compartilhar as mudanças que fizer;
+   * Você tem direito a ver, modificar e usar o código-fonte dessa
+     aplicação, que está em 
+     https://github.com/elekto-com-br/CalculadoraDiasUteis
+
+ Com as seguintes condições:
+   * Se você distribuir versões modificadas desse software deve
+     atribuir sua origem, e usar a mesma licença (GNUv3).
+   * Este programa, na forma de fonte, ou binário, não pode ser
+     integrado no todo, ou em parte, em software proprietário,
+     não licenciado em termos equivalentes de liberdade com esta
+     licenca.
+
+               Este software não é domínio público!
+
+-----------------------------------------------------------------------
+                             GARANTIAS
+
+ Nenhuma garantia é oferecida a este programa, até a extenção permitida
+por leis aplicáveis. O programa é fornecido "no estado" sem garantia
+de tipo algum, explícita ou implícita, quanto a correção ou 
+aplicabilidade para qualquer fim. Todo o risco quanto a qualidade e
+performance dessa aplicação é seu. Na eventualidade da aplicação
+mostrar-se defeituosa, em nenhuma hipótese a Elekto será responsável
+por qualquer prejuízo, de qualquer natureza, decorrente do uso correto,
+ou não, dessa aplicação.
+
+ Se não concorda com os termos, cancele a instalação, não use o 
+aplicativo e o desinstale caso já o tenha feito.
+ 
+-----------------------------------------------------------------------
+                             PRIVACIDADE
+
+ Esta aplicação não coleta, agrega ou reporta, nem à Elekto, nem a 
+parte alguma qualquer tipo de informação, pessoal ou não. Dentro da 
+aplicação existe um único link para o site da Elekto, que abre em seu
+navegador. Apenas se clicar nesse link nosso web server registrará sua
+vizita, e ainda assim não distinguirá sua navegação da de qualquer 
+outra feita digitando-se o endereço https://elekto.com.br na barra de
+na endereços de seu navegador. Vizitas ao nosso site, oriundas dessa
+aplicação, ou não, seguem a política de privacidade do site da Elekto
+que pode ser lida em https://elekto.com.br/Info/PrivacyPolicy.
+
+-----------------------------------------------------------------------
+                    GNU GENERAL PUBLIC LICENSE
                        Version 3, 29 June 2007
 
  Copyright (C) 2007 Free Software Foundation, Inc. <https://fsf.org/>

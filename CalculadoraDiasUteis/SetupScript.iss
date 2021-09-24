@@ -1,4 +1,5 @@
-; -- Example2.iss --
+; Arquivo de setup do Inno Setup
+; Inspirado em Example2.iss
 ; Same as Example1.iss, but creates its icon in the Programs folder of the
 ; Start Menu instead of in a subfolder, and also creates a desktop icon.
 
@@ -9,7 +10,7 @@ AppName=Calculadora de Dias Úteis
 AppPublisher=Elekto Produtos Financeiros Ltda.
 AppPublisherURL=https://elekto.com.br
 AppCopyright=Copyright (C) 2021 Elekto Produtos Financeiros Ltda.
-AppVersion=1.0.0.0
+AppVersion=1.1.0.0
 WizardStyle=modern
 LicenseFile=bin\Release\license.txt
 SetupIconFile=Assets\elekto_icon.ico
@@ -23,7 +24,7 @@ SolidCompression=yes
 ChangesAssociations=yes
 PrivilegesRequiredOverridesAllowed=dialog
 OutputDir=bin\Setups
-OutputBaseFilename=CalculadoraDiasUteis1000
+OutputBaseFilename=CalculadoraDiasUteis1100
 
 [Files]
 Source: "bin\Release\CalculadoraDiasUteis.exe"; DestDir: "{app}"
