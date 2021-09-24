@@ -245,7 +245,7 @@ namespace Elekto
             workDays.Text = actualDays.Text = string.Empty;
         }
 
-        private void radioWorkDays_CheckedChanged(object sender, EventArgs e)
+        private void RadioWorkDays_CheckedChanged(object sender, EventArgs e)
         {
             finalDate.Text = string.Empty;
             ValidateControls();
@@ -341,7 +341,9 @@ namespace Elekto
             try
             {
                 var calendar = (ICalendar)calendars.SelectedItem;
-                
+
+                var name = $"calendar_{calendar.Name}.xlsx";
+                saveHolidaysDialog.FileName = name;
                 var res = saveHolidaysDialog.ShowDialog();
                 if (res != DialogResult.OK)
                 {
@@ -375,6 +377,9 @@ namespace Elekto
             {
                 var calendar = (ICalendar)calendars.SelectedItem;
 
+                var name = $"dias_entre_{termStartDate.Value:yyyy-MM-dd}_e_{termEndDate.Value:yyyy-MM-dd}_{calendar.Name}.xlsx";
+                saveDatesDialog.FileName = name;
+
                 var res = saveDatesDialog.ShowDialog();
                 if (res != DialogResult.OK)
                 {
@@ -406,8 +411,23 @@ namespace Elekto
         {
             try
             {
-                var dataPath = ExternalCalendarsPath ?? Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "Calendars");
-                Process.Start("explorer.exe", "/select, \"" + dataPath + "\"");
+                var path = ExternalCalendarsPath ?? Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "Calendars");
+                if (!Directory.Exists(path))
+                {
+                    throw new ApplicationException($"O diretório contendo os calendários, '{path}', não foi localizado. Você o moveu? " +
+                                                   "Reinstale a aplicação para que ele seja novamente criado.");
+                }
+                var readmeFile = Path.Combine(path, "LeiaMe.txt");
+                if (File.Exists(readmeFile))
+                {
+                    path = readmeFile;
+                }
+
+                Process.Start("explorer.exe", "/select, \"" + path + "\"");
+            }
+            catch (ApplicationException ex)
+            {
+                MessageBox.Show(ex.Message, @"Não localizado!", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             catch (Exception ex)
             {

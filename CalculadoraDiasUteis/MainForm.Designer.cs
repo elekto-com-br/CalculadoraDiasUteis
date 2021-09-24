@@ -29,6 +29,7 @@ namespace Elekto
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainForm));
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.buttonCalculateTerm = new System.Windows.Forms.Button();
@@ -66,6 +67,7 @@ namespace Elekto
             this.linkExport = new System.Windows.Forms.LinkLabel();
             this.linkConfig = new System.Windows.Forms.LinkLabel();
             this.linkAbout = new System.Windows.Forms.LinkLabel();
+            this.toolTip = new System.Windows.Forms.ToolTip(this.components);
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.panel1.SuspendLayout();
@@ -99,8 +101,9 @@ namespace Elekto
             this.buttonCalculateTerm.Location = new System.Drawing.Point(9, 66);
             this.buttonCalculateTerm.Name = "buttonCalculateTerm";
             this.buttonCalculateTerm.Size = new System.Drawing.Size(78, 23);
-            this.buttonCalculateTerm.TabIndex = 13;
+            this.buttonCalculateTerm.TabIndex = 7;
             this.buttonCalculateTerm.Text = "&Prazos";
+            this.toolTip.SetToolTip(this.buttonCalculateTerm, "Calcula os prazos entre \r\nas datas inicial e final.");
             this.buttonCalculateTerm.UseVisualStyleBackColor = true;
             this.buttonCalculateTerm.Click += new System.EventHandler(this.ButtonCalculateTerm_Click);
             // 
@@ -114,6 +117,8 @@ namespace Elekto
             this.linkSaveDates.TabIndex = 12;
             this.linkSaveDates.TabStop = true;
             this.linkSaveDates.Text = "Salvar Datas do Período";
+            this.toolTip.SetToolTip(this.linkSaveDates, "Exporta planilha, ou arquivo texto,\r\ncom todas as datas entre a inicial e\r\na fina" +
+        "l, anotando quais são dias úteis\r\ne quais são não-úteis.");
             this.linkSaveDates.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.LinkSaveDates_LinkClicked);
             // 
             // label6
@@ -159,6 +164,7 @@ namespace Elekto
             this.radioFullDays.TabIndex = 6;
             this.radioFullDays.TabStop = true;
             this.radioFullDays.Text = "dias c&heios";
+            this.toolTip.SetToolTip(this.radioFullDays, "A data final é considerada no cálculo.");
             this.radioFullDays.UseVisualStyleBackColor = true;
             this.radioFullDays.CheckedChanged += new System.EventHandler(this.RadioFullDays_CheckedChanged);
             // 
@@ -171,6 +177,7 @@ namespace Elekto
             this.radioFinancial.TabIndex = 5;
             this.radioFinancial.TabStop = true;
             this.radioFinancial.Text = "fi&nanceiro";
+            this.toolTip.SetToolTip(this.radioFinancial, "Na modalidade financeira o \r\ndia final não é considerado.");
             this.radioFinancial.UseVisualStyleBackColor = true;
             this.radioFinancial.CheckedChanged += new System.EventHandler(this.RadioFinancial_CheckedChanged);
             // 
@@ -243,8 +250,9 @@ namespace Elekto
             this.buttonCalculateFinal.Location = new System.Drawing.Point(9, 89);
             this.buttonCalculateFinal.Name = "buttonCalculateFinal";
             this.buttonCalculateFinal.Size = new System.Drawing.Size(78, 23);
-            this.buttonCalculateFinal.TabIndex = 14;
+            this.buttonCalculateFinal.TabIndex = 9;
             this.buttonCalculateFinal.Text = "D&ata Final";
+            this.toolTip.SetToolTip(this.buttonCalculateFinal, "Calcula a Data Final a\r\npartir da Data Inicial e\r\ndo Prazo.");
             this.buttonCalculateFinal.UseVisualStyleBackColor = true;
             this.buttonCalculateFinal.Click += new System.EventHandler(this.ButtonCalculateFinal_Click);
             // 
@@ -263,11 +271,12 @@ namespace Elekto
             this.radioWorkDays.Location = new System.Drawing.Point(0, 0);
             this.radioWorkDays.Name = "radioWorkDays";
             this.radioWorkDays.Size = new System.Drawing.Size(69, 17);
-            this.radioWorkDays.TabIndex = 5;
+            this.radioWorkDays.TabIndex = 0;
             this.radioWorkDays.TabStop = true;
             this.radioWorkDays.Text = "dias ú&teis";
+            this.toolTip.SetToolTip(this.radioWorkDays, "A data final calculada será\r\ncontada em dias úteis a partir\r\nda Data Inicial.");
             this.radioWorkDays.UseVisualStyleBackColor = true;
-            this.radioWorkDays.CheckedChanged += new System.EventHandler(this.radioWorkDays_CheckedChanged);
+            this.radioWorkDays.CheckedChanged += new System.EventHandler(this.RadioWorkDays_CheckedChanged);
             // 
             // radioActualDays
             // 
@@ -275,9 +284,11 @@ namespace Elekto
             this.radioActualDays.Location = new System.Drawing.Point(77, 0);
             this.radioActualDays.Name = "radioActualDays";
             this.radioActualDays.Size = new System.Drawing.Size(84, 17);
-            this.radioActualDays.TabIndex = 6;
+            this.radioActualDays.TabIndex = 1;
             this.radioActualDays.TabStop = true;
             this.radioActualDays.Text = "dias c&orridos";
+            this.toolTip.SetToolTip(this.radioActualDays, "A data final calculada será\r\ncontada em dias corridos  \r\na partir da Data Inicial" +
+        ".\r\n");
             this.radioActualDays.UseVisualStyleBackColor = true;
             this.radioActualDays.CheckedChanged += new System.EventHandler(this.RadioActualDays_CheckedChanged);
             // 
@@ -287,9 +298,10 @@ namespace Elekto
             this.radioAdjustNextModified.Location = new System.Drawing.Point(257, 68);
             this.radioAdjustNextModified.Name = "radioAdjustNextModified";
             this.radioAdjustNextModified.Size = new System.Drawing.Size(92, 17);
-            this.radioAdjustNextModified.TabIndex = 10;
+            this.radioAdjustNextModified.TabIndex = 8;
             this.radioAdjustNextModified.TabStop = true;
             this.radioAdjustNextModified.Text = "útil &modificado";
+            this.toolTip.SetToolTip(this.radioAdjustNextModified, resources.GetString("radioAdjustNextModified.ToolTip"));
             this.radioAdjustNextModified.UseVisualStyleBackColor = true;
             this.radioAdjustNextModified.CheckedChanged += new System.EventHandler(this.RadioAdjustNextModified_CheckedChanged);
             // 
@@ -299,9 +311,11 @@ namespace Elekto
             this.radioAdjustNext.Location = new System.Drawing.Point(170, 68);
             this.radioAdjustNext.Name = "radioAdjustNext";
             this.radioAdjustNext.Size = new System.Drawing.Size(81, 17);
-            this.radioAdjustNext.TabIndex = 9;
+            this.radioAdjustNext.TabIndex = 7;
             this.radioAdjustNext.TabStop = true;
             this.radioAdjustNext.Text = "útil &seguinte";
+            this.toolTip.SetToolTip(this.radioAdjustNext, "Aplicável somente a prazos em\r\ndias corridos.\r\n\r\nA Data Final calculada, se for u" +
+        "m dia\r\nnão-útil, será ajustada para o dia\r\nútil seguinte.\r\n");
             this.radioAdjustNext.UseVisualStyleBackColor = true;
             this.radioAdjustNext.CheckedChanged += new System.EventHandler(this.RadioAdjustNext_CheckedChanged);
             // 
@@ -311,9 +325,11 @@ namespace Elekto
             this.radioAdjustNone.Location = new System.Drawing.Point(93, 68);
             this.radioAdjustNone.Name = "radioAdjustNone";
             this.radioAdjustNone.Size = new System.Drawing.Size(63, 17);
-            this.radioAdjustNone.TabIndex = 8;
+            this.radioAdjustNone.TabIndex = 6;
             this.radioAdjustNone.TabStop = true;
             this.radioAdjustNone.Text = "&nenhum";
+            this.toolTip.SetToolTip(this.radioAdjustNone, "Aplicável somente a prazos em\r\ndias corridos.\r\n\r\nNenhum ajuste na Data Final calc" +
+        "ulada \r\nserá aplicado. A Data Final poderá ser \r\num dia não-util.");
             this.radioAdjustNone.UseVisualStyleBackColor = true;
             this.radioAdjustNone.CheckedChanged += new System.EventHandler(this.RadioAdjustNone_CheckedChanged);
             // 
@@ -323,7 +339,7 @@ namespace Elekto
             this.label12.Location = new System.Drawing.Point(48, 70);
             this.label12.Name = "label12";
             this.label12.Size = new System.Drawing.Size(36, 13);
-            this.label12.TabIndex = 7;
+            this.label12.TabIndex = 5;
             this.label12.Text = "A&juste";
             // 
             // finalDate
@@ -332,7 +348,7 @@ namespace Elekto
             this.finalDate.Name = "finalDate";
             this.finalDate.ReadOnly = true;
             this.finalDate.Size = new System.Drawing.Size(110, 20);
-            this.finalDate.TabIndex = 12;
+            this.finalDate.TabIndex = 10;
             // 
             // term
             // 
@@ -351,15 +367,16 @@ namespace Elekto
             this.term.Size = new System.Drawing.Size(110, 20);
             this.term.TabIndex = 3;
             this.term.ThousandsSeparator = true;
+            this.toolTip.SetToolTip(this.term, "Prazo em dias úteis, ou corridos,\r\nconforme selecionado pelo Tipo\r\nde Prazo.");
             // 
             // label9
             // 
             this.label9.AutoSize = true;
             this.label9.Location = new System.Drawing.Point(226, 24);
             this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(39, 13);
+            this.label9.Size = new System.Drawing.Size(34, 13);
             this.label9.TabIndex = 2;
-            this.label9.Text = "&Prazos";
+            this.label9.Text = "&Prazo";
             // 
             // startDate
             // 
@@ -414,6 +431,9 @@ namespace Elekto
             this.calendars.Name = "calendars";
             this.calendars.Size = new System.Drawing.Size(280, 21);
             this.calendars.TabIndex = 1;
+            this.toolTip.SetToolTip(this.calendars, "Seleciona o calendário em que os cálculos serão feitos. \r\nCada calendário tem sua" +
+        " lista própria de feriados que afeta \r\nos cálculos de prazos em dias úteis e dat" +
+        "as finais.");
             this.calendars.SelectedValueChanged += new System.EventHandler(this.Calendars_SelectedValueChanged);
             // 
             // linkExport
@@ -426,6 +446,7 @@ namespace Elekto
             this.linkExport.TabIndex = 2;
             this.linkExport.TabStop = true;
             this.linkExport.Text = "Exportar";
+            this.toolTip.SetToolTip(this.linkExport, "Exporta planilha, ou arquivo texto, \r\ncom os feriados do calendário.");
             this.linkExport.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.LinkExport_LinkClicked);
             // 
             // linkConfig
@@ -438,6 +459,7 @@ namespace Elekto
             this.linkConfig.TabIndex = 5;
             this.linkConfig.TabStop = true;
             this.linkConfig.Text = "Definições de Calendários...";
+            this.toolTip.SetToolTip(this.linkConfig, resources.GetString("linkConfig.ToolTip"));
             this.linkConfig.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.LinkConfig_LinkClicked);
             // 
             // linkAbout
@@ -450,6 +472,7 @@ namespace Elekto
             this.linkAbout.TabIndex = 6;
             this.linkAbout.TabStop = true;
             this.linkAbout.Text = "Sobre essa Aplicação...";
+            this.toolTip.SetToolTip(this.linkAbout, "Exibe informações sobre \r\nessa aplicação.");
             this.linkAbout.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.LinkAbout_LinkClicked);
             // 
             // MainForm
@@ -519,6 +542,7 @@ namespace Elekto
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Button buttonCalculateTerm;
         private System.Windows.Forms.Button buttonCalculateFinal;
+        private System.Windows.Forms.ToolTip toolTip;
     }
 }
 

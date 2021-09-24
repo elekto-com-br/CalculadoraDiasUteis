@@ -117,12 +117,38 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <metadata name="toolTip.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>317, 17</value>
+  </metadata>
+  <data name="radioAdjustNextModified.ToolTip" xml:space="preserve">
+    <value>Aplicável somente a prazos em
+dias corridos.
+
+A Data Final calculada, se for um dia
+não-útil, será ajustada para o dia
+útil seguinte, exceto se esse ajuste fizer
+com que o mês mude. Nessa exceção
+a Data Final será ajustada para ser o dia
+útil anterior.
+</value>
+  </data>
   <metadata name="saveDatesDialog.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>17, 17</value>
   </metadata>
   <metadata name="saveHolidaysDialog.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>159, 17</value>
   </metadata>
+  <data name="linkConfig.ToolTip" xml:space="preserve">
+    <value>Exibe o diretório que contém
+os arquivos que definem os 
+calendários que a aplicação usa.
+
+Você pode criar novos calendários,
+remover ou editar calendários existentes.
+
+Não esqueça de ler o arquivo LeiaMe.txt
+antes de criar ou editar calendários.</value>
+  </data>
   <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
   <data name="$this.Icon" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
