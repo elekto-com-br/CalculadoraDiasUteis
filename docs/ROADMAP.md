@@ -29,6 +29,7 @@ Atualizado em 25/10/2026. Fase 0 concluída; a próxima é a 1.
 | Ferramentas | dotnet CLI, WinApp CLI, VS Code ou Visual Studio | O Visual Studio deixa de ser obrigatório. Para o Claude Code, o plugin oficial `winui@win-dev-skills` da Microsoft. |
 | Dados do usuário | SQLite (Microsoft.Data.Sqlite) | Ver [Armazenamento](#armazenamento). |
 | Exportação | Mantida, com outra biblioteca e mais formatos | Ver [Exportação](#exportação). |
+| Idiomas | Português, espanhol e inglês | Português primeiro; espanhol e inglês na fase 5, com a interface preparada para tradução desde a fase 1. |
 
 ## Fases
 
@@ -58,6 +59,7 @@ Ainda sem interface nova. O objetivo é proteger a lógica antes de mexer em qua
 - Controles nativos (`CalendarDatePicker`, `NumberBox`, `RadioButtons`, `ComboBox`), fundo Mica e tema claro, escuro ou de alto contraste seguindo o Windows.
 - `AutomationProperties.Name` e `AutomationId` em todos os controles, ordem de tabulação revisada e atalhos de teclado.
 - Página "Sobre" com versão, licença e link para o site.
+- Todos os textos em arquivos de recursos (`.resw`), e datas e números no formato da cultura do Windows, para que a tradução da fase 5 não exija mudança de código.
 - Ícone e identidade visual feitos a partir do logotipo da Elekto em vetor.
 - Testes de interface com `winapp ui`, rodando no Windows Sandbox.
 
@@ -90,6 +92,18 @@ Ainda sem interface nova. O objetivo é proteger a lógica antes de mexer em qua
 - Feriado novo passa a ser versão nova do app, que a Store entrega sozinha a quem o tem instalado.
 - Merge deste branch no `master`, removendo o projeto WinForms. A 1.2 continua disponível nos Releases do GitHub.
 
+### Fase 5: espanhol, inglês e calendários dos vizinhos
+
+- Interface traduzida para espanhol e inglês, escolhida pelo idioma do Windows; o português continua sendo o idioma padrão.
+- Página da Store e capturas de tela nos três idiomas.
+- Calendários novos com os dias sem expediente bancário da Argentina (Buenos Aires), do Paraguai (Assunção) e do Uruguai (Montevidéu), segundo o banco central de cada país, de 2000 em diante e projetados até onde as regras permitirem. Nomes provisórios: `ar-BA`, `py-ASU` e `uy-MVD`.
+- Teste de regras para os três, como os que já existem para os calendários atuais.
+- As descrições dos feriados ficam no idioma do país: português para o Brasil, espanhol para os vizinhos, inglês para Nova Iorque e Londres.
+
+Esses calendários dão mais trabalho que os atuais. A Argentina define por decreto, a cada ano, os feriados "ponte" (*días no laborables con fines turísticos*) e muda alguns feriados de dia; Uruguai e Paraguai também transferem certos feriados para a segunda-feira, por lei. Parte de cada ano só se conhece quando o governo publica, então a projeção para o futuro cobre apenas o que as regras fixas permitem.
+
+**Pronto quando** o app troca de idioma junto com o Windows, sem texto em português sobrando, e os três calendários novos passam no teste de regras.
+
 ### Fora de escopo: versão web
 
 Não haverá versão web. A Elekto já manteve a calculadora no próprio site e a retirou do ar por causa do uso indevido da página por terceiros.
@@ -116,12 +130,14 @@ Uma revisão por ano, em janeiro, quando o calendário de negociação da B3 do 
 - br-BC e br-SP: conferir o calendário da B3 e se houve lei criando ou mudando feriado nacional;
 - us-NYC: conferir o calendário de feriados da NYSE, publicado com três anos de antecedência;
 - gb-LND: conferir os feriados bancários da Inglaterra e do País de Gales no gov.uk;
+- ar-BA, py-ASU e uy-MVD, a partir da fase 5: conferir o decreto anual de feriados da Argentina e o calendário bancário publicado pelo banco central de cada um dos três países;
 - rodar o teste de regras e publicar versão nova se algo mudou.
 
 ## Decisões em aberto
 
 - **Conta na Store.** Em nome da Elekto (conta de empresa, gratuita desde maio de 2026, com verificação da empresa) ou de pessoa física. Para propaganda, o que interessa é o nome Elekto na página do app.
-- **Idiomas.** Só português, ou também inglês? A sugestão é começar em português, já com os textos em arquivos de recursos para traduzir depois.
+- **Calendários dos vizinhos: bancário ou bolsa.** A proposta é o expediente bancário de cada banco central, que é o que vale para prazos. Os calendários das bolsas (BYMA, BVPASA e BVM) podem vir depois, como o br-SP veio ao lado do br-BC.
+- **Quem acompanha os calendários dos vizinhos.** Hoje a Elekto acompanha só br-BC e br-SP. Os de Argentina, Paraguai e Uruguai precisam de alguém que os revise todo ano: a própria Elekto ou colaboradores desses países, como o README já prevê para outras praças.
 - **Escopo do br-SP.** A 1.2 o alinhou à B3. Quem precisar dos feriados da cidade de São Paulo (25/01 e 9/07) poderá criar um calendário derivado na Fase 2, ou a Elekto pode enviar um calendário da cidade pronto.
 - **Contribuições externas.** O README oferece licenciamento alternativo ao GPLv3. Para isso continuar possível, a Elekto precisa deter os direitos de todo o código, o que pede um acordo de contribuição (CLA) de quem enviar pull request.
 - **Política de privacidade.** O texto do README serve, mas a Store pede uma URL própria, no site da Elekto ou no GitHub Pages.
