@@ -30,13 +30,22 @@
     Requer o WinApp CLI 0.7 ou posterior, o SDK do .NET 10 e, no alvo sandbox, o Windows Sandbox habilitado
     e a sessão do Windows desbloqueada.
 
+.PARAMETER Package
+    Um pacote MSIX já gerado (winapp package), para testar o que vai para a Store em vez do projeto compilado em
+    Debug. Só no Sandbox, junto com -Certificate, o certificado .pfx que assinou o pacote, de senha "password".
+
 .EXAMPLE
     .\tests\UiTests\ui-tests.ps1 -Target sandbox
+
+.EXAMPLE
+    .\tests\UiTests\ui-tests.ps1 -Package .\CalculadoraDiasUteis.msix -Certificate .\CalculadoraDiasUteis_cert.pfx
 #>
 param(
     [ValidateSet('sandbox', 'local')][string]$Target = 'sandbox',
     [string]$ArtifactDirectory = (Join-Path ([IO.Path]::GetTempPath()) "CalculadoraDiasUteis-ui-tests\$(Get-Date -Format 'yyyyMMdd-HHmmss')"),
-    [ValidateNotNullOrEmpty()][string]$WorkflowId = [guid]::NewGuid().ToString('N')
+    [ValidateNotNullOrEmpty()][string]$WorkflowId = [guid]::NewGuid().ToString('N'),
+    [string]$Package,
+    [string]$Certificate
 )
 
 $ErrorActionPreference = 'Stop'
@@ -45,6 +54,7 @@ $PSNativeCommandUseErrorActionPreference = $false
 $ProjectDirectory = [IO.Path]::GetFullPath((Join-Path $PSScriptRoot '..\..\src\CalculadoraDiasUteis'))
 $ExpectedScript = Join-Path $PSScriptRoot 'Expected.cs'
 $ExportFileName = 'Calendários.json'
+$PackageName = 'Elekto.CalculadoraDiasUteis'
 $LegacyFileName = '0050.calendar.sao-paulo.txt'
 $ScopeArgs = @(if ($Target -eq 'sandbox') { '--on'; 'sandbox' })
 $previousWorkflowId = $env:WINAPP_UI_WORKFLOW_ID
@@ -242,8 +252,8 @@ function Find-Holiday {
 
 # A mensagem da última operação, na barra de aviso da página de calendários
 function Assert-Status {
-    param([string]$Text)
-    $deadline = [DateTime]::UtcNow.AddSeconds(3)
+    param([string]$Text, [int]$TimeoutSeconds = 3)
+    $deadline = [DateTime]::UtcNow.AddSeconds($TimeoutSeconds)
     do {
         if (@(Search-Ui $Text | Where-Object { $_.name -eq $Text }).Count) { return }
         Start-Sleep -Milliseconds 150
@@ -271,12 +281,14 @@ function Restore-CalendarsPage {
     }
 }
 
-# A caixa "Abrir" ou "Salvar como" do Windows, que aparece como janela do aplicativo
+# A caixa "Abrir" ou "Salvar como" do Windows: a do Windows App SDK é uma janela do aplicativo, a clássica vem do
+# PickerHost, um processo do Windows; as duas pertencem à janela do aplicativo
 function Get-FileDialog {
     $deadline = [DateTime]::UtcNow.AddSeconds(10)
     do {
-        $windows = @(ConvertFrom-WinAppJson (Invoke-WinAppChecked (@('ui', 'list-windows', '-a', "$script:AppPid", '--json') + $ScopeArgs)))
-        $dialog = $windows | Where-Object { $_.className -eq '#32770' -and [string]$_.ownerHwnd -eq $script:hwnd } |
+        $windows = @(ConvertFrom-WinAppJson (Invoke-WinAppChecked (@('ui', 'list-windows', '--json') + $ScopeArgs)))
+        $dialog = $windows | Where-Object {
+            $_.className -eq '#32770' -and ([string]$_.ownerHwnd -eq $script:hwnd -or $_.processName -eq 'PickerHost') } |
             Select-Object -First 1
         if ($dialog) { return [string]$dialog.hwnd }
         Start-Sleep -Milliseconds 300
@@ -288,7 +300,7 @@ function Wait-FileDialogClosed {
     param([string]$Window)
     $deadline = [DateTime]::UtcNow.AddSeconds(5)
     do {
-        $windows = @(ConvertFrom-WinAppJson (Invoke-WinAppChecked (@('ui', 'list-windows', '-a', "$script:AppPid", '--json') + $ScopeArgs)))
+        $windows = @(ConvertFrom-WinAppJson (Invoke-WinAppChecked (@('ui', 'list-windows', '--json') + $ScopeArgs)))
         if (-not @($windows | Where-Object { [string]$_.hwnd -eq $Window }).Count) { return }
         # A confirmação de substituir um arquivo que já existe
         $confirm = $windows | Where-Object { [string]$_.ownerHwnd -eq $Window } | Select-Object -First 1
@@ -329,6 +341,14 @@ function Assert-TargetFile {
         "if (-not (Test-Path -LiteralPath '$Path') -or (Get-Item -LiteralPath '$Path').Length -eq 0) { exit 1 }") | Out-Null
 }
 
+# Apaga um arquivo exportado. Com a sessão do Windows bloqueada, a automação não põe o foco no nome do arquivo, e o
+# Salvar da caixa seguinte usaria o último arquivo salvo, que fica marcado na lista; para uma pessoa, o foco começa no nome
+function Remove-TargetFile {
+    param([string]$Path)
+    Invoke-Target @('powershell', '-NoProfile', '-Command',
+        "Remove-Item -LiteralPath '$Path' -ErrorAction Ignore; exit 0") | Out-Null
+}
+
 # As linhas não vazias do texto na área de transferência de onde o aplicativo está, e se há também a versão em HTML
 function Get-TargetClipboard {
     $lines = @(Invoke-Target @('powershell', '-NoProfile', '-Command',
@@ -365,8 +385,56 @@ function Assert-AutomationIds {
     }
 }
 
+# Instala no Sandbox o pacote a testar, no lugar do registrado pelo winapp, confiando no certificado que o assinou
+function Install-TestPackage {
+    $msix = ConvertFrom-WinAppJson (Invoke-WinAppChecked @('target', 'push', 'sandbox', $Package, 'ui-tests\pacote.msix', '--json'))
+    $pfx = ConvertFrom-WinAppJson (Invoke-WinAppChecked @('target', 'push', 'sandbox', $Certificate, 'ui-tests\pacote.pfx', '--json'))
+    Invoke-Target @('powershell', '-NoProfile', '-Command', (
+        "Get-AppxPackage -Name '$PackageName' | Remove-AppxPackage; " +
+        "Import-PfxCertificate -FilePath '$($pfx.targetPath)' -CertStoreLocation Cert:\LocalMachine\TrustedPeople " +
+        "-Password (ConvertTo-SecureString 'password' -AsPlainText -Force) | Out-Null; " +
+        "Add-AppxPackage -Path '$($msix.targetPath)'")) | Out-Null
+}
+
+# Abre o pacote instalado, como pelo menu Iniciar; com -Clean, apaga antes os dados dele
+function Start-InstalledApp {
+    param([switch]$Clean)
+    if ($Clean) { Invoke-Target @('powershell', '-NoProfile', '-Command', "Get-AppxPackage -Name '$PackageName' | Reset-AppxPackage") | Out-Null }
+    # O comando no alvo encerra o que ele mesmo abriu ao terminar; a pausa dá tempo ao Explorer de pedir a abertura
+    $launch = "Start-Process explorer.exe -ArgumentList ('shell:AppsFolder\' + (Get-AppxPackage -Name '$PackageName').PackageFamilyName + '!App'); Start-Sleep -Seconds 3"
+
+    # Logo depois de instalado, o pacote demora a aparecer para o Explorer: o pedido de abertura se repete
+    $deadline = [DateTime]::UtcNow.AddSeconds(45)
+    $nextLaunch = [DateTime]::MinValue
+    do {
+        if ([DateTime]::UtcNow -ge $nextLaunch) {
+            Invoke-Target @('powershell', '-NoProfile', '-Command', $launch) | Out-Null
+            $nextLaunch = [DateTime]::UtcNow.AddSeconds(8)
+        }
+        $windows = @(ConvertFrom-WinAppJson (Invoke-WinAppChecked (@('ui', 'list-windows', '--json') + $ScopeArgs)))
+        $main = $windows | Where-Object { $_.processName -eq 'CalculadoraDiasUteis' -and $_.className -eq 'WinUIDesktopWin32WindowClass' } |
+            Select-Object -First 1
+        if ($main) { break }
+        Start-Sleep -Milliseconds 500
+    } while ([DateTime]::UtcNow -lt $deadline)
+    if (-not $main) {
+        throw "A janela do aplicativo instalado não apareceu. Janelas: $(($windows | ForEach-Object { "$($_.processName)/$($_.className)" }) -join ', ')"
+    }
+    $script:AppPid = [int]$main.processId
+    $script:hwnd = [string]$main.hwnd
+    # Se um pedido repetido abriu uma segunda janela, ela sai
+    Invoke-Target @('powershell', '-NoProfile', '-Command',
+        "Get-Process CalculadoraDiasUteis | Where-Object Id -ne $script:AppPid | Stop-Process -Force; exit 0") | Out-Null
+    Invoke-Ui @('wait-for', 'CalendarComboBox', '-t', '5000') | Out-Null
+}
+
 function Start-App {
     param([switch]$Clean)
+    if ($Package) {
+        Start-InstalledApp -Clean:$Clean
+        return
+    }
+
     $arguments = @('run', $ProjectDirectory) + $ScopeArgs + @('--detach', '--json')
     if ($Clean) { $arguments += '--clean' } else { $arguments += '--no-build' }
     $launch = ConvertFrom-WinAppJson (Invoke-WinAppChecked $arguments)
@@ -446,7 +514,19 @@ try {
         Invoke-Target @('powershell', '-NoProfile', '-Command', (
             "`$documents = [Environment]::GetFolderPath('MyDocuments'); " +
             "Remove-Item -LiteralPath (Join-Path `$documents '$ExportFileName') -ErrorAction Ignore; " +
+            "Remove-Item -Path (Join-Path `$documents '*.xlsx') -ErrorAction Ignore; " +
             "Copy-Item -LiteralPath '$($push.targetPath)' -Destination `$documents -Force; exit 0")) | Out-Null
+    }
+
+    if ($Package) {
+        if ($Target -ne 'sandbox' -or -not $Certificate) { throw 'O teste de um pacote só roda no Sandbox, com -Certificate.' }
+        $Package = [IO.Path]::GetFullPath($Package)
+        $Certificate = [IO.Path]::GetFullPath($Certificate)
+        Install-TestPackage
+    } elseif ($Target -eq 'sandbox') {
+        # Um pacote instalado por um teste de -Package impediria o winapp de registrar o projeto
+        Invoke-Target @('powershell', '-NoProfile', '-Command',
+            "Get-AppxPackage -Name '$PackageName' | Where-Object { -not `$_.IsDevelopmentMode } | Remove-AppxPackage; exit 0") | Out-Null
     }
 
     # Primeira execução, com os dados do aplicativo apagados: valem os padrões da 1.2
@@ -750,9 +830,13 @@ try {
         Invoke-Ui @('invoke', 'ExportPeriodButton') | Out-Null
         Save-WithSuggestedName
         $path = Join-Path (Get-TargetDocuments) "Fórum Regional da Lapa de $($e.periodFile).xlsx"
-        Assert-Status "Planilha gravada em $path."
-        Assert-TargetFile $path
-        Save-Screenshot '15-datas-exportadas.png'
+        try {
+            Assert-Status "Planilha gravada em $path." -TimeoutSeconds 10
+            Assert-TargetFile $path
+            Save-Screenshot '15-datas-exportadas.png'
+        } finally {
+            Remove-TargetFile $path
+        }
     }
 
     Test-UI 'Exceção num calendário da Elekto, desfeita depois' {
@@ -781,8 +865,12 @@ try {
         Invoke-Ui @('invoke', 'ExportHolidaysButton') | Out-Null
         Save-WithSuggestedName
         $path = Join-Path (Get-TargetDocuments) 'Feriados de Brasil - Banco Central.xlsx'
-        Assert-Status "Planilha gravada em $path."
-        Assert-TargetFile $path
+        try {
+            Assert-Status "Planilha gravada em $path." -TimeoutSeconds 10
+            Assert-TargetFile $path
+        } finally {
+            Remove-TargetFile $path
+        }
     }
 
     Test-UI 'Exportar tudo para um arquivo' {
@@ -791,7 +879,7 @@ try {
         Save-WithSuggestedName
         $documents = (Invoke-Target @('powershell', '-NoProfile', '-Command', "[Environment]::GetFolderPath('MyDocuments')") |
             Select-Object -Last 1).Trim()
-        Assert-Status "Exportado para $(Join-Path $documents $ExportFileName)."
+        Assert-Status "Exportado para $(Join-Path $documents $ExportFileName)." -TimeoutSeconds 10
     }
 
     Test-UI 'Excluir o calendário pede confirmação' {

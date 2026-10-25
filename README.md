@@ -64,6 +64,13 @@ Os testes de interface usam o mesmo WinApp CLI e rodam no Windows Sandbox, sem m
 .\tests\UiTests\ui-tests.ps1 -Target sandbox
 ```
 
+O mesmo roteiro roda contra o pacote de publicação, em Release, gerado e assinado com um certificado de teste, que o `winapp` grava ao lado do pacote:
+
+```
+winapp package src/CalculadoraDiasUteis/CalculadoraDiasUteis.csproj -c Release --generate-cert --publisher CN=Elekto --output $env:TEMP\CalculadoraDiasUteis.msix
+.\tests\UiTests\ui-tests.ps1 -Package $env:TEMP\CalculadoraDiasUteis.msix -Certificate $env:TEMP\CalculadoraDiasUteis_cert.pfx
+```
+
 A versão 1.2, em WinForms, compila a partir do `master` com o Visual Studio 2019 ou posterior.
 
 ## Contribuições

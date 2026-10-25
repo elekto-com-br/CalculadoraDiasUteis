@@ -19,7 +19,6 @@
  */
 using System.Runtime.InteropServices;
 using CalculadoraDiasUteis.Core;
-using Microsoft.Windows.Storage.Pickers;
 using Windows.ApplicationModel.DataTransfer;
 
 namespace CalculadoraDiasUteis.Services;
@@ -59,20 +58,9 @@ public static class SheetService
     /// </summary>
     /// <returns>O caminho escolhido, ou nulo se o usuário desistiu.</returns>
     /// <exception cref="COMException">A caixa do Windows falhou.</exception>
-    public static async Task<string?> PickPathAsync(string suggestedName)
-    {
-        var picker = new FileSavePicker(App.Window.AppWindow.Id)
-        {
-            SuggestedFileName = SafeFileName(suggestedName),
-            DefaultFileExtension = XlsxExtension,
-            SuggestedStartLocation = PickerLocationId.DocumentsLibrary
-        };
-        picker.FileTypeChoices.Add(Strings.Get("SheetFileTypeXlsx"), [XlsxExtension]);
-        picker.FileTypeChoices.Add(Strings.Get("SheetFileTypeCsv"), [CsvExtension]);
-
-        var file = await picker.PickSaveFileAsync();
-        return file?.Path;
-    }
+    public static Task<string?> PickPathAsync(string suggestedName) =>
+        FilePickers.PickSavePathAsync(suggestedName, (Strings.Get("SheetFileTypeXlsx"), XlsxExtension),
+            (Strings.Get("SheetFileTypeCsv"), CsvExtension));
 
     /// <summary>
     ///     Grava a tabela no formato da extensão do arquivo: CSV para .csv, planilha do Excel para os demais.
@@ -87,14 +75,5 @@ public static class SheetService
 
         using var stream = File.Create(path);
         SheetWriter.ToXlsx(table, stream);
-    }
-
-    /// <summary>
-    ///     O nome sem os caracteres que o Windows não aceita em arquivos.
-    /// </summary>
-    public static string SafeFileName(string name)
-    {
-        var invalid = Path.GetInvalidFileNameChars();
-        return new string(name.Select(c => invalid.Contains(c) ? '-' : c).ToArray()).Trim();
     }
 }

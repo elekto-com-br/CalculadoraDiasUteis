@@ -239,20 +239,11 @@ public sealed partial class CalendarsPage : Page
 
     private async Task ExportAsync(string suggestedName, bool all)
     {
-        var picker = new FileSavePicker(App.Window.AppWindow.Id)
-        {
-            SuggestedFileName = SheetService.SafeFileName(suggestedName),
-            DefaultFileExtension = ExportExtension,
-            SuggestedStartLocation = PickerLocationId.DocumentsLibrary
-        };
-        picker.FileTypeChoices.Add(Strings.Get("ExportFileType"), [ExportExtension]);
-
         try
         {
-            var file = await picker.PickSaveFileAsync();
-            if (file != null)
+            if (await FilePickers.PickSavePathAsync(suggestedName, (Strings.Get("ExportFileType"), ExportExtension)) is { } path)
             {
-                ViewModel.Export(file.Path, all);
+                ViewModel.Export(path, all);
             }
         }
         catch (Exception ex) when (ex is COMException or UnauthorizedAccessException)

@@ -76,6 +76,17 @@
     <HasPackageAndPublishMenu>true</HasPackageAndPublishMenu>
   </PropertyGroup>
 
+  <!--
+    O pacote Release é compactado (trimmed). Sem isto, o C#/WinRT monta por reflexão, em tempo de execução, a ponte
+    das coleções que vão para os controles, e a compactação remove o que ele usaria: o app fecha ao abrir.
+  -->
+  <PropertyGroup>
+    <CsWinRTAotOptimizerEnabled>true</CsWinRTAotOptimizerEnabled>
+    <CsWinRTAotWarningLevel>2</CsWinRTAotWarningLevel>
+    <!-- O código que o C#/WinRT gera para essas pontes usa ponteiros -->
+    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+  </PropertyGroup>
+
   <!-- Publish Properties -->
   <PropertyGroup>
     <PublishReadyToRun Condition="'$(Configuration)' == 'Debug'">False</PublishReadyToRun>
