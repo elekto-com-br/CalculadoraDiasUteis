@@ -66,7 +66,7 @@ Ainda sem interface nova. O objetivo é proteger a lógica antes de mexer em qua
 
 **Pronto quando** a 2.0 faz tudo o que a 1.2 faz, menos editar calendários e exportar, e passa nos testes de interface e na verificação do Accessibility Insights.
 
-**Situação:** aplicativo pronto em 25/10/2026, em `src/CalculadoraDiasUteis`, criado com o template `winui-mvvm` do WinApp CLI (Windows App SDK 2.5, CommunityToolkit.Mvvm). Os testes de interface (`tests/UiTests`) cobrem 20 cenários: os padrões, a escolha de datas no calendário, os dois critérios de contagem, prazos em dias úteis (inclusive negativos) e corridos com os três ajustes, o aviso de prazo além do calendário, a troca de calendário, a página "Sobre" pelo botão e pelo teclado (F1 e Esc), a dica do botão "Sobre", a licença no navegador, os `AutomationId` e as escolhas lembradas ao reabrir. Os resultados esperados saem da própria biblioteca (`Expected.cs`), para as datas que o teste escolhe. No Sandbox passam todos; os de teclado e mouse precisam da sessão do Windows desbloqueada e da janela da Sandbox conectada (`wsb connect`, se ela tiver caído). Fora do Sandbox, o app foi usado no Windows do dia a dia, e o "Ler a licença" abre o texto no editor padrão. Os temas claro, escuro e de alto contraste e a janela estreita foram conferidos por captura de tela. A integração contínua compila também o aplicativo.
+**Situação:** aplicativo pronto em 25/10/2026, em `src/CalculadoraDiasUteis`, criado com o template `winui-mvvm` do WinApp CLI (Windows App SDK 2.5, CommunityToolkit.Mvvm). Os testes de interface (`tests/UiTests`) cobrem 21 cenários: os padrões, a escolha de datas no calendário, os dois critérios de contagem, prazos em dias úteis (inclusive negativos) e corridos com os três ajustes, o aviso de prazo além do calendário, a troca de calendário, a página "Sobre" pelo botão e pelo teclado (F1 e Esc), seus links, a dica do botão "Sobre", a licença no navegador, o tamanho mínimo da janela, os `AutomationId` e as escolhas lembradas ao reabrir. Os resultados esperados saem da própria biblioteca (`Expected.cs`), para as datas que o teste escolhe. No Sandbox passam todos; os de teclado e mouse precisam da sessão do Windows desbloqueada e da janela da Sandbox conectada (`wsb connect`, se ela tiver caído). Fora do Sandbox, o app foi usado no Windows do dia a dia, e o "Ler a licença" abre o texto no editor padrão. Os temas claro, escuro e de alto contraste e a janela estreita foram conferidos por captura de tela. A integração contínua compila também o aplicativo.
 
 Decisões tomadas na fase:
 
@@ -77,14 +77,15 @@ Decisões tomadas na fase:
 - **Novidade pequena:** a data final mostra o dia da semana e avisa quando cai em feriado ou dia não útil, o que só acontece em dias corridos sem ajuste.
 - **A dica do botão "Sobre" traz o "(F1)" no próprio texto.** O WinUI só acrescenta a tecla do atalho à dica padrão; quando o botão tem dica própria, como aqui, ela fica de fora.
 - **A licença vai no pacote**, no original e na tradução, e abre no programa padrão do Windows para cada tipo de arquivo.
+- **Links da página "Sobre":** o logotipo leva ao site da Elekto, e há um link para o código-fonte no GitHub. A privacidade aponta a política da Elekto, para o site dela, e a declaração do GitHub, pela qual a Elekto não responde. Os links em texto são sublinhados, porque o verde escuro do destaque fica perto da cor do texto comum.
+- **A janela tem tamanho mínimo, 500 × 400**, o menor em que os controles cabem com os cartões um embaixo do outro; a altura que faltar rola. Não há máximo: maximizar é direito do usuário, e o conteúdo é que para de crescer (1040 de largura na página principal, 720 na "Sobre").
 - **Ficam para a fase 2** o link "Definições de Calendários..." e o parâmetro `--calendars` da 1.2, que dependem de calendários fora do pacote.
 - **O editor é o VS Code**, com a configuração em `.vscode`: o F5 compila e usa a extensão WinApp, ainda em prévia, para abrir o app empacotado e anexar o depurador. A versão atual dela só aceita a pasta compilada; quando aceitar o projeto, a tarefa de compilação do `launch.json` deixa de ser necessária. A solução passou para o formato `.slnx`.
 
 Falta, para fechar a fase:
 
 - Verificar com o Accessibility Insights e percorrer a tela com o Narrador.
-- Revisar os textos da página "Sobre", adaptados da 1.2 (o original mandava baixar a aplicação do site da Elekto).
-- Decidir o logotipo no tema escuro: em verde sobre fundo escuro, ele fica legível, mas apagado.
+- Decidir o logotipo no tema escuro: em verde sobre fundo escuro, ele fica legível, mas apagado. As propostas, com o verde clareado até contrastes de 3:1 a 7:1 e versões com o nome em quase branco, estão numa página à parte para escolha.
 
 Fica para depois, sem impedir o fim da fase:
 
@@ -100,6 +101,7 @@ Fica para depois, sem impedir o fim da fase:
 - **Atualizações.** Quando uma versão nova do app traz feriados oficiais novos, as alterações do usuário continuam valendo por cima deles.
 - **Importar e exportar** no formato texto da 1.x, para aproveitar os arquivos de quem usava a pasta `Calendars` ou o parâmetro `--calendars`. Isso também protege o usuário: desinstalar um app MSIX apaga a pasta local dele.
 - Tela de feriados por ano, com o dia da semana e a origem de cada data (original, incluída ou removida pelo usuário).
+- **Muitos calendários.** Com 34 calendários, a lista de escolha abre por cima da janela, mostra uns 13 e rola, e digitar as primeiras letras com a lista em foco leva ao item. Para dezenas está bem; se os calendários próprios passarem disso, avaliar busca por texto ou agrupar por país, e ordenar pelo nome em vez do número do arquivo.
 
 **Pronto quando** dá para criar um calendário derivado, editá-lo, fechar e reabrir o app, receber uma atualização do original e restaurar, tudo coberto por testes.
 
