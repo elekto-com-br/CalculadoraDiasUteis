@@ -11,6 +11,10 @@ Este é um programa Desktop Windows clássico que permite o cálculo de prazos e
 
 Ele usa o mesmo fonte base, e segue as mesma lógica que a calculadora de prazos que existia no [site da Elekto](https://elekto.com.br). A [documentação funcional](https://elekto.com.br/Blog/ManualDoUsuarioDaCalculadoraDePrazos) é a mesma aplicável à versão web, até a aparência da aplicação é a mesma, respeitando-se as limitações de aplicativos Windows.
 
+## Próxima versão
+
+A versão 1.2 é a última em .NET Framework 4.8 e WinForms. A próxima geração, em WinUI, acessível e distribuída pela Microsoft Store, está sendo desenvolvida às claras no branch [`winui`](https://github.com/elekto-com-br/CalculadoraDiasUteis/tree/winui); o plano está no [roadmap](https://github.com/elekto-com-br/CalculadoraDiasUteis/blob/winui/docs/ROADMAP.md).
+
 ## Requisitos
 
 Para executar a máquina deve ter o .Net Framework 4.8 instalado. É muito provável que qualquer Windows relativamente moderno já o tenha, caso não, ao executar pela primeira vez a aplicação será informada a situação. Se necessário baixe o Runtime do .Net Framework 4.8 no [site da Microsoft](https://dotnet.microsoft.com/download/dotnet-framework/net48).
