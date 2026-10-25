@@ -60,7 +60,7 @@ Ainda sem interface nova. O objetivo é proteger a lógica antes de mexer em qua
 - `AutomationProperties.Name` e `AutomationId` em todos os controles, ordem de tabulação revisada e atalhos de teclado.
 - Página "Sobre" com versão, licença e link para o site.
 - Todos os textos em arquivos de recursos (`.resw`), e datas e números no formato da cultura do Windows, para que a tradução da fase 5 não exija mudança de código.
-- Ícone e identidade visual feitos a partir do logotipo da Elekto em vetor.
+- Ícone e identidade visual feitos a partir do logotipo da Elekto em vetor (`assets/logo-elekto.svg`), com as cores da marca: verde `#556652` e laranja `#F79646`.
 - Testes de interface com `winapp ui`, rodando no Windows Sandbox.
 
 **Pronto quando** a 2.0 faz tudo o que a 1.2 faz, menos editar calendários e exportar, e passa nos testes de interface e na verificação do Accessibility Insights.
@@ -125,7 +125,7 @@ Exportar para o Excel ainda vale a pena: o público da calculadora (finanças, t
 
 ## Manutenção dos calendários
 
-Uma revisão por ano, em janeiro, quando o calendário de negociação da B3 do ano já saiu:
+A Elekto revisa os calendários todo ano em 1º de dezembro, com uma segunda passada em 15 de dezembro para o que tiver saído depois. Em cada revisão, os calendários são atualizados com o que já se sabe e projetados para os anos seguintes:
 
 - br-BC e br-SP: conferir o calendário da B3 e se houve lei criando ou mudando feriado nacional;
 - us-NYC: conferir o calendário de feriados da NYSE, publicado com três anos de antecedência;
@@ -136,8 +136,7 @@ Uma revisão por ano, em janeiro, quando o calendário de negociação da B3 do 
 ## Decisões em aberto
 
 - **Conta na Store.** Em nome da Elekto (conta de empresa, gratuita desde maio de 2026, com verificação da empresa) ou de pessoa física. Para propaganda, o que interessa é o nome Elekto na página do app.
-- **Calendários dos vizinhos: bancário ou bolsa.** A proposta é o expediente bancário de cada banco central, que é o que vale para prazos. Os calendários das bolsas (BYMA, BVPASA e BVM) podem vir depois, como o br-SP veio ao lado do br-BC.
-- **Quem acompanha os calendários dos vizinhos.** Hoje a Elekto acompanha só br-BC e br-SP. Os de Argentina, Paraguai e Uruguai precisam de alguém que os revise todo ano: a própria Elekto ou colaboradores desses países, como o README já prevê para outras praças.
+- **Calendários dos vizinhos: bancário ou bolsa.** A revisão anual deles fica com a Elekto, junto com a dos demais. A proposta é o expediente bancário de cada banco central, que é o que vale para prazos. Os calendários das bolsas (BYMA, BVPASA e BVM) podem vir depois, como o br-SP veio ao lado do br-BC.
 - **Escopo do br-SP.** A 1.2 o alinhou à B3. Quem precisar dos feriados da cidade de São Paulo (25/01 e 9/07) poderá criar um calendário derivado na Fase 2, ou a Elekto pode enviar um calendário da cidade pronto.
 - **Contribuições externas.** O README oferece licenciamento alternativo ao GPLv3. Para isso continuar possível, a Elekto precisa deter os direitos de todo o código, o que pede um acordo de contribuição (CLA) de quem enviar pull request.
 - **Política de privacidade.** O texto do README serve, mas a Store pede uma URL própria, no site da Elekto ou no GitHub Pages.
