@@ -21,11 +21,7 @@
                 Padding="0"
                 AutomationProperties.AutomationId="ElektoLink"
                 NavigateUri="https://elekto.com.br/">
-                <Image Height="64" AutomationProperties.AccessibilityView="Raw">
-                    <Image.Source>
-                        <SvgImageSource UriSource="ms-appx:///Assets/logo-elekto.svg" />
-                    </Image.Source>
-                </Image>
+                <local:ElektoLogo Height="64" />
             </HyperlinkButton>
 
             <StackPanel Spacing="4">

@@ -25,7 +25,6 @@
   <ItemGroup>
     <Content Include="Assets\*.png" />
     <Content Include="Assets\AppIcon.ico" />
-    <Content Include="..\..\assets\logo-elekto.svg" Link="Assets\logo-elekto.svg" />
   </ItemGroup>
 
   <!-- A licença acompanha o aplicativo, no original e na tradução -->

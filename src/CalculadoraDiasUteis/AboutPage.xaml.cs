@@ -27,7 +27,7 @@ using Windows.System;
 namespace CalculadoraDiasUteis;
 
 /// <summary>
-///     Versão, licença, privacidade e o link para o site da Elekto.
+///     Versão, licença, privacidade e os links para o site da Elekto e o código-fonte.
 /// </summary>
 public sealed partial class AboutPage : Page
 {
