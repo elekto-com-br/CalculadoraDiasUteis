@@ -89,6 +89,7 @@ public sealed class CalendarRulesTests
     [DataRow("br-SP")]
     [DataRow("us-NYC")]
     [DataRow("gb-LND")]
+    [DataRow("py-ASU")]
     public void CalendarioSegueAsRegrasDaPraca(string name)
     {
         var calendar = Server.Value.GetCalendar(name);
@@ -109,6 +110,7 @@ public sealed class CalendarRulesTests
     [DataRow("br-SP")]
     [DataRow("us-NYC")]
     [DataRow("gb-LND")]
+    [DataRow("py-ASU")]
     public void FeriadoTemADescricaoDaRegra(string name)
     {
         var calendar = Server.Value.GetCalendar(name);
@@ -146,6 +148,7 @@ public sealed class CalendarRulesTests
             "br-SP" => B3,
             "us-NYC" => Nyse,
             "gb-LND" => England,
+            "py-ASU" => Paraguay,
             _ => throw new ArgumentOutOfRangeException(nameof(name), name, null)
         };
         return Enumerable.Range(first, last - first + 1).SelectMany(rule);
@@ -281,6 +284,110 @@ public sealed class CalendarRulesTests
         }
 
         return days.Concat(EnglandOneOff.Where(h => h.Date.Year == year));
+    }
+
+    /// <summary>
+    ///     Traslados de feriados do Paraguai decretados ano a ano (Ley 1.723/2001 e Ley 7.544/2025): a data legal e a
+    ///     efetiva. As fontes estão em docs/calendarios/py-ASU.md.
+    /// </summary>
+    private static readonly (DateTime Legal, DateTime Moved)[] ParaguayMoved =
+    [
+        (new DateTime(2002, 3, 1), new DateTime(2002, 3, 4)),
+        (new DateTime(2013, 3, 1), new DateTime(2013, 3, 4)),
+        (new DateTime(2013, 6, 12), new DateTime(2013, 6, 10)),
+        (new DateTime(2014, 6, 12), new DateTime(2014, 6, 16)),
+        (new DateTime(2015, 9, 29), new DateTime(2015, 9, 28)),
+        (new DateTime(2016, 3, 1), new DateTime(2016, 2, 29)),
+        (new DateTime(2016, 9, 29), new DateTime(2016, 10, 3)),
+        (new DateTime(2017, 3, 1), new DateTime(2017, 2, 27)),
+        (new DateTime(2017, 9, 29), new DateTime(2017, 10, 2)),
+        (new DateTime(2018, 3, 1), new DateTime(2018, 2, 26)),
+        (new DateTime(2018, 6, 12), new DateTime(2018, 6, 11)),
+        (new DateTime(2019, 3, 1), new DateTime(2019, 3, 4)),
+        (new DateTime(2019, 6, 12), new DateTime(2019, 6, 17)),
+        (new DateTime(2021, 9, 29), new DateTime(2021, 9, 27)),
+        (new DateTime(2022, 3, 1), new DateTime(2022, 2, 28)),
+        (new DateTime(2022, 5, 1), new DateTime(2022, 5, 2)),
+        (new DateTime(2022, 9, 29), new DateTime(2022, 10, 3)),
+        (new DateTime(2023, 3, 1), new DateTime(2023, 2, 27)),
+        (new DateTime(2024, 6, 12), new DateTime(2024, 6, 10)),
+        (new DateTime(2024, 9, 29), new DateTime(2024, 9, 30)),
+        (new DateTime(2025, 3, 1), new DateTime(2025, 3, 3)),
+        (new DateTime(2025, 6, 12), new DateTime(2025, 6, 16)),
+        (new DateTime(2026, 3, 1), new DateTime(2026, 3, 2)),
+        (new DateTime(2026, 6, 20), new DateTime(2026, 6, 22)),
+        (new DateTime(2026, 9, 29), new DateTime(2026, 9, 28))
+    ];
+
+    private static readonly Holiday[] ParaguayOneOff =
+    [
+        new(new DateTime(2002, 8, 28), "Censo Nacional de Población y Viviendas"),
+        new(new DateTime(2011, 5, 14), "Bicentenario de la Independencia Nacional"),
+        new(new DateTime(2011, 5, 16), "Bicentenario de la Independencia Nacional"),
+        new(new DateTime(2015, 7, 10), "Visita del Papa Francisco"),
+        new(new DateTime(2015, 7, 11), "Visita del Papa Francisco"),
+        new(new DateTime(2022, 11, 9), "Censo Nacional de Población y Viviendas"),
+        new(new DateTime(2025, 9, 5), "Clasificación de la Selección Paraguaya al Mundial 2026"),
+        new(new DateTime(2025, 12, 26), "Feriado adicional de Navidad"),
+        new(new DateTime(2026, 6, 30), "Victoria de la Selección Paraguaya en el Mundial 2026")
+    ];
+
+    /// <summary>
+    ///     Dias sem expediente bancário no Paraguai: os feriados nacionais na data efetiva, a quinta e a sexta-feira
+    ///     santa, os feriados extraordinários e o feriado bancário do último dia útil de dezembro (Decreto 9.131/1949).
+    /// </summary>
+    private static IEnumerable<Holiday> Paraguay(int year)
+    {
+        var easter = Easter(year);
+        var days = new List<Holiday>
+        {
+            new(new DateTime(year, 1, 1), "Año Nuevo"),
+            new(easter.AddDays(-3), "Jueves Santo"),
+            new(easter.AddDays(-2), "Viernes Santo"),
+            new(new DateTime(year, 5, 15), "Día de la Independencia Nacional"),
+            new(new DateTime(year, 12, 8), "Día de la Virgen de Caacupé"),
+            new(new DateTime(year, 12, 25), "Navidad")
+        };
+
+        // Ley 4.531/2011
+        if (year >= 2012)
+        {
+            days.Add(new Holiday(new DateTime(year, 5, 14), "Día de la Independencia Nacional"));
+        }
+
+        // os que podem ser trasladados por decreto
+        var movable = new List<Holiday>
+        {
+            new(new DateTime(year, 3, 1), "Día de los Héroes de la Patria"),
+            new(new DateTime(year, 5, 1), "Día de los Trabajadores"),
+            new(new DateTime(year, 6, 12), "Día de la Paz del Chaco"),
+            new(new DateTime(year, 8, 15), "Día de la Fundación de Asunción"),
+            new(new DateTime(year, 9, 29), "Día de la Batalla de Boquerón")
+        };
+
+        // Ley 7.544/2025
+        if (year >= 2026)
+        {
+            movable.Add(new Holiday(new DateTime(year, 6, 20), "Día de la Jura de la Constitución Nacional"));
+        }
+
+        foreach (var holiday in movable)
+        {
+            var moved = ParaguayMoved.Where(m => m.Legal == holiday.Date).Select(m => m.Moved).ToList();
+            days.Add(moved.Count == 0 ? holiday : new Holiday(moved[0], holiday.Name + " (trasladado)"));
+        }
+
+        days.AddRange(ParaguayOneOff.Where(h => h.Date.Year == year));
+
+        // o último dia de segunda a sexta de dezembro que não é feriado
+        var bankHoliday = new DateTime(year, 12, 31);
+        while (!IsWeekday(bankHoliday) || days.Any(h => h.Date == bankHoliday))
+        {
+            bankHoliday = bankHoliday.AddDays(-1);
+        }
+
+        days.Add(new Holiday(bankHoliday, "Feriado bancario (último día hábil del año)"));
+        return days;
     }
 
     /// <summary>

@@ -997,4 +997,7 @@
   <data name="LicenseFile" xml:space="preserve">
     <value>ms-appx:///Licenses/license.txt</value>
   </data>
+  <data name="CalendarName_py_ASU" xml:space="preserve">
+    <value>Paraguai - Banco Central</value>
+  </data>
 </root>

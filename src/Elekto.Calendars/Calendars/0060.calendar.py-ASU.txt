@@ -1,0 +1,364 @@
+﻿Paraguai - Banco Central
+20000101;Año Nuevo
+20000301;Día de los Héroes de la Patria
+20000420;Jueves Santo
+20000421;Viernes Santo
+20000501;Día de los Trabajadores
+20000515;Día de la Independencia Nacional
+20000612;Día de la Paz del Chaco
+20000815;Día de la Fundación de Asunción
+20000929;Día de la Batalla de Boquerón
+20001208;Día de la Virgen de Caacupé
+20001225;Navidad
+20001229;Feriado bancario (último día hábil del año)
+20010101;Año Nuevo
+20010301;Día de los Héroes de la Patria
+20010412;Jueves Santo
+20010413;Viernes Santo
+20010501;Día de los Trabajadores
+20010515;Día de la Independencia Nacional
+20010612;Día de la Paz del Chaco
+20010815;Día de la Fundación de Asunción
+20010929;Día de la Batalla de Boquerón
+20011208;Día de la Virgen de Caacupé
+20011225;Navidad
+20011231;Feriado bancario (último día hábil del año)
+20020101;Año Nuevo
+20020304;Día de los Héroes de la Patria (trasladado)
+20020328;Jueves Santo
+20020329;Viernes Santo
+20020501;Día de los Trabajadores
+20020515;Día de la Independencia Nacional
+20020612;Día de la Paz del Chaco
+20020815;Día de la Fundación de Asunción
+20020828;Censo Nacional de Población y Viviendas
+20020929;Día de la Batalla de Boquerón
+20021208;Día de la Virgen de Caacupé
+20021225;Navidad
+20021231;Feriado bancario (último día hábil del año)
+20030101;Año Nuevo
+20030301;Día de los Héroes de la Patria
+20030417;Jueves Santo
+20030418;Viernes Santo
+20030501;Día de los Trabajadores
+20030515;Día de la Independencia Nacional
+20030612;Día de la Paz del Chaco
+20030815;Día de la Fundación de Asunción
+20030929;Día de la Batalla de Boquerón
+20031208;Día de la Virgen de Caacupé
+20031225;Navidad
+20031231;Feriado bancario (último día hábil del año)
+20040101;Año Nuevo
+20040301;Día de los Héroes de la Patria
+20040408;Jueves Santo
+20040409;Viernes Santo
+20040501;Día de los Trabajadores
+20040515;Día de la Independencia Nacional
+20040612;Día de la Paz del Chaco
+20040815;Día de la Fundación de Asunción
+20040929;Día de la Batalla de Boquerón
+20041208;Día de la Virgen de Caacupé
+20041225;Navidad
+20041231;Feriado bancario (último día hábil del año)
+20050101;Año Nuevo
+20050301;Día de los Héroes de la Patria
+20050324;Jueves Santo
+20050325;Viernes Santo
+20050501;Día de los Trabajadores
+20050515;Día de la Independencia Nacional
+20050612;Día de la Paz del Chaco
+20050815;Día de la Fundación de Asunción
+20050929;Día de la Batalla de Boquerón
+20051208;Día de la Virgen de Caacupé
+20051225;Navidad
+20051230;Feriado bancario (último día hábil del año)
+20060101;Año Nuevo
+20060301;Día de los Héroes de la Patria
+20060413;Jueves Santo
+20060414;Viernes Santo
+20060501;Día de los Trabajadores
+20060515;Día de la Independencia Nacional
+20060612;Día de la Paz del Chaco
+20060815;Día de la Fundación de Asunción
+20060929;Día de la Batalla de Boquerón
+20061208;Día de la Virgen de Caacupé
+20061225;Navidad
+20061229;Feriado bancario (último día hábil del año)
+20070101;Año Nuevo
+20070301;Día de los Héroes de la Patria
+20070405;Jueves Santo
+20070406;Viernes Santo
+20070501;Día de los Trabajadores
+20070515;Día de la Independencia Nacional
+20070612;Día de la Paz del Chaco
+20070815;Día de la Fundación de Asunción
+20070929;Día de la Batalla de Boquerón
+20071208;Día de la Virgen de Caacupé
+20071225;Navidad
+20071231;Feriado bancario (último día hábil del año)
+20080101;Año Nuevo
+20080301;Día de los Héroes de la Patria
+20080320;Jueves Santo
+20080321;Viernes Santo
+20080501;Día de los Trabajadores
+20080515;Día de la Independencia Nacional
+20080612;Día de la Paz del Chaco
+20080815;Día de la Fundación de Asunción
+20080929;Día de la Batalla de Boquerón
+20081208;Día de la Virgen de Caacupé
+20081225;Navidad
+20081231;Feriado bancario (último día hábil del año)
+20090101;Año Nuevo
+20090301;Día de los Héroes de la Patria
+20090409;Jueves Santo
+20090410;Viernes Santo
+20090501;Día de los Trabajadores
+20090515;Día de la Independencia Nacional
+20090612;Día de la Paz del Chaco
+20090815;Día de la Fundación de Asunción
+20090929;Día de la Batalla de Boquerón
+20091208;Día de la Virgen de Caacupé
+20091225;Navidad
+20091231;Feriado bancario (último día hábil del año)
+20100101;Año Nuevo
+20100301;Día de los Héroes de la Patria
+20100401;Jueves Santo
+20100402;Viernes Santo
+20100501;Día de los Trabajadores
+20100515;Día de la Independencia Nacional
+20100612;Día de la Paz del Chaco
+20100815;Día de la Fundación de Asunción
+20100929;Día de la Batalla de Boquerón
+20101208;Día de la Virgen de Caacupé
+20101225;Navidad
+20101231;Feriado bancario (último día hábil del año)
+20110101;Año Nuevo
+20110301;Día de los Héroes de la Patria
+20110421;Jueves Santo
+20110422;Viernes Santo
+20110501;Día de los Trabajadores
+20110514;Bicentenario de la Independencia Nacional
+20110515;Día de la Independencia Nacional
+20110516;Bicentenario de la Independencia Nacional
+20110612;Día de la Paz del Chaco
+20110815;Día de la Fundación de Asunción
+20110929;Día de la Batalla de Boquerón
+20111208;Día de la Virgen de Caacupé
+20111225;Navidad
+20111230;Feriado bancario (último día hábil del año)
+20120101;Año Nuevo
+20120301;Día de los Héroes de la Patria
+20120405;Jueves Santo
+20120406;Viernes Santo
+20120501;Día de los Trabajadores
+20120514;Día de la Independencia Nacional
+20120515;Día de la Independencia Nacional
+20120612;Día de la Paz del Chaco
+20120815;Día de la Fundación de Asunción
+20120929;Día de la Batalla de Boquerón
+20121208;Día de la Virgen de Caacupé
+20121225;Navidad
+20121231;Feriado bancario (último día hábil del año)
+20130101;Año Nuevo
+20130304;Día de los Héroes de la Patria (trasladado)
+20130328;Jueves Santo
+20130329;Viernes Santo
+20130501;Día de los Trabajadores
+20130514;Día de la Independencia Nacional
+20130515;Día de la Independencia Nacional
+20130610;Día de la Paz del Chaco (trasladado)
+20130815;Día de la Fundación de Asunción
+20130929;Día de la Batalla de Boquerón
+20131208;Día de la Virgen de Caacupé
+20131225;Navidad
+20131231;Feriado bancario (último día hábil del año)
+20140101;Año Nuevo
+20140301;Día de los Héroes de la Patria
+20140417;Jueves Santo
+20140418;Viernes Santo
+20140501;Día de los Trabajadores
+20140514;Día de la Independencia Nacional
+20140515;Día de la Independencia Nacional
+20140616;Día de la Paz del Chaco (trasladado)
+20140815;Día de la Fundación de Asunción
+20140929;Día de la Batalla de Boquerón
+20141208;Día de la Virgen de Caacupé
+20141225;Navidad
+20141231;Feriado bancario (último día hábil del año)
+20150101;Año Nuevo
+20150301;Día de los Héroes de la Patria
+20150402;Jueves Santo
+20150403;Viernes Santo
+20150501;Día de los Trabajadores
+20150514;Día de la Independencia Nacional
+20150515;Día de la Independencia Nacional
+20150612;Día de la Paz del Chaco
+20150710;Visita del Papa Francisco
+20150711;Visita del Papa Francisco
+20150815;Día de la Fundación de Asunción
+20150928;Día de la Batalla de Boquerón (trasladado)
+20151208;Día de la Virgen de Caacupé
+20151225;Navidad
+20151231;Feriado bancario (último día hábil del año)
+20160101;Año Nuevo
+20160229;Día de los Héroes de la Patria (trasladado)
+20160324;Jueves Santo
+20160325;Viernes Santo
+20160501;Día de los Trabajadores
+20160514;Día de la Independencia Nacional
+20160515;Día de la Independencia Nacional
+20160612;Día de la Paz del Chaco
+20160815;Día de la Fundación de Asunción
+20161003;Día de la Batalla de Boquerón (trasladado)
+20161208;Día de la Virgen de Caacupé
+20161225;Navidad
+20161230;Feriado bancario (último día hábil del año)
+20170101;Año Nuevo
+20170227;Día de los Héroes de la Patria (trasladado)
+20170413;Jueves Santo
+20170414;Viernes Santo
+20170501;Día de los Trabajadores
+20170514;Día de la Independencia Nacional
+20170515;Día de la Independencia Nacional
+20170612;Día de la Paz del Chaco
+20170815;Día de la Fundación de Asunción
+20171002;Día de la Batalla de Boquerón (trasladado)
+20171208;Día de la Virgen de Caacupé
+20171225;Navidad
+20171229;Feriado bancario (último día hábil del año)
+20180101;Año Nuevo
+20180226;Día de los Héroes de la Patria (trasladado)
+20180329;Jueves Santo
+20180330;Viernes Santo
+20180501;Día de los Trabajadores
+20180514;Día de la Independencia Nacional
+20180515;Día de la Independencia Nacional
+20180611;Día de la Paz del Chaco (trasladado)
+20180815;Día de la Fundación de Asunción
+20180929;Día de la Batalla de Boquerón
+20181208;Día de la Virgen de Caacupé
+20181225;Navidad
+20181231;Feriado bancario (último día hábil del año)
+20190101;Año Nuevo
+20190304;Día de los Héroes de la Patria (trasladado)
+20190418;Jueves Santo
+20190419;Viernes Santo
+20190501;Día de los Trabajadores
+20190514;Día de la Independencia Nacional
+20190515;Día de la Independencia Nacional
+20190617;Día de la Paz del Chaco (trasladado)
+20190815;Día de la Fundación de Asunción
+20190929;Día de la Batalla de Boquerón
+20191208;Día de la Virgen de Caacupé
+20191225;Navidad
+20191231;Feriado bancario (último día hábil del año)
+20200101;Año Nuevo
+20200301;Día de los Héroes de la Patria
+20200409;Jueves Santo
+20200410;Viernes Santo
+20200501;Día de los Trabajadores
+20200514;Día de la Independencia Nacional
+20200515;Día de la Independencia Nacional
+20200612;Día de la Paz del Chaco
+20200815;Día de la Fundación de Asunción
+20200929;Día de la Batalla de Boquerón
+20201208;Día de la Virgen de Caacupé
+20201225;Navidad
+20201231;Feriado bancario (último día hábil del año)
+20210101;Año Nuevo
+20210301;Día de los Héroes de la Patria
+20210401;Jueves Santo
+20210402;Viernes Santo
+20210501;Día de los Trabajadores
+20210514;Día de la Independencia Nacional
+20210515;Día de la Independencia Nacional
+20210612;Día de la Paz del Chaco
+20210815;Día de la Fundación de Asunción
+20210927;Día de la Batalla de Boquerón (trasladado)
+20211208;Día de la Virgen de Caacupé
+20211225;Navidad
+20211231;Feriado bancario (último día hábil del año)
+20220101;Año Nuevo
+20220228;Día de los Héroes de la Patria (trasladado)
+20220414;Jueves Santo
+20220415;Viernes Santo
+20220502;Día de los Trabajadores (trasladado)
+20220514;Día de la Independencia Nacional
+20220515;Día de la Independencia Nacional
+20220612;Día de la Paz del Chaco
+20220815;Día de la Fundación de Asunción
+20221003;Día de la Batalla de Boquerón (trasladado)
+20221109;Censo Nacional de Población y Viviendas
+20221208;Día de la Virgen de Caacupé
+20221225;Navidad
+20221230;Feriado bancario (último día hábil del año)
+20230101;Año Nuevo
+20230227;Día de los Héroes de la Patria (trasladado)
+20230406;Jueves Santo
+20230407;Viernes Santo
+20230501;Día de los Trabajadores
+20230514;Día de la Independencia Nacional
+20230515;Día de la Independencia Nacional
+20230612;Día de la Paz del Chaco
+20230815;Día de la Fundación de Asunción
+20230929;Día de la Batalla de Boquerón
+20231208;Día de la Virgen de Caacupé
+20231225;Navidad
+20231229;Feriado bancario (último día hábil del año)
+20240101;Año Nuevo
+20240301;Día de los Héroes de la Patria
+20240328;Jueves Santo
+20240329;Viernes Santo
+20240501;Día de los Trabajadores
+20240514;Día de la Independencia Nacional
+20240515;Día de la Independencia Nacional
+20240610;Día de la Paz del Chaco (trasladado)
+20240815;Día de la Fundación de Asunción
+20240930;Día de la Batalla de Boquerón (trasladado)
+20241208;Día de la Virgen de Caacupé
+20241225;Navidad
+20241231;Feriado bancario (último día hábil del año)
+20250101;Año Nuevo
+20250303;Día de los Héroes de la Patria (trasladado)
+20250417;Jueves Santo
+20250418;Viernes Santo
+20250501;Día de los Trabajadores
+20250514;Día de la Independencia Nacional
+20250515;Día de la Independencia Nacional
+20250616;Día de la Paz del Chaco (trasladado)
+20250815;Día de la Fundación de Asunción
+20250905;Clasificación de la Selección Paraguaya al Mundial 2026
+20250929;Día de la Batalla de Boquerón
+20251208;Día de la Virgen de Caacupé
+20251225;Navidad
+20251226;Feriado adicional de Navidad
+20251231;Feriado bancario (último día hábil del año)
+20260101;Año Nuevo
+20260302;Día de los Héroes de la Patria (trasladado)
+20260402;Jueves Santo
+20260403;Viernes Santo
+20260501;Día de los Trabajadores
+20260514;Día de la Independencia Nacional
+20260515;Día de la Independencia Nacional
+20260612;Día de la Paz del Chaco
+20260622;Día de la Jura de la Constitución Nacional (trasladado)
+20260630;Victoria de la Selección Paraguaya en el Mundial 2026
+20260815;Día de la Fundación de Asunción
+20260928;Día de la Batalla de Boquerón (trasladado)
+20261208;Día de la Virgen de Caacupé
+20261225;Navidad
+20261231;Feriado bancario (último día hábil del año)
+20270101;Año Nuevo
+20270301;Día de los Héroes de la Patria
+20270325;Jueves Santo
+20270326;Viernes Santo
+20270501;Día de los Trabajadores
+20270514;Día de la Independencia Nacional
+20270515;Día de la Independencia Nacional
+20270612;Día de la Paz del Chaco
+20270620;Día de la Jura de la Constitución Nacional
+20270815;Día de la Fundación de Asunción
+20270929;Día de la Batalla de Boquerón
+20271208;Día de la Virgen de Caacupé
+20271225;Navidad
+20271231;Feriado bancario (último día hábil del año)
