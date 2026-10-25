@@ -80,11 +80,17 @@ Decisões tomadas na fase:
 
 Falta, para fechar a fase:
 
-- Rodar os testes de interface com a sessão do Windows desbloqueada, para o teste de teclado.
+- Usar o aplicativo instalado no Windows do dia a dia, fora do Sandbox, inclusive o botão "Ler a licença": o Sandbox não tem programa associado a `.txt`, então ele só foi testado lá com a tradução, em HTML.
+- Rodar os testes de interface com a sessão do Windows desbloqueada, para o teste de teclado (F1 e Esc).
+- Conferir que a dica do botão "Sobre" mostra a tecla F1. O "(F1)" escrito à mão saiu do texto porque o WinUI acrescenta a tecla sozinho, mas isso só se vê passando o mouse, o que não deu para testar com a sessão bloqueada.
 - Verificar com o Accessibility Insights e percorrer a tela com o Narrador.
 - Revisar os textos da página "Sobre", adaptados da 1.2 (o original mandava baixar a aplicação do site da Elekto).
 - Decidir o logotipo no tema escuro: em verde sobre fundo escuro, ele fica legível, mas apagado.
 - Confirmar no GitHub Actions a compilação do aplicativo, que passou a fazer parte da solução.
+
+Fica para depois, sem impedir o fim da fase:
+
+- O comportamento do `AddWorkDays` na borda do calendário, que a fase 0 deixou [a decidir](#fase-0-núcleo-e-testes). Precisa ser resolvido até a fase 2, quando os calendários do usuário podem terminar em qualquer data.
 
 ### Fase 2: calendários editáveis
 
@@ -109,6 +115,8 @@ Falta, para fechar a fase:
 
 - Conta de desenvolvedor no Partner Center (gratuita) e reserva do nome do app. A reserva pode ser feita a qualquer momento, antes mesmo de existir o app.
 - Material da loja: descrição, capturas de tela, ícones, classificação etária (questionário IARC) e URL da política de privacidade.
+- Identidade do pacote: o `Package.appxmanifest` usa por enquanto `Elekto.CalculadoraDiasUteis` e o publicador provisório `CN=Elekto`, que a Store substitui pelos da conta quando o app for associado a ela.
+- Testar o pacote de publicação em Release, que é compactado (*trimmed*) ao contrário do usado no desenvolvimento. A compilação em Release já avisa (IL2104) que dois assemblies do Windows SDK, da própria Microsoft, não são totalmente seguros para essa compactação.
 - Envio, certificação e publicação.
 - Feriado novo passa a ser versão nova do app, que a Store entrega sozinha a quem o tem instalado.
 - Merge deste branch no `master`, removendo o projeto WinForms. A 1.2 continua disponível nos Releases do GitHub.
