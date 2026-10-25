@@ -203,6 +203,7 @@ A Elekto revisa os calendários todo ano em 1º de dezembro, com uma segunda pas
 - ar-BA: conferir a Comunicación "C" do BCRA com os feriados do ano seguinte, os dias turísticos e os traslados decididos pela Jefatura de Gabinete, e, na passada de 15 de dezembro, o asueto bancário de 24 e 31 de dezembro;
 - py-ASU: conferir os decretos de traslado de feriados do Paraguai e os feriados extraordinários;
 - uy-MVD: conferir as leis de feriados avulsos do Uruguai e as comunicações do BCU sobre a Semana de Turismo, o 31 de dezembro e os dias de greve sem operação;
+- conferir o ano que termina nos calendários da Argentina e do Uruguai com `tools/conferir-series.ps1 ar-BA` e `uy-MVD`, que comparam o arquivo com a série diária do banco central e mostram o fechamento que nenhuma regra previu (greve, asueto, feriado extraordinário);
 - rodar o teste de regras e publicar versão nova se algo mudou.
 
 ## Decisões em aberto

@@ -308,3 +308,7 @@ O teste `CalendarioSegueAsRegrasDaPraca`, em `tests/Elekto.Calendars.Tests/Calen
 exceções acima, escritas de novo a partir deste documento, e confere o arquivo contra elas, data a data; o teste
 `FeriadoTemADescricaoDaRegra` confere as descrições. A cada ano, a nova Comunicación "C" do BCRA traz os dias turísticos e
 os traslados do ano seguinte, e os comunicados de dezembro, os asuetos.
+
+O script `tools/conferir-series.ps1 ar-BA` baixa as séries 7 e 12 da API do BCRA e lista os dias úteis sem dado que não
+estão no arquivo e os feriados do arquivo com dado na série; sem parâmetros, confere o ano corrente. De 2000 a 21/10/2026
+a única diferença é 2002-01-14, descartada acima.

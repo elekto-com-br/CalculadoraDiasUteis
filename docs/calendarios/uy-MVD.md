@@ -20,6 +20,8 @@ Ficam de fora, por serem dias hábeis: 24 de dezembro (o BCU autoriza todo ano o
 - **Comunicações do Área de Sistema de Pagos** sobre a atividade do Sistema Central de Liquidación e da Cámara Compensadora (Turismo, 24 e 31 de dezembro, dias de greve).
 - **Leis e decretos** no IMPO, e as **comunicações e circulares** do BCU citadas.
 
+Para repetir a conferência, `tools/conferir-series.ps1 uy-MVD` baixa a mesma série (moeda 2225) e lista os dias úteis sem cotação que não estão no arquivo e os feriados do arquivo com cotação; sem parâmetros, confere o ano corrente. De 2000 a 23/10/2026 aparecem só as nove greves duvidosas, os quatro dias do feriado bancário de 2002 (cotação congelada) e os 31 de dezembro com cotação de fechamento.
+
 ### Grau de verificação por período
 
 | Período | Como foi montado | Confiança |
