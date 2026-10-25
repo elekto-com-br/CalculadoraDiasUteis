@@ -1,5 +1,5 @@
-/*
-    Calculadora de Dias ⁄teis - Calcula Prazos e Datas Finais considerando os feriados
+Ôªø/*
+    Calculadora de Dias √öteis - Calcula Prazos e Datas Finais considerando os feriados
     Copyright (C) 2021 by Elekto Produtos Financeiros Ltda.
 
     This program is free software: you can redistribute it and/or modify
@@ -22,21 +22,21 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Runtime.CompilerServices;
 
-namespace Elekto.Code
+namespace Elekto.Calendars
 {
     /// <summary>
-    /// Utilit·rios para lidar com Datas, em especial removendo a informaÁ„o de localidade usualmente presente.
+    /// Utilit√°rios para lidar com Datas, em especial removendo a informa√ß√£o de localidade usualmente presente.
     /// </summary>
     internal static class DateExtensions
     {
         /// <summary>
-        /// Hoje, mas sem informaÁ„o de localidade (DateTimeKind.Unspecified)
+        /// Hoje, mas sem informa√ß√£o de localidade (DateTimeKind.Unspecified)
         /// </summary>
         /// <value>The today.</value>
         public static DateTime Today => DateTime.SpecifyKind(DateTime.Today, DateTimeKind.Unspecified);
 
         /// <summary>
-        /// Remove a informaÁ„o de tipo da data. Passo importante caso as datas tenham de trafegar via SOAP entre m·quinas em diferentes TimeZones.
+        /// Remove a informa√ß√£o de tipo da data. Passo importante caso as datas tenham de trafegar via SOAP entre m√°quinas em diferentes TimeZones.
         /// </summary>
         public static DateTime RemoveKind(this DateTime date)
         {
@@ -44,7 +44,7 @@ namespace Elekto.Code
         }
 
         /// <summary>
-        /// Retorna somente a parte de data e sem especificaÁ„o de tipo
+        /// Retorna somente a parte de data e sem especifica√ß√£o de tipo
         /// </summary>
         public static DateTime NormalizeDate(this DateTime date)
         {
@@ -52,10 +52,10 @@ namespace Elekto.Code
         }
 
         /// <summary>
-        /// Retorna uma vers„o certamente n„o-nula do original.
+        /// Retorna uma vers√£o certamente n√£o-nula do original.
         /// </summary>
         /// <remarks>
-        /// Use quando os dados vierem de fonte externa (chamada de cliente do WS) e existe a chance de ser enviado um nulo ao invÈs de coleÁ„o vazia.
+        /// Use quando os dados vierem de fonte externa (chamada de cliente do WS) e existe a chance de ser enviado um nulo ao inv√©s de cole√ß√£o vazia.
         /// </remarks>
         public static IEnumerable<T> Normalize<T>(this IEnumerable<T> original)
         {
@@ -63,12 +63,12 @@ namespace Elekto.Code
         }
 
         /// <summary>
-        /// Cria uma data a partir de ser componentes, mas sem informaÁ„o de localidade (DateTimeKind.Unspecified)
+        /// Cria uma data a partir de ser componentes, mas sem informa√ß√£o de localidade (DateTimeKind.Unspecified)
         /// </summary>
         /// <param name="year">The year.</param>
         /// <param name="month">The month.</param>
         /// <param name="day">The day.</param>
-        /// <param name="toPastDirection">Se true o dia existente anterior (no caso de dadas impossÌveis) È retornado</param>
+        /// <param name="toPastDirection">Se true o dia existente anterior (no caso de dadas imposs√≠veis) √© retornado</param>
         /// <returns>O dia</returns>
         [MethodImpl(MethodImplOptions.NoInlining)]
         private static DateTime CreateDate(int year, int month, int day, bool toPastDirection = false)
@@ -82,7 +82,7 @@ namespace Elekto.Code
 
             if (day > DateTime.DaysInMonth(year, month))
             {
-                // Dia impossÌvel
+                // Dia imposs√≠vel
                 var adjustedDate = CreateDate(year, month + 1, 1);
                 if (toPastDirection)
                 {
@@ -91,7 +91,7 @@ namespace Elekto.Code
                 return adjustedDate;
             }
 
-            // Dia possÌvel
+            // Dia poss√≠vel
             return new DateTime(year, month, day, 0, 0, 0, DateTimeKind.Unspecified);
         }
 
@@ -125,11 +125,11 @@ namespace Elekto.Code
         /// <summary>
         /// Retorna a mesma data, substituindo o dia pelo definido
         /// </summary>
-        /// <param name="date">A data a ter o dia substituÌdo</param>
+        /// <param name="date">A data a ter o dia substitu√≠do</param>
         /// <param name="day">O dia [1; 31]</param>
         /// <param name="toPastDirection">if set to <c>true</c> [to past direction].</param>
         /// <returns>
-        /// A data com o dia substituÌdo
+        /// A data com o dia substitu√≠do
         /// </returns>
         public static DateTime ChangeDay(this DateTime date, int day, bool toPastDirection = true)
         {

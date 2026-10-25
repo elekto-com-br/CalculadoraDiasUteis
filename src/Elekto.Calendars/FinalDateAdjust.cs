@@ -1,5 +1,5 @@
-/*
-    Calculadora de Dias Úteis - Calcula Prazos e Datas Finais considerando os feriados
+ï»¿/*
+    Calculadora de Dias Ãšteis - Calcula Prazos e Datas Finais considerando os feriados
     Copyright (C) 2021 by Elekto Produtos Financeiros Ltda.
 
     This program is free software: you can redistribute it and/or modify
@@ -17,21 +17,21 @@
 
     Entre em contato com a Elekto em https://elekto.com.br/ 
  */
-namespace Elekto.Code
+namespace Elekto.Calendars
 {
     /// <summary>
-    /// Métodos para calcular a data final de um prazo
+    /// MÃ©todos para calcular a data final de um prazo
     /// </summary>
-    internal enum FinalDateAdjust
+    public enum FinalDateAdjust
     {
         /// <summary>
-        /// Se terminar em dia não util coloca no dia util seguinte.
+        /// Se terminar em dia nÃ£o util coloca no dia util seguinte.
         /// </summary>
         Following = 1,
 
         /// <summary>
-        /// Se terminar em dia não util coloca no dia util seguinte, a não ser que isso faça
-        /// o mês trocar, neste caso passa a ser o dia util anterior
+        /// Se terminar em dia nÃ£o util coloca no dia util seguinte, a nÃ£o ser que isso faÃ§a
+        /// o mÃªs trocar, neste caso passa a ser o dia util anterior
         /// </summary>
         ModifiedFollowing = 2,
 

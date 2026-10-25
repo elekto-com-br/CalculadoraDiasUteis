@@ -1,5 +1,5 @@
-/*
-    Calculadora de Dias Úteis - Calcula Prazos e Datas Finais considerando os feriados
+ï»¿/*
+    Calculadora de Dias Ãšteis - Calcula Prazos e Datas Finais considerando os feriados
     Copyright (C) 2021 by Elekto Produtos Financeiros Ltda.
 
     This program is free software: you can redistribute it and/or modify
@@ -19,17 +19,17 @@
  */
 using System.ComponentModel;
 
-namespace Elekto.Code
+namespace Elekto.Calendars
 {
     /// <summary>
-    /// Tipos de períodos
+    /// Tipos de perÃ­odos
     /// </summary>
-    internal enum PeriodType
+    public enum PeriodType
     {
         /// <summary>
-        /// Dias úteis
+        /// Dias Ãºteis
         /// </summary>
-        [Description("Dias Úteis")]
+        [Description("Dias Ãšteis")]
         WorkDays = 0,
 
         /// <summary>

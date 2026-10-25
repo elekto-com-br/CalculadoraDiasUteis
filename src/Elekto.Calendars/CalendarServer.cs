@@ -1,5 +1,5 @@
-/*
-    Calculadora de Dias ⁄teis - Calcula Prazos e Datas Finais considerando os feriados
+Ôªø/*
+    Calculadora de Dias √öteis - Calcula Prazos e Datas Finais considerando os feriados
     Copyright (C) 2021 by Elekto Produtos Financeiros Ltda.
 
     This program is free software: you can redistribute it and/or modify
@@ -21,15 +21,15 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 
-namespace Elekto.Code
+namespace Elekto.Calendars
 {
     /// <summary>
-    ///     ConstrÛi calend·rios
+    ///     Constr√≥i calend√°rios
     /// </summary>
     /// <remarks>
-    /// Mantenha como uma inst‚ncia pronta para uso, de forma a maximizar o desempenho e evitar o custo de inicializaÁ„o.
+    /// Mantenha como uma inst√¢ncia pronta para uso, de forma a maximizar o desempenho e evitar o custo de inicializa√ß√£o.
     /// </remarks>
-    internal class CalendarServer : ICalendarServer
+    public class CalendarServer : ICalendarServer
     {
         /// <summary>
         ///     mapa de lugares para suas redomas
@@ -38,9 +38,9 @@ namespace Elekto.Code
             new();
 
         /// <summary>
-        ///     ConstrÛi o servidor
+        ///     Constr√≥i o servidor
         /// </summary>
-        /// <param name="defaultProvider">provedor padr„o dos feriados</param>
+        /// <param name="defaultProvider">provedor padr√£o dos feriados</param>
         public CalendarServer(ICalendarInfoProvider defaultProvider)
         {
             Provider = defaultProvider;
@@ -54,7 +54,7 @@ namespace Elekto.Code
 
         
         /// <summary>
-        ///     enumera os cÛdigos dos locais de feriados possÌveis (com o provedor padr„o)
+        ///     enumera os c√≥digos dos locais de feriados poss√≠veis (com o provedor padr√£o)
         /// </summary>
         /// <returns></returns>
         public IEnumerable<string> EnumCalendarNames()
@@ -65,7 +65,7 @@ namespace Elekto.Code
         /// <summary>
         ///     Retorna o ICalendar do lugar passado
         /// </summary>
-        /// <param name="name">cÛdigo do lugar</param>
+        /// <param name="name">c√≥digo do lugar</param>
         /// <returns>uma ICalendar!</returns>
         public ICalendar GetCalendar(string name)
         {
@@ -90,7 +90,7 @@ namespace Elekto.Code
                 }
             }
 
-            throw new ArgumentOutOfRangeException(nameof(name), name, @"N„o existe calend·rio com esse nome disponÌvel.");
+            throw new ArgumentOutOfRangeException(nameof(name), name, @"N√£o existe calend√°rio com esse nome dispon√≠vel.");
         }
 
         /// <summary>
@@ -104,7 +104,7 @@ namespace Elekto.Code
         }
 
         /// <summary>
-        ///     Retorna a Redoma padr„o
+        ///     Retorna a Redoma padr√£o
         /// </summary>
         /// <value>The default.</value>
         public ICalendar Default
@@ -115,7 +115,7 @@ namespace Elekto.Code
                 if (defaultCalendar == null)
                 {
                     throw new ArgumentException(
-                        "A redoma padr„o n„o foi obtida, o usu·rio possuÌ permiss„o em ao menos um calend·rio?");
+                        "A redoma padr√£o n√£o foi obtida, o usu√°rio possu√≠ permiss√£o em ao menos um calend√°rio?");
                 }
                 return GetCalendar(defaultCalendar);
             }

@@ -1,5 +1,5 @@
-/*
-    Calculadora de Dias ⁄teis - Calcula Prazos e Datas Finais considerando os feriados
+Ôªø/*
+    Calculadora de Dias √öteis - Calcula Prazos e Datas Finais considerando os feriados
     Copyright (C) 2021 by Elekto Produtos Financeiros Ltda.
 
     This program is free software: you can redistribute it and/or modify
@@ -21,23 +21,23 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 
-namespace Elekto.Code
+namespace Elekto.Calendars
 {
     /// <summary>
-    ///     InformaÁ„o mÌnima sobre um calend·rio, necess·ria para a construÁ„o de um.
+    ///     Informa√ß√£o m√≠nima sobre um calend√°rio, necess√°ria para a constru√ß√£o de um.
     /// </summary>
-    internal class CalendarInfo
+    public class CalendarInfo
     {
         private readonly HashSet<DateTime> _holidays = new();
         private readonly HashSet<DayOfWeek> _nonWorkDays = new();
 
         /// <summary>
-        ///     Nome do Calend·rio
+        ///     Nome do Calend√°rio
         /// </summary>
         public string Name { get; private set; }
 
         /// <summary>
-        /// DescriÁ„o do Calend·rio
+        /// Descri√ß√£o do Calend√°rio
         /// </summary>
         public string Description { get; private set; }
 
@@ -59,7 +59,7 @@ namespace Elekto.Code
         }
 
         /// <summary>
-        ///     Dias da semana definidos como n„o ˙teis
+        ///     Dias da semana definidos como n√£o √∫teis
         /// </summary>
         public DayOfWeek[] NonWorkDays
         {
@@ -76,12 +76,12 @@ namespace Elekto.Code
         }
 
         /// <summary>
-        /// Cria um novo com opÁıes padr„o
+        /// Cria um novo com op√ß√µes padr√£o
         /// </summary>
-        /// <param name="name">O cÛdigo</param>
+        /// <param name="name">O c√≥digo</param>
         /// <param name="holidays">Os feriados</param>
         /// <param name="description">The description.</param>
-        /// <param name="nonWorkDays">Os dias n„o uteis da semana. Se nulo s·bado e domingo ser„o os n„o-uteis.</param>
+        /// <param name="nonWorkDays">Os dias n√£o uteis da semana. Se nulo s√°bado e domingo ser√£o os n√£o-uteis.</param>
         /// <returns></returns>
         public static CalendarInfo New(string name, IEnumerable<DateTime> holidays, string description = null,
                                        IEnumerable<DayOfWeek> nonWorkDays = null)

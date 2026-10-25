@@ -1,5 +1,5 @@
-/*
-    Calculadora de Dias ⁄teis - Calcula Prazos e Datas Finais considerando os feriados
+Ôªø/*
+    Calculadora de Dias √öteis - Calcula Prazos e Datas Finais considerando os feriados
     Copyright (C) 2021 by Elekto Produtos Financeiros Ltda.
 
     This program is free software: you can redistribute it and/or modify
@@ -25,12 +25,12 @@ using System.IO;
 using System.Linq;
 using System.Text;
 
-namespace Elekto.Code
+namespace Elekto.Calendars
 {
     /// <summary>
-    ///     Fornece feriados e locais a partir de um diretÛrio contendo arquivos texto, cada um para um local
+    ///     Fornece feriados e locais a partir de um diret√≥rio contendo arquivos texto, cada um para um local
     /// </summary>
-    internal class TextsInFolderCalendarInfoProvider : ICalendarInfoProvider
+    public class TextsInFolderCalendarInfoProvider : ICalendarInfoProvider
     {
         private readonly Dictionary<string, Holidays> _cache = new();
         private readonly string _path;
@@ -38,12 +38,12 @@ namespace Elekto.Code
         /// <summary>
         ///     Initializes a new instance of the <see cref="TextsInFolderCalendarInfoProvider" /> class.
         /// </summary>
-        /// <param name="path">O caminho, sem a barra final, para o diretÛrio que contem os arquivos chamados '????.calendar.{code}.txt</param>
+        /// <param name="path">O caminho, sem a barra final, para o diret√≥rio que contem os arquivos chamados '????.calendar.{code}.txt</param>
         public TextsInFolderCalendarInfoProvider(string path)
         {
             if (!Directory.Exists(path))
             {
-                throw new ArgumentException($@"DiretÛrio '{path} n„o existe.", nameof(path));
+                throw new ArgumentException($@"Diret√≥rio '{path} n√£o existe.", nameof(path));
             }
 
             _path = path;
@@ -58,7 +58,7 @@ namespace Elekto.Code
         public string DefaultCalendarName { get; private set; }
 
         /// <summary>
-        ///     Retorna a lista de lugares cujos feriados s„o conhecidos
+        ///     Retorna a lista de lugares cujos feriados s√£o conhecidos
         /// </summary>
         /// <returns></returns>
         public IEnumerable<string> EnumCalendarNames()
@@ -67,7 +67,7 @@ namespace Elekto.Code
         }
 
         /// <summary>
-        ///     Retorna a informaÁ„o mÌnima necess·ria para a construÁ„o de um calend·rio
+        ///     Retorna a informa√ß√£o m√≠nima necess√°ria para a constru√ß√£o de um calend√°rio
         /// </summary>
         /// <param name="name">The business center code.</param>
         /// <returns></returns>
@@ -77,7 +77,7 @@ namespace Elekto.Code
         }
 
         /// <summary>
-        ///     Enumera todos os calend·rios disponÌveis
+        ///     Enumera todos os calend√°rios dispon√≠veis
         /// </summary>
         public IEnumerable<CalendarInfo> All()
         {
@@ -112,7 +112,7 @@ namespace Elekto.Code
             {
                 if (!File.Exists(filePath))
                 {
-                    throw new ArgumentException($@"Arquivo '{filePath}' n„o existe.", nameof(filePath));
+                    throw new ArgumentException($@"Arquivo '{filePath}' n√£o existe.", nameof(filePath));
                 }
 
                 Name = Path.GetFileNameWithoutExtension(filePath);
@@ -120,7 +120,7 @@ namespace Elekto.Code
                 if (Name.Length < "0000.calendar.".Length)
                 {
                     throw new ArgumentException(
-                        $@"Arquivo '{filePath}' deveria ter o nome na convenÁ„o '0000.calendar.C”DIGO.txt'.",
+                        $@"Arquivo '{filePath}' deveria ter o nome na conven√ß√£o '0000.calendar.C√ìDIGO.txt'.",
                         nameof(filePath));
                 }
 
@@ -130,7 +130,7 @@ namespace Elekto.Code
                 if (string.IsNullOrWhiteSpace(Description))
                 {
                     throw new ArgumentException(
-                        $@"Arquivo '{filePath}' deve ter na primeira linha a descriÁ„o do local.",
+                        $@"Arquivo '{filePath}' deve ter na primeira linha a descri√ß√£o do local.",
                         nameof(filePath));
                 }
 
@@ -146,7 +146,7 @@ namespace Elekto.Code
             {
                 if (!File.Exists(_filePath))
                 {
-                    throw new InvalidOperationException($"Arquivo '{_filePath}' n„o existe.");
+                    throw new InvalidOperationException($"Arquivo '{_filePath}' n√£o existe.");
                 }
 
                 var allLines = File.ReadAllLines(_filePath, Encoding.UTF8);
@@ -173,7 +173,7 @@ namespace Elekto.Code
 
                     if (s[0] == ';' || s[0] == '/' || s[0] == '-')
                     {
-                        // coment·rios
+                        // coment√°rios
                         continue;
                     }
 

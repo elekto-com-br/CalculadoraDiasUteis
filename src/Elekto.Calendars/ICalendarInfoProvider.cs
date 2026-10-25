@@ -1,5 +1,5 @@
-/*
-    Calculadora de Dias ⁄teis - Calcula Prazos e Datas Finais considerando os feriados
+Ôªø/*
+    Calculadora de Dias √öteis - Calcula Prazos e Datas Finais considerando os feriados
     Copyright (C) 2021 by Elekto Produtos Financeiros Ltda.
 
     This program is free software: you can redistribute it and/or modify
@@ -19,30 +19,30 @@
  */
 using System.Collections.Generic;
 
-namespace Elekto.Code
+namespace Elekto.Calendars
 {
     /// <summary>
-    ///     Interface para prover o mÌnimo necess·rio para a construÁ„o de Calend·rios
+    ///     Interface para prover o m√≠nimo necess√°rio para a constru√ß√£o de Calend√°rios
     /// </summary>
-    internal interface ICalendarInfoProvider
+    public interface ICalendarInfoProvider
     {
         /// <summary>
-        ///     O calend·rio padr„o do sistema
+        ///     O calend√°rio padr√£o do sistema
         /// </summary>
         string DefaultCalendarName { get; }
 
         /// <summary>
-        ///     Retorna a lista de calend·rios cujos feriados s„o conhecidos
+        ///     Retorna a lista de calend√°rios cujos feriados s√£o conhecidos
         /// </summary>
         IEnumerable<string> EnumCalendarNames();
 
         /// <summary>
-        /// Retorna a informaÁ„o mÌnima necess·ria para a construÁ„o de um calend·rio
+        /// Retorna a informa√ß√£o m√≠nima necess√°ria para a constru√ß√£o de um calend√°rio
         /// </summary>
         CalendarInfo GetCalendarInfo(string calendarName);
 
         /// <summary>
-        /// Enumera todos os calend·rios disponÌveis
+        /// Enumera todos os calend√°rios dispon√≠veis
         /// </summary>
         IEnumerable<CalendarInfo> All();
     }

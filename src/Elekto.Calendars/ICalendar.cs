@@ -20,12 +20,12 @@
 using System;
 using System.Collections.Generic;
 
-namespace Elekto.Code
+namespace Elekto.Calendars
 {
     /// <summary>
     /// O que um calendário financeiro deve implementar
     /// </summary>
-    internal interface ICalendar
+    public interface ICalendar
     {
         /// <summary>
         /// Nome do calendário

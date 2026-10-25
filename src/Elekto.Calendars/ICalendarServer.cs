@@ -20,12 +20,12 @@
 using System;
 using System.Collections.Generic;
 
-namespace Elekto.Code
+namespace Elekto.Calendars
 {
     /// <summary>
     /// Interface para a obtenção de calendários
     /// </summary>
-    internal interface ICalendarServer
+    public interface ICalendarServer
     {
         /// <summary>
         /// Retorna o calendário padrão

@@ -1,5 +1,5 @@
-/*
-    Calculadora de Dias ⁄teis - Calcula Prazos e Datas Finais considerando os feriados
+Ôªø/*
+    Calculadora de Dias √öteis - Calcula Prazos e Datas Finais considerando os feriados
     Copyright (C) 2021 by Elekto Produtos Financeiros Ltda.
 
     This program is free software: you can redistribute it and/or modify
@@ -23,19 +23,19 @@ using System.Diagnostics;
 using System.Linq;
 using System.Runtime.CompilerServices;
 
-namespace Elekto.Code
+namespace Elekto.Calendars
 {
     /// <summary>
     ///     Classe que representa um redoma
     /// </summary>
-    internal class Calendar : ICalendar
+    public class Calendar : ICalendar
     {
         private readonly HashSet<DateTime> _hashHolidays = new();
 
         private readonly HashSet<DayOfWeek> _nonWorkWeekDays = new() { DayOfWeek.Saturday, DayOfWeek.Sunday };
 
         /// <summary>
-        ///     vetor de 0s e 1s onde 0 s„o feriados/fim-de-semana, e 1 s„o dias de trabalho
+        ///     vetor de 0s e 1s onde 0 s√£o feriados/fim-de-semana, e 1 s√£o dias de trabalho
         /// </summary>
         private int[] _days;
 
@@ -50,7 +50,7 @@ namespace Elekto.Code
         private int _size;
 
         /// <summary>
-        ///     ConstrÛi um calend·rio com somente s·bados e domingos
+        ///     Constr√≥i um calend√°rio com somente s√°bados e domingos
         /// </summary>
         public Calendar()
             : this(Array.Empty<DateTime>())
@@ -58,12 +58,12 @@ namespace Elekto.Code
         }
 
         /// <summary>
-        ///     ConstrÛi um ICalendar
+        ///     Constr√≥i um ICalendar
         /// </summary>
         /// <param name="holidays">Lista com os feriados</param>
-        /// <param name="businessCenterCode">cÛdigo do lugar, opcional</param>
-        /// <param name="description">descriÁ„o, opcional</param>
-        /// <param name="nonWorkWeekDays">Os dias da semana n„o-uteis, opcional. Se nulo s·bado e domingo ser„o n„o-uteis.</param>
+        /// <param name="businessCenterCode">c√≥digo do lugar, opcional</param>
+        /// <param name="description">descri√ß√£o, opcional</param>
+        /// <param name="nonWorkWeekDays">Os dias da semana n√£o-uteis, opcional. Se nulo s√°bado e domingo ser√£o n√£o-uteis.</param>
         public Calendar(IEnumerable<DateTime> holidays, string businessCenterCode = null,
             string description = null, IEnumerable<DayOfWeek> nonWorkWeekDays = null)
         {
@@ -159,7 +159,7 @@ namespace Elekto.Code
                 _nonWorkWeekDays.UnionWith(nonWorkWeekDays);
                 if (_nonWorkWeekDays.Count >= 7)
                 {
-                    throw new ArgumentException(@"Um mundo sÛ de dias n„o ˙teis n„o ser· funcional.", nameof(nonWorkWeekDays));
+                    throw new ArgumentException(@"Um mundo s√≥ de dias n√£o √∫teis n√£o ser√° funcional.", nameof(nonWorkWeekDays));
                 }
             }
 
@@ -184,7 +184,7 @@ namespace Elekto.Code
                 MaxDate = _hashHolidays.Max();
             }
 
-            // dimensiona os vetores de calculo r·pido
+            // dimensiona os vetores de calculo r√°pido
             var deltaMax = MaxDate - MinDate;
             _size = deltaMax.Days + 1;
 
@@ -217,7 +217,7 @@ namespace Elekto.Code
             if (_period[_period.Length - 1] == 0)
             {
                 throw new ArgumentException(
-                    $@"O calend·rio '{businessCenterCode}' contÈm em seus limites [{MinDate:yyyy-MM-dd}; {MaxDate:yyyy-MM-dd}] apenas dias n„o ˙teis! N„o È possÌvel computar num calend·rio assim.",
+                    $@"O calend√°rio '{businessCenterCode}' cont√©m em seus limites [{MinDate:yyyy-MM-dd}; {MaxDate:yyyy-MM-dd}] apenas dias n√£o √∫teis! N√£o √© poss√≠vel computar num calend√°rio assim.",
                     nameof(holidays));
             }
 
@@ -226,12 +226,12 @@ namespace Elekto.Code
         }
 
         /// <summary>
-        ///     Adiciona dias uteis a uma data, mas usa um mÈtodo lento, e robusto
+        ///     Adiciona dias uteis a uma data, mas usa um m√©todo lento, e robusto
         /// </summary>
         /// <param name="date">data inicial</param>
         /// <param name="workDays">dias a acrescentar (ou subtrair)</param>
-        /// <param name="option">MÈtodo de ajuste da data final</param>
-        /// <returns>uma data ˙til</returns>
+        /// <param name="option">M√©todo de ajuste da data final</param>
+        /// <returns>uma data √∫til</returns>
         private DateTime AddWorkDaysOneByOne(DateTime date, int workDays, FinalDateAdjust option = FinalDateAdjust.Following)
         {
             date = date.Date.RemoveKind();
@@ -264,27 +264,27 @@ namespace Elekto.Code
         }
 
         /// <summary>
-        ///     Nome do calend·rio
+        ///     Nome do calend√°rio
         /// </summary>
         public string Name { get; private set; }
 
         /// <summary>
-        ///     DescriÁ„o para este ICalendar
+        ///     Descri√ß√£o para este ICalendar
         /// </summary>
         public string Description { get; private set; }
 
         /// <summary>
-        ///     Maior dia util que o calend·rio alcanÁa
+        ///     Maior dia util que o calend√°rio alcan√ßa
         /// </summary>
         public DateTime MaxWorkDate { get; private set; }
 
         /// <summary>
-        ///     Data mÌnima alcanÁada
+        ///     Data m√≠nima alcan√ßada
         /// </summary>
         public DateTime MinDate { get; private set; }
 
         /// <summary>
-        ///     Menor data ˙til que o calend·rio alcanÁa
+        ///     Menor data √∫til que o calend√°rio alcan√ßa
         /// </summary>
         public DateTime MinWorkDate { get; private set; }
 
@@ -297,19 +297,19 @@ namespace Elekto.Code
         }
 
         /// <summary>
-        ///     Os dias n„o uteis da semana (normalmente apenas s·bado e domingo)
+        ///     Os dias n√£o uteis da semana (normalmente apenas s√°bado e domingo)
         /// </summary>
         public IEnumerable<DayOfWeek> NonWorkWeekDays => _nonWorkWeekDays;
 
         /// <summary>
-        ///     Data m·xima alcanÁada
+        ///     Data m√°xima alcan√ßada
         /// </summary>
         /// <value>The max date.</value>
         public DateTime MaxDate { get; private set; }
 
 
         /// <summary>
-        ///     Retorna o n-Èsimo dia util do mes, contado relativamente a data de referencia
+        ///     Retorna o n-√©simo dia util do mes, contado relativamente a data de referencia
         /// </summary>
         /// <param name="referenceDate">The reference date.</param>
         /// <param name="monthsAhead">The months ahead.</param>
@@ -351,7 +351,7 @@ namespace Elekto.Code
         }
 
         /// <summary>
-        ///     Retorna se È um dia de trabalho
+        ///     Retorna se √© um dia de trabalho
         /// </summary>
         /// <param name="date">The date.</param>
         /// <returns>
@@ -361,12 +361,12 @@ namespace Elekto.Code
         {
             if (date < MinDate)
             {
-                throw new ArgumentOutOfRangeException(nameof(date), date, $@"Data anterior a mÌnima aceit·vel {MinDate:yyyy-MM-dd} no calend·rio '{Name}'.");
+                throw new ArgumentOutOfRangeException(nameof(date), date, $@"Data anterior a m√≠nima aceit√°vel {MinDate:yyyy-MM-dd} no calend√°rio '{Name}'.");
             }
 
             if (date > MaxDate)
             {
-                throw new ArgumentOutOfRangeException(nameof(date), date, $@"Data posterior a m·xima aceit·vel {MaxDate:yyyy-MM-dd} no calend·rio '{Name}'.");
+                throw new ArgumentOutOfRangeException(nameof(date), date, $@"Data posterior a m√°xima aceit√°vel {MaxDate:yyyy-MM-dd} no calend√°rio '{Name}'.");
             }
 
             date = date.NormalizeDate();
@@ -374,7 +374,7 @@ namespace Elekto.Code
         }
 
         /// <summary>
-        ///     Testa se o dia est· marcado como feriado
+        ///     Testa se o dia est√° marcado como feriado
         /// </summary>
         /// <param name="date">A data</param>
         /// <returns>
@@ -386,7 +386,7 @@ namespace Elekto.Code
         }
 
         /// <summary>
-        ///     Retorna os dias N„o-Uteis entre as datas (inclusive as pontas)
+        ///     Retorna os dias N√£o-Uteis entre as datas (inclusive as pontas)
         /// </summary>
         /// <param name="minDate"></param>
         /// <param name="maxDate"></param>
@@ -398,22 +398,22 @@ namespace Elekto.Code
 
             if (minDate < MinDate)
             {
-                throw new ArgumentOutOfRangeException(nameof(minDate), minDate, $@"A data mÌnima no calend·rio '{Name}' È {MinDate:yyyy-MM-dd}");
+                throw new ArgumentOutOfRangeException(nameof(minDate), minDate, $@"A data m√≠nima no calend√°rio '{Name}' √© {MinDate:yyyy-MM-dd}");
             }
 
             if (minDate > MaxDate)
             {
-                throw new ArgumentOutOfRangeException(nameof(minDate), minDate, $@"A data m·xima no calend·rio '{Name}' È {MaxDate:yyyy-MM-dd}");
+                throw new ArgumentOutOfRangeException(nameof(minDate), minDate, $@"A data m√°xima no calend√°rio '{Name}' √© {MaxDate:yyyy-MM-dd}");
             }
 
             if (maxDate < MinDate)
             {
-                throw new ArgumentOutOfRangeException(nameof(maxDate), maxDate, $@"A data mÌnima no calend·rio '{Name}' È {MinDate:yyyy-MM-dd}");
+                throw new ArgumentOutOfRangeException(nameof(maxDate), maxDate, $@"A data m√≠nima no calend√°rio '{Name}' √© {MinDate:yyyy-MM-dd}");
             }
 
             if (maxDate > MaxDate)
             {
-                throw new ArgumentOutOfRangeException(nameof(maxDate), maxDate, $@"A data m·xima no calend·rio '{Name}' È {MaxDate:yyyy-MM-dd}");
+                throw new ArgumentOutOfRangeException(nameof(maxDate), maxDate, $@"A data m√°xima no calend√°rio '{Name}' √© {MaxDate:yyyy-MM-dd}");
             }
 
             if (minDate > maxDate)
@@ -437,12 +437,12 @@ namespace Elekto.Code
         }
 
         /// <summary>
-        ///     Devolve um novo calend·rio que È a uni„o (em termos de feriados e dias n„o uteis) entre esta inst‚ncia e a outra
+        ///     Devolve um novo calend√°rio que √© a uni√£o (em termos de feriados e dias n√£o uteis) entre esta inst√¢ncia e a outra
         ///     fornecida
         /// </summary>
-        /// <param name="other">O outro calend·rio</param>
+        /// <param name="other">O outro calend√°rio</param>
         /// <returns>
-        ///     A uni„o entre os calend·rio
+        ///     A uni√£o entre os calend√°rio
         /// </returns>
         public ICalendar UnionWith(ICalendar other)
         {
@@ -459,7 +459,7 @@ namespace Elekto.Code
         }
 
         /// <summary>
-        ///     Retorna o prÛximo dia ˙til
+        ///     Retorna o pr√≥ximo dia √∫til
         /// </summary>
         /// <param name="date">The date.</param>
         /// <returns></returns>
@@ -469,12 +469,12 @@ namespace Elekto.Code
 
             if (date < MinDate)
             {
-                throw new ArgumentOutOfRangeException(nameof(date), date, $@"Data anterior a mÌnima aceit·vel {MinDate:yyyy-MM-dd} no calend·rio '{Name}'.");
+                throw new ArgumentOutOfRangeException(nameof(date), date, $@"Data anterior a m√≠nima aceit√°vel {MinDate:yyyy-MM-dd} no calend√°rio '{Name}'.");
             }
 
             if (date > MaxDate)
             {
-                throw new ArgumentOutOfRangeException(nameof(date), date, $@"Data posterior a m·xima aceit·vel {MaxDate:yyyy-MM-dd} no calend·rio '{Name}'.");
+                throw new ArgumentOutOfRangeException(nameof(date), date, $@"Data posterior a m√°xima aceit√°vel {MaxDate:yyyy-MM-dd} no calend√°rio '{Name}'.");
             }
 
             date = date.AddDays(1);
@@ -488,7 +488,7 @@ namespace Elekto.Code
 
 
         /// <summary>
-        ///     Numero de dias ˙teis entre <paramref name="ini" /> e <paramref name="end" /> utilizando
+        ///     Numero de dias √∫teis entre <paramref name="ini" /> e <paramref name="end" /> utilizando
         ///     <paramref name="periodType" />
         /// </summary>
         public int GetDeltaDays(DateTime ini, DateTime end, PeriodType periodType)
@@ -505,7 +505,7 @@ namespace Elekto.Code
         }
 
         /// <summary>
-        ///     Retorna o mesmo dia, caso seja ˙til, do contr·rio retorna o prÛximo ˙til
+        ///     Retorna o mesmo dia, caso seja √∫til, do contr√°rio retorna o pr√≥ximo √∫til
         /// </summary>
         /// <param name="date">The date.</param>
         /// <returns></returns>
@@ -518,7 +518,7 @@ namespace Elekto.Code
 
 
         /// <summary>
-        ///     Retorna o dia ˙til anterior
+        ///     Retorna o dia √∫til anterior
         /// </summary>
         /// <param name="date">The date.</param>
         /// <returns></returns>
@@ -528,12 +528,12 @@ namespace Elekto.Code
 
             if (date < MinDate)
             {
-                throw new ArgumentOutOfRangeException(nameof(date), date, $"Data anterior a mÌnima aceit·vel {MinDate:yyyy-MM-dd} no calend·rio '{Name}'.");
+                throw new ArgumentOutOfRangeException(nameof(date), date, $"Data anterior a m√≠nima aceit√°vel {MinDate:yyyy-MM-dd} no calend√°rio '{Name}'.");
             }
 
             if (date > MaxDate)
             {
-                throw new ArgumentOutOfRangeException(nameof(date), date, $"Data posterior a m·xima aceit·vel {MaxDate:yyyy-MM-dd} no calend·rio '{Name}'.");
+                throw new ArgumentOutOfRangeException(nameof(date), date, $"Data posterior a m√°xima aceit√°vel {MaxDate:yyyy-MM-dd} no calend√°rio '{Name}'.");
             }
 
             date = date.AddDays(-1);
@@ -547,7 +547,7 @@ namespace Elekto.Code
 
 
         /// <summary>
-        ///     Retorna o mesmo dia, caso seja ˙til, do contr·rio retorna o dia ˙til anterior
+        ///     Retorna o mesmo dia, caso seja √∫til, do contr√°rio retorna o dia √∫til anterior
         /// </summary>
         /// <param name="date">The date.</param>
         /// <returns></returns>
@@ -562,7 +562,7 @@ namespace Elekto.Code
         ///     Ajusta a data final de um prazo
         /// </summary>
         /// <param name="date">a data a ser ajustada</param>
-        /// <param name="option">um dos mÈtodos a ser usado no ajuste</param>
+        /// <param name="option">um dos m√©todos a ser usado no ajuste</param>
         /// <returns>a data ajustada</returns>
         public DateTime AdjustFinalDate(DateTime date, FinalDateAdjust option)
         {
@@ -592,7 +592,7 @@ namespace Elekto.Code
         ///     Adiciona (ou subtrai) dias uteis a data passada
         /// </summary>
         /// <param name="date">data base</param>
-        /// <param name="workDays">n˙mero de dias ˙teis a soma ou subtrair (se negativo)</param>
+        /// <param name="workDays">n√∫mero de dias √∫teis a soma ou subtrair (se negativo)</param>
         /// <param name="finalDateAdjust">Ajuste da data final</param>
         /// <returns></returns>
         public DateTime AddWorkDays(DateTime date, int workDays,
@@ -606,7 +606,7 @@ namespace Elekto.Code
 
             const int limitBetweenMethods = 5;
 
-            // mÈtodo tosco
+            // m√©todo tosco
             if (Math.Abs(workDays) <= limitBetweenMethods)
             {
                 return AddWorkDaysOneByOne(date, workDays);
@@ -621,13 +621,13 @@ namespace Elekto.Code
             if (initialIndex < 0)
             {
                 throw new ArgumentOutOfRangeException(nameof(date), date,
-                    $@"A data inicial È anterior a mÌnima aceit·vel de {MinDate:yyyy-MM-dd} para o calend·rio '{Name}'.");
+                    $@"A data inicial √© anterior a m√≠nima aceit√°vel de {MinDate:yyyy-MM-dd} para o calend√°rio '{Name}'.");
             }
 
             if (initialIndex >= _period.Length)
             {
                 throw new ArgumentOutOfRangeException(nameof(date), date,
-                    $@"A data inicial ultrapassou a m·xima possÌvel de {MaxDate:yyyy-MM-dd} para o calend·rio '{Name}'.");
+                    $@"A data inicial ultrapassou a m√°xima poss√≠vel de {MaxDate:yyyy-MM-dd} para o calend√°rio '{Name}'.");
             }
 
             var initialPeriod = _period[initialIndex];
@@ -636,17 +636,17 @@ namespace Elekto.Code
             if (finalPeriod < _period[0])
             {
                 throw new ArgumentOutOfRangeException(nameof(workDays), workDays,
-                    $@"A data inicial È anterior a mÌnima aceit·vel de {MinDate:yyyy-MM-dd} para o calend·rio '{Name}'.");
+                    $@"A data inicial √© anterior a m√≠nima aceit√°vel de {MinDate:yyyy-MM-dd} para o calend√°rio '{Name}'.");
             }
 
             if (finalPeriod > _period[_period.Length - 1])
             {
                 throw new ArgumentOutOfRangeException(nameof(workDays), workDays,
-                    $@"A data final ultrapassou a m·xima possÌvel de {MaxDate:yyyy-MM-dd} para o calend·rio '{Name}'.");
+                    $@"A data final ultrapassou a m√°xima poss√≠vel de {MaxDate:yyyy-MM-dd} para o calend√°rio '{Name}'.");
             }
 
 
-            // localiza o Ìndice que contem o prazo final
+            // localiza o √≠ndice que contem o prazo final
             var minSearch = 0;
             var maxSearch = _period.Length - 1;
             var mid = maxSearch / 2;
@@ -703,11 +703,11 @@ namespace Elekto.Code
         }
 
         /// <summary>
-        ///     Adiciona dias calend·rio, com ajuste da data final
+        ///     Adiciona dias calend√°rio, com ajuste da data final
         /// </summary>
         /// <param name="date">data</param>
-        /// <param name="days">dias calend·rio a adicionar (ou subtrair se negativo)</param>
-        /// <param name="finalDateAdjust">MÈtodo de ajuste da data final</param>
+        /// <param name="days">dias calend√°rio a adicionar (ou subtrair se negativo)</param>
+        /// <param name="finalDateAdjust">M√©todo de ajuste da data final</param>
         /// <returns></returns>
         public DateTime AddActualDays(DateTime date, int days, FinalDateAdjust finalDateAdjust = FinalDateAdjust.None)
         {
@@ -719,13 +719,13 @@ namespace Elekto.Code
 
         /// <summary>
         ///     Calcula o numero de dias corridos entre as duas datas, fazendo ajustes nas datas terminais,
-        ///     se necess·rio
+        ///     se necess√°rio
         /// </summary>
         /// <param name="ini">data inicial</param>
         /// <param name="end">data final</param>
-        /// <param name="adjust">Um mÈtodo de ajuste para as datas terminais.</param>
+        /// <param name="adjust">Um m√©todo de ajuste para as datas terminais.</param>
         /// <returns>
-        ///     o n˙mero de dias corridos entre as datas
+        ///     o n√∫mero de dias corridos entre as datas
         /// </returns>
         [MethodImpl(MethodImplOptions.NoInlining)]
         public int GetDeltaActualDays(DateTime ini, DateTime end,
@@ -771,7 +771,7 @@ namespace Elekto.Code
 
             if (adjust == DeltaTerminalDayAdjust.Financial)
             {
-                // a adaptaÁ„o para dias corridos j· esta correta.
+                // a adapta√ß√£o para dias corridos j√° esta correta.
             }
 
             return delta;
@@ -780,12 +780,12 @@ namespace Elekto.Code
 
         /// <summary>
         ///     Calcula o numero de dias uteis entre as duas datas, fazendo ajustes nas datas terminais,
-        ///     se necess·rio
+        ///     se necess√°rio
         /// </summary>
         /// <param name="ini">data inicial</param>
         /// <param name="end">data final</param>
-        /// <param name="adjust">Um mÈtodo de ajuste para as datas terminais</param>
-        /// <returns>o n˙mero de dias uteis entre as datas</returns>
+        /// <param name="adjust">Um m√©todo de ajuste para as datas terminais</param>
+        /// <returns>o n√∫mero de dias uteis entre as datas</returns>
         [MethodImpl(MethodImplOptions.NoInlining)]
         public int GetDeltaWorkDays(DateTime ini, DateTime end,
             DeltaTerminalDayAdjust adjust = DeltaTerminalDayAdjust.Financial)
@@ -829,7 +829,7 @@ namespace Elekto.Code
             {
                 var ex =
                     new ArgumentOutOfRangeException(nameof(ini), ini,
-                        $@"Data inicial posterior a m·xima aceit·vel {MaxDate:yyyy-MM-dd} no calend·rio '{Name}'.");
+                        $@"Data inicial posterior a m√°xima aceit√°vel {MaxDate:yyyy-MM-dd} no calend√°rio '{Name}'.");
                 throw ex;
             }
 
@@ -837,7 +837,7 @@ namespace Elekto.Code
             {
                 var ex =
                     new ArgumentOutOfRangeException(nameof(end), end,
-                        $@"Data final posterior a m·xima aceit·vel {MaxDate:yyyy-MM-dd} no calend·rio '{Name}'.");
+                        $@"Data final posterior a m√°xima aceit√°vel {MaxDate:yyyy-MM-dd} no calend√°rio '{Name}'.");
                 throw ex;
             }
 
@@ -845,7 +845,7 @@ namespace Elekto.Code
             {
                 var ex =
                     new ArgumentOutOfRangeException(nameof(ini), ini,
-                        $@"Data inicial anterior a mÌnima aceit·vel {MinDate:yyyy-MM-dd} no calend·rio '{Name}'.");
+                        $@"Data inicial anterior a m√≠nima aceit√°vel {MinDate:yyyy-MM-dd} no calend√°rio '{Name}'.");
                 throw ex;
             }
 
@@ -853,7 +853,7 @@ namespace Elekto.Code
             {
                 var ex =
                     new ArgumentOutOfRangeException(nameof(end), end,
-                        $@"Data final anterior a mÌnima aceit·vel {MinDate:yyyy-MM-dd} no calend·rio '{Name}'.");
+                        $@"Data final anterior a m√≠nima aceit√°vel {MinDate:yyyy-MM-dd} no calend√°rio '{Name}'.");
                 throw ex;
             }
 
@@ -901,7 +901,7 @@ namespace Elekto.Code
         /// </summary>
         /// <param name="ini">dia inicial</param>
         /// <param name="end">dia final</param>
-        /// <param name="deltaTerminalDayAdjust">mÈtodo de ajuste</param>
+        /// <param name="deltaTerminalDayAdjust">m√©todo de ajuste</param>
         /// <returns>O Array requerido</returns>
         [MethodImpl(MethodImplOptions.NoInlining)]
         public IEnumerable<DateTime> GetWorkDates(DateTime ini, DateTime end,
@@ -953,11 +953,11 @@ namespace Elekto.Code
         }
 
         /// <summary>
-        ///     Retorna o primeiro dia util do mÍs
+        ///     Retorna o primeiro dia util do m√™s
         /// </summary>
-        /// <param name="referenceDate">Data de referÍncia</param>
+        /// <param name="referenceDate">Data de refer√™ncia</param>
         /// <param name="monthsAhead">Meses a adicionar (ou subtrair) da data de referencia.</param>
-        /// <returns>O primeiro dia util do mÍs</returns>
+        /// <returns>O primeiro dia util do m√™s</returns>
         public DateTime GetWorkingMonthHead(DateTime referenceDate, int monthsAhead)
         {
             var date = GetActualMonthHead(referenceDate, monthsAhead);
@@ -966,11 +966,11 @@ namespace Elekto.Code
         }
 
         /// <summary>
-        ///     Retorna o primeiro dia do mÍs
+        ///     Retorna o primeiro dia do m√™s
         /// </summary>
-        /// <param name="referenceDate">Data de referÍncia</param>
+        /// <param name="referenceDate">Data de refer√™ncia</param>
         /// <param name="monthsAhead">Meses a adicionar (ou subtrair) da data de referencia.</param>
-        /// <returns>O primeiro dia do mÍs</returns>
+        /// <returns>O primeiro dia do m√™s</returns>
         public DateTime GetActualMonthHead(DateTime referenceDate, int monthsAhead)
         {
             var date = referenceDate.Date.RemoveKind();
@@ -980,11 +980,11 @@ namespace Elekto.Code
         }
 
         /// <summary>
-        ///     Retorna o ultimo dia do mÍs
+        ///     Retorna o ultimo dia do m√™s
         /// </summary>
         /// <param name="referenceDate">Data de referencia</param>
         /// <param name="monthsAhead">Meses a adicionar (ou subtrair) da data de referencia.</param>
-        /// <returns>O ultimo dia do mÍs</returns>
+        /// <returns>O ultimo dia do m√™s</returns>
         public DateTime GetActualMonthTail(DateTime referenceDate, int monthsAhead)
         {
             var date = referenceDate.Date.RemoveKind();
@@ -994,11 +994,11 @@ namespace Elekto.Code
         }
 
         /// <summary>
-        ///     Retorna o ˙ltimo dia util do mÍs
+        ///     Retorna o √∫ltimo dia util do m√™s
         /// </summary>
-        /// <param name="referenceDate">Data de referÍncia</param>
+        /// <param name="referenceDate">Data de refer√™ncia</param>
         /// <param name="monthsAhead">Meses a adicionar (ou subtrair) da data de referencia.</param>
-        /// <returns>O ˙ltimo dia util do mÍs</returns>
+        /// <returns>O √∫ltimo dia util do m√™s</returns>
         public DateTime GetWorkingMonthTail(DateTime referenceDate, int monthsAhead)
         {
             var date = GetActualMonthTail(referenceDate, monthsAhead);
