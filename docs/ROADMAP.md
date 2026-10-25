@@ -4,13 +4,15 @@ Levar a Calculadora de Dias Úteis para WinUI: bonita, acessível, moderna e dis
 
 É um projeto de baixa prioridade, tocado aos poucos. Por isso o plano está dividido em fases pequenas, e cada uma termina com algo que compila e funciona; dá para parar em qualquer fase sem deixar o projeto quebrado.
 
-Atualizado em 25/10/2026. Fase 0 concluída; na fase 1, o aplicativo está pronto e faltam as verificações que pedem alguém diante do computador.
+Atualizado em 25/10/2026. Fases 0 e 1 concluídas; a fase 2 está em andamento.
 
 ## Onde estamos
 
 - A linha 1.x (WinForms, .NET Framework 4.8) termina na 1.2.1. Ela fica no `master` até a 2.0 ficar pronta, recebendo apenas correção que não puder esperar.
 - O trabalho da 2.0 acontece neste branch, `winui`, aberto a quem quiser acompanhar.
-- **Ponto de parada (25/10/2026):** o aplicativo WinUI faz as contas da 1.2, passa em todos os testes de interface no Windows Sandbox e já foi usado fora dele. Para fechar a fase 1 falta a verificação com o Accessibility Insights e o Narrador, além das pendências listadas na [situação da fase 1](#fase-1-aplicativo-winui-com-as-funções-da-12).
+- **Ponto de parada (25/10/2026):** o aplicativo WinUI faz as contas da 1.2, passa em todos os testes de interface no Windows Sandbox e já foi usado fora dele. A fase 1 está marcada com o tag `v2.0.0-alpha.1`. Começa a fase 2, a dos calendários editáveis.
+- **Sem release público até a Store.** Cada fase termina com um tag (`v2.0.0-alpha.1`, `alpha.2`...), para marcar o ponto no histórico, mas sem pacote para baixar: a 2.0.0 sai pela Microsoft Store, na fase 4.
+- **A revisão humana de acessibilidade é uma só**, com todas as telas prontas, [antes da Store](#revisão-de-acessibilidade). Até lá, o que pode ser feito sem uma pessoa diante do computador (os testes de interface, os nomes e `AutomationId`, o teclado, os temas por captura de tela) acompanha cada tela nova.
 
 ## Princípios
 
@@ -50,7 +52,7 @@ Ainda sem interface nova. O objetivo é proteger a lógica antes de mexer em qua
 
 - **Corrigido:** a 1.2 descarta em silêncio o feriado que tiver descrição no arquivo, embora o formato documentado a permita.
 - **Corrigido:** num calendário com um só feriado, somar dias úteis até exatamente o último dia do calendário deixava o programa em laço infinito. Nos calendários da Elekto isso não acontece, mas aconteceria nos criados pelo usuário na fase 2.
-- **A decidir:** a partir do último dia do calendário, um prazo negativo de mais de 5 dias úteis lança exceção, enquanto um de até 5 devolve a data. O resultado depende de qual dos dois algoritmos internos do `AddWorkDays` é usado.
+- **Decidido em 25/10/2026, para a fase 2:** a partir do último dia do calendário, um prazo negativo de mais de 5 dias úteis lança exceção, enquanto um de até 5 devolve a data; o resultado depende de qual dos dois algoritmos internos do `AddWorkDays` é usado. Passa a funcionar sempre, com o algoritmo rápido dando o mesmo resultado do lento, e os casos da referência da 1.2 que gravaram a exceção viram exceção documentada no teste.
 
 ### Fase 1: aplicativo WinUI com as funções da 1.2
 
@@ -64,9 +66,9 @@ Ainda sem interface nova. O objetivo é proteger a lógica antes de mexer em qua
 - Ícone e identidade visual feitos a partir do logotipo da Elekto em vetor (`assets/logo-elekto.svg`), com as cores da marca: verde `#556652` e laranja `#F79646`.
 - Testes de interface com `winapp ui`, rodando no Windows Sandbox.
 
-**Pronto quando** a 2.0 faz tudo o que a 1.2 faz, menos editar calendários e exportar, e passa nos testes de interface e na verificação do Accessibility Insights.
+**Pronto quando** a 2.0 faz tudo o que a 1.2 faz, menos editar calendários e exportar, e passa nos testes de interface.
 
-**Situação:** aplicativo pronto em 25/10/2026, em `src/CalculadoraDiasUteis`, criado com o template `winui-mvvm` do WinApp CLI (Windows App SDK 2.5, CommunityToolkit.Mvvm). Os testes de interface (`tests/UiTests`) cobrem 21 cenários: os padrões, a escolha de datas no calendário, os dois critérios de contagem, prazos em dias úteis (inclusive negativos) e corridos com os três ajustes, o aviso de prazo além do calendário, a troca de calendário, a página "Sobre" pelo botão e pelo teclado (F1 e Esc), seus links, a dica do botão "Sobre", a licença no navegador, o tamanho mínimo da janela, os `AutomationId` e as escolhas lembradas ao reabrir. Os resultados esperados saem da própria biblioteca (`Expected.cs`), para as datas que o teste escolhe. No Sandbox passam todos; os de teclado e mouse precisam da sessão do Windows desbloqueada e da janela da Sandbox conectada (`wsb connect`, se ela tiver caído). Fora do Sandbox, o app foi usado no Windows do dia a dia, e o "Ler a licença" abre o texto no editor padrão. Os temas claro, escuro e de alto contraste e a janela estreita foram conferidos por captura de tela. A integração contínua compila também o aplicativo.
+**Situação:** concluída em 25/10/2026 e marcada com o tag `v2.0.0-alpha.1`. O aplicativo está em `src/CalculadoraDiasUteis`, criado com o template `winui-mvvm` do WinApp CLI (Windows App SDK 2.5, CommunityToolkit.Mvvm). Os testes de interface (`tests/UiTests`) cobrem 21 cenários: os padrões, a escolha de datas no calendário, os dois critérios de contagem, prazos em dias úteis (inclusive negativos) e corridos com os três ajustes, o aviso de prazo além do calendário, a troca de calendário, a página "Sobre" pelo botão e pelo teclado (F1 e Esc), seus links, a dica do botão "Sobre", a licença no navegador, o tamanho mínimo da janela, os `AutomationId` e as escolhas lembradas ao reabrir. Os resultados esperados saem da própria biblioteca (`Expected.cs`), para as datas que o teste escolhe. No Sandbox passam todos; os de teclado e mouse precisam da sessão do Windows desbloqueada e da janela da Sandbox conectada (`wsb connect`, se ela tiver caído). Fora do Sandbox, o app foi usado no Windows do dia a dia, e o "Ler a licença" abre o texto no editor padrão. Os temas claro, escuro e de alto contraste e a janela estreita foram conferidos por captura de tela. A integração contínua compila também o aplicativo.
 
 Decisões tomadas na fase:
 
@@ -83,23 +85,18 @@ Decisões tomadas na fase:
 - **Ficam para a fase 2** o link "Definições de Calendários..." e o parâmetro `--calendars` da 1.2, que dependem de calendários fora do pacote.
 - **O editor é o VS Code**, com a configuração em `.vscode`: o F5 compila e usa a extensão WinApp, ainda em prévia, para abrir o app empacotado e anexar o depurador. A versão atual dela só aceita a pasta compilada; quando aceitar o projeto, a tarefa de compilação do `launch.json` deixa de ser necessária. A solução passou para o formato `.slnx`.
 
-Falta, para fechar a fase:
-
-- Verificar com o Accessibility Insights e percorrer a tela com o Narrador. Precisa de uma pessoa na máquina, com som: pelo acesso remoto o som do Narrador não chega, e não há como um agente ouvi-lo. O roteiro, em forma de lista para marcar, está em [ACESSIBILIDADE.md](ACESSIBILIDADE.md).
-
-Fica para depois, sem impedir o fim da fase:
-
-- O comportamento do `AddWorkDays` na borda do calendário, que a fase 0 deixou [a decidir](#fase-0-núcleo-e-testes). Precisa ser resolvido até a fase 2, quando os calendários do usuário podem terminar em qualquer data.
+A verificação com o Accessibility Insights e o Narrador, que estava aqui, passou para a [revisão de acessibilidade](#revisão-de-acessibilidade) única, antes da Store.
 
 ### Fase 2: calendários editáveis
 
 - **Modelo.** Os calendários enviados pela Elekto vêm dentro do pacote, somente leitura, no formato texto de hoje. As alterações do usuário ficam guardadas à parte, no banco local.
-- **Calendário derivado.** O usuário cria um calendário a partir de outro, por exemplo "Fórum da Lapa" como o br-BC mais os feriados locais, e ele continua recebendo as atualizações que a Elekto fizer no original.
-- **Operações.** Criar, renomear e apagar calendários próprios; incluir feriado; editar a descrição; remover feriado, inclusive de um calendário original, como exceção local.
+- **Calendário derivado.** O usuário cria um calendário a partir de outro, por exemplo "Fórum da Lapa" como o br-BC mais os feriados locais, e ele continua recebendo as atualizações que a Elekto fizer no original. A base pode ser mais de uma, e o derivado é a união delas: "br-BC + us-NYC" serve à liquidação de câmbio, que só acontece em dia útil nos dois países. Uma base pode ser outro derivado.
+- **Operações.** Criar calendários próprios, vazios ou derivados; renomear e apagar; incluir feriado; editar a descrição; remover feriado, inclusive de um calendário original, como exceção local.
 - **Descrição dos feriados.** Cada feriado pode ter uma descrição, opcional. Os calendários originais passam a vir com a descrição de cada feriado (Carnaval, Tiradentes, Juneteenth...).
 - **Restaurar.** Desfazer todas as alterações de um calendário original, ou de todos de uma vez.
 - **Atualizações.** Quando uma versão nova do app traz feriados oficiais novos, as alterações do usuário continuam valendo por cima deles.
-- **Importar e exportar** no formato texto da 1.x, para aproveitar os arquivos de quem usava a pasta `Calendars` ou o parâmetro `--calendars`. Isso também protege o usuário: desinstalar um app MSIX apaga a pasta local dele.
+- **Importar** os arquivos texto da 1.x, para aproveitar os de quem usava a pasta `Calendars` ou o parâmetro `--calendars`.
+- **Exportar** num arquivo completo, com a herança: as bases, os feriados incluídos e removidos e as descrições. Reimportado na 2.0, o calendário volta como estava e continua recebendo as atualizações do original. O arquivo não precisa ser lido pela 1.x; a lista achatada, só com as datas, fica para a exportação em CSV e a cópia para o Excel, na fase 3. Exportar também protege o usuário: desinstalar um app MSIX apaga a pasta local dele.
 - Tela de feriados por ano, com o dia da semana e a origem de cada data (original, incluída ou removida pelo usuário).
 - **Muitos calendários.** Com 34 calendários, a lista de escolha abre por cima da janela, mostra uns 13 e rola, e digitar as primeiras letras com a lista em foco leva ao item. Para dezenas está bem; se os calendários próprios passarem disso, avaliar busca por texto ou agrupar por país, e ordenar pelo nome em vez do número do arquivo.
 
@@ -110,6 +107,10 @@ Fica para depois, sem impedir o fim da fase:
 - Copiar para a área de transferência, de modo que a lista cole no Excel como datas e não como texto. É o que a maioria faz no dia a dia.
 - Exportar `.xlsx` e `.csv`, tanto as datas de um período quanto os feriados de um calendário.
 - Exportar `.ics` (iCalendar), para levar os feriados ao Outlook ou ao Google Agenda: em discussão, só entra se houver um caso de uso convincente.
+
+### Revisão de acessibilidade
+
+Uma passada só, quando todas as telas estiverem prontas: o Accessibility Insights (verificação automática e ordem do Tab) e o Narrador em cada tela, por uma pessoa diante do computador e com som. Pelo acesso remoto o som do Narrador não chega, e não há como um agente ouvi-lo. O roteiro, em forma de lista para marcar, está em [ACESSIBILIDADE.md](ACESSIBILIDADE.md) e cresce a cada tela nova. O que falhar é corrigido antes do envio à Store.
 
 ### Fase 4: Microsoft Store
 

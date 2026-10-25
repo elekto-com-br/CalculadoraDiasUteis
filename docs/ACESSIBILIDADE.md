@@ -1,6 +1,6 @@
 # Verificação de acessibilidade
 
-Roteiro para fechar a [fase 1](ROADMAP.md#fase-1-aplicativo-winui-com-as-funções-da-12). Precisa de uma pessoa diante do computador, com som: o Narrador fala, e pelo acesso remoto o som não chega. Os testes automáticos (`tests/UiTests`) já cobrem os nomes e `AutomationId` dos controles, o teclado e o tamanho da janela; o que fica aqui é o que só se confere ouvindo e olhando.
+Roteiro da [revisão de acessibilidade](ROADMAP.md#revisão-de-acessibilidade), feita uma vez só, com todas as telas prontas, antes do envio à Store. Precisa de uma pessoa diante do computador, com som: o Narrador fala, e pelo acesso remoto o som não chega. Cada tela nova acrescenta aqui os seus itens. Os testes automáticos (`tests/UiTests`) já cobrem os nomes e `AutomationId` dos controles, o teclado e o tamanho da janela; o que fica aqui é o que só se confere ouvindo e olhando.
 
 Marque cada item ao terminar. O que falhar, anote embaixo do item, com um print se ajudar, para ser corrigido depois.
 
