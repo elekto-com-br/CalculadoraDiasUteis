@@ -19,6 +19,7 @@
  */
 using System.Collections.ObjectModel;
 using System.Globalization;
+using System.Runtime.InteropServices;
 using CalculadoraDiasUteis.Core;
 using CalculadoraDiasUteis.Services;
 using CommunityToolkit.Mvvm.ComponentModel;
@@ -150,6 +151,80 @@ public partial class MainPageViewModel : ObservableObject
     public partial string PeriodError { get; set; } = string.Empty;
 
     public bool HasPeriodError => PeriodError.Length > 0;
+
+    /// <summary>
+    ///     O resultado de copiar ou exportar as datas do período.
+    /// </summary>
+    [ObservableProperty]
+    public partial string PeriodStatus { get; set; } = string.Empty;
+
+    [ObservableProperty]
+    public partial bool IsPeriodStatusError { get; set; }
+
+    [ObservableProperty]
+    public partial bool IsPeriodStatusOpen { get; set; }
+
+    /// <summary>
+    ///     O nome sugerido para a planilha das datas do período.
+    /// </summary>
+    public string PeriodFileName =>
+        Strings.Format("PeriodFileName", Entry?.Name ?? string.Empty,
+            PeriodStart?.Date.ToString("yyyy-MM-dd", CultureInfo.InvariantCulture) ?? string.Empty,
+            PeriodEnd?.Date.ToString("yyyy-MM-dd", CultureInfo.InvariantCulture) ?? string.Empty);
+
+    /// <summary>
+    ///     Copia todas as datas do período, com os dias úteis marcados, para colar numa planilha.
+    /// </summary>
+    public void CopyPeriod()
+    {
+        WithPeriodTable(table =>
+        {
+            SheetService.Copy(table);
+            var culture = CultureInfo.CurrentCulture;
+            ShowPeriodStatus(Strings.Format("StatusCopiedPeriod", table.Rows.Count,
+                ((DateTime)table.Rows[0][0]!).ToString("d", culture), ((DateTime)table.Rows[^1][0]!).ToString("d", culture)));
+        });
+    }
+
+    /// <summary>
+    ///     Grava todas as datas do período numa planilha do Excel ou em CSV, conforme a extensão do arquivo.
+    /// </summary>
+    public void ExportPeriod(string path)
+    {
+        WithPeriodTable(table =>
+        {
+            SheetService.Save(table, path);
+            ShowPeriodStatus(Strings.Format("StatusSavedSheet", path));
+        });
+    }
+
+    public void ShowPeriodStatus(string message, bool isError = false)
+    {
+        PeriodStatus = message;
+        IsPeriodStatusError = isError;
+        IsPeriodStatusOpen = true;
+    }
+
+    private void WithPeriodTable(Action<SheetTable> action)
+    {
+        if (Entry is not { } entry || PeriodStart is not { } start || PeriodEnd is not { } end)
+        {
+            return;
+        }
+
+        try
+        {
+            action(SheetTables.Period(entry, start.Date, end.Date, SheetService.Texts, CultureInfo.CurrentCulture));
+        }
+        catch (CatalogException ex)
+        {
+            ShowPeriodStatus(CatalogMessages.Get(ex), true);
+        }
+        catch (Exception ex) when (ex is IOException or UnauthorizedAccessException or COMException)
+        {
+            ShowPeriodStatus(Strings.Format("ErrorSheet", ex.Message), true);
+        }
+    }
 
     #endregion
 
@@ -391,6 +466,7 @@ public partial class MainPageViewModel : ObservableObject
 
         WorkDays = ActualDays = WorkDaysCaption = ActualDaysCaption = PeriodDescription = string.Empty;
         PeriodError = string.Empty;
+        IsPeriodStatusOpen = false;
 
         if (Calendar is not { } calendar || PeriodStart is not { } start || PeriodEnd is not { } end)
         {

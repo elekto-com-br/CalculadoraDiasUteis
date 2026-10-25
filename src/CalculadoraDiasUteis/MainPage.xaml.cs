@@ -18,6 +18,7 @@
     Entre em contato com a Elekto em https://elekto.com.br/
  */
 using System.ComponentModel;
+using System.Runtime.InteropServices;
 using CalculadoraDiasUteis.Services;
 using CalculadoraDiasUteis.ViewModels;
 using Microsoft.UI.Xaml;
@@ -95,5 +96,26 @@ public sealed partial class MainPage : Page
     private void CalendarsButton_Click(object sender, RoutedEventArgs e)
     {
         Frame.Navigate(typeof(CalendarsPage), ViewModel.SelectedCalendarCode);
+    }
+
+    private void CopyPeriodButton_Click(object sender, RoutedEventArgs e)
+    {
+        ViewModel.CopyPeriod();
+    }
+
+    private async void ExportPeriodButton_Click(object sender, RoutedEventArgs e)
+    {
+        try
+        {
+            if (await SheetService.PickPathAsync(ViewModel.PeriodFileName) is { } path)
+            {
+                ViewModel.ExportPeriod(path);
+            }
+        }
+        catch (COMException ex)
+        {
+            // a caixa do Windows pode falhar, por exemplo numa pasta sem permissão
+            ViewModel.ShowPeriodStatus(ex.Message, true);
+        }
     }
 }

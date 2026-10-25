@@ -33,9 +33,18 @@ public partial class App : Application
     /// </summary>
     public static Window Window { get; private set; } = null!;
 
+    /// <summary>
+    ///     O formato regional do Windows, com as personalizações do usuário (separador de listas, data curta). É com ele
+    ///     que o Excel lê um CSV ou um texto colado, e por isso é o dos arquivos CSV, qualquer que seja o idioma do app.
+    /// </summary>
+    public static CultureInfo RegionalCulture { get; private set; } = CultureInfo.CurrentCulture;
+
     public App()
     {
         InitializeComponent();
+
+        // Antes de a cultura passar a ser a do idioma do aplicativo, logo abaixo
+        RegionalCulture = CultureInfo.CurrentCulture;
 
         // Datas e números formatados pelo .NET seguem o idioma que o Windows escolheu para o aplicativo, o mesmo
         // dos textos e dos controles do WinUI; sem isso, num Windows em inglês, a data final sairia como 10/27/2027

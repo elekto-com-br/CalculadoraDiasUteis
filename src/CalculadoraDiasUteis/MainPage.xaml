@@ -210,6 +210,39 @@
                         IsOpen="{x:Bind ViewModel.HasPeriodError, Mode=OneWay}"
                         Message="{x:Bind ViewModel.PeriodError, Mode=OneWay}"
                         Severity="Warning" />
+
+                    <!-- Todas as datas do período, para uma planilha -->
+                    <StackPanel
+                        Orientation="Horizontal"
+                        Spacing="8"
+                        Visibility="{x:Bind local:MainPage.CollapsedIf(ViewModel.HasPeriodError), Mode=OneWay}">
+                        <Button
+                            x:Uid="CopyPeriodButton"
+                            AutomationProperties.AutomationId="CopyPeriodButton"
+                            Click="CopyPeriodButton_Click"
+                            IsEnabled="{x:Bind ViewModel.IsReady, Mode=OneTime}">
+                            <StackPanel Orientation="Horizontal" Spacing="8">
+                                <FontIcon FontSize="16" Glyph="&#xE8C8;" />
+                                <TextBlock x:Uid="CopyPeriodButtonText" />
+                            </StackPanel>
+                        </Button>
+                        <Button
+                            x:Uid="ExportPeriodButton"
+                            AutomationProperties.AutomationId="ExportPeriodButton"
+                            Click="ExportPeriodButton_Click"
+                            IsEnabled="{x:Bind ViewModel.IsReady, Mode=OneTime}">
+                            <StackPanel Orientation="Horizontal" Spacing="8">
+                                <FontIcon FontSize="16" Glyph="&#xE74E;" />
+                                <TextBlock x:Uid="ExportPeriodButtonText" />
+                            </StackPanel>
+                        </Button>
+                    </StackPanel>
+
+                    <InfoBar
+                        AutomationProperties.AutomationId="PeriodStatusInfoBar"
+                        IsOpen="{x:Bind ViewModel.IsPeriodStatusOpen, Mode=TwoWay}"
+                        Message="{x:Bind ViewModel.PeriodStatus, Mode=OneWay}"
+                        Severity="{x:Bind local:CalendarsPage.SeverityOf(ViewModel.IsPeriodStatusError), Mode=OneWay}" />
                 </StackPanel>
             </Border>
 

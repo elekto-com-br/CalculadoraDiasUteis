@@ -1,5 +1,6 @@
 using System.Collections.ObjectModel;
 using System.Globalization;
+using System.Runtime.InteropServices;
 using System.Text;
 using CalculadoraDiasUteis.Core;
 using CalculadoraDiasUteis.Services;
@@ -270,6 +271,61 @@ public partial class CalendarsPageViewModel : ObservableObject
             catalog.RestoreHoliday(SelectedCalendar!.Code, date);
             ShowStatus(Strings.Format("StatusHolidayRestored", date.ToString("d", CultureInfo.CurrentCulture)));
         }));
+    }
+
+    #endregion
+
+    #region Planilha
+
+    /// <summary>
+    ///     O nome sugerido para a planilha dos feriados do calendário escolhido.
+    /// </summary>
+    public string HolidaysFileName => Strings.Format("HolidaysFileName", SelectedCalendar?.Name ?? string.Empty);
+
+    /// <summary>
+    ///     Copia os feriados do ano mostrado, para colar numa planilha.
+    /// </summary>
+    public void CopyHolidays()
+    {
+        if (SelectedCalendar is not { } entry)
+        {
+            return;
+        }
+
+        var year = (int)Year;
+        var table = SheetTables.Holidays(entry, year, SheetService.Texts, CultureInfo.CurrentCulture);
+        try
+        {
+            SheetService.Copy(table);
+            ShowStatus(table.Rows.Count == 1
+                ? Strings.Format("StatusCopiedHolidaysOne", year)
+                : Strings.Format("StatusCopiedHolidaysMany", table.Rows.Count, year));
+        }
+        catch (COMException ex)
+        {
+            ShowStatus(Strings.Format("ErrorSheet", ex.Message), true);
+        }
+    }
+
+    /// <summary>
+    ///     Grava todos os feriados do calendário numa planilha do Excel ou em CSV, conforme a extensão do arquivo.
+    /// </summary>
+    public void ExportHolidays(string path)
+    {
+        if (SelectedCalendar is not { } entry)
+        {
+            return;
+        }
+
+        try
+        {
+            SheetService.Save(SheetTables.Holidays(entry, null, SheetService.Texts, CultureInfo.CurrentCulture), path);
+            ShowStatus(Strings.Format("StatusSavedSheet", path));
+        }
+        catch (Exception ex) when (ex is IOException or UnauthorizedAccessException)
+        {
+            ShowStatus(Strings.Format("ErrorSheet", ex.Message), true);
+        }
     }
 
     #endregion

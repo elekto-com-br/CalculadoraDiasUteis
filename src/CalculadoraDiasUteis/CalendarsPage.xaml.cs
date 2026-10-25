@@ -194,6 +194,26 @@ public sealed partial class CalendarsPage : Page
         ViewModel.RestoreHoliday();
     }
 
+    private void CopyHolidaysButton_Click(object sender, RoutedEventArgs e)
+    {
+        ViewModel.CopyHolidays();
+    }
+
+    private async void ExportHolidaysButton_Click(object sender, RoutedEventArgs e)
+    {
+        try
+        {
+            if (await SheetService.PickPathAsync(ViewModel.HolidaysFileName) is { } path)
+            {
+                ViewModel.ExportHolidays(path);
+            }
+        }
+        catch (COMException ex)
+        {
+            ViewModel.ShowStatus(ex.Message, true);
+        }
+    }
+
     #endregion
 
     #region Exportação e importação
@@ -221,7 +241,7 @@ public sealed partial class CalendarsPage : Page
     {
         var picker = new FileSavePicker(App.Window.AppWindow.Id)
         {
-            SuggestedFileName = SafeFileName(suggestedName),
+            SuggestedFileName = SheetService.SafeFileName(suggestedName),
             DefaultFileExtension = ExportExtension,
             SuggestedStartLocation = PickerLocationId.DocumentsLibrary
         };
@@ -278,12 +298,6 @@ public sealed partial class CalendarsPage : Page
         {
             ViewModel.ApplyImport(plan);
         }
-    }
-
-    private static string SafeFileName(string name)
-    {
-        var invalid = Path.GetInvalidFileNameChars();
-        return new string(name.Select(c => invalid.Contains(c) ? '-' : c).ToArray()).Trim();
     }
 
     #endregion

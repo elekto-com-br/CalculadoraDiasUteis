@@ -324,6 +324,17 @@
                                 <FontIcon Glyph="&#xE7A7;" />
                             </AppBarButton.Icon>
                         </AppBarButton>
+                        <AppBarSeparator />
+                        <AppBarButton
+                            x:Uid="CopyHolidaysButton"
+                            AutomationProperties.AutomationId="CopyHolidaysButton"
+                            Click="CopyHolidaysButton_Click"
+                            Icon="Copy" />
+                        <AppBarButton
+                            x:Uid="ExportHolidaysButton"
+                            AutomationProperties.AutomationId="ExportHolidaysButton"
+                            Click="ExportHolidaysButton_Click"
+                            Icon="Save" />
                     </CommandBar>
                 </StackPanel>
             </Border>

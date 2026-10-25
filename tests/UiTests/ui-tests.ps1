@@ -316,6 +316,26 @@ function Open-FromDocuments {
     Wait-FileDialogClosed $window
 }
 
+# A pasta Documentos onde o aplicativo está
+function Get-TargetDocuments {
+    (Invoke-Target @('powershell', '-NoProfile', '-Command', "[Environment]::GetFolderPath('MyDocuments')") |
+        Select-Object -Last 1).Trim()
+}
+
+# Confere que um arquivo existe onde o aplicativo está e não está vazio
+function Assert-TargetFile {
+    param([string]$Path)
+    Invoke-Target @('powershell', '-NoProfile', '-Command',
+        "if (-not (Test-Path -LiteralPath '$Path') -or (Get-Item -LiteralPath '$Path').Length -eq 0) { exit 1 }") | Out-Null
+}
+
+# As linhas não vazias do texto na área de transferência de onde o aplicativo está, e se há também a versão em HTML
+function Get-TargetClipboard {
+    $lines = @(Invoke-Target @('powershell', '-NoProfile', '-Command',
+        "(Get-Clipboard | Where-Object { `$_ }).Count; [bool](Get-Clipboard -TextFormatType Html | Select-String 'mso-number-format')"))
+    [pscustomobject]@{ Lines = [int]$lines[-2]; HasHtml = $lines[-1].Trim() -eq 'True' }
+}
+
 # Roda um comando onde o aplicativo está
 function Invoke-Target {
     param([string[]]$Command)
@@ -715,6 +735,26 @@ try {
         Save-Screenshot '11-principal-derivado.png'
     }
 
+    # Fase 3: as datas do período e os feriados vão para a planilha
+    Test-UI 'Copiar as datas do período, em texto e em HTML' {
+        if ($Target -ne 'sandbox') { throw 'Este teste troca a área de transferência, por isso só roda no Sandbox.' }
+        Invoke-Ui @('invoke', 'CopyPeriodButton') | Out-Null
+        Assert-Status "$($e.periodDays) datas copiadas, de $($e.d0) a $($e.periodEnd)."
+        $clipboard = Get-TargetClipboard
+        if ($clipboard.Lines -ne [int]$e.periodDays + 1) { throw "A área de transferência tem $($clipboard.Lines) linhas." }
+        if (-not $clipboard.HasHtml) { throw 'A área de transferência não tem a versão em HTML.' }
+    }
+
+    Test-UI 'Exportar as datas do período numa planilha' {
+        if ($Target -ne 'sandbox') { throw 'Este teste grava na pasta Documentos, por isso só roda no Sandbox.' }
+        Invoke-Ui @('invoke', 'ExportPeriodButton') | Out-Null
+        Save-WithSuggestedName
+        $path = Join-Path (Get-TargetDocuments) "Fórum Regional da Lapa de $($e.periodFile).xlsx"
+        Assert-Status "Planilha gravada em $path."
+        Assert-TargetFile $path
+        Save-Screenshot '15-datas-exportadas.png'
+    }
+
     Test-UI 'Exceção num calendário da Elekto, desfeita depois' {
         try {
             Select-Calendar 'Brasil - Banco Central'
@@ -730,6 +770,19 @@ try {
         } finally {
             Restore-CalendarsPage
         }
+    }
+
+    Test-UI 'Copiar os feriados do ano e exportar os do calendário numa planilha' {
+        if ($Target -ne 'sandbox') { throw 'Este teste troca a área de transferência e grava em Documentos, por isso só roda no Sandbox.' }
+        Invoke-Ui @('invoke', 'CopyHolidaysButton') | Out-Null
+        Assert-Status "$($e.holidaysThisYearCount) feriados de $($e.year) copiados."
+        $clipboard = Get-TargetClipboard
+        if ($clipboard.Lines -ne [int]$e.holidaysThisYearCount + 1) { throw "A área de transferência tem $($clipboard.Lines) linhas." }
+        Invoke-Ui @('invoke', 'ExportHolidaysButton') | Out-Null
+        Save-WithSuggestedName
+        $path = Join-Path (Get-TargetDocuments) 'Feriados de Brasil - Banco Central.xlsx'
+        Assert-Status "Planilha gravada em $path."
+        Assert-TargetFile $path
     }
 
     Test-UI 'Exportar tudo para um arquivo' {

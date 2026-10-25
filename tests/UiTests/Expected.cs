@@ -89,7 +89,12 @@ var expected = new Dictionary<string, object>
     ["christmasDescription"] = brBcDescriptions.GetValueOrDefault(christmas) ?? "",
     ["brBcFinancialFromD0"] = Number(brBc.GetDeltaWorkDays(d0, today.AddYears(1), DeltaTerminalDayAdjust.Financial)),
     ["lapaFinancialFromD0"] = Number(lapa.GetDeltaWorkDays(d0, today.AddYears(1), DeltaTerminalDayAdjust.Financial)),
-    ["lapaFinancialToday"] = Number(lapa.GetDeltaWorkDays(today, today.AddYears(1), DeltaTerminalDayAdjust.Financial))
+    ["lapaFinancialToday"] = Number(lapa.GetDeltaWorkDays(today, today.AddYears(1), DeltaTerminalDayAdjust.Financial)),
+    ["periodDays"] = ((today.AddYears(1) - d0).Days + 1).ToString(CultureInfo.InvariantCulture),
+    ["periodEnd"] = Date(today.AddYears(1)),
+    ["periodFile"] = $"{d0:yyyy-MM-dd} a {today.AddYears(1):yyyy-MM-dd}",
+    ["holidaysThisYearCount"] = brBc.Holidays.Count(h => h.Year == today.Year).ToString(CultureInfo.InvariantCulture),
+    ["year"] = today.Year.ToString(CultureInfo.InvariantCulture)
 };
 
 Console.WriteLine(JsonSerializer.Serialize(expected));

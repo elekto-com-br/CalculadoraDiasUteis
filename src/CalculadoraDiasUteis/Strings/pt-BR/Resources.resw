@@ -886,4 +886,97 @@
   <data name="ImportCreateDerivedMany" xml:space="preserve">
     <value>Novo calendário derivado de {0}, com {1} alterações</value>
   </data>
+  <data name="CopyPeriodButton.AccessKey" xml:space="preserve">
+    <value>A</value>
+  </data>
+  <data name="CopyPeriodButton.[using:Microsoft.UI.Xaml.Automation]AutomationProperties.Name" xml:space="preserve">
+    <value>Copiar as datas</value>
+  </data>
+  <data name="CopyPeriodButton.[using:Microsoft.UI.Xaml.Controls]ToolTipService.ToolTip" xml:space="preserve">
+    <value>Copia todas as datas do período, com os dias úteis marcados, para colar numa planilha</value>
+  </data>
+  <data name="CopyPeriodButtonText.Text" xml:space="preserve">
+    <value>Copiar as datas</value>
+  </data>
+  <data name="ExportPeriodButton.AccessKey" xml:space="preserve">
+    <value>X</value>
+  </data>
+  <data name="ExportPeriodButton.[using:Microsoft.UI.Xaml.Automation]AutomationProperties.Name" xml:space="preserve">
+    <value>Exportar as datas</value>
+  </data>
+  <data name="ExportPeriodButton.[using:Microsoft.UI.Xaml.Controls]ToolTipService.ToolTip" xml:space="preserve">
+    <value>Grava todas as datas do período numa planilha do Excel ou num arquivo CSV</value>
+  </data>
+  <data name="ExportPeriodButtonText.Text" xml:space="preserve">
+    <value>Exportar as datas</value>
+  </data>
+  <data name="CopyHolidaysButton.Label" xml:space="preserve">
+    <value>Copiar o ano</value>
+  </data>
+  <data name="CopyHolidaysButton.AccessKey" xml:space="preserve">
+    <value>O</value>
+  </data>
+  <data name="CopyHolidaysButton.[using:Microsoft.UI.Xaml.Controls]ToolTipService.ToolTip" xml:space="preserve">
+    <value>Copia os feriados do ano mostrado, para colar numa planilha</value>
+  </data>
+  <data name="ExportHolidaysButton.Label" xml:space="preserve">
+    <value>Exportar planilha</value>
+  </data>
+  <data name="ExportHolidaysButton.AccessKey" xml:space="preserve">
+    <value>L</value>
+  </data>
+  <data name="ExportHolidaysButton.[using:Microsoft.UI.Xaml.Controls]ToolTipService.ToolTip" xml:space="preserve">
+    <value>Grava todos os feriados deste calendário numa planilha do Excel ou num arquivo CSV</value>
+  </data>
+  <data name="SheetPeriod" xml:space="preserve">
+    <value>Dias</value>
+  </data>
+  <data name="SheetHolidays" xml:space="preserve">
+    <value>Feriados</value>
+  </data>
+  <data name="ColumnDate" xml:space="preserve">
+    <value>Data</value>
+  </data>
+  <data name="ColumnWeekDay" xml:space="preserve">
+    <value>Dia da semana</value>
+  </data>
+  <data name="ColumnIsWorkday" xml:space="preserve">
+    <value>É dia útil</value>
+  </data>
+  <data name="ColumnWorkdayCount" xml:space="preserve">
+    <value>Dias úteis desde o início</value>
+  </data>
+  <data name="ColumnHoliday" xml:space="preserve">
+    <value>Feriado</value>
+  </data>
+  <data name="ColumnDescription" xml:space="preserve">
+    <value>Descrição</value>
+  </data>
+  <data name="SheetFileTypeXlsx" xml:space="preserve">
+    <value>Planilha do Excel</value>
+  </data>
+  <data name="SheetFileTypeCsv" xml:space="preserve">
+    <value>Texto separado (CSV)</value>
+  </data>
+  <data name="PeriodFileName" xml:space="preserve">
+    <value>{0} de {1} a {2}</value>
+  </data>
+  <data name="HolidaysFileName" xml:space="preserve">
+    <value>Feriados de {0}</value>
+  </data>
+  <data name="StatusCopiedPeriod" xml:space="preserve">
+    <value>{0} datas copiadas, de {1} a {2}.</value>
+  </data>
+  <data name="StatusCopiedHolidaysOne" xml:space="preserve">
+    <value>1 feriado de {0} copiado.</value>
+  </data>
+  <data name="StatusCopiedHolidaysMany" xml:space="preserve">
+    <value>{0} feriados de {1} copiados.</value>
+  </data>
+  <data name="StatusSavedSheet" xml:space="preserve">
+    <value>Planilha gravada em {0}.</value>
+  </data>
+  <data name="ErrorSheet" xml:space="preserve">
+    <value>Não foi possível copiar ou gravar a planilha: {0}</value>
+  </data>
 </root>
