@@ -177,7 +177,7 @@ namespace Elekto.Code
                         continue;
                     }
 
-                    if (!DateTime.TryParseExact(line, "yyyyMMdd", CultureInfo.InvariantCulture, DateTimeStyles.None, out var d))
+                    if (!DateTime.TryParseExact(s, "yyyyMMdd", CultureInfo.InvariantCulture, DateTimeStyles.None, out var d))
                     {
                         continue;
                     }
