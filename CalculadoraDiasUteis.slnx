@@ -5,12 +5,14 @@
     <Platform Name="x86" />
   </Configurations>
   <Folder Name="/src/">
+    <Project Path="src/CalculadoraDiasUteis.Core/CalculadoraDiasUteis.Core.csproj" />
     <Project Path="src/CalculadoraDiasUteis/CalculadoraDiasUteis.csproj">
       <Platform Project="x64" />
     </Project>
     <Project Path="src/Elekto.Calendars/Elekto.Calendars.csproj" />
   </Folder>
   <Folder Name="/tests/">
+    <Project Path="tests/CalculadoraDiasUteis.Core.Tests/CalculadoraDiasUteis.Core.Tests.csproj" />
     <Project Path="tests/Elekto.Calendars.Tests/Elekto.Calendars.Tests.csproj" />
   </Folder>
 </Solution>

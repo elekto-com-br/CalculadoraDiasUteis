@@ -1,0 +1,20 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net10.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+    <!-- O aplicativo é publicado compactado (trimmed); o JSON usa geração de código para isso -->
+    <IsTrimmable>true</IsTrimmable>
+    <Description>Calendários do usuário: derivados, alterações, armazenamento local, importação e exportação.</Description>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.Data.Sqlite" Version="10.0.13" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Elekto.Calendars\Elekto.Calendars.csproj" />
+  </ItemGroup>
+
+</Project>
