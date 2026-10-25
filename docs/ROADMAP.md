@@ -4,7 +4,7 @@ Levar a Calculadora de Dias Úteis para WinUI: bonita, acessível, moderna e dis
 
 É um projeto de baixa prioridade, tocado aos poucos. Por isso o plano está dividido em fases pequenas, e cada uma termina com algo que compila e funciona; dá para parar em qualquer fase sem deixar o projeto quebrado.
 
-Atualizado em 25/10/2026.
+Atualizado em 25/10/2026. Fase atual: 0.
 
 ## Onde estamos
 
@@ -23,6 +23,7 @@ Atualizado em 25/10/2026.
 | Tema | Decisão | Por quê |
 |---|---|---|
 | Interface | WinUI (Windows App SDK 2.x) | É a plataforma nativa de longo prazo da Microsoft; o UWP não evolui mais. |
+| Windows mínimo | Windows 11 | Lançado em 2021; quem ficou no Windows 10 continua com a 1.2. |
 | Runtime | .NET 10 (LTS) | Suporte até novembro de 2028; a troca para a LTS seguinte é simples. |
 | Distribuição | MSIX pela Microsoft Store | Cadastro gratuito, assinatura digital feita pela própria Store (some o aviso do SmartScreen) e atualização automática. |
 | Ferramentas | dotnet CLI, WinApp CLI, VS Code ou Visual Studio | O Visual Studio deixa de ser obrigatório. Para o Claude Code, o plugin oficial `winui@win-dev-skills` da Microsoft. |
@@ -60,7 +61,8 @@ Ainda sem interface nova. O objetivo é proteger a lógica antes de mexer em qua
 
 - **Modelo.** Os calendários enviados pela Elekto vêm dentro do pacote, somente leitura, no formato texto de hoje. As alterações do usuário ficam guardadas à parte, no banco local.
 - **Calendário derivado.** O usuário cria um calendário a partir de outro, por exemplo "Fórum da Lapa" como o br-BC mais os feriados locais, e ele continua recebendo as atualizações que a Elekto fizer no original.
-- **Operações.** Criar, renomear e apagar calendários próprios; incluir feriado com descrição; editar a descrição; remover feriado, inclusive de um calendário original, como exceção local.
+- **Operações.** Criar, renomear e apagar calendários próprios; incluir feriado; editar a descrição; remover feriado, inclusive de um calendário original, como exceção local.
+- **Descrição dos feriados.** Cada feriado pode ter uma descrição, opcional. Os calendários originais passam a vir com a descrição de cada feriado (Carnaval, Tiradentes, Juneteenth...).
 - **Restaurar.** Desfazer todas as alterações de um calendário original, ou de todos de uma vez.
 - **Atualizações.** Quando uma versão nova do app traz feriados oficiais novos, as alterações do usuário continuam valendo por cima deles.
 - **Importar e exportar** no formato texto da 1.x, para aproveitar os arquivos de quem usava a pasta `Calendars` ou o parâmetro `--calendars`. Isso também protege o usuário: desinstalar um app MSIX apaga a pasta local dele.
@@ -72,7 +74,7 @@ Ainda sem interface nova. O objetivo é proteger a lógica antes de mexer em qua
 
 - Copiar para a área de transferência, de modo que a lista cole no Excel como datas e não como texto. É o que a maioria faz no dia a dia.
 - Exportar `.xlsx` e `.csv`, tanto as datas de um período quanto os feriados de um calendário.
-- Exportar `.ics` (iCalendar), para levar os feriados ao Outlook ou ao Google Agenda.
+- Exportar `.ics` (iCalendar), para levar os feriados ao Outlook ou ao Google Agenda: em discussão, só entra se houver um caso de uso convincente.
 
 ### Fase 4: Microsoft Store
 
@@ -82,10 +84,9 @@ Ainda sem interface nova. O objetivo é proteger a lógica antes de mexer em qua
 - Feriado novo passa a ser versão nova do app, que a Store entrega sozinha a quem o tem instalado.
 - Merge deste branch no `master`, removendo o projeto WinForms. A 1.2 continua disponível nos Releases do GitHub.
 
-### Fase 5 (opcional): versão web
+### Fora de escopo: versão web
 
-- O mesmo núcleo no navegador com Blazor WebAssembly, como página estática no site da Elekto, sem servidor. Como propaganda, uma página indexada pelo Google tende a trazer mais gente que um app na loja.
-- A versão web pode ser instalada como PWA, formato que a Store também aceita.
+Não haverá versão web. A Elekto já manteve a calculadora no próprio site e a retirou do ar por causa do uso indevido da página por terceiros.
 
 ## Armazenamento
 
@@ -100,7 +101,7 @@ Exportar para o Excel ainda vale a pena: o público da calculadora (finanças, t
 - Copiar e colar resolve a maior parte dos casos, sem arquivo nenhum.
 - O `.xlsx` continua para quem quer um arquivo, com as datas gravadas como datas. O `.csv` fica como alternativa, mas sofre com separador e formato de data no Excel em português.
 - O EPPlus 4.5.3.3 sai. É a última versão LGPL, de 2020, sem manutenção, e as versões novas exigem licença comercial. No lugar entra o ClosedXML, de licença MIT.
-- Entra o `.ics`, que leva os feriados para a agenda.
+- O `.ics`, que levaria os feriados para a agenda, está em discussão.
 
 ## Manutenção dos calendários
 
@@ -113,7 +114,6 @@ Uma revisão por ano, em janeiro, quando o calendário de negociação da B3 do 
 
 ## Decisões em aberto
 
-- **Windows mínimo.** Só Windows 11, ou também o Windows 10 a partir da versão 2004? O WinUI roda nos dois; no Windows 10 perde-se só o fundo Mica. Bancos ainda têm muitas máquinas com Windows 10 sob suporte estendido pago.
 - **Conta na Store.** Em nome da Elekto (conta de empresa, gratuita desde maio de 2026, com verificação da empresa) ou de pessoa física. Para propaganda, o que interessa é o nome Elekto na página do app.
 - **Idiomas.** Só português, ou também inglês? A sugestão é começar em português, já com os textos em arquivos de recursos para traduzir depois.
 - **Escopo do br-SP.** A 1.2 o alinhou à B3. Quem precisar dos feriados da cidade de São Paulo (25/01 e 9/07) poderá criar um calendário derivado na Fase 2, ou a Elekto pode enviar um calendário da cidade pronto.
