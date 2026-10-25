@@ -56,6 +56,8 @@ O aplicativo é empacotado (MSIX). Para executá-lo é preciso também o [WinApp
 winapp run src/CalculadoraDiasUteis
 ```
 
+No VS Code, o repositório recomenda as extensões C# Dev Kit e WinApp; com elas, o F5 compila, abre e depura o app. Abrir o `.exe` direto da pasta `bin` não funciona: fora do pacote, o app não encontra o Windows App SDK e fecha na hora.
+
 Os testes de interface usam o mesmo WinApp CLI e rodam no Windows Sandbox, sem mexer na sua área de trabalho; o teste de teclado precisa da sessão do Windows desbloqueada:
 
 ```

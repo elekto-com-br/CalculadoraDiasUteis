@@ -77,6 +77,7 @@ Decisões tomadas na fase:
 - **Novidade pequena:** a data final mostra o dia da semana e avisa quando cai em feriado ou dia não útil, o que só acontece em dias corridos sem ajuste.
 - **A licença vai no pacote**, no original e na tradução, e abre no programa padrão do Windows para cada tipo de arquivo.
 - **Ficam para a fase 2** o link "Definições de Calendários..." e o parâmetro `--calendars` da 1.2, que dependem de calendários fora do pacote.
+- **O editor é o VS Code**, com a configuração em `.vscode`: o F5 compila e usa a extensão WinApp, ainda em prévia, para abrir o app empacotado e anexar o depurador. A versão atual dela só aceita a pasta compilada; quando aceitar o projeto, a tarefa de compilação do `launch.json` deixa de ser necessária. A solução passou para o formato `.slnx`.
 
 Falta, para fechar a fase:
 
@@ -116,6 +117,7 @@ Fica para depois, sem impedir o fim da fase:
 - Material da loja: descrição, capturas de tela, ícones, classificação etária (questionário IARC) e URL da política de privacidade.
 - Identidade do pacote: o `Package.appxmanifest` usa por enquanto `Elekto.CalculadoraDiasUteis` e o publicador provisório `CN=Elekto`, que a Store substitui pelos da conta quando o app for associado a ela.
 - Testar o pacote de publicação em Release, que é compactado (*trimmed*) ao contrário do usado no desenvolvimento. A compilação em Release já avisa (IL2104) que dois assemblies do Windows SDK, da própria Microsoft, não são totalmente seguros para essa compactação.
+- O que se distribui é o MSIX assinado (`winapp pack`). Publicar numa pasta (`dotnet publish`, ou o Publicar do VS Code) não serve: fora do pacote, o app não encontra o Windows App SDK e fecha ao abrir.
 - Envio, certificação e publicação.
 - Feriado novo passa a ser versão nova do app, que a Store entrega sozinha a quem o tem instalado.
 - Merge deste branch no `master`, removendo o projeto WinForms. A 1.2 continua disponível nos Releases do GitHub.

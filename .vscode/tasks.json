@@ -1,0 +1,14 @@
+{
+    "version": "2.0.0",
+    "tasks": [
+        {
+            // Com Platform=x64 a saída vai para bin/x64, a pasta que o launch.json registra
+            "label": "compilar o aplicativo",
+            "type": "process",
+            "command": "dotnet",
+            "args": ["build", "${workspaceFolder}/src/CalculadoraDiasUteis", "-c", "Debug", "-p:Platform=x64"],
+            "problemMatcher": "$msCompile",
+            "group": { "kind": "build", "isDefault": true }
+        }
+    ]
+}

@@ -1,0 +1,22 @@
+{
+    "version": "0.2.0",
+    "configurations": [
+        {
+            // O app é empacotado: a extensão WinApp registra a pasta compilada como pacote,
+            // abre o app com a identidade dele e anexa o depurador do C#
+            "name": "Calculadora de Dias Úteis",
+            "type": "winapp",
+            "request": "launch",
+            "inputFolder": "${workspaceFolder}/src/CalculadoraDiasUteis/bin/x64/Debug/net10.0-windows10.0.26100.0/win-x64",
+            "debuggerType": "coreclr",
+            "preLaunchTask": "compilar o aplicativo"
+        },
+        {
+            // Para o app já aberto pelo winapp run
+            "name": "Anexar ao aplicativo aberto",
+            "type": "coreclr",
+            "request": "attach",
+            "processId": "${command:pickProcess}"
+        }
+    ]
+}
