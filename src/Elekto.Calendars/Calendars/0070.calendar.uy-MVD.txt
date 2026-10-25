@@ -1,0 +1,466 @@
+﻿Uruguai - Banco Central
+20000101;Año Nuevo
+20000106;Día de Reyes
+20000301;Transmisión del mando presidencial
+20000306;Carnaval
+20000307;Carnaval
+20000417;Desembarco de los 33 Orientales (trasladado)
+20000421;Semana de Turismo
+20000501;Día de los Trabajadores
+20000522;Batalla de las Piedras (trasladado)
+20000608;Paro general (sin operaciones en el BCU)
+20000619;Natalicio de Artigas
+20000718;Jura de la Constitución
+20000825;Declaratoria de la Independencia
+20000923;Sesquicentenario del fallecimiento de Artigas
+20001016;Día de la Raza (trasladado)
+20001106;Día de los Difuntos (trasladado)
+20001116;Sin operaciones en el BCU
+20001206;Paro general (sin operaciones en el BCU)
+20001225;Navidad
+20010101;Año Nuevo
+20010106;Día de Reyes
+20010226;Carnaval
+20010227;Carnaval
+20010413;Semana de Turismo
+20010423;Desembarco de los 33 Orientales (trasladado)
+20010501;Día de los Trabajadores
+20010521;Batalla de las Piedras (trasladado)
+20010618;Natalicio de Artigas (trasladado)
+20010711;Sin operaciones en el BCU
+20010718;Jura de la Constitución
+20010725;Paro general (sin operaciones en el BCU)
+20010825;Declaratoria de la Independencia
+20011015;Día de la Raza (trasladado)
+20011105;Día de los Difuntos (trasladado)
+20011225;Navidad
+20020101;Año Nuevo
+20020106;Día de Reyes
+20020211;Carnaval
+20020212;Carnaval
+20020329;Semana de Turismo
+20020422;Desembarco de los 33 Orientales (trasladado)
+20020501;Día de los Trabajadores
+20020518;Batalla de las Piedras
+20020524;Paro general (sin operaciones en el BCU)
+20020612;Paro general (sin operaciones en el BCU)
+20020619;Natalicio de Artigas
+20020718;Jura de la Constitución
+20020730;Feriado bancario
+20020731;Feriado bancario
+20020801;Feriado bancario
+20020802;Feriado bancario
+20020807;Paro general (sin operaciones en el BCU)
+20020825;Declaratoria de la Independencia
+20021012;Día de la Raza
+20021102;Día de los Difuntos
+20021219;Sin operaciones en el BCU
+20021225;Navidad
+20030101;Año Nuevo
+20030106;Día de Reyes
+20030303;Carnaval
+20030304;Carnaval
+20030418;Semana de Turismo
+20030419;Desembarco de los 33 Orientales
+20030501;Día de los Trabajadores
+20030518;Batalla de las Piedras
+20030617;Sin operaciones en el BCU
+20030619;Natalicio de Artigas
+20030718;Jura de la Constitución
+20030825;Declaratoria de la Independencia
+20030828;Paro general (sin operaciones en el BCU)
+20031012;Día de la Raza
+20031102;Día de los Difuntos
+20031225;Navidad
+20031231;Cierre bancario de fin de año
+20040101;Año Nuevo
+20040106;Día de Reyes
+20040223;Carnaval
+20040224;Carnaval
+20040409;Semana de Turismo
+20040419;Desembarco de los 33 Orientales
+20040501;Día de los Trabajadores
+20040517;Batalla de las Piedras (trasladado)
+20040619;Natalicio de Artigas
+20040718;Jura de la Constitución
+20040825;Declaratoria de la Independencia
+20040910;Centenario del fallecimiento de Aparicio Saravia
+20041011;Día de la Raza (trasladado)
+20041102;Día de los Difuntos
+20041225;Navidad
+20041231;Cierre bancario de fin de año
+20050101;Año Nuevo
+20050106;Día de Reyes
+20050207;Carnaval
+20050208;Carnaval
+20050301;Transmisión del mando presidencial
+20050325;Semana de Turismo
+20050418;Desembarco de los 33 Orientales (trasladado)
+20050501;Día de los Trabajadores
+20050516;Batalla de las Piedras (trasladado)
+20050619;Natalicio de Artigas
+20050718;Jura de la Constitución
+20050825;Declaratoria de la Independencia
+20051010;Día de la Raza (trasladado)
+20051102;Día de los Difuntos
+20051225;Navidad
+20051231;Cierre bancario de fin de año
+20060101;Año Nuevo
+20060106;Día de Reyes
+20060227;Carnaval
+20060228;Carnaval
+20060414;Semana de Turismo
+20060417;Desembarco de los 33 Orientales (trasladado)
+20060501;Día de los Trabajadores
+20060522;Batalla de las Piedras (trasladado)
+20060619;Natalicio de Artigas
+20060718;Jura de la Constitución
+20060825;Declaratoria de la Independencia
+20061016;Día de la Raza (trasladado)
+20061102;Día de los Difuntos
+20061225;Navidad
+20061231;Cierre bancario de fin de año
+20070101;Año Nuevo
+20070106;Día de Reyes
+20070219;Carnaval
+20070220;Carnaval
+20070406;Semana de Turismo
+20070423;Desembarco de los 33 Orientales (trasladado)
+20070501;Día de los Trabajadores
+20070521;Batalla de las Piedras (trasladado)
+20070619;Natalicio de Artigas
+20070718;Jura de la Constitución
+20070825;Declaratoria de la Independencia
+20071015;Día de la Raza (trasladado)
+20071102;Día de los Difuntos
+20071225;Navidad
+20071231;Cierre bancario de fin de año
+20080101;Año Nuevo
+20080106;Día de Reyes
+20080204;Carnaval
+20080205;Carnaval
+20080321;Semana de Turismo
+20080419;Desembarco de los 33 Orientales
+20080501;Día de los Trabajadores
+20080518;Batalla de las Piedras
+20080619;Natalicio de Artigas
+20080718;Jura de la Constitución
+20080825;Declaratoria de la Independencia
+20081012;Día de la Raza
+20081102;Día de los Difuntos
+20081225;Navidad
+20081231;Cierre bancario de fin de año
+20090101;Año Nuevo
+20090106;Día de Reyes
+20090223;Carnaval
+20090224;Carnaval
+20090409;Semana de Turismo
+20090410;Semana de Turismo
+20090419;Desembarco de los 33 Orientales
+20090501;Día de los Trabajadores
+20090518;Batalla de las Piedras
+20090619;Natalicio de Artigas
+20090718;Jura de la Constitución
+20090825;Declaratoria de la Independencia
+20091012;Día de la Raza
+20091102;Día de los Difuntos
+20091225;Navidad
+20091231;Cierre bancario de fin de año
+20100101;Año Nuevo
+20100106;Día de Reyes
+20100215;Carnaval
+20100216;Carnaval
+20100301;Transmisión del mando presidencial
+20100401;Semana de Turismo
+20100402;Semana de Turismo
+20100419;Desembarco de los 33 Orientales
+20100501;Día de los Trabajadores
+20100517;Batalla de las Piedras (trasladado)
+20100619;Natalicio de Artigas
+20100718;Jura de la Constitución
+20100825;Declaratoria de la Independencia
+20101011;Día de la Raza (trasladado)
+20101102;Día de los Difuntos
+20101225;Navidad
+20101231;Cierre bancario de fin de año
+20110101;Año Nuevo
+20110106;Día de Reyes
+20110307;Carnaval
+20110308;Carnaval
+20110418;Desembarco de los 33 Orientales (trasladado)
+20110421;Semana de Turismo
+20110422;Semana de Turismo
+20110501;Día de los Trabajadores
+20110518;Batalla de las Piedras
+20110619;Natalicio de Artigas
+20110718;Jura de la Constitución
+20110825;Declaratoria de la Independencia
+20111010;Día de la Raza (trasladado)
+20111102;Día de los Difuntos
+20111225;Navidad
+20111231;Cierre bancario de fin de año
+20120101;Año Nuevo
+20120106;Día de Reyes
+20120220;Carnaval
+20120221;Carnaval
+20120405;Semana de Turismo
+20120406;Semana de Turismo
+20120423;Desembarco de los 33 Orientales (trasladado)
+20120501;Día de los Trabajadores
+20120521;Batalla de las Piedras (trasladado)
+20120619;Natalicio de Artigas
+20120718;Jura de la Constitución
+20120825;Declaratoria de la Independencia
+20121015;Día de la Raza (trasladado)
+20121102;Día de los Difuntos
+20121225;Navidad
+20121231;Cierre bancario de fin de año
+20130101;Año Nuevo
+20130106;Día de Reyes
+20130211;Carnaval
+20130212;Carnaval
+20130328;Semana de Turismo
+20130329;Semana de Turismo
+20130422;Desembarco de los 33 Orientales (trasladado)
+20130501;Día de los Trabajadores
+20130518;Batalla de las Piedras
+20130619;Natalicio de Artigas
+20130718;Jura de la Constitución
+20130825;Declaratoria de la Independencia
+20131012;Día de la Raza
+20131102;Día de los Difuntos
+20131225;Navidad
+20131231;Cierre bancario de fin de año
+20140101;Año Nuevo
+20140106;Día de Reyes
+20140303;Carnaval
+20140304;Carnaval
+20140417;Semana de Turismo
+20140418;Semana de Turismo
+20140419;Desembarco de los 33 Orientales
+20140501;Día de los Trabajadores
+20140518;Batalla de las Piedras
+20140619;Natalicio de Artigas
+20140718;Jura de la Constitución
+20140825;Declaratoria de la Independencia
+20141012;Día de la Raza
+20141102;Día de los Difuntos
+20141225;Navidad
+20141231;Cierre bancario de fin de año
+20150101;Año Nuevo
+20150106;Día de Reyes
+20150216;Carnaval
+20150217;Carnaval
+20150301;Transmisión del mando presidencial
+20150402;Semana de Turismo
+20150403;Semana de Turismo
+20150419;Desembarco de los 33 Orientales
+20150501;Día de los Trabajadores
+20150518;Batalla de las Piedras
+20150619;Natalicio de Artigas
+20150718;Jura de la Constitución
+20150806;Paro general (sin operaciones en el BCU)
+20150825;Declaratoria de la Independencia
+20151012;Día de la Raza
+20151102;Día de los Difuntos
+20151225;Navidad
+20151231;Cierre bancario de fin de año
+20160101;Año Nuevo
+20160106;Día de Reyes
+20160208;Carnaval
+20160209;Carnaval
+20160324;Semana de Turismo
+20160325;Semana de Turismo
+20160418;Desembarco de los 33 Orientales (trasladado)
+20160501;Día de los Trabajadores
+20160516;Batalla de las Piedras (trasladado)
+20160619;Natalicio de Artigas
+20160714;Paro general (sin operaciones en el BCU)
+20160718;Jura de la Constitución
+20160825;Declaratoria de la Independencia
+20160914;Sin operaciones en el BCU
+20161010;Día de la Raza (trasladado)
+20161102;Día de los Difuntos
+20161225;Navidad
+20161231;Cierre bancario de fin de año
+20170101;Año Nuevo
+20170106;Día de Reyes
+20170227;Carnaval
+20170228;Carnaval
+20170413;Semana de Turismo
+20170414;Semana de Turismo
+20170417;Desembarco de los 33 Orientales (trasladado)
+20170501;Día de los Trabajadores
+20170522;Batalla de las Piedras (trasladado)
+20170619;Natalicio de Artigas
+20170718;Jura de la Constitución
+20170720;Paro general (sin operaciones en el BCU)
+20170825;Declaratoria de la Independencia
+20171016;Día de la Raza (trasladado)
+20171102;Día de los Difuntos
+20171225;Navidad
+20171231;Cierre bancario de fin de año
+20180101;Año Nuevo
+20180106;Día de Reyes
+20180212;Carnaval
+20180213;Carnaval
+20180329;Semana de Turismo
+20180330;Semana de Turismo
+20180423;Desembarco de los 33 Orientales (trasladado)
+20180501;Día de los Trabajadores
+20180521;Batalla de las Piedras (trasladado)
+20180619;Natalicio de Artigas
+20180718;Jura de la Constitución
+20180822;Paro general (sin operaciones en el BCU)
+20180825;Declaratoria de la Independencia
+20181015;Día de la Raza (trasladado)
+20181102;Día de los Difuntos
+20181225;Navidad
+20181231;Cierre bancario de fin de año
+20190101;Año Nuevo
+20190106;Día de Reyes
+20190304;Carnaval
+20190305;Carnaval
+20190418;Semana de Turismo
+20190419;Semana de Turismo
+20190422;Desembarco de los 33 Orientales (trasladado)
+20190501;Día de los Trabajadores
+20190518;Batalla de las Piedras
+20190619;Natalicio de Artigas
+20190625;Paro general (sin operaciones en el BCU)
+20190718;Jura de la Constitución
+20190825;Declaratoria de la Independencia
+20191012;Día de la Raza
+20191102;Día de los Difuntos
+20191225;Navidad
+20191231;Cierre bancario de fin de año
+20200101;Año Nuevo
+20200106;Día de Reyes
+20200224;Carnaval
+20200225;Carnaval
+20200301;Transmisión del mando presidencial
+20200409;Semana de Turismo
+20200410;Semana de Turismo
+20200419;Desembarco de los 33 Orientales
+20200501;Día de los Trabajadores
+20200518;Batalla de las Piedras
+20200619;Natalicio de Artigas
+20200718;Jura de la Constitución
+20200825;Declaratoria de la Independencia
+20201012;Día de la Raza
+20201102;Día de los Difuntos
+20201225;Navidad
+20201231;Cierre bancario de fin de año
+20210101;Año Nuevo
+20210106;Día de Reyes
+20210215;Carnaval
+20210216;Carnaval
+20210401;Semana de Turismo
+20210402;Semana de Turismo
+20210419;Desembarco de los 33 Orientales
+20210501;Día de los Trabajadores
+20210517;Batalla de las Piedras (trasladado)
+20210619;Natalicio de Artigas
+20210718;Jura de la Constitución
+20210825;Declaratoria de la Independencia
+20211011;Día de la Raza (trasladado)
+20211102;Día de los Difuntos
+20211225;Navidad
+20211231;Cierre bancario de fin de año
+20220101;Año Nuevo
+20220106;Día de Reyes
+20220228;Carnaval
+20220301;Carnaval
+20220414;Semana de Turismo
+20220415;Semana de Turismo
+20220418;Desembarco de los 33 Orientales (trasladado)
+20220501;Día de los Trabajadores
+20220516;Batalla de las Piedras (trasladado)
+20220619;Natalicio de Artigas
+20220718;Jura de la Constitución
+20220825;Declaratoria de la Independencia
+20221010;Día de la Raza (trasladado)
+20221102;Día de los Difuntos
+20221225;Navidad
+20221231;Cierre bancario de fin de año
+20230101;Año Nuevo
+20230106;Día de Reyes
+20230220;Carnaval
+20230221;Carnaval
+20230406;Semana de Turismo
+20230407;Semana de Turismo
+20230417;Desembarco de los 33 Orientales (trasladado)
+20230501;Día de los Trabajadores
+20230522;Batalla de las Piedras (trasladado)
+20230619;Natalicio de Artigas
+20230718;Jura de la Constitución
+20230825;Declaratoria de la Independencia
+20231016;Día de la Raza (trasladado)
+20231102;Día de los Difuntos
+20231225;Navidad
+20231231;Cierre bancario de fin de año
+20240101;Año Nuevo
+20240106;Día de Reyes
+20240212;Carnaval
+20240213;Carnaval
+20240328;Semana de Turismo
+20240329;Semana de Turismo
+20240422;Desembarco de los 33 Orientales (trasladado)
+20240501;Día de los Trabajadores
+20240518;Batalla de las Piedras
+20240619;Natalicio de Artigas
+20240718;Jura de la Constitución
+20240825;Declaratoria de la Independencia
+20241012;Día de la Raza
+20241102;Día de los Difuntos
+20241225;Navidad
+20241231;Cierre bancario de fin de año
+20250101;Año Nuevo
+20250106;Día de Reyes
+20250301;Transmisión del mando presidencial
+20250303;Carnaval
+20250304;Carnaval
+20250417;Semana de Turismo
+20250418;Semana de Turismo
+20250419;Desembarco de los 33 Orientales
+20250501;Día de los Trabajadores
+20250518;Batalla de las Piedras
+20250619;Natalicio de Artigas
+20250718;Jura de la Constitución
+20250825;Declaratoria de la Independencia
+20251012;Día de la Raza
+20251102;Día de los Difuntos
+20251225;Navidad
+20251231;Cierre bancario de fin de año
+20260101;Año Nuevo
+20260106;Día de Reyes
+20260216;Carnaval
+20260217;Carnaval
+20260402;Semana de Turismo
+20260403;Semana de Turismo
+20260419;Desembarco de los 33 Orientales
+20260501;Día de los Trabajadores
+20260518;Batalla de las Piedras
+20260619;Natalicio de Artigas
+20260718;Jura de la Constitución
+20260825;Declaratoria de la Independencia
+20261012;Día de la Raza
+20261102;Día de los Difuntos
+20261225;Navidad
+20261231;Cierre bancario de fin de año
+20270101;Año Nuevo
+20270106;Día de Reyes
+20270208;Carnaval
+20270209;Carnaval
+20270325;Semana de Turismo
+20270326;Semana de Turismo
+20270419;Desembarco de los 33 Orientales
+20270501;Día de los Trabajadores
+20270517;Batalla de las Piedras (trasladado)
+20270619;Natalicio de Artigas
+20270718;Jura de la Constitución
+20270825;Declaratoria de la Independencia
+20271011;Día de la Raza (trasladado)
+20271102;Día de los Difuntos
+20271225;Navidad
+20271231;Cierre bancario de fin de año

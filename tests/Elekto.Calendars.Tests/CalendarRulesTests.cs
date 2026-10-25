@@ -90,6 +90,7 @@ public sealed class CalendarRulesTests
     [DataRow("us-NYC")]
     [DataRow("gb-LND")]
     [DataRow("py-ASU")]
+    [DataRow("uy-MVD")]
     public void CalendarioSegueAsRegrasDaPraca(string name)
     {
         var calendar = Server.Value.GetCalendar(name);
@@ -111,6 +112,7 @@ public sealed class CalendarRulesTests
     [DataRow("us-NYC")]
     [DataRow("gb-LND")]
     [DataRow("py-ASU")]
+    [DataRow("uy-MVD")]
     public void FeriadoTemADescricaoDaRegra(string name)
     {
         var calendar = Server.Value.GetCalendar(name);
@@ -149,6 +151,7 @@ public sealed class CalendarRulesTests
             "us-NYC" => Nyse,
             "gb-LND" => England,
             "py-ASU" => Paraguay,
+            "uy-MVD" => Uruguay,
             _ => throw new ArgumentOutOfRangeException(nameof(name), name, null)
         };
         return Enumerable.Range(first, last - first + 1).SelectMany(rule);
@@ -389,6 +392,125 @@ public sealed class CalendarRulesTests
         days.Add(new Holiday(bankHoliday, "Feriado bancario (último día hábil del año)"));
         return days;
     }
+
+    private static readonly Holiday[] UruguayOneOff =
+    [
+        new(new DateTime(2000, 9, 23), "Sesquicentenario del fallecimiento de Artigas"), // Ley 17.262
+        new(new DateTime(2002, 7, 30), "Feriado bancario"), // Decreto 288/002
+        new(new DateTime(2002, 7, 31), "Feriado bancario"), // Decreto 290/002
+        new(new DateTime(2002, 8, 1), "Feriado bancario"),
+        new(new DateTime(2002, 8, 2), "Feriado bancario"),
+        new(new DateTime(2004, 9, 10), "Centenario del fallecimiento de Aparicio Saravia") // Ley 17.798
+    ];
+
+    /// <summary>
+    ///     Dias de greve em que o Banco Central del Uruguay não operou, sem liquidação interbancária nem compensação de
+    ///     cheques, segundo documento do próprio BCU.
+    /// </summary>
+    private static readonly Holiday[] UruguayStrikes =
+    [
+        new(new DateTime(2000, 6, 8), "Paro general (sin operaciones en el BCU)"),
+        new(new DateTime(2000, 11, 16), "Sin operaciones en el BCU"),
+        new(new DateTime(2000, 12, 6), "Paro general (sin operaciones en el BCU)"),
+        new(new DateTime(2001, 7, 11), "Sin operaciones en el BCU"),
+        new(new DateTime(2001, 7, 25), "Paro general (sin operaciones en el BCU)"),
+        new(new DateTime(2002, 5, 24), "Paro general (sin operaciones en el BCU)"),
+        new(new DateTime(2002, 6, 12), "Paro general (sin operaciones en el BCU)"),
+        new(new DateTime(2002, 8, 7), "Paro general (sin operaciones en el BCU)"),
+        new(new DateTime(2002, 12, 19), "Sin operaciones en el BCU"),
+        new(new DateTime(2003, 6, 17), "Sin operaciones en el BCU"),
+        new(new DateTime(2003, 8, 28), "Paro general (sin operaciones en el BCU)"),
+        new(new DateTime(2015, 8, 6), "Paro general (sin operaciones en el BCU)"),
+        new(new DateTime(2016, 7, 14), "Paro general (sin operaciones en el BCU)"),
+        new(new DateTime(2016, 9, 14), "Sin operaciones en el BCU"),
+        new(new DateTime(2017, 7, 20), "Paro general (sin operaciones en el BCU)"),
+        new(new DateTime(2018, 8, 22), "Paro general (sin operaciones en el BCU)"),
+        new(new DateTime(2019, 6, 25), "Paro general (sin operaciones en el BCU)")
+    ];
+
+    /// <summary>
+    ///     Dias sem expediente bancário no Uruguai: os feriados da Ley 16.805, laborables ou no laborables, nos quais os
+    ///     bancos fecham (RNRCSF, art. 28), a quinta e a sexta da Semana de Turismo, o fechamento de 31 de dezembro e os
+    ///     fechamentos extraordinários. As fontes estão em docs/calendarios/uy-MVD.md.
+    /// </summary>
+    private static IEnumerable<Holiday> Uruguay(int year)
+    {
+        var easter = Easter(year);
+        var days = new List<Holiday>
+        {
+            new(new DateTime(year, 1, 1), "Año Nuevo"),
+            new(new DateTime(year, 1, 6), "Día de Reyes"),
+            new(easter.AddDays(-48), "Carnaval"),
+            new(easter.AddDays(-47), "Carnaval"),
+            new(easter.AddDays(-2), "Semana de Turismo"),
+            new(new DateTime(year, 5, 1), "Día de los Trabajadores"),
+            new(new DateTime(year, 7, 18), "Jura de la Constitución"),
+            new(new DateTime(year, 8, 25), "Declaratoria de la Independencia"),
+            new(new DateTime(year, 12, 25), "Navidad")
+        };
+
+        // Comunicação BCU 2009/053: na quinta de Turismo o BCU não opera
+        if (year >= 2009)
+        {
+            days.Add(new Holiday(easter.AddDays(-3), "Semana de Turismo"));
+        }
+
+        // Resolução do BCU de 23/12/2003 e Circular 1.888
+        if (year >= 2003)
+        {
+            days.Add(new Holiday(new DateTime(year, 12, 31), "Cierre bancario de fin de año"));
+        }
+
+        // Ley 7.556: a posse presidencial, no próprio dia, a cada cinco anos
+        if (year % 5 == 0)
+        {
+            days.Add(new Holiday(new DateTime(year, 3, 1), "Transmisión del mando presidencial"));
+        }
+
+        var movable = new List<Holiday>
+        {
+            new(new DateTime(year, 4, 19), "Desembarco de los 33 Orientales"),
+            new(new DateTime(year, 5, 18), "Batalla de las Piedras"),
+            new(new DateTime(year, 10, 12), "Día de la Raza")
+        };
+
+        // Ley 17.414, de novembro de 2001: 19/6 e 2/11 passam a ficar no dia
+        var artigas = new Holiday(new DateTime(year, 6, 19), "Natalicio de Artigas");
+        var difuntos = new Holiday(new DateTime(year, 11, 2), "Día de los Difuntos");
+        if (year >= 2002)
+        {
+            days.Add(artigas);
+            days.Add(difuntos);
+        }
+        else
+        {
+            movable.Add(artigas);
+            movable.Add(difuntos);
+        }
+
+        foreach (var holiday in movable)
+        {
+            // Ley 18.748: o bicentenário da Batalla de las Piedras ficou na quarta
+            var moved = year == 2011 && holiday.Date.Month == 5 ? holiday.Date : UruguayMoved(holiday.Date);
+            days.Add(moved == holiday.Date ? holiday : new Holiday(moved, holiday.Name + " (trasladado)"));
+        }
+
+        return days.Concat(UruguayOneOff.Where(h => h.Date.Year == year))
+                   .Concat(UruguayStrikes.Where(h => h.Date.Year == year));
+    }
+
+    /// <summary>
+    ///     Ley 16.805, art. 1: em terça ou quarta, o feriado passa para a segunda anterior; em quinta ou sexta, para a
+    ///     segunda seguinte; em sábado, domingo ou segunda, fica no dia.
+    /// </summary>
+    private static DateTime UruguayMoved(DateTime date) => date.DayOfWeek switch
+    {
+        DayOfWeek.Tuesday => date.AddDays(-1),
+        DayOfWeek.Wednesday => date.AddDays(-2),
+        DayOfWeek.Thursday => date.AddDays(4),
+        DayOfWeek.Friday => date.AddDays(3),
+        _ => date
+    };
 
     /// <summary>
     ///     Domingo de Páscoa no calendário gregoriano (algoritmo de Meeus/Jones/Butcher).

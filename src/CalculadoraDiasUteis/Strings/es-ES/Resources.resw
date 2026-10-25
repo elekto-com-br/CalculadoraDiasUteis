@@ -984,4 +984,7 @@
   <data name="CalendarName_py_ASU" xml:space="preserve">
     <value>Paraguay - Banco Central</value>
   </data>
+  <data name="CalendarName_uy_MVD" xml:space="preserve">
+    <value>Uruguay - Banco Central</value>
+  </data>
 </root>
