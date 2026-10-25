@@ -380,6 +380,18 @@ try {
         }
     }
 
+    # Com uma dica própria, o WinUI não acrescenta a tecla do atalho; o "(F1)" está no texto da dica
+    Test-UI 'A dica do botão Sobre mostra a tecla F1' {
+        Invoke-Ui @('hover', 'AboutButton') | Out-Null
+        $deadline = [DateTime]::UtcNow.AddSeconds(3)
+        do {
+            $tips = @(Search-Ui 'F1' | Where-Object { $_.type -eq 'ToolTip' })
+            if ($tips.Count) { return }
+            Start-Sleep -Milliseconds 200
+        } while ([DateTime]::UtcNow -lt $deadline)
+        throw 'A dica do botão Sobre não mostra F1.'
+    }
+
     Test-UI 'Página Sobre pelo F1, volta pelo Esc' {
         try {
             Invoke-Ui @('send-keys', 'f1', '--target', 'CalendarComboBox', '--via', 'send-input') | Out-Null

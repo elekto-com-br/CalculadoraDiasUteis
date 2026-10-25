@@ -96,7 +96,7 @@
     <value>Sobre</value>
   </data>
   <data name="AboutButton.[using:Microsoft.UI.Xaml.Controls]ToolTipService.ToolTip" xml:space="preserve">
-    <value>Versão, licença e privacidade</value>
+    <value>Versão, licença e privacidade (F1)</value>
   </data>
   <data name="AboutButtonText.Text" xml:space="preserve">
     <value>Sobre</value>
