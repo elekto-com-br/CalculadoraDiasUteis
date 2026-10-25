@@ -1,6 +1,6 @@
 ﻿                         LICENÇA DE USO
                      Calculadora de Dias Úteis
-        Copyright (C) 2021 Elekto Produtos Financeiros
+        Copyright (C) 2021-2026 Elekto Produtos Financeiros
 
  Este programa usa a Licença Pública Geral GNU, Versão 3 de 2007-06-29
 que segue na sua versão original em Inglês, mais abaixo, e cuja 
