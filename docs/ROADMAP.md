@@ -140,7 +140,7 @@ Uma passada só, quando todas as telas estiverem prontas: o Accessibility Insigh
 ### Fase 4: Microsoft Store
 
 - Conta de desenvolvedor no Partner Center (gratuita) e reserva do nome do app. A reserva pode ser feita a qualquer momento, antes mesmo de existir o app.
-- Material da loja: descrição, capturas de tela, ícones, classificação etária (questionário IARC) e URL da política de privacidade.
+- Material da loja: descrição, capturas de tela, ícones, classificação etária (questionário IARC) e URL da política de privacidade. O rascunho nos três idiomas está em [STORE.md](STORE.md).
 - Identidade do pacote: o `Package.appxmanifest` usa por enquanto `Elekto.CalculadoraDiasUteis` e o publicador provisório `CN=Elekto`, que a Store substitui pelos da conta quando o app for associado a ela.
 - Testar o pacote de publicação em Release, que é compactado (*trimmed*) ao contrário do usado no desenvolvimento. A compilação em Release já avisa (IL2104) que dois assemblies do Windows SDK, da própria Microsoft, não são totalmente seguros para essa compactação. **Feito em 25/10/2026:** o MSIX em Release fechava ao abrir, porque o C#/WinRT montava por reflexão a ponte das coleções entregues aos controles (a lista de calendários, a de feriados) e a compactação removia o que ele usaria. Com o gerador do C#/WinRT completo no projeto (`CsWinRTAotOptimizerEnabled` e `AllowUnsafeBlocks`), as pontes são geradas na compilação, e o pacote passa em todos os testes de interface. O script deles aceita `-Package`, para rodar o mesmo roteiro contra um MSIX instalado no Sandbox.
 - O que se distribui é o MSIX assinado (`winapp pack`). Publicar numa pasta (`dotnet publish`, ou o Publicar do VS Code) não serve: fora do pacote, o app não encontra o Windows App SDK e fecha ao abrir.
@@ -163,12 +163,12 @@ Esses calendários dão mais trabalho que os atuais. A Argentina define por decr
 **Situação:** a interface em inglês e espanhol ficou pronta em 25/10/2026. Os textos estão em `Strings/en-US` e `Strings/es-ES`, com os mesmos recursos do português; o espanhol é o da Argentina, do Paraguai e do Uruguai (feriado, días hábiles, días corridos). O Windows escolhe o idioma pela lista de idiomas do usuário: num Windows em espanhol da Argentina, o app vem em espanhol com as datas no formato argentino. Os testes de interface conferem os dois idiomas com `-Language`. Falta:
 
 - os calendários dos vizinhos;
-- a seção de privacidade do `license.txt`, que é texto da Elekto antes da GPL e está só em português (o botão da tradução da licença some nos outros idiomas, porque a tradução é só para o português);
 - a página da Store nos três idiomas, junto com a fase 4.
 
 Decisões tomadas:
 
 - **Os nomes dos calendários da Elekto são traduzidos** ("Brazil - Central Bank", "Inglaterra - Londres"), pelos recursos, a partir do código do calendário; o arquivo continua com o nome em português, que vale se faltar a tradução. As descrições dos feriados continuam no idioma da praça.
+- **A licença tem o prefácio da Elekto em cada idioma** (`license-en.txt`, `license-es.txt`), seguido do texto original da GPL; o botão da tradução da licença some nos outros idiomas, porque a tradução da GPL que acompanha o app é só para o português.
 - **No inglês, os três ajustes da data final ocupam duas colunas**, porque "Modified following" é comprido; a ordem de leitura continua a mesma.
 
 ### Fora de escopo: versão web
