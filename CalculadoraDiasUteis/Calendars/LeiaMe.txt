@@ -15,7 +15,7 @@ por exemplo:
 * 0010.calendar.br-BC.txt (que conterá um calendário chamado "br-BC")
 * 00A1.calendar.fórum-lapa.txt (que conterá um calendário chamado "fórum-lapa") 
 
-Os primeiros 4 caractéres do nome dão a ordenação em tela com que os calendários 
+Os primeiros 4 caracteres do nome dão a ordenação em tela com que os calendários 
 aparecem. Em seguida deve vir ".calendar.", seguido de um nome curto, para o
 calendário, e sempre com a extensão txt.
 
@@ -24,7 +24,7 @@ recomendemos o Notepad++ (livre, em https://notepad-plus-plus.org/) tomando-se o
 cuidado de salvar com a codificação UTF-8, que preserva os acentos, caso os use.
 
 A primeira linha do arquivo é sempre a "descrição" do calendário. Um nome maior,
-de até 50 caractéres, e que irá aparecer na tela da aplicação.
+de até 50 caracteres, e que irá aparecer na tela da aplicação.
 
 As linhas seguintes devem conter **apenas os feriados** do calendário. Não é
 preciso informar sábados e domingos, mas se um feriado cair neles, não há mal
@@ -47,12 +47,14 @@ e escrever a descrição desejada. Descrições são opcionais.
 A aplicação é enviada com 4 calendários produzidos pela Elekto
 
 * 0010.calendar.br-BC.txt, correspondendo aos feriados do Banco Central do Brasil
-* 0020.calendar.br-SP.txt, correspondendo aos feriados da B3, a Bolsa de Valores
-de São Paulo.
-* 0030.calendar.us-NYC.txt, correspondendo aos feriados bancários de NY, US
+* 0020.calendar.br-SP.txt, correspondendo aos dias sem negociação da B3, a Bolsa de
+Valores de São Paulo. Desde 2022 a B3 funciona nos feriados municipais e
+estaduais de São Paulo (25 de janeiro e 9 de julho), e eles não constam do arquivo.
+* 0030.calendar.us-NYC.txt, correspondendo aos dias sem negociação da NYSE, a Bolsa de
+Valores de Nova Iorque, US
 * 0040.calendar.gb-LND.txt, correspondendo aos feriados bancários da City de Londres
 
-Nossos mehores esforços foram colocados para que esses dados estejam corretos, no 
+Nossos melhores esforços foram colocados para que esses dados estejam corretos, no 
 entanto você, que usa o sistema, é o responsável, e em hipótese alguma a Elekto
 será responsável por prejuízos, de qualquer natureza, advindos do uso, correto ou não,
 da aplicação e dos dados enviados.
@@ -75,7 +77,7 @@ Não esqueça de colocar o caminho entre aspas, caso ele contenha espaços.
 2) Editei feriados, mas não fez efeito.
 	a) Feche a aplicação e a abra novamente. É só no momento em que ela é carregada
 	que os feriados são lidos.
-	b) A linha com o feriado está no formado yyyyMMdd, começando exatamente no começo de
+	b) A linha com o feriado está no formato yyyyMMdd, começando exatamente no começo de
 	uma linha?
 	c) O feriado adicionado não está num sábado ou domingo? Se sim nada mudaria, já era
 	um dia não-útil.

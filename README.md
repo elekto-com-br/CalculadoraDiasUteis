@@ -1,7 +1,7 @@
 # Calculadora de Dias Úteis
 Aplicação para cálculos de prazos e dias finais considerando os dias úteis
 
-Copyright © 2021 by Elekto Produtos Financeiros Ltda.
+Copyright © 2021-2026 by Elekto Produtos Financeiros Ltda.
 
 Licença [GPLv3](https://www.gnu.org/licenses/gpl-3.0.html)
 
@@ -9,11 +9,15 @@ Licença [GPLv3](https://www.gnu.org/licenses/gpl-3.0.html)
 
 Este é um programa Desktop Windows clássico que permite o cálculo de prazos em dias úteis, e também datas finais dado um prazo em dias úteis.
 
-Ele usa o mesmo fonte base, e segue as mesma lógica que a calculadora de prazos que existia no [site da Elekto](https://elekto.com.br). A [documentação funcional](https://elekto.com.br/Blog/ManualDoUsuarioDaCalculadoraDePrazos) é a mesma aplicáve à versão web, até a aparência da aplicação é a mesma, respeitando-se as limitações de aplicativos Windows.
+Ele usa o mesmo fonte base, e segue as mesma lógica que a calculadora de prazos que existia no [site da Elekto](https://elekto.com.br). A [documentação funcional](https://elekto.com.br/Blog/ManualDoUsuarioDaCalculadoraDePrazos) é a mesma aplicável à versão web, até a aparência da aplicação é a mesma, respeitando-se as limitações de aplicativos Windows.
+
+## Próxima versão
+
+A versão 1.2 é a última em .NET Framework 4.8 e WinForms. A próxima geração, em WinUI, acessível e distribuída pela Microsoft Store, está sendo desenvolvida às claras no branch [`winui`](https://github.com/elekto-com-br/CalculadoraDiasUteis/tree/winui); o plano está no [roadmap](https://github.com/elekto-com-br/CalculadoraDiasUteis/blob/winui/docs/ROADMAP.md).
 
 ## Requisitos
 
-Para executar a máquina deve ter o .Net Framework 4.8 instalado. É muito provável que qualquer Windows relativamente moderno já o tenha, caso não, ao executar pela primeira vez a aplicação será informada a situaçao. Se necessário baixe o Runtime do .Net Framework 4.8 no [site da Microsoft](https://dotnet.microsoft.com/download/dotnet-framework/net48).
+Para executar a máquina deve ter o .Net Framework 4.8 instalado. É muito provável que qualquer Windows relativamente moderno já o tenha, caso não, ao executar pela primeira vez a aplicação será informada a situação. Se necessário baixe o Runtime do .Net Framework 4.8 no [site da Microsoft](https://dotnet.microsoft.com/download/dotnet-framework/net48).
 
 A aplicação não requer nenhuma permissão especial, podendo ser instalada apenas com permissões de usuário, seja manualmente, copiando os arquivos em qualquer diretório ou usando o programa de setup.
 
@@ -36,13 +40,13 @@ Nem a aplicação, e nem seu programa de setup, monitoram o uso, enviam logs de 
 
 ## Compilando você mesmo
 
-A aplicação foi desenvolvida com o [Visual Studio 2019](https://visualstudio.microsoft.com/vs/) e não usa nada realmente especial. O programa de setup é o [Inno Setup](https://jrsoftware.org/isinfo.php).
+A aplicação foi desenvolvida com o [Visual Studio 2019](https://visualstudio.microsoft.com/vs/), e compila sem alterações no Visual Studio 2026; não usa nada realmente especial. O programa de setup é o [Inno Setup](https://jrsoftware.org/isinfo.php).
 
 ## Contribuições
 
 ### Em código
 
-A rotina de sempre: faça um fork, clone em sua máquina, faça a correção ou melhoria, suba para seu clone, faça um pull request. Caso deseje incoporar uma mudancá grande, é melhor nos contatar antes. Não nos obrigamos a aceitar contribuição alguma, mas consideraremos com carinho, obviamente.
+A rotina de sempre: faça um fork, clone em sua máquina, faça a correção ou melhoria, suba para seu clone, faça um pull request. Caso deseje incorporar uma mudança grande, é melhor nos contatar antes. Não nos obrigamos a aceitar contribuição alguma, mas consideraremos com carinho, obviamente.
 
 Em termos de estilo, mantenha o que existe em código atualmente, que é basicamente o padrão do [ReSharper](https://www.jetbrains.com/resharper/).
 
@@ -56,6 +60,6 @@ Mas aceitaremos contribuições de feriados de outras praças, basta mandar mens
 * informando o local, aplicabilidade e uma fonte de referência, 
 * consiga ao menos 5 anos para o passado e 5 anos para o futuro (ainda que seja necessário alguma extrapolação). 
 
-A idéia não é ter os feriados de todas as cidades do Brasil (ficaria horrível na interface de usuário atual), mas ao menos das principais praças comerciais, ou mesmo jurídicas. Também a nosso, critério, aceitaremos ou não a contribuição; se estiver na dúvida entre em contato antes de empenhar seu trabalho nisso.
+A ideia não é ter os feriados de todas as cidades do Brasil (ficaria horrível na interface de usuário atual), mas ao menos das principais praças comerciais, ou mesmo jurídicas. Também, a nosso critério, aceitaremos ou não a contribuição; se estiver na dúvida entre em contato antes de empenhar seu trabalho nisso.
 
 Tenha em mente que não é necessária nossa ajuda para adicionar feriados à sua instalação em particular, bastando colocar arquivos texto, com a formatação necessária, no diretório onde os calendários ficam, [conforme instruções](https://github.com/elekto-com-br/CalculadoraDiasUteis/blob/master/CalculadoraDiasUteis/Calendars/LeiaMe.txt) que estão no mesmo diretório.

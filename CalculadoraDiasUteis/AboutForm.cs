@@ -33,11 +33,11 @@ namespace Elekto
         private void AboutForm_Load(object sender, EventArgs e)
         {
             const string text =
-                "Calculadora de Dias Úteis, Copyright © 2021 by Elekto Produtos Financeiros Ltda.\r\n\r\nAplicação livre para o cálculo de prazos e datas finais" +
+                "Calculadora de Dias Úteis, Copyright © 2021-2026 by Elekto Produtos Financeiros Ltda.\r\n\r\nAplicação livre para o cálculo de prazos e datas finais" +
                 " considerando os dias úteis de calendários.\r\n\r\n" +
                 "Essa aplicação é livre! O código fonte está disponível, e se você pagou por este aplicativo, peça seu dinheiro de volta, posto que a aplicação" +
                 " pode ser baixada gratuitamente a partir de nosso site em https://elekto.com.br\r\n\r\n" +
-                "Esta aplicação usa a licença GPLv3, o que implica que você é livre para usar como quiser, mas nenhuma garantia, de espécie alguma é data, " +
+                "Esta aplicação usa a licença GPLv3, o que implica que você é livre para usar como quiser, mas nenhuma garantia, de espécie alguma, é dada " +
                 "pelo uso correto ou não desse aplicativo. Nenhum prejuízo, de qualquer natureza, será atribuído a Elekto Produtos Financeiros.\r\n" +
                 "A licença usada permite que você incorpore o código em seus aplicativos, desde que você o licencie pela mesma licença. " +
                 "Na raiz dessa aplicação você pode ler o arquivo de licença completo no original em Inglês e numa tradução para português.\r\n\r\n" +
