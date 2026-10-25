@@ -646,36 +646,24 @@ namespace Elekto.Calendars
             }
 
 
-            // localiza o índice que contem o prazo final
+            // localiza o primeiro índice cujo prazo acumulado é o prazo final; como o acumulado cresce de 0 em 0
+            // ou de 1 em 1, ele existe, e qualquer índice com o mesmo acumulado leva ao mesmo dia útil abaixo
             var minSearch = 0;
             var maxSearch = _period.Length - 1;
-            var mid = maxSearch / 2;
-            do
+            while (minSearch < maxSearch)
             {
-                if (_period[mid] == finalPeriod)
+                var mid = (minSearch + maxSearch) / 2;
+                if (_period[mid] < finalPeriod)
                 {
-                    break;
+                    minSearch = mid + 1;
                 }
-
-                if (_period[mid] > finalPeriod)
+                else
                 {
                     maxSearch = mid;
                 }
+            }
 
-                if (_period[mid] < finalPeriod)
-                {
-                    minSearch = mid;
-                }
-
-                mid = (minSearch + maxSearch) / 2;
-
-                if (minSearch == maxSearch)
-                {
-                    break;
-                }
-            } while (true);
-
-            var res = MinDate.AddDays(mid);
+            var res = MinDate.AddDays(minSearch);
             res = GetPrevOrSameWorkday(res);
             if (workDays < 0)
             {
