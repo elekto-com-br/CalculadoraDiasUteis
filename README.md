@@ -1,6 +1,10 @@
 # Calculadora de Dias Úteis
 Aplicação para cálculos de prazos e dias finais considerando os dias úteis
 
+[![CI](https://github.com/elekto-com-br/CalculadoraDiasUteis/actions/workflows/ci.yml/badge.svg?branch=winui)](https://github.com/elekto-com-br/CalculadoraDiasUteis/actions/workflows/ci.yml)
+
+> Este é o branch `winui`, onde a versão 2.0 está sendo desenvolvida; o andamento está no [roadmap](docs/ROADMAP.md). A versão estável, 1.2, está no [`master`](https://github.com/elekto-com-br/CalculadoraDiasUteis/tree/master) e nos [Releases](https://github.com/elekto-com-br/CalculadoraDiasUteis/releases).
+
 Copyright © 2021-2026 by Elekto Produtos Financeiros Ltda.
 
 Licença [GPLv3](https://www.gnu.org/licenses/gpl-3.0.html)
@@ -40,7 +44,13 @@ Nem a aplicação, e nem seu programa de setup, monitoram o uso, enviam logs de 
 
 ## Compilando você mesmo
 
-A aplicação foi desenvolvida com o [Visual Studio 2019](https://visualstudio.microsoft.com/vs/), e compila sem alterações no Visual Studio 2026; não usa nada realmente especial. O programa de setup é o [Inno Setup](https://jrsoftware.org/isinfo.php).
+Neste branch há, por enquanto, o núcleo de cálculo (`src/Elekto.Calendars`) e os testes (`tests`). Basta o [SDK do .NET 10](https://dotnet.microsoft.com/download), com qualquer editor:
+
+```
+dotnet test
+```
+
+A versão 1.2, em WinForms, compila a partir do `master` com o Visual Studio 2019 ou posterior.
 
 ## Contribuições
 

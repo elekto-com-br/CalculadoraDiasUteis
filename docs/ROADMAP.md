@@ -4,7 +4,7 @@ Levar a Calculadora de Dias Úteis para WinUI: bonita, acessível, moderna e dis
 
 É um projeto de baixa prioridade, tocado aos poucos. Por isso o plano está dividido em fases pequenas, e cada uma termina com algo que compila e funciona; dá para parar em qualquer fase sem deixar o projeto quebrado.
 
-Atualizado em 25/10/2026. Fase atual: 0.
+Atualizado em 25/10/2026. Fase 0 concluída; a próxima é a 1.
 
 ## Onde estamos
 
@@ -43,6 +43,12 @@ Ainda sem interface nova. O objetivo é proteger a lógica antes de mexer em qua
 - Integração contínua no GitHub Actions: compilar e rodar os testes a cada push.
 
 **Pronto quando** a biblioteca passa em todos os testes de referência na integração contínua.
+
+**Situação:** concluída em 25/10/2026. A biblioteca em .NET 10 reproduz a 1.2 nos 32.065 casos de referência, os calendários batem com as regras de cada praça, e os testes rodam no GitHub Actions a cada push. Comportamentos da 1.2 que a fase revelou:
+
+- **Corrigido:** a 1.2 descarta em silêncio o feriado que tiver descrição no arquivo, embora o formato documentado a permita.
+- **Corrigido:** num calendário com um só feriado, somar dias úteis até exatamente o último dia do calendário deixava o programa em laço infinito. Nos calendários da Elekto isso não acontece, mas aconteceria nos criados pelo usuário na fase 2.
+- **A decidir:** a partir do último dia do calendário, um prazo negativo de mais de 5 dias úteis lança exceção, enquanto um de até 5 devolve a data. O resultado depende de qual dos dois algoritmos internos do `AddWorkDays` é usado.
 
 ### Fase 1: aplicativo WinUI com as funções da 1.2
 
