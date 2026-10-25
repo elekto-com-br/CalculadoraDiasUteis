@@ -22,7 +22,7 @@ Ordem do Tab:
 
 - [ ] Voltar à lista de testes com **Ctrl+T**, abrir **Tab Stops** e começar a gravar com **Shift+F7**.
 - [ ] Percorrer a tela com Tab, Shift+Tab e as setas. O Accessibility Insights numera cada parada.
-- [ ] Conferir que todos os controles são alcançados, que a ordem segue a leitura (calendário, "Editar calendários", "Sobre", cartão "Dias entre duas datas", cartão "Data final de um prazo"), que o foco está sempre visível e que ele nunca fica preso num controle.
+- [ ] Conferir que todos os controles são alcançados, que a ordem segue a leitura (calendário, "Editar calendários", "Sobre", cartão "Dias entre duas datas" com "Copiar as datas" e "Exportar as datas", cartão "Data final de um prazo"), que o foco está sempre visível e que ele nunca fica preso num controle.
 - [ ] Repetir na página "Sobre".
 - [ ] Repetir na página de calendários: comandos do topo, calendário, comandos do calendário, ano, lista de feriados e comandos dos feriados. Na lista, as setas andam entre os feriados, Delete remove o escolhido e F2 abre a descrição.
 - [ ] Numa caixa de diálogo, o foco começa no primeiro campo, o Tab não sai dela e o Esc a fecha sem sair da página.
@@ -36,7 +36,7 @@ Ordem do Tab:
 - [ ] Com **Caps Lock+setas**, ler os títulos e textos que não recebem foco.
 - [ ] Na página "Sobre", os links são anunciados como link, e o logotipo como "Site da Elekto".
 - [ ] Na página de calendários, cada feriado da lista é lido com a data por extenso, a descrição e a origem, por exemplo "sexta-feira, 25 de dezembro de 2026, Natal, Da Elekto"; um removido termina em "Removido por você", e não só aparece riscado.
-- [ ] Depois de cada operação (incluir, remover, renomear, exportar...), a mensagem que aparece no alto é lida sem mover o foco.
+- [ ] Depois de cada operação (incluir, remover, renomear, exportar...), a mensagem que aparece no alto é lida sem mover o foco. O mesmo vale para "Copiar as datas" e "Exportar as datas", na página principal, cuja mensagem aparece no cartão.
 - [ ] Na caixa "Novo", a lista de bases é anunciada com cada calendário e se ele está marcado; um nome repetido faz aparecer o aviso, que é lido.
 - [ ] Na caixa "Importar", cada calendário é uma caixa de seleção com o nome, e o que vai ser feito com ele é lido como descrição.
 - [ ] Atalhos úteis: **Caps Lock+Enter** aciona o item, **Caps Lock+F1** lista os comandos e **Ctrl+Caps Lock+F12** esconde a tela, deixando só o que o Narrador enxerga.

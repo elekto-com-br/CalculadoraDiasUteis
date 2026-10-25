@@ -4,13 +4,13 @@ Levar a Calculadora de Dias Úteis para WinUI: bonita, acessível, moderna e dis
 
 É um projeto de baixa prioridade, tocado aos poucos. Por isso o plano está dividido em fases pequenas, e cada uma termina com algo que compila e funciona; dá para parar em qualquer fase sem deixar o projeto quebrado.
 
-Atualizado em 25/10/2026. Fases 0, 1 e 2 concluídas; a próxima é a 3, de exportação para o Excel.
+Atualizado em 25/10/2026. Fases 0 a 3 concluídas; faltam a revisão de acessibilidade e a fase 4, a da Store.
 
 ## Onde estamos
 
 - A linha 1.x (WinForms, .NET Framework 4.8) termina na 1.2.1. Ela fica no `master` até a 2.0 ficar pronta, recebendo apenas correção que não puder esperar.
 - O trabalho da 2.0 acontece neste branch, `winui`, aberto a quem quiser acompanhar.
-- **Ponto de parada (25/10/2026):** o aplicativo faz as contas da 1.2 e edita calendários: cria derivados de um ou mais outros, inclui, remove e descreve feriados, desfaz alterações, exporta e importa, inclusive os arquivos da 1.x. As fases 1 e 2 estão marcadas com os tags `v2.0.0-alpha.1` e `v2.0.0-alpha.2`. A próxima é a fase 3, de copiar para o Excel e exportar em `.xlsx` e `.csv`.
+- **Ponto de parada (25/10/2026):** o aplicativo faz as contas da 1.2, edita calendários (cria derivados de um ou mais outros, inclui, remove e descreve feriados, desfaz alterações, exporta e importa, inclusive os arquivos da 1.x) e leva as datas de um período e os feriados de um calendário para o Excel, copiando ou em `.xlsx` e `.csv`. As fases 1, 2 e 3 estão marcadas com os tags `v2.0.0-alpha.1`, `alpha.2` e `alpha.3`. Falta o que só uma pessoa faz: a [revisão de acessibilidade](#revisão-de-acessibilidade) e a conta na Store, da fase 4.
 - **Sem release público até a Store.** Cada fase termina com um tag (`v2.0.0-alpha.1`, `alpha.2`...), para marcar o ponto no histórico, mas sem pacote para baixar: a 2.0.0 sai pela Microsoft Store, na fase 4.
 - **A revisão humana de acessibilidade é uma só**, com todas as telas prontas, [antes da Store](#revisão-de-acessibilidade). Até lá, o que pode ser feito sem uma pessoa diante do computador (os testes de interface, os nomes e `AutomationId`, o teclado, os temas por captura de tela) acompanha cada tela nova.
 
@@ -102,7 +102,7 @@ A verificação com o Accessibility Insights e o Narrador, que estava aqui, pass
 
 **Pronto quando** dá para criar um calendário derivado, editá-lo, fechar e reabrir o app, receber uma atualização do original e restaurar, tudo coberto por testes.
 
-**Situação:** concluída em 25/10/2026 e marcada com o tag `v2.0.0-alpha.2`. O modelo, o banco e a importação e exportação ficam no projeto `CalculadoraDiasUteis.Core`, com 35 testes que rodam na integração contínua, inclusive o de receber uma versão nova do original com as alterações do usuário valendo por cima. No aplicativo, o botão "Editar calendários" abre a página de calendários no calendário escolhido. Os testes de interface ganharam 17 cenários: criar um derivado, incluir um feriado local e vê-lo valer nas contas da página principal, remover e restaurar um herdado, trocar a descrição, recusar um nome repetido, renomear, abrir uma exceção num calendário da Elekto e desfazê-la, exportar, excluir pedindo confirmação, importar de volta com a herança, importar um arquivo da 1.x, os atalhos da lista, os `AutomationId`, a janela mínima e reabrir o app com tudo guardado. No Sandbox passam todos os que não dependem do teclado. Os de teclado precisam da sessão do Windows desbloqueada; o novo, dos atalhos da lista e do Esc nas caixas de diálogo, ainda não rodou com ela.
+**Situação:** concluída em 25/10/2026 e marcada com o tag `v2.0.0-alpha.2`. O modelo, o banco e a importação e exportação ficam no projeto `CalculadoraDiasUteis.Core`, com 35 testes que rodam na integração contínua, inclusive o de receber uma versão nova do original com as alterações do usuário valendo por cima. No aplicativo, o botão "Editar calendários" abre a página de calendários no calendário escolhido. Os testes de interface ganharam 17 cenários: criar um derivado, incluir um feriado local e vê-lo valer nas contas da página principal, remover e restaurar um herdado, trocar a descrição, recusar um nome repetido, renomear, abrir uma exceção num calendário da Elekto e desfazê-la, exportar, excluir pedindo confirmação, importar de volta com a herança, importar um arquivo da 1.x, os atalhos da lista, os `AutomationId`, a janela mínima e reabrir o app com tudo guardado. No Sandbox passam todos, inclusive os de teclado, que precisam da sessão do Windows desbloqueada.
 
 Decisões tomadas na fase:
 
@@ -122,6 +122,16 @@ Decisões tomadas na fase:
 - Copiar para a área de transferência, de modo que a lista cole no Excel como datas e não como texto. É o que a maioria faz no dia a dia.
 - Exportar `.xlsx` e `.csv`, tanto as datas de um período quanto os feriados de um calendário.
 - Exportar `.ics` (iCalendar), para levar os feriados ao Outlook ou ao Google Agenda: em discussão, só entra se houver um caso de uso convincente.
+
+**Situação:** concluída em 25/10/2026 e marcada com o tag `v2.0.0-alpha.3`. Na página principal, "Copiar as datas" e "Exportar as datas" levam todas as datas do período; na de calendários, "Copiar o ano" leva os feriados do ano mostrado e "Exportar planilha", todos os do calendário. As tabelas e os formatos ficam no `CalculadoraDiasUteis.Core`, com testes, e os testes de interface ganharam três cenários, que conferem a área de transferência e os arquivos dentro do Sandbox. A planilha e o HTML da cópia foram abertos no Excel, com as datas lidas como datas.
+
+Decisões tomadas na fase:
+
+- **As colunas.** As datas de um período: data, dia da semana, "É dia útil" (1 ou 0, como na 1.x, para somar na planilha), dias úteis desde o início e o feriado, se houver. Os feriados: data, dia da semana e descrição. As tabelas não levam linhas de título, para colar e filtrar direto; o nome do calendário vai no nome do arquivo.
+- **A cópia vai em dois formatos.** Em HTML, com as datas em ISO (`2026-12-25`) marcadas como data curta, que o Excel cola como datas em qualquer idioma; e em texto separado por tabulações, para os programas que só aceitam texto.
+- **O CSV segue o formato regional do Windows**, com as personalizações do usuário, e não o idioma do aplicativo: é com ele que o Excel separa as colunas e lê as datas. Num Windows com vírgula como separador, um CSV com ponto e vírgula abria tudo numa coluna só. O arquivo é UTF-8 com a marca no começo, sem a qual o Excel lê os acentos errado.
+- **O `.xlsx` é gravado com o Open XML SDK**, da Microsoft, de licença MIT, e não com o ClosedXML previsto: é um pacote só, preparado para a compactação do pacote Release, e o ClosedXML traria mais seis. A planilha sai com as datas como datas, no formato de data curta de quem a abrir, o cabeçalho em negrito e fixo no alto e o filtro ligado.
+- **O `.ics` fica de fora por enquanto**: o Outlook e o Google já têm os feriados nacionais. O caso que poderia convencer é o de um calendário derivado com feriados locais, que não existe em nenhuma agenda pronta; volta se alguém pedir.
 
 ### Revisão de acessibilidade
 
@@ -166,8 +176,8 @@ Exportar para o Excel ainda vale a pena: o público da calculadora (finanças, t
 
 - Copiar e colar resolve a maior parte dos casos, sem arquivo nenhum.
 - O `.xlsx` continua para quem quer um arquivo, com as datas gravadas como datas. O `.csv` fica como alternativa, mas sofre com separador e formato de data no Excel em português.
-- O EPPlus 4.5.3.3 sai. É a última versão LGPL, de 2020, sem manutenção, e as versões novas exigem licença comercial. No lugar entra o ClosedXML, de licença MIT.
-- O `.ics`, que levaria os feriados para a agenda, está em discussão.
+- O EPPlus 4.5.3.3 sai. É a última versão LGPL, de 2020, sem manutenção, e as versões novas exigem licença comercial. No lugar entrou o Open XML SDK, da Microsoft, de licença MIT (ver a [fase 3](#fase-3-exportação-e-integração)).
+- O `.ics`, que levaria os feriados para a agenda, ficou para quando alguém pedir.
 
 ## Manutenção dos calendários
 
