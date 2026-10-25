@@ -4,7 +4,7 @@ Levar a Calculadora de Dias Úteis para WinUI: bonita, acessível, moderna e dis
 
 É um projeto de baixa prioridade, tocado aos poucos. Por isso o plano está dividido em fases pequenas, e cada uma termina com algo que compila e funciona; dá para parar em qualquer fase sem deixar o projeto quebrado.
 
-Atualizado em 25/10/2026. Fases 0 a 3 concluídas; faltam a revisão de acessibilidade e a fase 4, a da Store.
+Atualizado em 25/10/2026. Fases 0 a 3 concluídas e a 5 em andamento, com a interface já em inglês e espanhol; faltam a revisão de acessibilidade, a fase 4, a da Store, e os calendários dos vizinhos.
 
 ## Onde estamos
 
@@ -73,7 +73,7 @@ Ainda sem interface nova. O objetivo é proteger a lógica antes de mexer em qua
 Decisões tomadas na fase:
 
 - **Windows 11 no manifesto**, para x64 e ARM64. Não há pacote para x86, que o Windows 11 não tem.
-- **Datas e números no idioma que o Windows escolhe para o aplicativo**, o mesmo dos textos e dos seletores de data. Por enquanto é sempre o português; num Windows em inglês, seguir só o formato regional deixaria a data final como 10/27/2027 ao lado de seletores em 27/10/2027. Na fase 5, com os três idiomas, o formato acompanha o idioma escolhido.
+- **Datas e números no idioma que o Windows escolhe para o aplicativo**, o mesmo dos textos e dos seletores de data. Seguir só o formato regional deixaria a data final como 10/27/2027 ao lado de seletores em 27/10/2027. Com os três idiomas da fase 5, o formato acompanha o idioma escolhido.
 - **Cor de destaque é o verde da marca**, com tons calculados para manter contraste de pelo menos 4,5:1 nos temas claro e escuro; o laranja fica no ícone e no logotipo. No alto contraste valem as cores do Windows.
 - **As escolhas lembradas são as da 1.2:** calendário, critério de contagem, tipo de prazo, ajuste e prazo. As datas começam sempre em hoje e daqui a um ano, como lá.
 - **Novidade pequena:** a data final mostra o dia da semana e avisa quando cai em feriado ou dia não útil, o que só acontece em dias corridos sem ajuste.
@@ -152,13 +152,24 @@ Uma passada só, quando todas as telas estiverem prontas: o Accessibility Insigh
 
 - Interface traduzida para espanhol e inglês, escolhida pelo idioma do Windows; o português continua sendo o idioma padrão.
 - Página da Store e capturas de tela nos três idiomas.
-- Calendários novos com os dias sem expediente bancário da Argentina (Buenos Aires), do Paraguai (Assunção) e do Uruguai (Montevidéu), segundo o banco central de cada país, de 2000 em diante e projetados até onde as regras permitirem. Nomes provisórios: `ar-BA`, `py-ASU` e `uy-MVD`.
+- Calendários novos com os dias sem expediente bancário da Argentina (Buenos Aires), do Paraguai (Assunção) e do Uruguai (Montevidéu), segundo o banco central de cada país, de 2000 em diante e projetados até onde as regras permitirem. Nomes provisórios: `ar-BA`, `py-ASU` e `uy-MVD`. Decidido em 25/10/2026: o expediente bancário, que é o que vale para prazos; os calendários das bolsas (BYMA, BVPASA e BVM) podem vir depois, como o br-SP veio ao lado do br-BC. A revisão anual deles fica com a Elekto, junto com a dos demais.
 - Teste de regras para os três, como os que já existem para os calendários atuais.
 - As descrições dos feriados ficam no idioma do país: português para o Brasil, espanhol para os vizinhos, inglês para Nova Iorque e Londres.
 
 Esses calendários dão mais trabalho que os atuais. A Argentina define por decreto, a cada ano, os feriados "ponte" (*días no laborables con fines turísticos*) e muda alguns feriados de dia; Uruguai e Paraguai também transferem certos feriados para a segunda-feira, por lei. Parte de cada ano só se conhece quando o governo publica, então a projeção para o futuro cobre apenas o que as regras fixas permitem.
 
 **Pronto quando** o app troca de idioma junto com o Windows, sem texto em português sobrando, e os três calendários novos passam no teste de regras.
+
+**Situação:** a interface em inglês e espanhol ficou pronta em 25/10/2026. Os textos estão em `Strings/en-US` e `Strings/es-ES`, com os mesmos recursos do português; o espanhol é o da Argentina, do Paraguai e do Uruguai (feriado, días hábiles, días corridos). O Windows escolhe o idioma pela lista de idiomas do usuário: num Windows em espanhol da Argentina, o app vem em espanhol com as datas no formato argentino. Os testes de interface conferem os dois idiomas com `-Language`. Falta:
+
+- os calendários dos vizinhos;
+- a seção de privacidade do `license.txt`, que é texto da Elekto antes da GPL e está só em português (o botão da tradução da licença some nos outros idiomas, porque a tradução é só para o português);
+- a página da Store nos três idiomas, junto com a fase 4.
+
+Decisões tomadas:
+
+- **Os nomes dos calendários da Elekto são traduzidos** ("Brazil - Central Bank", "Inglaterra - Londres"), pelos recursos, a partir do código do calendário; o arquivo continua com o nome em português, que vale se faltar a tradução. As descrições dos feriados continuam no idioma da praça.
+- **No inglês, os três ajustes da data final ocupam duas colunas**, porque "Modified following" é comprido; a ordem de leitura continua a mesma.
 
 ### Fora de escopo: versão web
 
@@ -192,7 +203,6 @@ A Elekto revisa os calendários todo ano em 1º de dezembro, com uma segunda pas
 ## Decisões em aberto
 
 - **Conta na Store.** Em nome da Elekto (conta de empresa, gratuita desde maio de 2026, com verificação da empresa) ou de pessoa física. Para propaganda, o que interessa é o nome Elekto na página do app.
-- **Calendários dos vizinhos: bancário ou bolsa.** A revisão anual deles fica com a Elekto, junto com a dos demais. A proposta é o expediente bancário de cada banco central, que é o que vale para prazos. Os calendários das bolsas (BYMA, BVPASA e BVM) podem vir depois, como o br-SP veio ao lado do br-BC.
 - **Escopo do br-SP.** A 1.2 o alinhou à B3. Quem precisar dos feriados da cidade de São Paulo (25/01 e 9/07) poderá criar um calendário derivado na Fase 2, ou a Elekto pode enviar um calendário da cidade pronto.
 - **Contribuições externas.** O README oferece licenciamento alternativo ao GPLv3. Para isso continuar possível, a Elekto precisa deter os direitos de todo o código, o que pede um acordo de contribuição (CLA) de quem enviar pull request.
 - **Política de privacidade.** O texto do README serve, mas a Store pede uma URL própria, no site da Elekto ou no GitHub Pages.
