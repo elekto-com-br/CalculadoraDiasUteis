@@ -225,6 +225,21 @@ function Start-App {
     Invoke-Ui @('wait-for', 'CalendarComboBox', '-t', '5000') | Out-Null
 }
 
+# Muda o tamanho da janela como quem arrasta a borda; o script roda no alvo, onde está a janela
+function Set-WindowSize {
+    param([int]$Width, [int]$Height)
+    $arguments = @('-NoProfile', '-ExecutionPolicy', 'Bypass', '-File', $script:ResizeScript,
+        '-Hwnd', $script:hwnd, '-Width', "$Width", '-Height', "$Height")
+    if ($Target -eq 'sandbox') { Invoke-WinAppChecked (@('target', 'exec', 'sandbox', '--', 'powershell') + $arguments) | Out-Null }
+    else { & powershell @arguments }
+}
+
+function Get-WindowSize {
+    $windows = @(ConvertFrom-WinAppJson (Invoke-WinAppChecked (@('ui', 'list-windows', '-a', "$script:AppPid", '--json') + $ScopeArgs)))
+    $main = $windows | Where-Object { [string]$_.hwnd -eq $script:hwnd } | Select-Object -First 1
+    [pscustomobject]@{ Width = [int]$main.width; Height = [int]$main.height }
+}
+
 function Stop-App {
     $command = @('target', 'exec', 'sandbox', '--', 'taskkill', '/PID', "$script:AppPid", '/F')
     if ($Target -eq 'sandbox') { Invoke-WinAppChecked $command | Out-Null }
@@ -243,6 +258,13 @@ try {
         catch { Write-Verbose 'Nenhuma instância aberta.' }
     } else {
         Get-Process CalculadoraDiasUteis -ErrorAction SilentlyContinue | Stop-Process -Force
+    }
+
+    # O script que muda o tamanho da janela roda onde ela está
+    $script:ResizeScript = Join-Path $PSScriptRoot 'Set-WindowSize.ps1'
+    if ($Target -eq 'sandbox') {
+        $push = ConvertFrom-WinAppJson (Invoke-WinAppChecked @('target', 'push', 'sandbox', $script:ResizeScript, 'ui-tests\Set-WindowSize.ps1', '--json'))
+        $script:ResizeScript = $push.targetPath
     }
 
     # Primeira execução, com os dados do aplicativo apagados: valem os padrões da 1.2
@@ -347,6 +369,9 @@ try {
         try {
             Invoke-Ui @('invoke', 'AboutButton') | Out-Null
             Assert-Text 'VersionText' 'Versão 2.0.0'
+            foreach ($link in 'ElektoLink', 'SourceCodeLink', 'ElektoPrivacyLink', 'GitHubPrivacyLink') {
+                Invoke-Ui @('wait-for', $link, '-t', '2000') | Out-Null
+            }
             # Nenhuma dica solta com a tecla dos atalhos de voltar (ela aparecia logo depois de navegar)
             Start-Sleep -Seconds 1
             if (@(Search-Ui 'Esc' | Where-Object { $_.name -eq 'Esc' }).Count) { throw 'Apareceu a dica "Esc".' }
@@ -408,6 +433,17 @@ try {
         Assert-Text 'PeriodStartPicker' $e.d0
         Assert-Text 'WorkDaysText' $e.nyseFullWork
         Assert-Text 'FinalDateText' $e.nyseActualModified
+    }
+
+    Test-UI 'A janela não fica menor que o mínimo' {
+        try {
+            Set-WindowSize 200 200
+            $size = Get-WindowSize
+            if ($size.Width -lt 500 -or $size.Height -lt 400) { throw "A janela ficou com $($size.Width) x $($size.Height)." }
+            Save-Screenshot '06-minima.png'
+        } finally {
+            Set-WindowSize 960 600
+        }
     }
 
     Test-UI 'Todos os controles da página têm AutomationId' {

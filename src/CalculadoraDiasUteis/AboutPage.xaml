@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8" ?>
+﻿<?xml version="1.0" encoding="utf-8" ?>
 <Page
     x:Class="CalculadoraDiasUteis.AboutPage"
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
@@ -15,15 +15,18 @@
             HorizontalAlignment="Left"
             Spacing="16">
 
-            <Image
-                x:Uid="AboutLogo"
-                Height="64"
-                HorizontalAlignment="Left"
-                AutomationProperties.AutomationId="AboutLogo">
-                <Image.Source>
-                    <SvgImageSource UriSource="ms-appx:///Assets/logo-elekto.svg" />
-                </Image.Source>
-            </Image>
+            <!-- O logotipo completo leva ao site da Elekto -->
+            <HyperlinkButton
+                x:Uid="ElektoLink"
+                Padding="0"
+                AutomationProperties.AutomationId="ElektoLink"
+                NavigateUri="https://elekto.com.br/">
+                <Image Height="64" AutomationProperties.AccessibilityView="Raw">
+                    <Image.Source>
+                        <SvgImageSource UriSource="ms-appx:///Assets/logo-elekto.svg" />
+                    </Image.Source>
+                </Image>
+            </HyperlinkButton>
 
             <StackPanel Spacing="4">
                 <TextBlock
@@ -39,15 +42,14 @@
 
             <TextBlock x:Uid="AboutPurpose" TextWrapping="Wrap" />
             <TextBlock x:Uid="AboutFree" TextWrapping="Wrap" />
+            <HyperlinkButton
+                x:Uid="SourceCodeLink"
+                AutomationProperties.AutomationId="SourceCodeLink"
+                NavigateUri="https://github.com/elekto-com-br/CalculadoraDiasUteis"
+                Style="{StaticResource TextLinkStyle}" />
+
             <TextBlock x:Uid="AboutLicense" TextWrapping="Wrap" />
             <TextBlock x:Uid="AboutAlternativeLicense" TextWrapping="Wrap" />
-
-            <TextBlock
-                x:Uid="AboutPrivacyTitle"
-                AutomationProperties.HeadingLevel="Level2"
-                Style="{StaticResource SubtitleTextBlockStyle}" />
-            <TextBlock x:Uid="AboutPrivacy" TextWrapping="Wrap" />
-
             <StackPanel Orientation="Horizontal" Spacing="8">
                 <Button
                     x:Uid="LicenseButton"
@@ -59,11 +61,22 @@
                     Click="LicenseTranslationButton_Click" />
             </StackPanel>
 
-            <HyperlinkButton
-                x:Uid="SiteLink"
-                Padding="0"
-                AutomationProperties.AutomationId="SiteLink"
-                NavigateUri="https://elekto.com.br/" />
+            <TextBlock
+                x:Uid="AboutPrivacyTitle"
+                AutomationProperties.HeadingLevel="Level2"
+                Style="{StaticResource SubtitleTextBlockStyle}" />
+            <TextBlock x:Uid="AboutPrivacy" TextWrapping="Wrap" />
+            <!-- Os endereços estão nos recursos porque mudam com o idioma -->
+            <StackPanel Spacing="4">
+                <HyperlinkButton
+                    x:Uid="ElektoPrivacyLink"
+                    AutomationProperties.AutomationId="ElektoPrivacyLink"
+                    Style="{StaticResource TextLinkStyle}" />
+                <HyperlinkButton
+                    x:Uid="GitHubPrivacyLink"
+                    AutomationProperties.AutomationId="GitHubPrivacyLink"
+                    Style="{StaticResource TextLinkStyle}" />
+            </StackPanel>
 
             <InfoBar
                 x:Name="OpenErrorInfoBar"

@@ -32,6 +32,22 @@
                 <Setter Property="CornerRadius" Value="{StaticResource OverlayCornerRadius}" />
                 <Setter Property="Padding" Value="20" />
             </Style>
+
+            <!--
+                Links em texto. Com o verde escuro como destaque, a cor do link fica perto da do texto comum;
+                o sublinhado é o que o identifica
+            -->
+            <Style x:Key="TextLinkStyle" TargetType="HyperlinkButton">
+                <Setter Property="Padding" Value="0" />
+                <Setter Property="ContentTemplate">
+                    <Setter.Value>
+                        <!-- O conteúdo é o próprio texto do link; neste dicionário o x:Bind não compila -->
+                        <DataTemplate>
+                            <TextBlock Text="{Binding}" TextDecorations="Underline" />
+                        </DataTemplate>
+                    </Setter.Value>
+                </Setter>
+            </Style>
         </ResourceDictionary>
     </Application.Resources>
 </Application>

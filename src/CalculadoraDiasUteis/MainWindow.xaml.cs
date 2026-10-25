@@ -20,6 +20,7 @@
 using System.Runtime.InteropServices;
 using CalculadoraDiasUteis.Services;
 using Microsoft.UI;
+using Microsoft.UI.Windowing;
 using Microsoft.UI.Xaml;
 using Microsoft.UI.Xaml.Controls;
 using Microsoft.UI.Xaml.Input;
@@ -36,6 +37,12 @@ public sealed partial class MainWindow : Window
     private const int InitialWidth = 960;
     private const int InitialHeight = 600;
 
+    // Menor tamanho em que os controles ainda cabem, com os cartões um embaixo do outro; a altura que faltar rola
+    private const int MinimumWidth = 500;
+    private const int MinimumHeight = 400;
+
+    private double _scale;
+
     public MainWindow()
     {
         InitializeComponent();
@@ -45,15 +52,47 @@ public sealed partial class MainWindow : Window
         SetTitleBar(AppTitleBar);
         AppWindow.SetIcon("Assets/AppIcon.ico");
 
-        // AppWindow.Resize usa pixels físicos
-        var scale = GetDpiForWindow(Win32Interop.GetWindowFromWindowId(AppWindow.Id)) / 96.0;
-        AppWindow.Resize(new SizeInt32((int)(InitialWidth * scale), (int)(InitialHeight * scale)));
+        // AppWindow.Resize e os limites do OverlappedPresenter usam pixels físicos
+        _scale = GetScale();
+        AppWindow.Resize(new SizeInt32((int)(InitialWidth * _scale), (int)(InitialHeight * _scale)));
+        ApplyMinimumSize();
+        AppWindow.Changed += AppWindow_Changed;
 
         RootFrame.Navigate(typeof(MainPage));
     }
 
     [DllImport("user32.dll")]
     private static extern uint GetDpiForWindow(IntPtr hWnd);
+
+    private double GetScale()
+    {
+        return GetDpiForWindow(Win32Interop.GetWindowFromWindowId(AppWindow.Id)) / 96.0;
+    }
+
+    private void ApplyMinimumSize()
+    {
+        if (AppWindow.Presenter is OverlappedPresenter presenter)
+        {
+            presenter.PreferredMinimumWidth = (int)(MinimumWidth * _scale);
+            presenter.PreferredMinimumHeight = (int)(MinimumHeight * _scale);
+        }
+    }
+
+    // Num monitor com outra escala, o mínimo em pixels físicos precisa ser refeito
+    private void AppWindow_Changed(AppWindow sender, AppWindowChangedEventArgs args)
+    {
+        if (!args.DidPositionChange && !args.DidSizeChange)
+        {
+            return;
+        }
+
+        var scale = GetScale();
+        if (scale != _scale)
+        {
+            _scale = scale;
+            ApplyMinimumSize();
+        }
+    }
 
     private void AppTitleBar_BackRequested(TitleBar sender, object args)
     {

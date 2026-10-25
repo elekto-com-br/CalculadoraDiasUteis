@@ -328,8 +328,14 @@
   </data>
 
   <!-- Página Sobre -->
-  <data name="AboutLogo.[using:Microsoft.UI.Xaml.Automation]AutomationProperties.Name" xml:space="preserve">
-    <value>Logotipo da Elekto</value>
+  <data name="ElektoLink.[using:Microsoft.UI.Xaml.Automation]AutomationProperties.Name" xml:space="preserve">
+    <value>Site da Elekto</value>
+  </data>
+  <data name="ElektoLink.[using:Microsoft.UI.Xaml.Controls]ToolTipService.ToolTip" xml:space="preserve">
+    <value>elekto.com.br</value>
+  </data>
+  <data name="ElektoLink.AccessKey" xml:space="preserve">
+    <value>E</value>
   </data>
   <data name="AboutTitle.Text" xml:space="preserve">
     <value>Calculadora de Dias Úteis</value>
@@ -346,6 +352,12 @@
   <data name="AboutFree.Text" xml:space="preserve">
     <value>Essa aplicação é livre! O código-fonte está disponível e, se você pagou por este aplicativo, peça seu dinheiro de volta, porque a Elekto o distribui gratuitamente.</value>
   </data>
+  <data name="SourceCodeLink.Content" xml:space="preserve">
+    <value>Código-fonte no GitHub</value>
+  </data>
+  <data name="SourceCodeLink.AccessKey" xml:space="preserve">
+    <value>C</value>
+  </data>
   <data name="AboutLicense.Text" xml:space="preserve">
     <value>Esta aplicação usa a licença GPLv3: você é livre para usá-la como quiser, mas nenhuma garantia, de espécie alguma, é dada pelo uso correto ou não dela, e nenhum prejuízo, de qualquer natureza, será atribuído à Elekto Produtos Financeiros. A licença permite que você incorpore o código em seus aplicativos, desde que os licencie pela mesma licença.</value>
   </data>
@@ -356,7 +368,25 @@
     <value>Privacidade</value>
   </data>
   <data name="AboutPrivacy.Text" xml:space="preserve">
-    <value>A aplicação não monitora o uso, não envia registros de erro nem telemetria e não se comunica com a Internet. Ela contém um único link, para o site da Elekto, que abre no seu navegador e não rastreia a origem do acesso.</value>
+    <value>A aplicação não monitora o uso, não envia registros de erro nem telemetria e não se comunica com a Internet. Os links desta página abrem no seu navegador, sem nada que identifique a origem do acesso. No site da Elekto vale a política de privacidade da Elekto; no GitHub, onde está o código-fonte, vale a declaração de privacidade do GitHub, pela qual a Elekto não responde.</value>
+  </data>
+  <data name="ElektoPrivacyLink.Content" xml:space="preserve">
+    <value>Política de privacidade da Elekto</value>
+  </data>
+  <data name="ElektoPrivacyLink.AccessKey" xml:space="preserve">
+    <value>P</value>
+  </data>
+  <data name="ElektoPrivacyLink.NavigateUri" xml:space="preserve">
+    <value>https://elekto.com.br/Info/PrivacyPolicy</value>
+  </data>
+  <data name="GitHubPrivacyLink.Content" xml:space="preserve">
+    <value>Declaração de privacidade do GitHub</value>
+  </data>
+  <data name="GitHubPrivacyLink.AccessKey" xml:space="preserve">
+    <value>G</value>
+  </data>
+  <data name="GitHubPrivacyLink.NavigateUri" xml:space="preserve">
+    <value>https://docs.github.com/pt/site-policy/privacy-policies/github-general-privacy-statement</value>
   </data>
   <data name="LicenseButton.Content" xml:space="preserve">
     <value>Ler a licença</value>
@@ -369,11 +399,5 @@
   </data>
   <data name="LicenseTranslationButton.AccessKey" xml:space="preserve">
     <value>T</value>
-  </data>
-  <data name="SiteLink.Content" xml:space="preserve">
-    <value>Site da Elekto: elekto.com.br</value>
-  </data>
-  <data name="SiteLink.AccessKey" xml:space="preserve">
-    <value>S</value>
   </data>
 </root>
