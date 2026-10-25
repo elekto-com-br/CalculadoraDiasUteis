@@ -16,7 +16,7 @@ Atualizado em 25/10/2026. Fase 0 concluída; na fase 1, o aplicativo está pront
 
 - **O cálculo não muda sem prova.** Toda mudança no núcleo passa por testes que comparam com os resultados da 1.2.
 - **Acessível desde o começo.** Narrador, navegação só por teclado, alto contraste e escala de texto entram na primeira tela, não no fim.
-- **Privacidade igual à de hoje.** Sem telemetria, sem conta, sem internet; a única saída continua sendo o link para o site da Elekto.
+- **Privacidade igual à de hoje.** Sem telemetria, sem conta, sem internet; as únicas saídas são os links da página "Sobre", para o site da Elekto, o código-fonte no GitHub e as políticas de privacidade, que abrem no navegador.
 - **Os dados do usuário são dele.** Tudo o que ele cadastra pode ser exportado num formato aberto.
 
 ## Decisões tomadas
@@ -59,7 +59,7 @@ Ainda sem interface nova. O objetivo é proteger a lógica antes de mexer em qua
 - Resultado recalculado ao mudar qualquer campo, sem botão de calcular.
 - Controles nativos (`CalendarDatePicker`, `NumberBox`, `RadioButtons`, `ComboBox`), fundo Mica e tema claro, escuro ou de alto contraste seguindo o Windows.
 - `AutomationProperties.Name` e `AutomationId` em todos os controles, ordem de tabulação revisada e atalhos de teclado.
-- Página "Sobre" com versão, licença e link para o site.
+- Página "Sobre" com versão, licença, privacidade e links para o site da Elekto e o código-fonte.
 - Todos os textos em arquivos de recursos (`.resw`), e datas e números no formato da cultura do Windows, para que a tradução da fase 5 não exija mudança de código.
 - Ícone e identidade visual feitos a partir do logotipo da Elekto em vetor (`assets/logo-elekto.svg`), com as cores da marca: verde `#556652` e laranja `#F79646`.
 - Testes de interface com `winapp ui`, rodando no Windows Sandbox.
@@ -78,14 +78,14 @@ Decisões tomadas na fase:
 - **A dica do botão "Sobre" traz o "(F1)" no próprio texto.** O WinUI só acrescenta a tecla do atalho à dica padrão; quando o botão tem dica própria, como aqui, ela fica de fora.
 - **A licença vai no pacote**, no original e na tradução, e abre no programa padrão do Windows para cada tipo de arquivo.
 - **Links da página "Sobre":** o logotipo leva ao site da Elekto, e há um link para o código-fonte no GitHub. A privacidade aponta a política da Elekto, para o site dela, e a declaração do GitHub, pela qual a Elekto não responde. Os links em texto são sublinhados, porque o verde escuro do destaque fica perto da cor do texto comum.
+- **No tema escuro, o logotipo usa o verde clareado até 7:1** (`#9DAF99`): o mesmo matiz e croma do `#556652` no espaço OKLCH, só com a luminosidade aumentada, o que mantém a identidade suave da marca. No alto contraste, o logotipo todo vai na cor de texto do Windows. Para trocar as cores por tema, ele é desenhado em XAML (`ElektoLogo.xaml`) com os traços de `assets/logo-elekto.svg`.
 - **A janela tem tamanho mínimo, 500 × 400**, o menor em que os controles cabem com os cartões um embaixo do outro; a altura que faltar rola. Não há máximo: maximizar é direito do usuário, e o conteúdo é que para de crescer (1040 de largura na página principal, 720 na "Sobre").
 - **Ficam para a fase 2** o link "Definições de Calendários..." e o parâmetro `--calendars` da 1.2, que dependem de calendários fora do pacote.
 - **O editor é o VS Code**, com a configuração em `.vscode`: o F5 compila e usa a extensão WinApp, ainda em prévia, para abrir o app empacotado e anexar o depurador. A versão atual dela só aceita a pasta compilada; quando aceitar o projeto, a tarefa de compilação do `launch.json` deixa de ser necessária. A solução passou para o formato `.slnx`.
 
 Falta, para fechar a fase:
 
-- Verificar com o Accessibility Insights e percorrer a tela com o Narrador.
-- Decidir o logotipo no tema escuro: em verde sobre fundo escuro, ele fica legível, mas apagado. As propostas, com o verde clareado até contrastes de 3:1 a 7:1 e versões com o nome em quase branco, estão numa página à parte para escolha.
+- Verificar com o Accessibility Insights e percorrer a tela com o Narrador. Precisa de uma pessoa na máquina, com som: pelo acesso remoto o som do Narrador não chega, e não há como um agente ouvi-lo. O roteiro, em forma de lista para marcar, está em [ACESSIBILIDADE.md](ACESSIBILIDADE.md).
 
 Fica para depois, sem impedir o fim da fase:
 

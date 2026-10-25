@@ -40,7 +40,7 @@ Se houver interesse em incorporar esse código em software proprietário procure
 
 ## Privacidade
 
-Nem a aplicação, e nem seu programa de setup, monitoram o uso, enviam logs de erros ou telemetria. Nenhum deles se comunica com a Internet, a aplicação contém um único link para o [site da Elekto](https://elekto.com.br), que abrirá no seu browser, e o link sequer rastreia a origem do acesso.
+A aplicação não monitora o uso, não envia registros de erro nem telemetria e não se comunica com a Internet; o programa de setup da 1.2 também não. Os links da aplicação abrem no seu navegador, sem nada que identifique a origem do acesso. Na 1.2 há um só, para o [site da Elekto](https://elekto.com.br); na 2.0, a página "Sobre" tem também o do código-fonte, aqui no GitHub, e os das políticas de privacidade. No site da Elekto vale a [política de privacidade da Elekto](https://elekto.com.br/Info/PrivacyPolicy); no GitHub, a [declaração de privacidade do GitHub](https://docs.github.com/pt/site-policy/privacy-policies/github-general-privacy-statement), pela qual a Elekto não responde.
 
 ## Compilando você mesmo
 
