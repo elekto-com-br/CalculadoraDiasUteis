@@ -10,7 +10,7 @@ Atualizado em 25/10/2026. Fase 0 concluída; na fase 1, o aplicativo está pront
 
 - A linha 1.x (WinForms, .NET Framework 4.8) termina na 1.2.1. Ela fica no `master` até a 2.0 ficar pronta, recebendo apenas correção que não puder esperar.
 - O trabalho da 2.0 acontece neste branch, `winui`, aberto a quem quiser acompanhar.
-- **Ponto de parada (25/10/2026):** o aplicativo WinUI faz as contas da 1.2 e passa nos testes de interface no Windows Sandbox. Para fechar a fase 1 falta o teste de teclado com a sessão do Windows desbloqueada, a verificação com o Accessibility Insights e o Narrador, além das pendências listadas na [situação da fase 1](#fase-1-aplicativo-winui-com-as-funções-da-12).
+- **Ponto de parada (25/10/2026):** o aplicativo WinUI faz as contas da 1.2, passa em todos os testes de interface no Windows Sandbox e já foi usado fora dele. Para fechar a fase 1 falta a verificação com o Accessibility Insights e o Narrador, além das pendências listadas na [situação da fase 1](#fase-1-aplicativo-winui-com-as-funções-da-12).
 
 ## Princípios
 
@@ -66,7 +66,7 @@ Ainda sem interface nova. O objetivo é proteger a lógica antes de mexer em qua
 
 **Pronto quando** a 2.0 faz tudo o que a 1.2 faz, menos editar calendários e exportar, e passa nos testes de interface e na verificação do Accessibility Insights.
 
-**Situação:** aplicativo pronto em 25/10/2026, em `src/CalculadoraDiasUteis`, criado com o template `winui-mvvm` do WinApp CLI (Windows App SDK 2.5, CommunityToolkit.Mvvm). Os testes de interface (`tests/UiTests`) cobrem 19 cenários: os padrões, a escolha de datas no calendário, os dois critérios de contagem, prazos em dias úteis (inclusive negativos) e corridos com os três ajustes, o aviso de prazo além do calendário, a troca de calendário, a página "Sobre", a licença no navegador, os `AutomationId` e as escolhas lembradas ao reabrir. Os resultados esperados saem da própria biblioteca (`Expected.cs`), para as datas que o teste escolhe. No Sandbox passam 18; o de teclado (F1 e Esc) só roda com a sessão do Windows desbloqueada. Os temas claro, escuro e de alto contraste e a janela estreita foram conferidos por captura de tela. A integração contínua compila também o aplicativo.
+**Situação:** aplicativo pronto em 25/10/2026, em `src/CalculadoraDiasUteis`, criado com o template `winui-mvvm` do WinApp CLI (Windows App SDK 2.5, CommunityToolkit.Mvvm). Os testes de interface (`tests/UiTests`) cobrem 20 cenários: os padrões, a escolha de datas no calendário, os dois critérios de contagem, prazos em dias úteis (inclusive negativos) e corridos com os três ajustes, o aviso de prazo além do calendário, a troca de calendário, a página "Sobre" pelo botão e pelo teclado (F1 e Esc), a dica do botão "Sobre", a licença no navegador, os `AutomationId` e as escolhas lembradas ao reabrir. Os resultados esperados saem da própria biblioteca (`Expected.cs`), para as datas que o teste escolhe. No Sandbox passam todos; os de teclado e mouse precisam da sessão do Windows desbloqueada e da janela da Sandbox conectada (`wsb connect`, se ela tiver caído). Fora do Sandbox, o app foi usado no Windows do dia a dia, e o "Ler a licença" abre o texto no editor padrão. Os temas claro, escuro e de alto contraste e a janela estreita foram conferidos por captura de tela. A integração contínua compila também o aplicativo.
 
 Decisões tomadas na fase:
 
@@ -75,15 +75,13 @@ Decisões tomadas na fase:
 - **Cor de destaque é o verde da marca**, com tons calculados para manter contraste de pelo menos 4,5:1 nos temas claro e escuro; o laranja fica no ícone e no logotipo. No alto contraste valem as cores do Windows.
 - **As escolhas lembradas são as da 1.2:** calendário, critério de contagem, tipo de prazo, ajuste e prazo. As datas começam sempre em hoje e daqui a um ano, como lá.
 - **Novidade pequena:** a data final mostra o dia da semana e avisa quando cai em feriado ou dia não útil, o que só acontece em dias corridos sem ajuste.
+- **A dica do botão "Sobre" traz o "(F1)" no próprio texto.** O WinUI só acrescenta a tecla do atalho à dica padrão; quando o botão tem dica própria, como aqui, ela fica de fora.
 - **A licença vai no pacote**, no original e na tradução, e abre no programa padrão do Windows para cada tipo de arquivo.
 - **Ficam para a fase 2** o link "Definições de Calendários..." e o parâmetro `--calendars` da 1.2, que dependem de calendários fora do pacote.
 - **O editor é o VS Code**, com a configuração em `.vscode`: o F5 compila e usa a extensão WinApp, ainda em prévia, para abrir o app empacotado e anexar o depurador. A versão atual dela só aceita a pasta compilada; quando aceitar o projeto, a tarefa de compilação do `launch.json` deixa de ser necessária. A solução passou para o formato `.slnx`.
 
 Falta, para fechar a fase:
 
-- Usar o aplicativo instalado no Windows do dia a dia, fora do Sandbox, inclusive o botão "Ler a licença": o Sandbox não tem programa associado a `.txt`, então ele só foi testado lá com a tradução, em HTML.
-- Rodar os testes de interface com a sessão do Windows desbloqueada, para o teste de teclado (F1 e Esc).
-- Conferir que a dica do botão "Sobre" mostra a tecla F1. O "(F1)" escrito à mão saiu do texto porque o WinUI acrescenta a tecla sozinho, mas isso só se vê passando o mouse, o que não deu para testar com a sessão bloqueada.
 - Verificar com o Accessibility Insights e percorrer a tela com o Narrador.
 - Revisar os textos da página "Sobre", adaptados da 1.2 (o original mandava baixar a aplicação do site da Elekto).
 - Decidir o logotipo no tema escuro: em verde sobre fundo escuro, ele fica legível, mas apagado.
