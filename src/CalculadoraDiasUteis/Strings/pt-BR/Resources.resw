@@ -400,4 +400,490 @@
   <data name="LicenseTranslationButton.AccessKey" xml:space="preserve">
     <value>T</value>
   </data>
+  <data name="CalendarsButton.AccessKey" xml:space="preserve">
+    <value>L</value>
+  </data>
+  <data name="CalendarsButton.[using:Microsoft.UI.Xaml.Automation]AutomationProperties.Name" xml:space="preserve">
+    <value>Editar calendários</value>
+  </data>
+  <data name="CalendarsButton.[using:Microsoft.UI.Xaml.Controls]ToolTipService.ToolTip" xml:space="preserve">
+    <value>Criar, editar, importar e exportar calendários</value>
+  </data>
+  <data name="CalendarsButtonText.Text" xml:space="preserve">
+    <value>Editar calendários</value>
+  </data>
+  <data name="HolidayNoteWithDescription" xml:space="preserve">
+    <value>feriado ({0})</value>
+  </data>
+  <data name="CalendarsTitle.Text" xml:space="preserve">
+    <value>Calendários</value>
+  </data>
+  <data name="CalendarsIntro.Text" xml:space="preserve">
+    <value>Os calendários da Elekto são atualizados junto com o aplicativo, e as suas alterações neles continuam valendo. Os seus calendários podem partir de outros, as bases, e recebem as atualizações delas.</value>
+  </data>
+  <data name="EditCalendarComboBox.Header" xml:space="preserve">
+    <value>Calendário</value>
+  </data>
+  <data name="EditCalendarComboBox.AccessKey" xml:space="preserve">
+    <value>C</value>
+  </data>
+  <data name="EditCalendarComboBox.[using:Microsoft.UI.Xaml.Automation]AutomationProperties.Name" xml:space="preserve">
+    <value>Calendário a editar</value>
+  </data>
+  <data name="NewCalendarButton.Label" xml:space="preserve">
+    <value>Novo</value>
+  </data>
+  <data name="NewCalendarButton.AccessKey" xml:space="preserve">
+    <value>N</value>
+  </data>
+  <data name="NewCalendarButton.[using:Microsoft.UI.Xaml.Controls]ToolTipService.ToolTip" xml:space="preserve">
+    <value>Criar um calendário, vazio ou a partir de outros</value>
+  </data>
+  <data name="ImportButton.Label" xml:space="preserve">
+    <value>Importar</value>
+  </data>
+  <data name="ImportButton.AccessKey" xml:space="preserve">
+    <value>I</value>
+  </data>
+  <data name="ImportButton.[using:Microsoft.UI.Xaml.Controls]ToolTipService.ToolTip" xml:space="preserve">
+    <value>Importar calendários exportados por esta versão ou arquivos de calendário da versão 1</value>
+  </data>
+  <data name="ExportAllButton.Label" xml:space="preserve">
+    <value>Exportar tudo</value>
+  </data>
+  <data name="ExportAllButton.AccessKey" xml:space="preserve">
+    <value>T</value>
+  </data>
+  <data name="ExportAllButton.[using:Microsoft.UI.Xaml.Controls]ToolTipService.ToolTip" xml:space="preserve">
+    <value>Exportar os seus calendários e as suas alterações nos da Elekto, num arquivo só</value>
+  </data>
+  <data name="RestoreAllButton.Label" xml:space="preserve">
+    <value>Desfazer as alterações nos calendários da Elekto</value>
+  </data>
+  <data name="DeriveCalendarButton.Label" xml:space="preserve">
+    <value>Novo a partir deste</value>
+  </data>
+  <data name="DeriveCalendarButton.AccessKey" xml:space="preserve">
+    <value>P</value>
+  </data>
+  <data name="DeriveCalendarButton.[using:Microsoft.UI.Xaml.Controls]ToolTipService.ToolTip" xml:space="preserve">
+    <value>Criar um calendário que tem este como base</value>
+  </data>
+  <data name="RenameCalendarButton.Label" xml:space="preserve">
+    <value>Renomear</value>
+  </data>
+  <data name="RenameCalendarButton.AccessKey" xml:space="preserve">
+    <value>R</value>
+  </data>
+  <data name="BasesButton.Label" xml:space="preserve">
+    <value>Bases</value>
+  </data>
+  <data name="BasesButton.AccessKey" xml:space="preserve">
+    <value>B</value>
+  </data>
+  <data name="BasesButton.[using:Microsoft.UI.Xaml.Controls]ToolTipService.ToolTip" xml:space="preserve">
+    <value>Escolher de quais calendários este herda os feriados</value>
+  </data>
+  <data name="ExportCalendarButton.Label" xml:space="preserve">
+    <value>Exportar</value>
+  </data>
+  <data name="ExportCalendarButton.AccessKey" xml:space="preserve">
+    <value>E</value>
+  </data>
+  <data name="ExportCalendarButton.[using:Microsoft.UI.Xaml.Controls]ToolTipService.ToolTip" xml:space="preserve">
+    <value>Exportar este calendário, com as bases de que ele depende</value>
+  </data>
+  <data name="RestoreCalendarButton.Label" xml:space="preserve">
+    <value>Desfazer alterações</value>
+  </data>
+  <data name="RestoreCalendarButton.AccessKey" xml:space="preserve">
+    <value>D</value>
+  </data>
+  <data name="RestoreCalendarButton.[using:Microsoft.UI.Xaml.Controls]ToolTipService.ToolTip" xml:space="preserve">
+    <value>Voltar este calendário ao que a Elekto envia</value>
+  </data>
+  <data name="DeleteCalendarButton.Label" xml:space="preserve">
+    <value>Excluir</value>
+  </data>
+  <data name="DeleteCalendarButton.AccessKey" xml:space="preserve">
+    <value>X</value>
+  </data>
+  <data name="HolidaysTitle.Text" xml:space="preserve">
+    <value>Feriados</value>
+  </data>
+  <data name="YearNumberBox.Header" xml:space="preserve">
+    <value>Ano</value>
+  </data>
+  <data name="YearNumberBox.AccessKey" xml:space="preserve">
+    <value>A</value>
+  </data>
+  <data name="HolidaysListView.[using:Microsoft.UI.Xaml.Automation]AutomationProperties.Name" xml:space="preserve">
+    <value>Feriados do ano</value>
+  </data>
+  <data name="AddHolidayButton.Label" xml:space="preserve">
+    <value>Incluir feriado</value>
+  </data>
+  <data name="AddHolidayButton.AccessKey" xml:space="preserve">
+    <value>F</value>
+  </data>
+  <data name="EditHolidayButton.Label" xml:space="preserve">
+    <value>Editar descrição</value>
+  </data>
+  <data name="EditHolidayButton.AccessKey" xml:space="preserve">
+    <value>S</value>
+  </data>
+  <data name="EditHolidayButton.[using:Microsoft.UI.Xaml.Controls]ToolTipService.ToolTip" xml:space="preserve">
+    <value>Trocar a descrição do feriado escolhido (F2)</value>
+  </data>
+  <data name="RemoveHolidayButton.Label" xml:space="preserve">
+    <value>Remover</value>
+  </data>
+  <data name="RemoveHolidayButton.AccessKey" xml:space="preserve">
+    <value>M</value>
+  </data>
+  <data name="RemoveHolidayButton.[using:Microsoft.UI.Xaml.Controls]ToolTipService.ToolTip" xml:space="preserve">
+    <value>Remover o feriado escolhido (Delete)</value>
+  </data>
+  <data name="RestoreHolidayButton.Label" xml:space="preserve">
+    <value>Restaurar</value>
+  </data>
+  <data name="RestoreHolidayButton.AccessKey" xml:space="preserve">
+    <value>U</value>
+  </data>
+  <data name="RestoreHolidayButton.[using:Microsoft.UI.Xaml.Controls]ToolTipService.ToolTip" xml:space="preserve">
+    <value>Desfazer a remoção ou a troca de descrição do feriado escolhido</value>
+  </data>
+  <data name="KindOriginal" xml:space="preserve">
+    <value>Calendário da Elekto</value>
+  </data>
+  <data name="KindDerived" xml:space="preserve">
+    <value>Derivado de {0}</value>
+  </data>
+  <data name="KindOwn" xml:space="preserve">
+    <value>Calendário próprio, sem base</value>
+  </data>
+  <data name="ChangesNone" xml:space="preserve">
+    <value>sem alterações suas</value>
+  </data>
+  <data name="ChangesOne" xml:space="preserve">
+    <value>com 1 alteração sua</value>
+  </data>
+  <data name="ChangesMany" xml:space="preserve">
+    <value>com {0} alterações suas</value>
+  </data>
+  <data name="OwnHolidaysNone" xml:space="preserve">
+    <value>ainda sem feriados</value>
+  </data>
+  <data name="OwnHolidaysOne" xml:space="preserve">
+    <value>com 1 feriado</value>
+  </data>
+  <data name="OwnHolidaysMany" xml:space="preserve">
+    <value>com {0} feriados</value>
+  </data>
+  <data name="CalendarPeriod" xml:space="preserve">
+    <value>Vale de {0} a {1}.</value>
+  </data>
+  <data name="HolidaysNone" xml:space="preserve">
+    <value>Nenhum feriado em {0}.</value>
+  </data>
+  <data name="HolidaysOne" xml:space="preserve">
+    <value>1 feriado em {0}.</value>
+  </data>
+  <data name="HolidaysMany" xml:space="preserve">
+    <value>{0} feriados em {1}.</value>
+  </data>
+  <data name="OriginElekto" xml:space="preserve">
+    <value>Da Elekto</value>
+  </data>
+  <data name="OriginInherited" xml:space="preserve">
+    <value>Herdado</value>
+  </data>
+  <data name="OriginAdded" xml:space="preserve">
+    <value>Incluído por você</value>
+  </data>
+  <data name="OriginRemoved" xml:space="preserve">
+    <value>Removido por você</value>
+  </data>
+  <data name="OriginDescribed" xml:space="preserve">
+    <value>Descrição trocada por você</value>
+  </data>
+  <data name="ListSeparator" xml:space="preserve">
+    <value>, </value>
+  </data>
+  <data name="ListLast" xml:space="preserve">
+    <value>{0} e {1}</value>
+  </data>
+  <data name="NewCalendarTitle" xml:space="preserve">
+    <value>Novo calendário</value>
+  </data>
+  <data name="RenameCalendarTitle" xml:space="preserve">
+    <value>Renomear calendário</value>
+  </data>
+  <data name="BasesTitle" xml:space="preserve">
+    <value>Bases de “{0}”</value>
+  </data>
+  <data name="DeleteCalendarTitle" xml:space="preserve">
+    <value>Excluir “{0}”?</value>
+  </data>
+  <data name="DeleteCalendarMessage" xml:space="preserve">
+    <value>Os feriados que você incluiu e as suas alterações nele se perdem. Para guardar uma cópia, exporte o calendário antes.</value>
+  </data>
+  <data name="RestoreCalendarTitle" xml:space="preserve">
+    <value>Desfazer as alterações em “{0}”?</value>
+  </data>
+  <data name="RestoreCalendarMessageOne" xml:space="preserve">
+    <value>A sua alteração neste calendário se perde, e ele volta a ser o que a Elekto envia.</value>
+  </data>
+  <data name="RestoreCalendarMessageMany" xml:space="preserve">
+    <value>As suas {0} alterações neste calendário se perdem, e ele volta a ser o que a Elekto envia.</value>
+  </data>
+  <data name="RestoreAllTitle" xml:space="preserve">
+    <value>Desfazer as alterações nos calendários da Elekto?</value>
+  </data>
+  <data name="RestoreAllMessageOne" xml:space="preserve">
+    <value>Um calendário da Elekto tem alterações suas, que se perdem.</value>
+  </data>
+  <data name="RestoreAllMessageMany" xml:space="preserve">
+    <value>{0} calendários da Elekto têm alterações suas, que se perdem.</value>
+  </data>
+  <data name="AddHolidayTitle" xml:space="preserve">
+    <value>Incluir feriado</value>
+  </data>
+  <data name="EditHolidayTitle" xml:space="preserve">
+    <value>Editar descrição</value>
+  </data>
+  <data name="CreateButtonText" xml:space="preserve">
+    <value>Criar</value>
+  </data>
+  <data name="SaveButtonText" xml:space="preserve">
+    <value>Salvar</value>
+  </data>
+  <data name="AddButtonText" xml:space="preserve">
+    <value>Incluir</value>
+  </data>
+  <data name="DeleteButtonText" xml:space="preserve">
+    <value>Excluir</value>
+  </data>
+  <data name="RestoreButtonText" xml:space="preserve">
+    <value>Desfazer</value>
+  </data>
+  <data name="CancelButtonText" xml:space="preserve">
+    <value>Cancelar</value>
+  </data>
+  <data name="CalendarDialog.CloseButtonText" xml:space="preserve">
+    <value>Cancelar</value>
+  </data>
+  <data name="CalendarNameTextBox.Header" xml:space="preserve">
+    <value>Nome</value>
+  </data>
+  <data name="CalendarNameTextBox.PlaceholderText" xml:space="preserve">
+    <value>Por exemplo, Fórum da Lapa</value>
+  </data>
+  <data name="BasesLabel.Text" xml:space="preserve">
+    <value>Bases</value>
+  </data>
+  <data name="BasesHint.Text" xml:space="preserve">
+    <value>Os feriados das bases marcadas se somam, e o calendário vale no período em que todas valem. Sem base, ele começa só com os fins de semana.</value>
+  </data>
+  <data name="BasesListView.[using:Microsoft.UI.Xaml.Automation]AutomationProperties.Name" xml:space="preserve">
+    <value>Bases</value>
+  </data>
+  <data name="HolidayDialog.CloseButtonText" xml:space="preserve">
+    <value>Cancelar</value>
+  </data>
+  <data name="HolidayDatePicker.Header" xml:space="preserve">
+    <value>Data</value>
+  </data>
+  <data name="HolidayDescriptionTextBox.Header" xml:space="preserve">
+    <value>Descrição (opcional)</value>
+  </data>
+  <data name="HolidayDescriptionTextBox.PlaceholderText" xml:space="preserve">
+    <value>Por exemplo, Aniversário da cidade</value>
+  </data>
+  <data name="WeekendHolidayNote" xml:space="preserve">
+    <value>A data cai num {0}, que já não é dia útil: incluí-la não muda as contas.</value>
+  </data>
+  <data name="ImportDialog.Title" xml:space="preserve">
+    <value>Importar calendários</value>
+  </data>
+  <data name="ImportDialog.PrimaryButtonText" xml:space="preserve">
+    <value>Importar</value>
+  </data>
+  <data name="ImportDialog.CloseButtonText" xml:space="preserve">
+    <value>Cancelar</value>
+  </data>
+  <data name="ImportIntro.Text" xml:space="preserve">
+    <value>Confira o que vai ser importado e desmarque o que não quiser.</value>
+  </data>
+  <data name="ImportCreateOne" xml:space="preserve">
+    <value>Novo calendário, com 1 feriado</value>
+  </data>
+  <data name="ImportCreateMany" xml:space="preserve">
+    <value>Novo calendário, com {0} feriados</value>
+  </data>
+  <data name="ImportReplace" xml:space="preserve">
+    <value>Substitui a versão que você já tem deste calendário</value>
+  </data>
+  <data name="ImportUpdateOriginal" xml:space="preserve">
+    <value>Junta as alterações às que você já tem neste calendário da Elekto</value>
+  </data>
+  <data name="ImportSkip" xml:space="preserve">
+    <value>Nada a importar</value>
+  </data>
+  <data name="ImportDetail" xml:space="preserve">
+    <value>{0}. Arquivo: {1}</value>
+  </data>
+  <data name="ImportFailure" xml:space="preserve">
+    <value>{0}: {1}</value>
+  </data>
+  <data name="ImportNoteRenamed" xml:space="preserve">
+    <value>já existe um calendário chamado “{0}”</value>
+  </data>
+  <data name="ImportNoteSameAsOriginal" xml:space="preserve">
+    <value>o arquivo tem os mesmos feriados de “{0}”, que já vem com o aplicativo</value>
+  </data>
+  <data name="ImportNoteCopyOfOriginal" xml:space="preserve">
+    <value>o arquivo tem feriados diferentes dos de “{0}” e vira um calendário seu</value>
+  </data>
+  <data name="ImportNoteAlreadyExists" xml:space="preserve">
+    <value>você já tem este calendário, igual</value>
+  </data>
+  <data name="ImportNoteFlattened" xml:space="preserve">
+    <value>a base “{0}” não existe aqui, e o calendário vem com os feriados todos, sem a herança</value>
+  </data>
+  <data name="ImportNoteOriginalMissing" xml:space="preserve">
+    <value>o calendário “{0}” não vem mais com o aplicativo e vira um calendário seu</value>
+  </data>
+  <data name="ImportNoteNoChanges" xml:space="preserve">
+    <value>o arquivo não traz alteração neste calendário</value>
+  </data>
+  <data name="ExportAllFileName" xml:space="preserve">
+    <value>Calendários</value>
+  </data>
+  <data name="ExportFileType" xml:space="preserve">
+    <value>Calendários da Calculadora</value>
+  </data>
+  <data name="StatusCreated" xml:space="preserve">
+    <value>Calendário “{0}” criado.</value>
+  </data>
+  <data name="StatusRenamed" xml:space="preserve">
+    <value>Calendário renomeado para “{0}”.</value>
+  </data>
+  <data name="StatusBasesChanged" xml:space="preserve">
+    <value>Bases de “{0}” trocadas.</value>
+  </data>
+  <data name="StatusDeleted" xml:space="preserve">
+    <value>Calendário “{0}” excluído.</value>
+  </data>
+  <data name="StatusRestored" xml:space="preserve">
+    <value>As alterações em “{0}” foram desfeitas.</value>
+  </data>
+  <data name="StatusRestoredAll" xml:space="preserve">
+    <value>As alterações nos calendários da Elekto foram desfeitas.</value>
+  </data>
+  <data name="StatusNothingToRestore" xml:space="preserve">
+    <value>Os calendários da Elekto estão sem alterações suas.</value>
+  </data>
+  <data name="StatusHolidayAdded" xml:space="preserve">
+    <value>Feriado de {0} incluído.</value>
+  </data>
+  <data name="StatusHolidayRemoved" xml:space="preserve">
+    <value>Feriado de {0} removido.</value>
+  </data>
+  <data name="StatusHolidayRestored" xml:space="preserve">
+    <value>Feriado de {0} restaurado.</value>
+  </data>
+  <data name="StatusDescriptionChanged" xml:space="preserve">
+    <value>Descrição do feriado de {0} trocada.</value>
+  </data>
+  <data name="StatusExported" xml:space="preserve">
+    <value>Exportado para {0}.</value>
+  </data>
+  <data name="StatusNothingToExport" xml:space="preserve">
+    <value>Você ainda não tem calendário próprio nem alteração nos da Elekto para exportar.</value>
+  </data>
+  <data name="StatusImportedOne" xml:space="preserve">
+    <value>1 calendário importado.</value>
+  </data>
+  <data name="StatusImportedMany" xml:space="preserve">
+    <value>{0} calendários importados.</value>
+  </data>
+  <data name="ErrorSave" xml:space="preserve">
+    <value>Não foi possível gravar a alteração: {0}</value>
+  </data>
+  <data name="ErrorExport" xml:space="preserve">
+    <value>Não foi possível exportar para {0}: {1}</value>
+  </data>
+  <data name="ErrorDatabase" xml:space="preserve">
+    <value>Não foi possível abrir o arquivo dos seus calendários, {0}: {1}</value>
+  </data>
+  <data name="ErrorNoDate" xml:space="preserve">
+    <value>Escolha a data do feriado.</value>
+  </data>
+  <data name="CatalogErrorNameEmpty" xml:space="preserve">
+    <value>Dê um nome ao calendário.</value>
+  </data>
+  <data name="CatalogErrorNameTooLong" xml:space="preserve">
+    <value>O nome pode ter até 50 caracteres.</value>
+  </data>
+  <data name="CatalogErrorNameInUse" xml:space="preserve">
+    <value>Já existe um calendário chamado “{0}”.</value>
+  </data>
+  <data name="CatalogErrorCalendarNotFound" xml:space="preserve">
+    <value>O calendário “{0}” não existe.</value>
+  </data>
+  <data name="CatalogErrorNotCustom" xml:space="preserve">
+    <value>“{0}” vem da Elekto e não pode ser renomeado nem excluído; as suas alterações nele podem ser desfeitas.</value>
+  </data>
+  <data name="CatalogErrorNotOriginal" xml:space="preserve">
+    <value>“{0}” é um calendário seu; só os da Elekto têm alterações a desfazer.</value>
+  </data>
+  <data name="CatalogErrorBaseNotFound" xml:space="preserve">
+    <value>A base “{0}” não existe.</value>
+  </data>
+  <data name="CatalogErrorBaseCycle" xml:space="preserve">
+    <value>“{0}” depende deste calendário e não pode ser base dele.</value>
+  </data>
+  <data name="CatalogErrorBaseUnusable" xml:space="preserve">
+    <value>A base “{0}” está com problema e não pode ser usada.</value>
+  </data>
+  <data name="CatalogErrorHasDependents" xml:space="preserve">
+    <value>Este calendário é base de {0}. Troque as bases deles antes de excluí-lo.</value>
+  </data>
+  <data name="CatalogErrorDateOutsideRange" xml:space="preserve">
+    <value>{0} está fora do período do calendário.</value>
+  </data>
+  <data name="CatalogErrorAlreadyHoliday" xml:space="preserve">
+    <value>{0} já é feriado neste calendário.</value>
+  </data>
+  <data name="CatalogErrorNotHoliday" xml:space="preserve">
+    <value>{0} não é feriado neste calendário.</value>
+  </data>
+  <data name="CatalogErrorNoChange" xml:space="preserve">
+    <value>Não há alteração sua a desfazer em {0}.</value>
+  </data>
+  <data name="CatalogErrorDescriptionTooLong" xml:space="preserve">
+    <value>A descrição pode ter até 100 caracteres.</value>
+  </data>
+  <data name="CatalogErrorEmptyRange" xml:space="preserve">
+    <value>Os períodos das bases não se sobrepõem, e o calendário fica sem período em que valha.</value>
+  </data>
+  <data name="CatalogErrorNoWorkDays" xml:space="preserve">
+    <value>“{0}” não tem nenhum dia útil no seu período.</value>
+  </data>
+  <data name="CatalogErrorUnknownFormat" xml:space="preserve">
+    <value>Não é um arquivo de calendários que a Calculadora conheça.</value>
+  </data>
+  <data name="CatalogErrorNewerFormat" xml:space="preserve">
+    <value>O arquivo foi gravado por uma versão mais nova da Calculadora; atualize o aplicativo.</value>
+  </data>
+  <data name="ImportCreateDerivedNone" xml:space="preserve">
+    <value>Novo calendário derivado de {0}, sem alterações</value>
+  </data>
+  <data name="ImportCreateDerivedOne" xml:space="preserve">
+    <value>Novo calendário derivado de {0}, com 1 alteração</value>
+  </data>
+  <data name="ImportCreateDerivedMany" xml:space="preserve">
+    <value>Novo calendário derivado de {0}, com {1} alterações</value>
+  </data>
 </root>

@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentDialog
+    x:Class="CalculadoraDiasUteis.ImportDialog"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:vm="using:CalculadoraDiasUteis.ViewModels"
+    x:Uid="ImportDialog"
+    AutomationProperties.AutomationId="ImportDialog"
+    DefaultButton="Primary"
+    Style="{StaticResource DefaultContentDialogStyle}"
+    mc:Ignorable="d">
+
+    <StackPanel MinWidth="360" Spacing="16">
+        <TextBlock x:Uid="ImportIntro" TextWrapping="Wrap" />
+
+        <ScrollViewer MaxHeight="320">
+            <ItemsControl ItemsSource="{x:Bind Rows, Mode=OneTime}">
+                <ItemsControl.ItemTemplate>
+                    <DataTemplate x:DataType="vm:ImportRow">
+                        <StackPanel Margin="0,0,0,8">
+                            <CheckBox
+                                AutomationProperties.HelpText="{x:Bind Detail, Mode=OneTime}"
+                                Content="{x:Bind Name, Mode=OneTime}"
+                                IsChecked="{x:Bind IsSelected, Mode=TwoWay}"
+                                IsEnabled="{x:Bind CanSelect, Mode=OneTime}" />
+                            <TextBlock
+                                Margin="28,0,0,0"
+                                AutomationProperties.AccessibilityView="Raw"
+                                Foreground="{ThemeResource TextFillColorSecondaryBrush}"
+                                Style="{StaticResource CaptionTextBlockStyle}"
+                                Text="{x:Bind Detail, Mode=OneTime}"
+                                TextWrapping="Wrap" />
+                        </StackPanel>
+                    </DataTemplate>
+                </ItemsControl.ItemTemplate>
+            </ItemsControl>
+        </ScrollViewer>
+
+        <InfoBar
+            x:Name="FailuresInfoBar"
+            AutomationProperties.AutomationId="ImportFailuresInfoBar"
+            IsClosable="False"
+            Severity="Warning" />
+    </StackPanel>
+</ContentDialog>

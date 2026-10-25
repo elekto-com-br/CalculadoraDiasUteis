@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentDialog
+    x:Class="CalculadoraDiasUteis.HolidayDialog"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    x:Uid="HolidayDialog"
+    AutomationProperties.AutomationId="HolidayDialog"
+    DefaultButton="Primary"
+    Style="{StaticResource DefaultContentDialogStyle}"
+    mc:Ignorable="d">
+
+    <StackPanel MinWidth="320" Spacing="16">
+        <CalendarDatePicker
+            x:Name="DatePicker"
+            x:Uid="HolidayDatePicker"
+            HorizontalAlignment="Stretch"
+            AutomationProperties.AutomationId="HolidayDatePicker"
+            DateChanged="DatePicker_DateChanged" />
+        <TextBlock
+            x:Name="DateText"
+            AutomationProperties.AutomationId="HolidayDateText"
+            Style="{StaticResource BodyStrongTextBlockStyle}" />
+        <TextBox
+            x:Name="DescriptionTextBox"
+            x:Uid="HolidayDescriptionTextBox"
+            AutomationProperties.AutomationId="HolidayDescriptionTextBox"
+            MaxLength="100" />
+
+        <!-- Avisa quando a data cai num fim de semana, que já não é dia útil -->
+        <InfoBar
+            x:Name="NoteInfoBar"
+            AutomationProperties.AutomationId="HolidayDialogNoteInfoBar"
+            IsClosable="False"
+            Severity="Informational" />
+        <InfoBar
+            x:Name="ErrorInfoBar"
+            AutomationProperties.AutomationId="HolidayDialogErrorInfoBar"
+            IsClosable="False"
+            Severity="Error" />
+    </StackPanel>
+</ContentDialog>

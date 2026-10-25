@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentDialog
+    x:Class="CalculadoraDiasUteis.CalendarDialog"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    x:Uid="CalendarDialog"
+    AutomationProperties.AutomationId="CalendarDialog"
+    DefaultButton="Primary"
+    Style="{StaticResource DefaultContentDialogStyle}"
+    mc:Ignorable="d">
+
+    <StackPanel MinWidth="320" Spacing="16">
+        <TextBox
+            x:Name="NameTextBox"
+            x:Uid="CalendarNameTextBox"
+            AutomationProperties.AutomationId="CalendarNameTextBox"
+            MaxLength="50" />
+
+        <StackPanel x:Name="BasesPanel" Spacing="4">
+            <TextBlock x:Uid="BasesLabel" />
+            <TextBlock
+                x:Uid="BasesHint"
+                Foreground="{ThemeResource TextFillColorSecondaryBrush}"
+                Style="{StaticResource CaptionTextBlockStyle}"
+                TextWrapping="Wrap" />
+            <ListView
+                x:Name="BasesListView"
+                x:Uid="BasesListView"
+                MaxHeight="240"
+                AutomationProperties.AutomationId="BasesListView"
+                BorderBrush="{ThemeResource ControlStrokeColorDefaultBrush}"
+                BorderThickness="1"
+                CornerRadius="{StaticResource ControlCornerRadius}"
+                SelectionMode="Multiple" />
+        </StackPanel>
+
+        <InfoBar
+            x:Name="ErrorInfoBar"
+            AutomationProperties.AutomationId="CalendarDialogErrorInfoBar"
+            IsClosable="False"
+            Severity="Error" />
+    </StackPanel>
+</ContentDialog>

@@ -103,6 +103,13 @@ public sealed class CalendarCatalog
         Calendars.Where(c => c.Bases.Contains(code, StringComparer.OrdinalIgnoreCase)).ToList();
 
     /// <summary>
+    ///     Se um calendário depende de outro, direta ou indiretamente, ou se é o próprio; um calendário assim não pode
+    ///     servir de base para o outro.
+    /// </summary>
+    public bool DependsOn(string code, string baseCode) =>
+        Find(code) is { } entry && DependsOn(entry, baseCode, []);
+
+    /// <summary>
     ///     As alterações guardadas, como estão, para a exportação.
     /// </summary>
     internal IReadOnlyCollection<StoredCalendar> Stored => _stored.Values;

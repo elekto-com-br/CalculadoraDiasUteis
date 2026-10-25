@@ -91,4 +91,9 @@ public sealed partial class MainPage : Page
     {
         Frame.Navigate(typeof(AboutPage));
     }
+
+    private void CalendarsButton_Click(object sender, RoutedEventArgs e)
+    {
+        Frame.Navigate(typeof(CalendarsPage), ViewModel.SelectedCalendarCode);
+    }
 }

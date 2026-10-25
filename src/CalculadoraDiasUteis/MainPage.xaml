@@ -38,6 +38,9 @@
                         <AdaptiveTrigger MinWindowWidth="0" />
                     </VisualState.StateTriggers>
                     <VisualState.Setters>
+                        <!-- Os botões do topo ficam só com o ícone; o nome continua na dica e no Narrador -->
+                        <Setter Target="CalendarsButtonText.Visibility" Value="Collapsed" />
+                        <Setter Target="AboutButtonText.Visibility" Value="Collapsed" />
                         <Setter Target="PeriodCard.(Grid.ColumnSpan)" Value="2" />
                         <Setter Target="TermCard.(Grid.Row)" Value="3" />
                         <Setter Target="TermCard.(Grid.Column)" Value="0" />
@@ -80,6 +83,7 @@
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="*" />
                     <ColumnDefinition Width="Auto" />
+                    <ColumnDefinition Width="Auto" />
                 </Grid.ColumnDefinitions>
 
                 <ComboBox
@@ -92,9 +96,24 @@
                     SelectedIndex="{x:Bind ViewModel.SelectedCalendarIndex, Mode=TwoWay}" />
 
                 <Button
+                    x:Name="CalendarsButton"
+                    x:Uid="CalendarsButton"
+                    Grid.Column="1"
+                    VerticalAlignment="Bottom"
+                    AutomationProperties.AutomationId="CalendarsButton"
+                    Click="CalendarsButton_Click"
+                    IsEnabled="{x:Bind ViewModel.IsReady, Mode=OneTime}"
+                    Style="{StaticResource SubtleButtonStyle}">
+                    <StackPanel Orientation="Horizontal" Spacing="8">
+                        <FontIcon FontSize="16" Glyph="&#xE787;" />
+                        <TextBlock x:Name="CalendarsButtonText" x:Uid="CalendarsButtonText" />
+                    </StackPanel>
+                </Button>
+
+                <Button
                     x:Name="AboutButton"
                     x:Uid="AboutButton"
-                    Grid.Column="1"
+                    Grid.Column="2"
                     VerticalAlignment="Bottom"
                     AutomationProperties.AutomationId="AboutButton"
                     Click="AboutButton_Click"
@@ -104,7 +123,7 @@
                     </Button.KeyboardAccelerators>
                     <StackPanel Orientation="Horizontal" Spacing="8">
                         <FontIcon FontSize="16" Glyph="&#xE946;" />
-                        <TextBlock x:Uid="AboutButtonText" />
+                        <TextBlock x:Name="AboutButtonText" x:Uid="AboutButtonText" />
                     </StackPanel>
                 </Button>
             </Grid>

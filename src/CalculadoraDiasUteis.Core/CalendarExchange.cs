@@ -107,6 +107,15 @@ public sealed class ImportItem
     /// <summary>Quantos feriados o calendário tem no arquivo.</summary>
     public int HolidayCount { get; }
 
+    /// <summary>Os nomes das bases, num calendário que vem com a herança; vazio nos outros.</summary>
+    public IReadOnlyList<string> BaseNames { get; internal init; } = [];
+
+    /// <summary>Quantas alterações o calendário traz por cima das bases.</summary>
+    public int ChangeCount => Calendar?.Changes.Count ?? 0;
+
+    /// <summary>O código que o calendário terá; nulo quando não há nada a fazer.</summary>
+    public string? Code => Calendar?.Code;
+
     /// <summary>Se o usuário quer importá-lo; começa marcado, menos quando não há nada a fazer.</summary>
     public bool IsSelected { get; set; }
 
@@ -285,6 +294,12 @@ public static class CalendarExchange
     }
 
     /// <summary>
+    ///     O mesmo plano, com mais arquivos que não puderam ser lidos, como os que o sistema não deixou abrir.
+    /// </summary>
+    public static ImportPlan WithFailures(ImportPlan plan, IEnumerable<ImportFailure> failures) =>
+        new(plan.Items, [.. failures, .. plan.Failures]);
+
+    /// <summary>
     ///     Grava os calendários marcados.
     /// </summary>
     /// <returns>Quantos calendários foram gravados.</returns>
@@ -397,11 +412,13 @@ public static class CalendarExchange
 
         // primeiro decide o código de cada calendário do usuário, porque as bases dos outros apontam para eles
         var codes = new Dictionary<string, string>(StringComparer.OrdinalIgnoreCase);
+        var names = new Dictionary<string, string>(StringComparer.OrdinalIgnoreCase);
         foreach (var calendar in calendars.Where(c => c.Kind == ExchangeKind.Custom))
         {
             var existing = context.Catalog.Find(calendar.Code!);
-            codes[calendar.Code!] = existing is { Kind: CalendarKind.Custom } ? existing.Code
-                : context.NewCode(calendar.Code!);
+            var code = existing is { Kind: CalendarKind.Custom } ? existing.Code : context.NewCode(calendar.Code!);
+            codes[calendar.Code!] = code;
+            names[code] = Truncate(calendar.Name, CalendarCatalog.MaxNameLength) ?? calendar.Code!;
         }
 
         foreach (var calendar in calendars)
@@ -460,7 +477,10 @@ public static class CalendarExchange
             }
 
             context.Add(new ImportItem(fileName, uniqueName, replacing ? ImportAction.Replace : ImportAction.Create,
-                note, noteDetail, flatChanges.Count, stored, bases.Count > 0 ? flat : null));
+                note, noteDetail, flatChanges.Count, stored, bases.Count > 0 ? flat : null)
+            {
+                BaseNames = stored.Bases.Select(b => context.Catalog.Find(b)?.Name ?? names.GetValueOrDefault(b, b)).ToList()
+            });
         }
     }
 

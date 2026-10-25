@@ -1,0 +1,332 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Page
+    x:Class="CalculadoraDiasUteis.CalendarsPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:local="using:CalculadoraDiasUteis"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:vm="using:CalculadoraDiasUteis.ViewModels"
+    mc:Ignorable="d">
+
+    <Page.Resources>
+        <Style
+            x:Key="SecondaryTextStyle"
+            BasedOn="{StaticResource BodyTextBlockStyle}"
+            TargetType="TextBlock">
+            <Setter Property="Foreground" Value="{ThemeResource TextFillColorSecondaryBrush}" />
+            <Setter Property="TextWrapping" Value="Wrap" />
+        </Style>
+    </Page.Resources>
+
+    <ScrollViewer>
+        <!--
+            Uma coluna só, para os comandos caberem numa linha em qualquer largura que a janela permita. O nome do
+            calendário escolhido já está na caixa de escolha; logo abaixo vêm a origem, o período e os comandos dele,
+            para os feriados aparecerem sem rolar na janela do tamanho inicial
+        -->
+        <Grid
+            MaxWidth="1040"
+            Padding="24,8,24,24"
+            RowSpacing="12">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+            </Grid.RowDefinitions>
+
+            <!-- O título e o que vale para todos os calendários -->
+            <Grid ColumnSpacing="16">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto" />
+                    <ColumnDefinition Width="*" />
+                </Grid.ColumnDefinitions>
+                <TextBlock
+                    x:Uid="CalendarsTitle"
+                    VerticalAlignment="Center"
+                    AutomationProperties.HeadingLevel="Level1"
+                    Style="{StaticResource TitleTextBlockStyle}" />
+                <CommandBar
+                    Grid.Column="1"
+                    HorizontalAlignment="Right"
+                    VerticalAlignment="Center"
+                    AutomationProperties.AutomationId="CalendarsCommandBar"
+                    Background="Transparent"
+                    DefaultLabelPosition="Right"
+                    IsEnabled="{x:Bind ViewModel.IsReady, Mode=OneTime}">
+                    <AppBarButton
+                        x:Uid="NewCalendarButton"
+                        AutomationProperties.AutomationId="NewCalendarButton"
+                        Click="NewCalendarButton_Click"
+                        Icon="Add" />
+                    <AppBarButton
+                        x:Uid="ImportButton"
+                        AutomationProperties.AutomationId="ImportButton"
+                        Click="ImportButton_Click">
+                        <AppBarButton.Icon>
+                            <FontIcon Glyph="&#xE8B5;" />
+                        </AppBarButton.Icon>
+                    </AppBarButton>
+                    <AppBarButton
+                        x:Uid="ExportAllButton"
+                        AutomationProperties.AutomationId="ExportAllButton"
+                        Click="ExportAllButton_Click">
+                        <AppBarButton.Icon>
+                            <FontIcon Glyph="&#xEDE1;" />
+                        </AppBarButton.Icon>
+                    </AppBarButton>
+                    <CommandBar.SecondaryCommands>
+                        <AppBarButton
+                            x:Uid="RestoreAllButton"
+                            AutomationProperties.AutomationId="RestoreAllButton"
+                            Click="RestoreAllButton_Click">
+                            <AppBarButton.Icon>
+                                <FontIcon Glyph="&#xE7A7;" />
+                            </AppBarButton.Icon>
+                        </AppBarButton>
+                    </CommandBar.SecondaryCommands>
+                </CommandBar>
+            </Grid>
+
+            <StackPanel Grid.Row="1" Spacing="8">
+                <TextBlock x:Uid="CalendarsIntro" Style="{StaticResource SecondaryTextStyle}" />
+
+                <!-- Só aparece se os calendários não puderem ser lidos -->
+                <InfoBar
+                    x:Uid="LoadErrorInfoBar"
+                    AutomationProperties.AutomationId="CalendarsLoadErrorInfoBar"
+                    IsClosable="False"
+                    IsOpen="{x:Bind local:MainPage.Not(ViewModel.IsReady), Mode=OneTime}"
+                    Message="{x:Bind ViewModel.LoadError, Mode=OneTime}"
+                    Severity="Error" />
+            </StackPanel>
+
+            <!-- O calendário a editar -->
+            <Grid Grid.Row="2">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*" MaxWidth="480" />
+                </Grid.ColumnDefinitions>
+                <ComboBox
+                    x:Name="EditCalendarComboBox"
+                    x:Uid="EditCalendarComboBox"
+                    HorizontalAlignment="Stretch"
+                    AutomationProperties.AutomationId="EditCalendarComboBox"
+                    IsEnabled="{x:Bind ViewModel.IsReady, Mode=OneTime}"
+                    ItemsSource="{x:Bind ViewModel.Calendars, Mode=OneTime}"
+                    SelectedItem="{x:Bind ViewModel.SelectedCalendar, Mode=TwoWay}" />
+            </Grid>
+
+            <StackPanel Grid.Row="3" Spacing="4">
+                <TextBlock
+                    AutomationProperties.AutomationId="CalendarKindText"
+                    Style="{StaticResource SecondaryTextStyle}"
+                    Text="{x:Bind ViewModel.CalendarKindText, Mode=OneWay}" />
+                <TextBlock
+                    AutomationProperties.AutomationId="CalendarPeriodText"
+                    Style="{StaticResource SecondaryTextStyle}"
+                    Text="{x:Bind ViewModel.CalendarPeriodText, Mode=OneWay}" />
+                <InfoBar
+                    AutomationProperties.AutomationId="CalendarErrorInfoBar"
+                    IsClosable="False"
+                    IsOpen="{x:Bind ViewModel.HasCalendarError, Mode=OneWay}"
+                    Message="{x:Bind ViewModel.CalendarError, Mode=OneWay}"
+                    Severity="Error" />
+            </StackPanel>
+
+            <!-- O que se faz com o calendário escolhido; os botões que não valem para ele ficam escondidos -->
+            <CommandBar
+                Grid.Row="4"
+                Margin="-4,0,0,0"
+                HorizontalAlignment="Left"
+                AutomationProperties.AutomationId="CalendarCommandBar"
+                Background="Transparent"
+                DefaultLabelPosition="Right"
+                IsEnabled="{x:Bind ViewModel.IsReady, Mode=OneTime}">
+                <AppBarButton
+                    x:Uid="DeriveCalendarButton"
+                    AutomationProperties.AutomationId="DeriveCalendarButton"
+                    Click="DeriveCalendarButton_Click"
+                    IsEnabled="{x:Bind ViewModel.CanEditHolidays, Mode=OneWay}">
+                    <AppBarButton.Icon>
+                        <FontIcon Glyph="&#xF5ED;" />
+                    </AppBarButton.Icon>
+                </AppBarButton>
+                <AppBarButton
+                    x:Uid="RenameCalendarButton"
+                    AutomationProperties.AutomationId="RenameCalendarButton"
+                    Click="RenameCalendarButton_Click"
+                    Visibility="{x:Bind local:CalendarsPage.VisibleIf(ViewModel.IsCustom), Mode=OneWay}">
+                    <AppBarButton.Icon>
+                        <FontIcon Glyph="&#xE8AC;" />
+                    </AppBarButton.Icon>
+                </AppBarButton>
+                <AppBarButton
+                    x:Uid="BasesButton"
+                    AutomationProperties.AutomationId="BasesButton"
+                    Click="BasesButton_Click"
+                    Visibility="{x:Bind local:CalendarsPage.VisibleIf(ViewModel.IsCustom), Mode=OneWay}">
+                    <AppBarButton.Icon>
+                        <FontIcon Glyph="&#xE71B;" />
+                    </AppBarButton.Icon>
+                </AppBarButton>
+                <AppBarButton
+                    x:Uid="ExportCalendarButton"
+                    AutomationProperties.AutomationId="ExportCalendarButton"
+                    Click="ExportCalendarButton_Click"
+                    IsEnabled="{x:Bind ViewModel.CanExportCalendar, Mode=OneWay}">
+                    <AppBarButton.Icon>
+                        <FontIcon Glyph="&#xEDE1;" />
+                    </AppBarButton.Icon>
+                </AppBarButton>
+                <AppBarButton
+                    x:Uid="RestoreCalendarButton"
+                    AutomationProperties.AutomationId="RestoreCalendarButton"
+                    Click="RestoreCalendarButton_Click"
+                    IsEnabled="{x:Bind ViewModel.CanRestoreCalendar, Mode=OneWay}"
+                    Visibility="{x:Bind local:CalendarsPage.VisibleIf(ViewModel.IsOriginal), Mode=OneWay}">
+                    <AppBarButton.Icon>
+                        <FontIcon Glyph="&#xE7A7;" />
+                    </AppBarButton.Icon>
+                </AppBarButton>
+                <AppBarButton
+                    x:Uid="DeleteCalendarButton"
+                    AutomationProperties.AutomationId="DeleteCalendarButton"
+                    Click="DeleteCalendarButton_Click"
+                    Icon="Delete"
+                    Visibility="{x:Bind local:CalendarsPage.VisibleIf(ViewModel.IsCustom), Mode=OneWay}" />
+            </CommandBar>
+
+            <!-- O resultado da última operação; o Narrador lê ao abrir -->
+            <InfoBar
+                Grid.Row="5"
+                AutomationProperties.AutomationId="StatusInfoBar"
+                IsOpen="{x:Bind ViewModel.IsStatusOpen, Mode=TwoWay}"
+                Message="{x:Bind ViewModel.StatusMessage, Mode=OneWay}"
+                Severity="{x:Bind local:CalendarsPage.SeverityOf(ViewModel.IsStatusError), Mode=OneWay}" />
+
+            <!-- Os feriados de um ano -->
+            <Border Grid.Row="6" Style="{StaticResource CardStyle}">
+                <StackPanel Spacing="12">
+                    <Grid ColumnSpacing="16">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*" />
+                            <ColumnDefinition Width="Auto" />
+                        </Grid.ColumnDefinitions>
+                        <StackPanel VerticalAlignment="Bottom" Spacing="4">
+                            <TextBlock
+                                x:Uid="HolidaysTitle"
+                                AutomationProperties.HeadingLevel="Level2"
+                                Style="{StaticResource SubtitleTextBlockStyle}" />
+                            <TextBlock
+                                AutomationProperties.AutomationId="HolidaysSummaryText"
+                                Style="{StaticResource SecondaryTextStyle}"
+                                Text="{x:Bind ViewModel.HolidaysSummary, Mode=OneWay}" />
+                        </StackPanel>
+                        <NumberBox
+                            x:Uid="YearNumberBox"
+                            Grid.Column="1"
+                            MinWidth="140"
+                            AutomationProperties.AutomationId="YearNumberBox"
+                            IsEnabled="{x:Bind ViewModel.IsReady, Mode=OneTime}"
+                            Maximum="{x:Bind ViewModel.MaxYear, Mode=OneWay}"
+                            Minimum="{x:Bind ViewModel.MinYear, Mode=OneWay}"
+                            SpinButtonPlacementMode="Inline"
+                            ValidationMode="InvalidInputOverwritten"
+                            Value="{x:Bind ViewModel.Year, Mode=TwoWay}" />
+                    </Grid>
+
+                    <!-- Poucos feriados por ano: a lista cresce com a página, que é quem rola -->
+                    <ListView
+                        x:Name="HolidaysListView"
+                        x:Uid="HolidaysListView"
+                        AutomationProperties.AutomationId="HolidaysListView"
+                        ItemsSource="{x:Bind ViewModel.Holidays, Mode=OneTime}"
+                        ScrollViewer.VerticalScrollBarVisibility="Disabled"
+                        ScrollViewer.VerticalScrollMode="Disabled"
+                        SelectedItem="{x:Bind ViewModel.SelectedHoliday, Mode=TwoWay}"
+                        SelectionMode="Single">
+                        <!-- Só com o foco na lista: sem dono, o atalho valeria na página inteira -->
+                        <ListView.KeyboardAccelerators>
+                            <KeyboardAccelerator
+                                Key="Delete"
+                                Invoked="RemoveHolidayAccelerator_Invoked"
+                                ScopeOwner="{x:Bind HolidaysListView, Mode=OneTime}" />
+                            <KeyboardAccelerator
+                                Key="F2"
+                                Invoked="EditHolidayAccelerator_Invoked"
+                                ScopeOwner="{x:Bind HolidaysListView, Mode=OneTime}" />
+                        </ListView.KeyboardAccelerators>
+                        <ListView.ItemTemplate>
+                            <DataTemplate x:DataType="vm:HolidayRow">
+                                <Grid Padding="0,8" ColumnSpacing="12">
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="Auto" MinWidth="96" />
+                                        <ColumnDefinition Width="*" />
+                                    </Grid.ColumnDefinitions>
+                                    <StackPanel>
+                                        <TextBlock
+                                            Style="{StaticResource BodyStrongTextBlockStyle}"
+                                            Text="{x:Bind DateText, Mode=OneTime}"
+                                            TextDecorations="{x:Bind local:CalendarsPage.StrikeIf(IsRemoved), Mode=OneTime}" />
+                                        <TextBlock
+                                            Foreground="{ThemeResource TextFillColorSecondaryBrush}"
+                                            Style="{StaticResource CaptionTextBlockStyle}"
+                                            Text="{x:Bind WeekDayText, Mode=OneTime}" />
+                                    </StackPanel>
+                                    <StackPanel Grid.Column="1">
+                                        <TextBlock
+                                            Text="{x:Bind Description, Mode=OneTime}"
+                                            TextDecorations="{x:Bind local:CalendarsPage.StrikeIf(IsRemoved), Mode=OneTime}"
+                                            TextWrapping="Wrap" />
+                                        <TextBlock
+                                            Foreground="{ThemeResource TextFillColorSecondaryBrush}"
+                                            Style="{StaticResource CaptionTextBlockStyle}"
+                                            Text="{x:Bind OriginText, Mode=OneTime}" />
+                                    </StackPanel>
+                                </Grid>
+                            </DataTemplate>
+                        </ListView.ItemTemplate>
+                    </ListView>
+
+                    <CommandBar
+                        HorizontalAlignment="Left"
+                        AutomationProperties.AutomationId="HolidayCommandBar"
+                        Background="Transparent"
+                        DefaultLabelPosition="Right"
+                        IsEnabled="{x:Bind ViewModel.CanEditHolidays, Mode=OneWay}">
+                        <AppBarButton
+                            x:Uid="AddHolidayButton"
+                            AutomationProperties.AutomationId="AddHolidayButton"
+                            Click="AddHolidayButton_Click"
+                            Icon="Add" />
+                        <AppBarButton
+                            x:Uid="EditHolidayButton"
+                            AutomationProperties.AutomationId="EditHolidayButton"
+                            Click="EditHolidayButton_Click"
+                            Icon="Edit"
+                            IsEnabled="{x:Bind ViewModel.CanEditHoliday, Mode=OneWay}" />
+                        <AppBarButton
+                            x:Uid="RemoveHolidayButton"
+                            AutomationProperties.AutomationId="RemoveHolidayButton"
+                            Click="RemoveHolidayButton_Click"
+                            Icon="Remove"
+                            IsEnabled="{x:Bind ViewModel.CanEditHoliday, Mode=OneWay}" />
+                        <AppBarButton
+                            x:Uid="RestoreHolidayButton"
+                            AutomationProperties.AutomationId="RestoreHolidayButton"
+                            Click="RestoreHolidayButton_Click"
+                            IsEnabled="{x:Bind ViewModel.CanRestoreHoliday, Mode=OneWay}">
+                            <AppBarButton.Icon>
+                                <FontIcon Glyph="&#xE7A7;" />
+                            </AppBarButton.Icon>
+                        </AppBarButton>
+                    </CommandBar>
+                </StackPanel>
+            </Border>
+        </Grid>
+    </ScrollViewer>
+</Page>

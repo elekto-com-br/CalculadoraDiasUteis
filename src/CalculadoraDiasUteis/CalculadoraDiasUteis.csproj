@@ -63,6 +63,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\CalculadoraDiasUteis.Core\CalculadoraDiasUteis.Core.csproj" />
     <ProjectReference Include="..\Elekto.Calendars\Elekto.Calendars.csproj" />
   </ItemGroup>
 

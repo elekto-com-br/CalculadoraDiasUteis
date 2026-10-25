@@ -35,6 +35,7 @@ var provider = new TextsInFolderCalendarInfoProvider(Path.Combine(AppContext.Bas
 var server = new CalendarServer(provider);
 var brBc = server.GetCalendar("br-BC");
 var usNyc = server.GetCalendar("us-NYC");
+var brBcDescriptions = provider.GetCalendarInfo("br-BC").HolidayDescriptions;
 
 // O teste escolhe o dia 15 nos seletores de data: é o único dia que aparece uma só vez em qualquer mês do calendário
 var d0 = new DateTime(today.Year, today.Month, 15);
@@ -49,6 +50,14 @@ var weekendDate = brBc.AddActualDays(d0, weekendTerm);
 
 string Date(DateTime d) => d.ToString("dd/MM/yyyy", culture);
 string Number(int n) => n.ToString("N0", culture);
+string HolidayNote(DateTime d) =>
+    brBcDescriptions.TryGetValue(d, out var description) ? $"feriado ({description})" : "feriado";
+
+// O feriado local do calendário derivado: o primeiro dia útil do br-BC entre 15 e 22 do mês, dias que aparecem uma
+// vez só na grade do calendário de qualquer mês
+var localDate = Enumerable.Range(15, 8).Select(day => new DateTime(today.Year, today.Month, day)).First(brBc.IsWorkday);
+var lapa = new Elekto.Calendars.Calendar(brBc.Holidays.Append(localDate), "forum-da-lapa", null, null);
+var christmas = new DateTime(today.Year, 12, 25);
 
 var expected = new Dictionary<string, object>
 {
@@ -67,12 +76,20 @@ var expected = new Dictionary<string, object>
     ["weekendTerm"] = weekendTerm,
     ["actualNone"] = Date(weekendDate),
     ["actualNoneDescription"] = "Data final: " + weekendDate.ToString("D", culture) + ", " +
-                                (brBc.IsProperHoliday(weekendDate) ? "feriado" : "dia não útil"),
+                                (brBc.IsProperHoliday(weekendDate) ? HolidayNote(weekendDate) : "dia não útil"),
     ["actualFollowing"] = Date(brBc.AddActualDays(d0, weekendTerm, FinalDateAdjust.Following)),
     ["actualModified"] = Date(brBc.AddActualDays(d0, weekendTerm, FinalDateAdjust.ModifiedFollowing)),
     ["nyseFullWork"] = Number(usNyc.GetDeltaWorkDays(d0, d1, DeltaTerminalDayAdjust.Full)),
     ["nyseFullActual"] = Number(usNyc.GetDeltaActualDays(d0, d1, DeltaTerminalDayAdjust.Full)),
-    ["nyseActualModified"] = Date(usNyc.AddActualDays(d0, weekendTerm, FinalDateAdjust.ModifiedFollowing))
+    ["nyseActualModified"] = Date(usNyc.AddActualDays(d0, weekendTerm, FinalDateAdjust.ModifiedFollowing)),
+    ["holidaysThisYear"] = $"{brBc.Holidays.Count(h => h.Year == today.Year)} feriados em {today.Year}.",
+    ["localDay"] = localDate.Day.ToString(CultureInfo.InvariantCulture),
+    ["localLong"] = localDate.ToString("D", culture),
+    ["christmasLong"] = christmas.ToString("D", culture),
+    ["christmasDescription"] = brBcDescriptions.GetValueOrDefault(christmas) ?? "",
+    ["brBcFinancialFromD0"] = Number(brBc.GetDeltaWorkDays(d0, today.AddYears(1), DeltaTerminalDayAdjust.Financial)),
+    ["lapaFinancialFromD0"] = Number(lapa.GetDeltaWorkDays(d0, today.AddYears(1), DeltaTerminalDayAdjust.Financial)),
+    ["lapaFinancialToday"] = Number(lapa.GetDeltaWorkDays(today, today.AddYears(1), DeltaTerminalDayAdjust.Financial))
 };
 
 Console.WriteLine(JsonSerializer.Serialize(expected));

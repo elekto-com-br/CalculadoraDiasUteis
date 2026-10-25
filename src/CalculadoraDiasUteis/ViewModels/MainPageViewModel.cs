@@ -17,7 +17,9 @@
 
     Entre em contato com a Elekto em https://elekto.com.br/
  */
+using System.Collections.ObjectModel;
 using System.Globalization;
+using CalculadoraDiasUteis.Core;
 using CalculadoraDiasUteis.Services;
 using CommunityToolkit.Mvvm.ComponentModel;
 using Elekto.Calendars;
@@ -51,18 +53,19 @@ public partial class MainPageViewModel : ObservableObject
     // Enquanto o construtor restaura as escolhas, nada é gravado nem calculado
     private readonly bool _isInitialized;
 
+    // Enquanto a lista é refeita depois de uma edição, a seleção vazia que a caixa de escolha devolve não conta
+    private bool _refreshing;
+
     public MainPageViewModel()
     {
-        try
+        if (CalendarService.Catalog is not { } catalog)
         {
-            Calendars = CalendarCatalog.Load();
-        }
-        catch (Exception ex)
-        {
-            Calendars = [];
-            LoadError = ex.Message;
+            LoadError = CalendarService.LoadError;
             return;
         }
+
+        FillCalendars(catalog);
+        catalog.Changed += Catalog_Changed;
 
         var today = DateTime.Today;
         PeriodStart = new DateTimeOffset(today);
@@ -78,9 +81,9 @@ public partial class MainPageViewModel : ObservableObject
     }
 
     /// <summary>
-    ///     Os calendários disponíveis.
+    ///     Os calendários que podem ser usados nas contas; muda quando o usuário edita os calendários.
     /// </summary>
-    public IReadOnlyList<ICalendar> Calendars { get; }
+    public ObservableCollection<CatalogEntry> Calendars { get; } = [];
 
     /// <summary>
     ///     Por que os calendários não puderam ser carregados; nulo se foram.
@@ -205,12 +208,19 @@ public partial class MainPageViewModel : ObservableObject
 
     #endregion
 
-    private ICalendar? Calendar =>
+    /// <summary>
+    ///     O código do calendário escolhido, para a edição dos calendários abrir nele.
+    /// </summary>
+    public string? SelectedCalendarCode => Entry?.Code;
+
+    private CatalogEntry? Entry =>
         SelectedCalendarIndex >= 0 && SelectedCalendarIndex < Calendars.Count ? Calendars[SelectedCalendarIndex] : null;
+
+    private ICalendar? Calendar => Entry?.Calendar;
 
     partial void OnSelectedCalendarIndexChanged(int value)
     {
-        if (!_isInitialized || Calendar is not { } calendar)
+        if (!_isInitialized || _refreshing || Calendar is not { } calendar)
         {
             return;
         }
@@ -289,10 +299,33 @@ public partial class MainPageViewModel : ObservableObject
 
     private int TermDays => (int)Math.Clamp(Math.Round(Term), -MaxTerm, MaxTerm);
 
+    private void FillCalendars(CalendarCatalog catalog)
+    {
+        Calendars.Clear();
+        foreach (var entry in catalog.Calendars.Where(c => c.IsUsable))
+        {
+            Calendars.Add(entry);
+        }
+    }
+
+    /// <summary>
+    ///     Depois de uma edição, refaz a lista e as contas, no mesmo calendário se ele ainda existir.
+    /// </summary>
+    private void Catalog_Changed(object? sender, EventArgs e)
+    {
+        var code = Entry?.Code;
+        _refreshing = true;
+        FillCalendars((CalendarCatalog)sender!);
+        var index = Calendars.ToList().FindIndex(c => string.Equals(c.Code, code, StringComparison.OrdinalIgnoreCase));
+        SelectedCalendarIndex = -1;
+        _refreshing = false;
+        SelectedCalendarIndex = Math.Max(index, 0);
+    }
+
     private void RestoreSettings()
     {
         var calendarIndex = Calendars.ToList().FindIndex(c =>
-            string.Equals(c.Name, _settings.LastCalendar, StringComparison.OrdinalIgnoreCase));
+            string.Equals(c.Code, _settings.LastCalendar, StringComparison.OrdinalIgnoreCase));
         SelectedCalendarIndex = Math.Max(calendarIndex, 0);
 
         // Os padrões são os da 1.2: financeiro, dias úteis, sem ajuste e 252 dias
@@ -415,7 +448,10 @@ public partial class MainPageViewModel : ObservableObject
             // Sem ajuste, a data final em dias corridos pode cair num dia não útil, o que vale avisar
             if (end >= calendar.MinDate && end <= calendar.MaxDate && !calendar.IsWorkday(end))
             {
-                var note = Strings.Get(calendar.IsProperHoliday(end) ? "HolidayNote" : "NonWorkDayNote");
+                var holiday = Entry?.HolidayAt(end)?.Description;
+                var note = calendar.IsProperHoliday(end)
+                    ? holiday == null ? Strings.Get("HolidayNote") : Strings.Format("HolidayNoteWithDescription", holiday)
+                    : Strings.Get("NonWorkDayNote");
                 weekDay = Strings.Format("TextWithNote", weekDay, note);
                 description = Strings.Format("TextWithNote", description, note);
             }
