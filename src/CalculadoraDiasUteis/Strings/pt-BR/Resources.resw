@@ -979,4 +979,19 @@
   <data name="ErrorSheet" xml:space="preserve">
     <value>Não foi possível copiar ou gravar a planilha: {0}</value>
   </data>
+  <data name="CalendarName_br_BC" xml:space="preserve">
+    <value>Brasil - Banco Central</value>
+  </data>
+  <data name="CalendarName_br_SP" xml:space="preserve">
+    <value>Brasil - B3 (São Paulo)</value>
+  </data>
+  <data name="CalendarName_us_NYC" xml:space="preserve">
+    <value>Estados Unidos - NYSE (Nova Iorque)</value>
+  </data>
+  <data name="CalendarName_gb_LND" xml:space="preserve">
+    <value>Inglaterra - Londres</value>
+  </data>
+  <data name="LicenseTranslationButton.Visibility" xml:space="preserve">
+    <value>Visible</value>
+  </data>
 </root>

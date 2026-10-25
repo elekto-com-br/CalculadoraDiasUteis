@@ -15,9 +15,9 @@
     <EnableMsixTooling>true</EnableMsixTooling>
     <ImplicitUsings>enable</ImplicitUsings>
     <Nullable>enable</Nullable>
-    <!-- O português é o idioma padrão; espanhol e inglês entram na fase 5 -->
+    <!-- O português é o idioma padrão; inglês e espanhol seguem o idioma do Windows -->
     <DefaultLanguage>pt-BR</DefaultLanguage>
-    <SatelliteResourceLanguages>pt-BR</SatelliteResourceLanguages>
+    <SatelliteResourceLanguages>pt-BR;en-US;es-ES</SatelliteResourceLanguages>
     <Version>2.0.0</Version>
     <Description>Cálculo de dias úteis e prazos com calendários de feriados.</Description>
   </PropertyGroup>

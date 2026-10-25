@@ -1,0 +1,981 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+
+  <!-- Aplicativo (também usados pelo Package.appxmanifest) -->
+  <data name="AppDisplayName" xml:space="preserve">
+    <value>Business Days Calculator</value>
+  </data>
+  <data name="AppDescription" xml:space="preserve">
+    <value>Business days and due dates with holiday calendars.</value>
+  </data>
+  <data name="AppTitleBar.Title" xml:space="preserve">
+    <value>Business Days Calculator</value>
+  </data>
+  <data name="LoadErrorInfoBar.Title" xml:space="preserve">
+    <value>The calendars could not be read</value>
+  </data>
+  <data name="CalendarComboBox.Header" xml:space="preserve">
+    <value>Calendar</value>
+  </data>
+  <data name="CalendarComboBox.AccessKey" xml:space="preserve">
+    <value>C</value>
+  </data>
+  <data name="CalendarComboBox.[using:Microsoft.UI.Xaml.Automation]AutomationProperties.Name" xml:space="preserve">
+    <value>Calendar</value>
+  </data>
+  <data name="CalendarComboBox.[using:Microsoft.UI.Xaml.Automation]AutomationProperties.HelpText" xml:space="preserve">
+    <value>Each calendar has its own holidays, which apply to both calculations.</value>
+  </data>
+  <data name="CalendarComboBox.[using:Microsoft.UI.Xaml.Controls]ToolTipService.ToolTip" xml:space="preserve">
+    <value>Each calendar has its own holidays, which apply to both calculations.</value>
+  </data>
+  <data name="AboutButton.AccessKey" xml:space="preserve">
+    <value>A</value>
+  </data>
+  <data name="AboutButton.[using:Microsoft.UI.Xaml.Automation]AutomationProperties.Name" xml:space="preserve">
+    <value>About</value>
+  </data>
+  <data name="AboutButton.[using:Microsoft.UI.Xaml.Controls]ToolTipService.ToolTip" xml:space="preserve">
+    <value>Version, license and privacy (F1)</value>
+  </data>
+  <data name="AboutButtonText.Text" xml:space="preserve">
+    <value>About</value>
+  </data>
+  <data name="PeriodTitle.Text" xml:space="preserve">
+    <value>Days between two dates</value>
+  </data>
+  <data name="PeriodStartPicker.Header" xml:space="preserve">
+    <value>Start date</value>
+  </data>
+  <data name="PeriodStartPicker.AccessKey" xml:space="preserve">
+    <value>S</value>
+  </data>
+  <data name="PeriodStartPicker.[using:Microsoft.UI.Xaml.Automation]AutomationProperties.Name" xml:space="preserve">
+    <value>Start date of the period</value>
+  </data>
+  <data name="PeriodEndPicker.Header" xml:space="preserve">
+    <value>End date</value>
+  </data>
+  <data name="PeriodEndPicker.AccessKey" xml:space="preserve">
+    <value>N</value>
+  </data>
+  <data name="PeriodEndPicker.[using:Microsoft.UI.Xaml.Automation]AutomationProperties.Name" xml:space="preserve">
+    <value>End date of the period</value>
+  </data>
+  <data name="CountingRadioButtons.Header" xml:space="preserve">
+    <value>Counting method</value>
+  </data>
+  <data name="CountingRadioButtons.[using:Microsoft.UI.Xaml.Automation]AutomationProperties.Name" xml:space="preserve">
+    <value>Counting method</value>
+  </data>
+  <data name="FinancialRadioButton.Content" xml:space="preserve">
+    <value>Financial</value>
+  </data>
+  <data name="FinancialRadioButton.AccessKey" xml:space="preserve">
+    <value>F</value>
+  </data>
+  <data name="FinancialRadioButton.[using:Microsoft.UI.Xaml.Automation]AutomationProperties.Name" xml:space="preserve">
+    <value>Financial</value>
+  </data>
+  <data name="FinancialRadioButton.[using:Microsoft.UI.Xaml.Automation]AutomationProperties.HelpText" xml:space="preserve">
+    <value>Counts the start date and not the end date, as required by Circular 2,456 of the Central Bank of Brazil.</value>
+  </data>
+  <data name="FinancialRadioButton.[using:Microsoft.UI.Xaml.Controls]ToolTipService.ToolTip" xml:space="preserve">
+    <value>Counts the start date and not the end date, as required by Circular 2,456 of the Central Bank of Brazil.</value>
+  </data>
+  <data name="FullDaysRadioButton.Content" xml:space="preserve">
+    <value>Full days</value>
+  </data>
+  <data name="FullDaysRadioButton.AccessKey" xml:space="preserve">
+    <value>U</value>
+  </data>
+  <data name="FullDaysRadioButton.[using:Microsoft.UI.Xaml.Automation]AutomationProperties.Name" xml:space="preserve">
+    <value>Full days</value>
+  </data>
+  <data name="FullDaysRadioButton.[using:Microsoft.UI.Xaml.Automation]AutomationProperties.HelpText" xml:space="preserve">
+    <value>Counts both the start and the end date.</value>
+  </data>
+  <data name="FullDaysRadioButton.[using:Microsoft.UI.Xaml.Controls]ToolTipService.ToolTip" xml:space="preserve">
+    <value>Counts both the start and the end date.</value>
+  </data>
+  <data name="TermTitle.Text" xml:space="preserve">
+    <value>End date of a term</value>
+  </data>
+  <data name="TermStartPicker.Header" xml:space="preserve">
+    <value>Start date</value>
+  </data>
+  <data name="TermStartPicker.AccessKey" xml:space="preserve">
+    <value>T</value>
+  </data>
+  <data name="TermStartPicker.[using:Microsoft.UI.Xaml.Automation]AutomationProperties.Name" xml:space="preserve">
+    <value>Start date of the term</value>
+  </data>
+  <data name="TermNumberBox.Header" xml:space="preserve">
+    <value>Term</value>
+  </data>
+  <data name="TermNumberBox.AccessKey" xml:space="preserve">
+    <value>R</value>
+  </data>
+  <data name="TermNumberBox.[using:Microsoft.UI.Xaml.Automation]AutomationProperties.Name" xml:space="preserve">
+    <value>Term</value>
+  </data>
+  <data name="TermNumberBox.[using:Microsoft.UI.Xaml.Automation]AutomationProperties.HelpText" xml:space="preserve">
+    <value>In business or calendar days, according to the type of term. A negative term counts backwards.</value>
+  </data>
+  <data name="TermNumberBox.[using:Microsoft.UI.Xaml.Controls]ToolTipService.ToolTip" xml:space="preserve">
+    <value>In business or calendar days, according to the type of term. A negative term counts backwards.</value>
+  </data>
+  <data name="TermTypeRadioButtons.Header" xml:space="preserve">
+    <value>Type of term</value>
+  </data>
+  <data name="TermTypeRadioButtons.[using:Microsoft.UI.Xaml.Automation]AutomationProperties.Name" xml:space="preserve">
+    <value>Type of term</value>
+  </data>
+  <data name="WorkDaysRadioButton.Content" xml:space="preserve">
+    <value>Business days</value>
+  </data>
+  <data name="WorkDaysRadioButton.AccessKey" xml:space="preserve">
+    <value>B</value>
+  </data>
+  <data name="WorkDaysRadioButton.[using:Microsoft.UI.Xaml.Automation]AutomationProperties.Name" xml:space="preserve">
+    <value>Business days</value>
+  </data>
+  <data name="WorkDaysRadioButton.[using:Microsoft.UI.Xaml.Automation]AutomationProperties.HelpText" xml:space="preserve">
+    <value>The term is counted in business days from the start date; the end date is always a business day.</value>
+  </data>
+  <data name="WorkDaysRadioButton.[using:Microsoft.UI.Xaml.Controls]ToolTipService.ToolTip" xml:space="preserve">
+    <value>The term is counted in business days from the start date; the end date is always a business day.</value>
+  </data>
+  <data name="ActualDaysRadioButton.Content" xml:space="preserve">
+    <value>Calendar days</value>
+  </data>
+  <data name="ActualDaysRadioButton.AccessKey" xml:space="preserve">
+    <value>D</value>
+  </data>
+  <data name="ActualDaysRadioButton.[using:Microsoft.UI.Xaml.Automation]AutomationProperties.Name" xml:space="preserve">
+    <value>Calendar days</value>
+  </data>
+  <data name="ActualDaysRadioButton.[using:Microsoft.UI.Xaml.Automation]AutomationProperties.HelpText" xml:space="preserve">
+    <value>The term is counted in calendar days from the start date; the end date follows the chosen adjustment.</value>
+  </data>
+  <data name="ActualDaysRadioButton.[using:Microsoft.UI.Xaml.Controls]ToolTipService.ToolTip" xml:space="preserve">
+    <value>The term is counted in calendar days from the start date; the end date follows the chosen adjustment.</value>
+  </data>
+  <data name="AdjustRadioButtons.Header" xml:space="preserve">
+    <value>End date adjustment (calendar days only)</value>
+  </data>
+  <data name="AdjustRadioButtons.[using:Microsoft.UI.Xaml.Automation]AutomationProperties.Name" xml:space="preserve">
+    <value>End date adjustment, calendar days only</value>
+  </data>
+  <data name="AdjustNoneRadioButton.Content" xml:space="preserve">
+    <value>None</value>
+  </data>
+  <data name="AdjustNoneRadioButton.AccessKey" xml:space="preserve">
+    <value>O</value>
+  </data>
+  <data name="AdjustNoneRadioButton.[using:Microsoft.UI.Xaml.Automation]AutomationProperties.Name" xml:space="preserve">
+    <value>No adjustment</value>
+  </data>
+  <data name="AdjustNoneRadioButton.[using:Microsoft.UI.Xaml.Automation]AutomationProperties.HelpText" xml:space="preserve">
+    <value>The end date stays as it is, even if it is not a business day.</value>
+  </data>
+  <data name="AdjustNoneRadioButton.[using:Microsoft.UI.Xaml.Controls]ToolTipService.ToolTip" xml:space="preserve">
+    <value>The end date stays as it is, even if it is not a business day.</value>
+  </data>
+  <data name="AdjustFollowingRadioButton.Content" xml:space="preserve">
+    <value>Following</value>
+  </data>
+  <data name="AdjustFollowingRadioButton.AccessKey" xml:space="preserve">
+    <value>W</value>
+  </data>
+  <data name="AdjustFollowingRadioButton.[using:Microsoft.UI.Xaml.Automation]AutomationProperties.Name" xml:space="preserve">
+    <value>Following business day</value>
+  </data>
+  <data name="AdjustFollowingRadioButton.[using:Microsoft.UI.Xaml.Automation]AutomationProperties.HelpText" xml:space="preserve">
+    <value>If the end date is not a business day, it moves to the following business day.</value>
+  </data>
+  <data name="AdjustFollowingRadioButton.[using:Microsoft.UI.Xaml.Controls]ToolTipService.ToolTip" xml:space="preserve">
+    <value>If the end date is not a business day, it moves to the following business day.</value>
+  </data>
+  <data name="AdjustModifiedFollowingRadioButton.Content" xml:space="preserve">
+    <value>Modified following</value>
+  </data>
+  <data name="AdjustModifiedFollowingRadioButton.AccessKey" xml:space="preserve">
+    <value>M</value>
+  </data>
+  <data name="AdjustModifiedFollowingRadioButton.[using:Microsoft.UI.Xaml.Automation]AutomationProperties.Name" xml:space="preserve">
+    <value>Modified following business day</value>
+  </data>
+  <data name="AdjustModifiedFollowingRadioButton.[using:Microsoft.UI.Xaml.Automation]AutomationProperties.HelpText" xml:space="preserve">
+    <value>If the end date is not a business day, it moves to the following business day, unless that changes the month; in that case, it moves to the previous business day.</value>
+  </data>
+  <data name="AdjustModifiedFollowingRadioButton.[using:Microsoft.UI.Xaml.Controls]ToolTipService.ToolTip" xml:space="preserve">
+    <value>If the end date is not a business day, it moves to the following business day, unless that changes the month; in that case, it moves to the previous business day.</value>
+  </data>
+  <data name="WorkDayCaption" xml:space="preserve">
+    <value>business day</value>
+  </data>
+  <data name="WorkDaysCaption" xml:space="preserve">
+    <value>business days</value>
+  </data>
+  <data name="ActualDayCaption" xml:space="preserve">
+    <value>calendar day</value>
+  </data>
+  <data name="ActualDaysCaption" xml:space="preserve">
+    <value>calendar days</value>
+  </data>
+  <data name="ValueWithCaption" xml:space="preserve">
+    <value>{0} {1}</value>
+  </data>
+  <data name="PeriodDescription" xml:space="preserve">
+    <value>{0} {1} and {2} {3}</value>
+  </data>
+  <data name="FinalDateDescription" xml:space="preserve">
+    <value>End date: {0}</value>
+  </data>
+  <data name="TextWithNote" xml:space="preserve">
+    <value>{0}, {1}</value>
+  </data>
+  <data name="HolidayNote" xml:space="preserve">
+    <value>holiday</value>
+  </data>
+  <data name="NonWorkDayNote" xml:space="preserve">
+    <value>non-business day</value>
+  </data>
+  <data name="ErrorOutsideCalendar" xml:space="preserve">
+    <value>The calculation goes beyond the period covered by the calendar, from {0} to {1}.</value>
+  </data>
+  <data name="ErrorCalendarsFolderMissing" xml:space="preserve">
+    <value>The calendars folder, '{0}', was not found. Try reinstalling the app.</value>
+  </data>
+  <data name="ErrorNoCalendars" xml:space="preserve">
+    <value>No valid calendar was found in '{0}'. Try reinstalling the app.</value>
+  </data>
+  <data name="ErrorOpenFile" xml:space="preserve">
+    <value>The file '{0}' could not be opened.</value>
+  </data>
+  <data name="ElektoLink.[using:Microsoft.UI.Xaml.Automation]AutomationProperties.Name" xml:space="preserve">
+    <value>Elekto website</value>
+  </data>
+  <data name="ElektoLink.[using:Microsoft.UI.Xaml.Controls]ToolTipService.ToolTip" xml:space="preserve">
+    <value>elekto.com.br</value>
+  </data>
+  <data name="ElektoLink.AccessKey" xml:space="preserve">
+    <value>E</value>
+  </data>
+  <data name="AboutTitle.Text" xml:space="preserve">
+    <value>Business Days Calculator</value>
+  </data>
+  <data name="AboutVersion" xml:space="preserve">
+    <value>Version {0}</value>
+  </data>
+  <data name="AboutCopyright.Text" xml:space="preserve">
+    <value>Copyright © 2021-2026 by Elekto Produtos Financeiros Ltda.</value>
+  </data>
+  <data name="AboutPurpose.Text" xml:space="preserve">
+    <value>Free application to calculate terms and end dates considering the business days of calendars.</value>
+  </data>
+  <data name="AboutFree.Text" xml:space="preserve">
+    <value>This application is free! The source code is available and, if you paid for this app, ask for your money back, because Elekto distributes it free of charge.</value>
+  </data>
+  <data name="SourceCodeLink.Content" xml:space="preserve">
+    <value>Source code on GitHub</value>
+  </data>
+  <data name="SourceCodeLink.AccessKey" xml:space="preserve">
+    <value>C</value>
+  </data>
+  <data name="AboutLicense.Text" xml:space="preserve">
+    <value>This application uses the GPLv3 license: you are free to use it as you wish, but no warranty of any kind is given for its correct or incorrect use, and Elekto Produtos Financeiros shall not be held liable for any damage of any nature. The license allows you to include the code in your own applications, as long as you license them under the same license.</value>
+  </data>
+  <data name="AboutAlternativeLicense.Text" xml:space="preserve">
+    <value>If you need to include this application, in binary or source form, in proprietary software, contact Elekto to negotiate an alternative license.</value>
+  </data>
+  <data name="AboutPrivacyTitle.Text" xml:space="preserve">
+    <value>Privacy</value>
+  </data>
+  <data name="AboutPrivacy.Text" xml:space="preserve">
+    <value>The application does not track usage, does not send error reports or telemetry and does not communicate with the Internet. The links on this page open in your browser, with nothing that identifies where the visit comes from. On the Elekto website, the Elekto privacy policy applies; on GitHub, where the source code is, the GitHub privacy statement applies, for which Elekto is not responsible.</value>
+  </data>
+  <data name="ElektoPrivacyLink.Content" xml:space="preserve">
+    <value>Elekto privacy policy</value>
+  </data>
+  <data name="ElektoPrivacyLink.AccessKey" xml:space="preserve">
+    <value>P</value>
+  </data>
+  <data name="ElektoPrivacyLink.NavigateUri" xml:space="preserve">
+    <value>https://elekto.com.br/Info/PrivacyPolicy</value>
+  </data>
+  <data name="GitHubPrivacyLink.Content" xml:space="preserve">
+    <value>GitHub privacy statement</value>
+  </data>
+  <data name="GitHubPrivacyLink.AccessKey" xml:space="preserve">
+    <value>G</value>
+  </data>
+  <data name="GitHubPrivacyLink.NavigateUri" xml:space="preserve">
+    <value>https://docs.github.com/en/site-policy/privacy-policies/github-general-privacy-statement</value>
+  </data>
+  <data name="LicenseButton.Content" xml:space="preserve">
+    <value>Read the license</value>
+  </data>
+  <data name="LicenseButton.AccessKey" xml:space="preserve">
+    <value>L</value>
+  </data>
+  <data name="LicenseTranslationButton.Content" xml:space="preserve">
+    <value>Read the license translation</value>
+  </data>
+  <data name="LicenseTranslationButton.AccessKey" xml:space="preserve">
+    <value>T</value>
+  </data>
+  <data name="CalendarsButton.AccessKey" xml:space="preserve">
+    <value>E</value>
+  </data>
+  <data name="CalendarsButton.[using:Microsoft.UI.Xaml.Automation]AutomationProperties.Name" xml:space="preserve">
+    <value>Edit calendars</value>
+  </data>
+  <data name="CalendarsButton.[using:Microsoft.UI.Xaml.Controls]ToolTipService.ToolTip" xml:space="preserve">
+    <value>Create, edit, import and export calendars</value>
+  </data>
+  <data name="CalendarsButtonText.Text" xml:space="preserve">
+    <value>Edit calendars</value>
+  </data>
+  <data name="HolidayNoteWithDescription" xml:space="preserve">
+    <value>holiday ({0})</value>
+  </data>
+  <data name="CalendarsTitle.Text" xml:space="preserve">
+    <value>Calendars</value>
+  </data>
+  <data name="CalendarsIntro.Text" xml:space="preserve">
+    <value>The Elekto calendars are updated together with the app, and your changes to them remain in effect. Your own calendars can start from others, their bases, and receive their updates.</value>
+  </data>
+  <data name="EditCalendarComboBox.Header" xml:space="preserve">
+    <value>Calendar</value>
+  </data>
+  <data name="EditCalendarComboBox.AccessKey" xml:space="preserve">
+    <value>C</value>
+  </data>
+  <data name="EditCalendarComboBox.[using:Microsoft.UI.Xaml.Automation]AutomationProperties.Name" xml:space="preserve">
+    <value>Calendar to edit</value>
+  </data>
+  <data name="NewCalendarButton.Label" xml:space="preserve">
+    <value>New</value>
+  </data>
+  <data name="NewCalendarButton.AccessKey" xml:space="preserve">
+    <value>N</value>
+  </data>
+  <data name="NewCalendarButton.[using:Microsoft.UI.Xaml.Controls]ToolTipService.ToolTip" xml:space="preserve">
+    <value>Create a calendar, empty or based on others</value>
+  </data>
+  <data name="ImportButton.Label" xml:space="preserve">
+    <value>Import</value>
+  </data>
+  <data name="ImportButton.AccessKey" xml:space="preserve">
+    <value>I</value>
+  </data>
+  <data name="ImportButton.[using:Microsoft.UI.Xaml.Controls]ToolTipService.ToolTip" xml:space="preserve">
+    <value>Import calendars exported by this version or calendar files from version 1</value>
+  </data>
+  <data name="ExportAllButton.Label" xml:space="preserve">
+    <value>Export all</value>
+  </data>
+  <data name="ExportAllButton.AccessKey" xml:space="preserve">
+    <value>X</value>
+  </data>
+  <data name="ExportAllButton.[using:Microsoft.UI.Xaml.Controls]ToolTipService.ToolTip" xml:space="preserve">
+    <value>Export your calendars and your changes to the Elekto ones, in a single file</value>
+  </data>
+  <data name="RestoreAllButton.Label" xml:space="preserve">
+    <value>Undo the changes to the Elekto calendars</value>
+  </data>
+  <data name="DeriveCalendarButton.Label" xml:space="preserve">
+    <value>New from this one</value>
+  </data>
+  <data name="DeriveCalendarButton.AccessKey" xml:space="preserve">
+    <value>F</value>
+  </data>
+  <data name="DeriveCalendarButton.[using:Microsoft.UI.Xaml.Controls]ToolTipService.ToolTip" xml:space="preserve">
+    <value>Create a calendar that has this one as its base</value>
+  </data>
+  <data name="RenameCalendarButton.Label" xml:space="preserve">
+    <value>Rename</value>
+  </data>
+  <data name="RenameCalendarButton.AccessKey" xml:space="preserve">
+    <value>R</value>
+  </data>
+  <data name="BasesButton.Label" xml:space="preserve">
+    <value>Bases</value>
+  </data>
+  <data name="BasesButton.AccessKey" xml:space="preserve">
+    <value>B</value>
+  </data>
+  <data name="BasesButton.[using:Microsoft.UI.Xaml.Controls]ToolTipService.ToolTip" xml:space="preserve">
+    <value>Choose which calendars this one inherits its holidays from</value>
+  </data>
+  <data name="ExportCalendarButton.Label" xml:space="preserve">
+    <value>Export</value>
+  </data>
+  <data name="ExportCalendarButton.AccessKey" xml:space="preserve">
+    <value>E</value>
+  </data>
+  <data name="ExportCalendarButton.[using:Microsoft.UI.Xaml.Controls]ToolTipService.ToolTip" xml:space="preserve">
+    <value>Export this calendar, with the bases it depends on</value>
+  </data>
+  <data name="RestoreCalendarButton.Label" xml:space="preserve">
+    <value>Undo changes</value>
+  </data>
+  <data name="RestoreCalendarButton.AccessKey" xml:space="preserve">
+    <value>U</value>
+  </data>
+  <data name="RestoreCalendarButton.[using:Microsoft.UI.Xaml.Controls]ToolTipService.ToolTip" xml:space="preserve">
+    <value>Return this calendar to what Elekto ships</value>
+  </data>
+  <data name="DeleteCalendarButton.Label" xml:space="preserve">
+    <value>Delete</value>
+  </data>
+  <data name="DeleteCalendarButton.AccessKey" xml:space="preserve">
+    <value>D</value>
+  </data>
+  <data name="HolidaysTitle.Text" xml:space="preserve">
+    <value>Holidays</value>
+  </data>
+  <data name="YearNumberBox.Header" xml:space="preserve">
+    <value>Year</value>
+  </data>
+  <data name="YearNumberBox.AccessKey" xml:space="preserve">
+    <value>Y</value>
+  </data>
+  <data name="HolidaysListView.[using:Microsoft.UI.Xaml.Automation]AutomationProperties.Name" xml:space="preserve">
+    <value>Holidays of the year</value>
+  </data>
+  <data name="AddHolidayButton.Label" xml:space="preserve">
+    <value>Add holiday</value>
+  </data>
+  <data name="AddHolidayButton.AccessKey" xml:space="preserve">
+    <value>A</value>
+  </data>
+  <data name="EditHolidayButton.Label" xml:space="preserve">
+    <value>Edit description</value>
+  </data>
+  <data name="EditHolidayButton.AccessKey" xml:space="preserve">
+    <value>T</value>
+  </data>
+  <data name="EditHolidayButton.[using:Microsoft.UI.Xaml.Controls]ToolTipService.ToolTip" xml:space="preserve">
+    <value>Change the description of the chosen holiday (F2)</value>
+  </data>
+  <data name="RemoveHolidayButton.Label" xml:space="preserve">
+    <value>Remove</value>
+  </data>
+  <data name="RemoveHolidayButton.AccessKey" xml:space="preserve">
+    <value>M</value>
+  </data>
+  <data name="RemoveHolidayButton.[using:Microsoft.UI.Xaml.Controls]ToolTipService.ToolTip" xml:space="preserve">
+    <value>Remove the chosen holiday (Delete)</value>
+  </data>
+  <data name="RestoreHolidayButton.Label" xml:space="preserve">
+    <value>Restore</value>
+  </data>
+  <data name="RestoreHolidayButton.AccessKey" xml:space="preserve">
+    <value>O</value>
+  </data>
+  <data name="RestoreHolidayButton.[using:Microsoft.UI.Xaml.Controls]ToolTipService.ToolTip" xml:space="preserve">
+    <value>Undo the removal or the description change of the chosen holiday</value>
+  </data>
+  <data name="KindOriginal" xml:space="preserve">
+    <value>Elekto calendar</value>
+  </data>
+  <data name="KindDerived" xml:space="preserve">
+    <value>Derived from {0}</value>
+  </data>
+  <data name="KindOwn" xml:space="preserve">
+    <value>Your own calendar, with no base</value>
+  </data>
+  <data name="ChangesNone" xml:space="preserve">
+    <value>no changes of yours</value>
+  </data>
+  <data name="ChangesOne" xml:space="preserve">
+    <value>with 1 change of yours</value>
+  </data>
+  <data name="ChangesMany" xml:space="preserve">
+    <value>with {0} changes of yours</value>
+  </data>
+  <data name="OwnHolidaysNone" xml:space="preserve">
+    <value>no holidays yet</value>
+  </data>
+  <data name="OwnHolidaysOne" xml:space="preserve">
+    <value>with 1 holiday</value>
+  </data>
+  <data name="OwnHolidaysMany" xml:space="preserve">
+    <value>with {0} holidays</value>
+  </data>
+  <data name="CalendarPeriod" xml:space="preserve">
+    <value>Valid from {0} to {1}.</value>
+  </data>
+  <data name="HolidaysNone" xml:space="preserve">
+    <value>No holidays in {0}.</value>
+  </data>
+  <data name="HolidaysOne" xml:space="preserve">
+    <value>1 holiday in {0}.</value>
+  </data>
+  <data name="HolidaysMany" xml:space="preserve">
+    <value>{0} holidays in {1}.</value>
+  </data>
+  <data name="OriginElekto" xml:space="preserve">
+    <value>From Elekto</value>
+  </data>
+  <data name="OriginInherited" xml:space="preserve">
+    <value>Inherited</value>
+  </data>
+  <data name="OriginAdded" xml:space="preserve">
+    <value>Added by you</value>
+  </data>
+  <data name="OriginRemoved" xml:space="preserve">
+    <value>Removed by you</value>
+  </data>
+  <data name="OriginDescribed" xml:space="preserve">
+    <value>Description changed by you</value>
+  </data>
+  <data name="ListSeparator" xml:space="preserve">
+    <value>, </value>
+  </data>
+  <data name="ListLast" xml:space="preserve">
+    <value>{0} and {1}</value>
+  </data>
+  <data name="NewCalendarTitle" xml:space="preserve">
+    <value>New calendar</value>
+  </data>
+  <data name="RenameCalendarTitle" xml:space="preserve">
+    <value>Rename calendar</value>
+  </data>
+  <data name="BasesTitle" xml:space="preserve">
+    <value>Bases of “{0}”</value>
+  </data>
+  <data name="DeleteCalendarTitle" xml:space="preserve">
+    <value>Delete “{0}”?</value>
+  </data>
+  <data name="DeleteCalendarMessage" xml:space="preserve">
+    <value>The holidays you added and your changes to it will be lost. To keep a copy, export the calendar first.</value>
+  </data>
+  <data name="RestoreCalendarTitle" xml:space="preserve">
+    <value>Undo the changes to “{0}”?</value>
+  </data>
+  <data name="RestoreCalendarMessageOne" xml:space="preserve">
+    <value>Your change to this calendar will be lost, and it will go back to what Elekto ships.</value>
+  </data>
+  <data name="RestoreCalendarMessageMany" xml:space="preserve">
+    <value>Your {0} changes to this calendar will be lost, and it will go back to what Elekto ships.</value>
+  </data>
+  <data name="RestoreAllTitle" xml:space="preserve">
+    <value>Undo the changes to the Elekto calendars?</value>
+  </data>
+  <data name="RestoreAllMessageOne" xml:space="preserve">
+    <value>One Elekto calendar has changes of yours, which will be lost.</value>
+  </data>
+  <data name="RestoreAllMessageMany" xml:space="preserve">
+    <value>{0} Elekto calendars have changes of yours, which will be lost.</value>
+  </data>
+  <data name="AddHolidayTitle" xml:space="preserve">
+    <value>Add holiday</value>
+  </data>
+  <data name="EditHolidayTitle" xml:space="preserve">
+    <value>Edit description</value>
+  </data>
+  <data name="CreateButtonText" xml:space="preserve">
+    <value>Create</value>
+  </data>
+  <data name="SaveButtonText" xml:space="preserve">
+    <value>Save</value>
+  </data>
+  <data name="AddButtonText" xml:space="preserve">
+    <value>Add</value>
+  </data>
+  <data name="DeleteButtonText" xml:space="preserve">
+    <value>Delete</value>
+  </data>
+  <data name="RestoreButtonText" xml:space="preserve">
+    <value>Undo</value>
+  </data>
+  <data name="CancelButtonText" xml:space="preserve">
+    <value>Cancel</value>
+  </data>
+  <data name="CalendarDialog.CloseButtonText" xml:space="preserve">
+    <value>Cancel</value>
+  </data>
+  <data name="CalendarNameTextBox.Header" xml:space="preserve">
+    <value>Name</value>
+  </data>
+  <data name="CalendarNameTextBox.PlaceholderText" xml:space="preserve">
+    <value>For example, Lapa Courthouse</value>
+  </data>
+  <data name="BasesLabel.Text" xml:space="preserve">
+    <value>Bases</value>
+  </data>
+  <data name="BasesHint.Text" xml:space="preserve">
+    <value>The holidays of the checked bases add up, and the calendar is valid in the period where all of them are. With no base, it starts with weekends only.</value>
+  </data>
+  <data name="BasesListView.[using:Microsoft.UI.Xaml.Automation]AutomationProperties.Name" xml:space="preserve">
+    <value>Bases</value>
+  </data>
+  <data name="HolidayDialog.CloseButtonText" xml:space="preserve">
+    <value>Cancel</value>
+  </data>
+  <data name="HolidayDatePicker.Header" xml:space="preserve">
+    <value>Date</value>
+  </data>
+  <data name="HolidayDescriptionTextBox.Header" xml:space="preserve">
+    <value>Description (optional)</value>
+  </data>
+  <data name="HolidayDescriptionTextBox.PlaceholderText" xml:space="preserve">
+    <value>For example, City anniversary</value>
+  </data>
+  <data name="WeekendHolidayNote" xml:space="preserve">
+    <value>The date falls on a {0}, which is already a non-business day: adding it does not change the calculations.</value>
+  </data>
+  <data name="ImportDialog.Title" xml:space="preserve">
+    <value>Import calendars</value>
+  </data>
+  <data name="ImportDialog.PrimaryButtonText" xml:space="preserve">
+    <value>Import</value>
+  </data>
+  <data name="ImportDialog.CloseButtonText" xml:space="preserve">
+    <value>Cancel</value>
+  </data>
+  <data name="ImportIntro.Text" xml:space="preserve">
+    <value>Check what will be imported and uncheck what you do not want.</value>
+  </data>
+  <data name="ImportCreateOne" xml:space="preserve">
+    <value>New calendar, with 1 holiday</value>
+  </data>
+  <data name="ImportCreateMany" xml:space="preserve">
+    <value>New calendar, with {0} holidays</value>
+  </data>
+  <data name="ImportReplace" xml:space="preserve">
+    <value>Replaces the version of this calendar you already have</value>
+  </data>
+  <data name="ImportUpdateOriginal" xml:space="preserve">
+    <value>Merges the changes with the ones you already have in this Elekto calendar</value>
+  </data>
+  <data name="ImportSkip" xml:space="preserve">
+    <value>Nothing to import</value>
+  </data>
+  <data name="ImportDetail" xml:space="preserve">
+    <value>{0}. File: {1}</value>
+  </data>
+  <data name="ImportFailure" xml:space="preserve">
+    <value>{0}: {1}</value>
+  </data>
+  <data name="ImportNoteRenamed" xml:space="preserve">
+    <value>a calendar named “{0}” already exists</value>
+  </data>
+  <data name="ImportNoteSameAsOriginal" xml:space="preserve">
+    <value>the file has the same holidays as “{0}”, which already comes with the app</value>
+  </data>
+  <data name="ImportNoteCopyOfOriginal" xml:space="preserve">
+    <value>the file has holidays different from those of “{0}” and becomes a calendar of your own</value>
+  </data>
+  <data name="ImportNoteAlreadyExists" xml:space="preserve">
+    <value>you already have this calendar, identical</value>
+  </data>
+  <data name="ImportNoteFlattened" xml:space="preserve">
+    <value>the base “{0}” does not exist here, and the calendar comes with all its holidays, without inheritance</value>
+  </data>
+  <data name="ImportNoteOriginalMissing" xml:space="preserve">
+    <value>the calendar “{0}” no longer comes with the app and becomes a calendar of your own</value>
+  </data>
+  <data name="ImportNoteNoChanges" xml:space="preserve">
+    <value>the file brings no change to this calendar</value>
+  </data>
+  <data name="ExportAllFileName" xml:space="preserve">
+    <value>Calendars</value>
+  </data>
+  <data name="ExportFileType" xml:space="preserve">
+    <value>Calculator calendars</value>
+  </data>
+  <data name="StatusCreated" xml:space="preserve">
+    <value>Calendar “{0}” created.</value>
+  </data>
+  <data name="StatusRenamed" xml:space="preserve">
+    <value>Calendar renamed to “{0}”.</value>
+  </data>
+  <data name="StatusBasesChanged" xml:space="preserve">
+    <value>Bases of “{0}” changed.</value>
+  </data>
+  <data name="StatusDeleted" xml:space="preserve">
+    <value>Calendar “{0}” deleted.</value>
+  </data>
+  <data name="StatusRestored" xml:space="preserve">
+    <value>The changes to “{0}” were undone.</value>
+  </data>
+  <data name="StatusRestoredAll" xml:space="preserve">
+    <value>The changes to the Elekto calendars were undone.</value>
+  </data>
+  <data name="StatusNothingToRestore" xml:space="preserve">
+    <value>The Elekto calendars have no changes of yours.</value>
+  </data>
+  <data name="StatusHolidayAdded" xml:space="preserve">
+    <value>Holiday on {0} added.</value>
+  </data>
+  <data name="StatusHolidayRemoved" xml:space="preserve">
+    <value>Holiday on {0} removed.</value>
+  </data>
+  <data name="StatusHolidayRestored" xml:space="preserve">
+    <value>Holiday on {0} restored.</value>
+  </data>
+  <data name="StatusDescriptionChanged" xml:space="preserve">
+    <value>Description of the holiday on {0} changed.</value>
+  </data>
+  <data name="StatusExported" xml:space="preserve">
+    <value>Exported to {0}.</value>
+  </data>
+  <data name="StatusNothingToExport" xml:space="preserve">
+    <value>You do not have your own calendars or changes to the Elekto ones to export yet.</value>
+  </data>
+  <data name="StatusImportedOne" xml:space="preserve">
+    <value>1 calendar imported.</value>
+  </data>
+  <data name="StatusImportedMany" xml:space="preserve">
+    <value>{0} calendars imported.</value>
+  </data>
+  <data name="ErrorSave" xml:space="preserve">
+    <value>The change could not be saved: {0}</value>
+  </data>
+  <data name="ErrorExport" xml:space="preserve">
+    <value>Could not export to {0}: {1}</value>
+  </data>
+  <data name="ErrorDatabase" xml:space="preserve">
+    <value>Could not open the file of your calendars, {0}: {1}</value>
+  </data>
+  <data name="ErrorNoDate" xml:space="preserve">
+    <value>Choose the date of the holiday.</value>
+  </data>
+  <data name="CatalogErrorNameEmpty" xml:space="preserve">
+    <value>Give the calendar a name.</value>
+  </data>
+  <data name="CatalogErrorNameTooLong" xml:space="preserve">
+    <value>The name can have up to 50 characters.</value>
+  </data>
+  <data name="CatalogErrorNameInUse" xml:space="preserve">
+    <value>A calendar named “{0}” already exists.</value>
+  </data>
+  <data name="CatalogErrorCalendarNotFound" xml:space="preserve">
+    <value>The calendar “{0}” does not exist.</value>
+  </data>
+  <data name="CatalogErrorNotCustom" xml:space="preserve">
+    <value>“{0}” comes from Elekto and cannot be renamed or deleted; your changes to it can be undone.</value>
+  </data>
+  <data name="CatalogErrorNotOriginal" xml:space="preserve">
+    <value>“{0}” is a calendar of your own; only the Elekto ones have changes to undo.</value>
+  </data>
+  <data name="CatalogErrorBaseNotFound" xml:space="preserve">
+    <value>The base “{0}” does not exist.</value>
+  </data>
+  <data name="CatalogErrorBaseCycle" xml:space="preserve">
+    <value>“{0}” depends on this calendar and cannot be its base.</value>
+  </data>
+  <data name="CatalogErrorBaseUnusable" xml:space="preserve">
+    <value>The base “{0}” has a problem and cannot be used.</value>
+  </data>
+  <data name="CatalogErrorHasDependents" xml:space="preserve">
+    <value>This calendar is the base of {0}. Change their bases before deleting it.</value>
+  </data>
+  <data name="CatalogErrorDateOutsideRange" xml:space="preserve">
+    <value>{0} is outside the period of the calendar.</value>
+  </data>
+  <data name="CatalogErrorAlreadyHoliday" xml:space="preserve">
+    <value>{0} is already a holiday in this calendar.</value>
+  </data>
+  <data name="CatalogErrorNotHoliday" xml:space="preserve">
+    <value>{0} is not a holiday in this calendar.</value>
+  </data>
+  <data name="CatalogErrorNoChange" xml:space="preserve">
+    <value>There is no change of yours to undo on {0}.</value>
+  </data>
+  <data name="CatalogErrorDescriptionTooLong" xml:space="preserve">
+    <value>The description can have up to 100 characters.</value>
+  </data>
+  <data name="CatalogErrorEmptyRange" xml:space="preserve">
+    <value>The periods of the bases do not overlap, and the calendar has no period in which it is valid.</value>
+  </data>
+  <data name="CatalogErrorNoWorkDays" xml:space="preserve">
+    <value>“{0}” has no business day in its period.</value>
+  </data>
+  <data name="CatalogErrorUnknownFormat" xml:space="preserve">
+    <value>This is not a calendar file the Calculator recognizes.</value>
+  </data>
+  <data name="CatalogErrorNewerFormat" xml:space="preserve">
+    <value>The file was saved by a newer version of the Calculator; update the app.</value>
+  </data>
+  <data name="ImportCreateDerivedNone" xml:space="preserve">
+    <value>New calendar derived from {0}, with no changes</value>
+  </data>
+  <data name="ImportCreateDerivedOne" xml:space="preserve">
+    <value>New calendar derived from {0}, with 1 change</value>
+  </data>
+  <data name="ImportCreateDerivedMany" xml:space="preserve">
+    <value>New calendar derived from {0}, with {1} changes</value>
+  </data>
+  <data name="CopyPeriodButton.AccessKey" xml:space="preserve">
+    <value>P</value>
+  </data>
+  <data name="CopyPeriodButton.[using:Microsoft.UI.Xaml.Automation]AutomationProperties.Name" xml:space="preserve">
+    <value>Copy the dates</value>
+  </data>
+  <data name="CopyPeriodButton.[using:Microsoft.UI.Xaml.Controls]ToolTipService.ToolTip" xml:space="preserve">
+    <value>Copies all the dates of the period, with the business days marked, to paste into a spreadsheet</value>
+  </data>
+  <data name="CopyPeriodButtonText.Text" xml:space="preserve">
+    <value>Copy the dates</value>
+  </data>
+  <data name="ExportPeriodButton.AccessKey" xml:space="preserve">
+    <value>X</value>
+  </data>
+  <data name="ExportPeriodButton.[using:Microsoft.UI.Xaml.Automation]AutomationProperties.Name" xml:space="preserve">
+    <value>Export the dates</value>
+  </data>
+  <data name="ExportPeriodButton.[using:Microsoft.UI.Xaml.Controls]ToolTipService.ToolTip" xml:space="preserve">
+    <value>Saves all the dates of the period in an Excel workbook or a CSV file</value>
+  </data>
+  <data name="ExportPeriodButtonText.Text" xml:space="preserve">
+    <value>Export the dates</value>
+  </data>
+  <data name="CopyHolidaysButton.Label" xml:space="preserve">
+    <value>Copy the year</value>
+  </data>
+  <data name="CopyHolidaysButton.AccessKey" xml:space="preserve">
+    <value>P</value>
+  </data>
+  <data name="CopyHolidaysButton.[using:Microsoft.UI.Xaml.Controls]ToolTipService.ToolTip" xml:space="preserve">
+    <value>Copies the holidays of the year shown, to paste into a spreadsheet</value>
+  </data>
+  <data name="ExportHolidaysButton.Label" xml:space="preserve">
+    <value>Export spreadsheet</value>
+  </data>
+  <data name="ExportHolidaysButton.AccessKey" xml:space="preserve">
+    <value>H</value>
+  </data>
+  <data name="ExportHolidaysButton.[using:Microsoft.UI.Xaml.Controls]ToolTipService.ToolTip" xml:space="preserve">
+    <value>Saves all the holidays of this calendar in an Excel workbook or a CSV file</value>
+  </data>
+  <data name="SheetPeriod" xml:space="preserve">
+    <value>Days</value>
+  </data>
+  <data name="SheetHolidays" xml:space="preserve">
+    <value>Holidays</value>
+  </data>
+  <data name="ColumnDate" xml:space="preserve">
+    <value>Date</value>
+  </data>
+  <data name="ColumnWeekDay" xml:space="preserve">
+    <value>Weekday</value>
+  </data>
+  <data name="ColumnIsWorkday" xml:space="preserve">
+    <value>Is business day</value>
+  </data>
+  <data name="ColumnWorkdayCount" xml:space="preserve">
+    <value>Business days since start</value>
+  </data>
+  <data name="ColumnHoliday" xml:space="preserve">
+    <value>Holiday</value>
+  </data>
+  <data name="ColumnDescription" xml:space="preserve">
+    <value>Description</value>
+  </data>
+  <data name="SheetFileTypeXlsx" xml:space="preserve">
+    <value>Excel workbook</value>
+  </data>
+  <data name="SheetFileTypeCsv" xml:space="preserve">
+    <value>Delimited text (CSV)</value>
+  </data>
+  <data name="PeriodFileName" xml:space="preserve">
+    <value>{0} from {1} to {2}</value>
+  </data>
+  <data name="HolidaysFileName" xml:space="preserve">
+    <value>Holidays of {0}</value>
+  </data>
+  <data name="StatusCopiedPeriod" xml:space="preserve">
+    <value>{0} dates copied, from {1} to {2}.</value>
+  </data>
+  <data name="StatusCopiedHolidaysOne" xml:space="preserve">
+    <value>1 holiday of {0} copied.</value>
+  </data>
+  <data name="StatusCopiedHolidaysMany" xml:space="preserve">
+    <value>{0} holidays of {1} copied.</value>
+  </data>
+  <data name="StatusSavedSheet" xml:space="preserve">
+    <value>Spreadsheet saved to {0}.</value>
+  </data>
+  <data name="ErrorSheet" xml:space="preserve">
+    <value>The spreadsheet could not be copied or saved: {0}</value>
+  </data>
+  <data name="CalendarName_br_BC" xml:space="preserve">
+    <value>Brazil - Central Bank</value>
+  </data>
+  <data name="CalendarName_br_SP" xml:space="preserve">
+    <value>Brazil - B3 (São Paulo)</value>
+  </data>
+  <data name="CalendarName_us_NYC" xml:space="preserve">
+    <value>United States - NYSE (New York)</value>
+  </data>
+  <data name="CalendarName_gb_LND" xml:space="preserve">
+    <value>England - London</value>
+  </data>
+  <data name="LicenseTranslationButton.Visibility" xml:space="preserve">
+    <value>Collapsed</value>
+  </data>
+</root>

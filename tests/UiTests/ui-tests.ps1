@@ -30,6 +30,10 @@
     Requer o WinApp CLI 0.7 ou posterior, o SDK do .NET 10 e, no alvo sandbox, o Windows Sandbox habilitado
     e a sessão do Windows desbloqueada.
 
+.PARAMETER Language
+    O idioma em que o aplicativo abre no Sandbox. O roteiro completo é em português (pt-BR, o padrão); em en-US e
+    es-ES roda uma verificação curta: os textos no idioma, as capturas das telas e os AutomationId.
+
 .PARAMETER AxeCli
     O zip do Axe.Windows CLI (AxeWindowsCLI-<versão>.zip, de https://github.com/microsoft/axe-windows/releases), o
     verificador automático do Accessibility Insights. Com ele, as telas principais e uma caixa de diálogo são
@@ -51,7 +55,8 @@ param(
     [ValidateNotNullOrEmpty()][string]$WorkflowId = [guid]::NewGuid().ToString('N'),
     [string]$Package,
     [string]$Certificate,
-    [string]$AxeCli
+    [string]$AxeCli,
+    [ValidateSet('pt-BR', 'en-US', 'es-ES')][string]$Language = 'pt-BR'
 )
 
 $ErrorActionPreference = 'Stop'
@@ -566,463 +571,512 @@ try {
             "Get-AppxPackage -Name '$PackageName' | Where-Object { -not `$_.IsDevelopmentMode } | Remove-AppxPackage; exit 0") | Out-Null
     }
 
+    # O aplicativo segue o idioma do Windows; no Sandbox, ele é o do teste
+    if ($Target -eq 'sandbox') {
+        Invoke-Target @('powershell', '-NoProfile', '-Command', "Set-WinUserLanguageList -LanguageList $Language -Force; exit 0") | Out-Null
+    } elseif ($Language -ne 'pt-BR') {
+        throw 'Outro idioma só no Sandbox, que tem o idioma trocado pelo teste.'
+    }
+
     # Primeira execução, com os dados do aplicativo apagados: valem os padrões da 1.2
     Start-App -Clean
     $uiStarted = $true
 
-    $invariant = [Globalization.CultureInfo]::InvariantCulture
-    $today = [DateTime]::ParseExact((Get-Text 'PeriodStartPicker'), 'dd/MM/yyyy', $invariant)
-    $expectedJson = & dotnet run $ExpectedScript -- $today.ToString('yyyy-MM-dd', $invariant)
-    if ($LASTEXITCODE -ne 0) { throw "Expected.cs falhou: $expectedJson" }
-    $e = ($expectedJson | Select-Object -Last 1) | ConvertFrom-Json
+    if ($Language -ne 'pt-BR') {
+        # Verificação curta em outro idioma: os textos que aparecem primeiro e as capturas para conferir o resto
+        $texts = @{
+            'en-US' = @{ About = 'About'; Calendars = 'Edit calendars'; Calendar = 'Brazil - Central Bank'; Page = 'Calendars' }
+            'es-ES' = @{ About = 'Acerca de'; Calendars = 'Editar calendarios'; Calendar = 'Brasil - Banco Central'; Page = 'Calendarios' }
+        }[$Language]
 
-    Test-UI 'Captura inicial' { Save-Screenshot '01-inicial.png' }
-
-    Test-UI 'Axe.Windows na página principal' { Assert-Axe 'principal' }
-
-    Test-UI 'Padrões: br-BC, financeiro, dias úteis, sem ajuste, 252 dias' {
-        Assert-Text 'CalendarComboBox' 'Brasil - Banco Central'
-        Assert-Selected 'FinancialRadioButton'
-        Assert-Selected 'WorkDaysRadioButton'
-        Assert-Selected 'AdjustNoneRadioButton'
-        Assert-Property 'AdjustNoneRadioButton' 'IsEnabled' 'False'
-        Assert-Text 'InputBox' '252'
-    }
-
-    Test-UI 'Padrões: de hoje a um ano depois, e 252 dias úteis a partir de hoje' {
-        Assert-Text 'PeriodEndPicker' $today.AddYears(1).ToString('dd/MM/yyyy', $invariant)
-        Assert-Text 'TermStartPicker' $today.ToString('dd/MM/yyyy', $invariant)
-        Assert-Text 'WorkDaysText' $e.todayWork
-        Assert-Text 'ActualDaysText' $e.todayActual
-        Assert-Text 'FinalDateText' $e.todayFinal
-    }
-
-    Test-UI 'Escolher as datas do período no calendário' {
-        Select-Day15 'PeriodStartPicker'
-        Assert-Text 'PeriodStartPicker' $e.d0
-        Select-Day15 'PeriodEndPicker'
-        Assert-Text 'PeriodEndPicker' $e.d1
-    }
-
-    Test-UI 'Dias entre as datas, financeiro' {
-        Assert-Text 'WorkDaysText' $e.financialWork
-        Assert-Text 'ActualDaysText' $e.financialActual
-    }
-
-    Test-UI 'Dias entre as datas, dias cheios' {
-        Invoke-Ui @('invoke', 'FullDaysRadioButton') | Out-Null
-        Assert-Text 'WorkDaysText' $e.fullWork
-        Assert-Text 'ActualDaysText' $e.fullActual
-    }
-
-    Test-UI 'Data final de 30 dias úteis' {
-        Select-Day15 'TermStartPicker'
-        Assert-Text 'TermStartPicker' $e.d0
-        Set-Term 30
-        Assert-Text 'FinalDateText' $e.work30
-    }
-
-    Test-UI 'Prazo negativo conta para trás' {
-        Set-Term -10
-        Assert-Text 'FinalDateText' $e.workMinus10
-    }
-
-    Test-UI 'Dias corridos habilitam o ajuste; sem ajuste, avisa o dia não útil' {
-        Invoke-Ui @('invoke', 'ActualDaysRadioButton') | Out-Null
-        Assert-Property 'AdjustFollowingRadioButton' 'IsEnabled' 'True'
-        Set-Term $e.weekendTerm
-        Assert-Text 'FinalDateText' $e.actualNone
-        Assert-Property 'FinalDateText' 'Name' $e.actualNoneDescription
-    }
-
-    Test-UI 'Ajuste para o dia útil seguinte' {
-        Invoke-Ui @('invoke', 'AdjustFollowingRadioButton') | Out-Null
-        Assert-Text 'FinalDateText' $e.actualFollowing
-    }
-
-    Test-UI 'Ajuste para o dia útil seguinte modificado' {
-        Invoke-Ui @('invoke', 'AdjustModifiedFollowingRadioButton') | Out-Null
-        Assert-Text 'FinalDateText' $e.actualModified
-        Save-Screenshot '02-dias-corridos.png'
-    }
-
-    Test-UI 'Prazo além do calendário mostra o aviso, sem data' {
-        Invoke-Ui @('invoke', 'WorkDaysRadioButton') | Out-Null
-        Set-Term 100000
-        Invoke-Ui @('wait-for', 'TermErrorInfoBar', '-t', '3000') | Out-Null
-        Invoke-Ui @('wait-for', 'FinalDateText', '--gone', '-t', '3000') | Out-Null
-        Save-Screenshot '03-erro.png'
-        Invoke-Ui @('invoke', 'ActualDaysRadioButton') | Out-Null
-        Set-Term $e.weekendTerm
-        Assert-Text 'FinalDateText' $e.actualModified
-        Invoke-Ui @('wait-for', 'TermErrorInfoBar', '--gone', '-t', '3000') | Out-Null
-    }
-
-    Test-UI 'Trocar o calendário refaz as duas contas' {
-        Select-Calendar 'Estados Unidos - NYSE (Nova Iorque)'
-        Assert-Text 'CalendarComboBox' 'Estados Unidos - NYSE (Nova Iorque)'
-        Assert-Text 'WorkDaysText' $e.nyseFullWork
-        Assert-Text 'ActualDaysText' $e.nyseFullActual
-        Assert-Text 'FinalDateText' $e.nyseActualModified
-    }
-
-    Test-UI 'Página Sobre pelo botão, volta pelo botão da barra de título' {
-        try {
-            Invoke-Ui @('invoke', 'AboutButton') | Out-Null
-            Assert-Text 'VersionText' 'Versão 2.0.0'
-            foreach ($link in 'ElektoLink', 'SourceCodeLink', 'ElektoPrivacyLink', 'GitHubPrivacyLink') {
-                Invoke-Ui @('wait-for', $link, '-t', '2000') | Out-Null
-            }
-            # Nenhuma dica solta com a tecla dos atalhos de voltar (ela aparecia logo depois de navegar)
-            Start-Sleep -Seconds 1
-            if (@(Search-Ui 'Esc' | Where-Object { $_.name -eq 'Esc' }).Count) { throw 'Apareceu a dica "Esc".' }
-            Save-Screenshot '04-sobre.png'
-            Invoke-Ui @('invoke', 'PART_BackButton') | Out-Null
-            Invoke-Ui @('wait-for', 'CalendarComboBox', '-t', '3000') | Out-Null
-        } finally {
-            Restore-MainPage
+        Test-UI "Textos em $Language na página principal" {
+            Assert-Property 'AboutButton' 'Name' $texts.About
+            Assert-Property 'CalendarsButton' 'Name' $texts.Calendars
+            Assert-Text 'CalendarComboBox' $texts.Calendar
+            Save-Screenshot "01-principal-$Language.png"
         }
-    }
 
-    # O Sandbox não tem programa associado a .txt; a tradução, em HTML, abre no Edge, que existe nele
-    Test-UI 'A tradução da licença, que vem no pacote, abre no navegador' {
-        if ($Target -ne 'sandbox') { throw 'Este teste fecha o navegador ao final, por isso só roda no Sandbox.' }
-        try {
-            Invoke-Ui @('invoke', 'AboutButton') | Out-Null
-            Invoke-Ui @('invoke', 'LicenseTranslationButton') | Out-Null
-            $deadline = [DateTime]::UtcNow.AddSeconds(20)
-            do {
-                $windows = @(ConvertFrom-WinAppJson (Invoke-WinAppChecked (@('ui', 'list-windows', '--json') + $ScopeArgs)))
-                $browser = $windows | Where-Object { $_.processName -eq 'msedge' } | Select-Object -First 1
-                if ($browser) { break }
-                Start-Sleep -Milliseconds 500
-            } while ([DateTime]::UtcNow -lt $deadline)
-            if (-not $browser) { throw 'O navegador não abriu.' }
-            Invoke-Ui @('wait-for', 'OpenErrorInfoBar', '--gone', '-t', '1000') | Out-Null
-        } finally {
-            try { Invoke-WinAppChecked @('target', 'exec', 'sandbox', '--', 'taskkill', '/IM', 'msedge.exe', '/F') | Out-Null }
-            catch { Write-Verbose 'O navegador não estava aberto.' }
-            Restore-MainPage
-        }
-    }
+        Test-UI "Todos os controles da página têm AutomationId, em $Language" { Assert-AutomationIds 10 }
 
-    # Com uma dica própria, o WinUI não acrescenta a tecla do atalho; o "(F1)" está no texto da dica
-    Test-UI 'A dica do botão Sobre mostra a tecla F1' {
-        Invoke-Ui @('hover', 'AboutButton') | Out-Null
-        $deadline = [DateTime]::UtcNow.AddSeconds(3)
-        do {
-            $tips = @(Search-Ui 'F1' | Where-Object { $_.type -eq 'ToolTip' })
-            if ($tips.Count) { return }
-            Start-Sleep -Milliseconds 200
-        } while ([DateTime]::UtcNow -lt $deadline)
-        throw 'A dica do botão Sobre não mostra F1.'
-    }
-
-    Test-UI 'Página Sobre pelo F1, volta pelo Esc' {
-        try {
-            Invoke-Ui @('send-keys', 'f1', '--target', 'CalendarComboBox', '--via', 'send-input') | Out-Null
-            Invoke-Ui @('wait-for', 'VersionText', '-t', '3000') | Out-Null
-            Invoke-Ui @('send-keys', 'escape', '--target', 'LicenseButton', '--via', 'send-input') | Out-Null
-            Invoke-Ui @('wait-for', 'CalendarComboBox', '-t', '3000') | Out-Null
-        } finally {
-            Restore-MainPage
-        }
-    }
-
-    Test-UI 'Axe.Windows na página Sobre' {
-        try {
-            if ($AxeCli) {
+        Test-UI "Página Sobre em $Language" {
+            try {
                 Invoke-Ui @('invoke', 'AboutButton') | Out-Null
                 Invoke-Ui @('wait-for', 'VersionText', '-t', '3000') | Out-Null
+                Invoke-Ui @('wait-for', 'LicenseTranslationButton', '--gone', '-t', '2000') | Out-Null
+                Save-Screenshot "02-sobre-$Language.png"
+            } finally {
+                Restore-MainPage
             }
-            Assert-Axe 'sobre'
-        } finally {
-            Restore-MainPage
         }
-    }
 
-    Test-UI 'Ao voltar da página Sobre, nada se perdeu' {
-        Assert-Text 'CalendarComboBox' 'Estados Unidos - NYSE (Nova Iorque)'
-        Assert-Text 'PeriodStartPicker' $e.d0
-        Assert-Text 'WorkDaysText' $e.nyseFullWork
-        Assert-Text 'FinalDateText' $e.nyseActualModified
-    }
-
-    Test-UI 'A janela não fica menor que o mínimo' {
-        try {
-            Set-WindowSize 200 200
-            $size = Get-WindowSize
-            if ($size.Width -lt 500 -or $size.Height -lt 400) { throw "A janela ficou com $($size.Width) x $($size.Height)." }
-            Save-Screenshot '06-minima.png'
-        } finally {
-            Set-WindowSize 960 600
+        Test-UI "Página de calendários e caixa Novo em $Language" {
+            Invoke-Ui @('invoke', 'CalendarsButton') | Out-Null
+            Invoke-Ui @('wait-for', 'EditCalendarComboBox', '-t', '5000') | Out-Null
+            Assert-Text 'EditCalendarComboBox' $texts.Calendar
+            Save-Screenshot "03-calendarios-$Language.png"
+            try {
+                Invoke-Ui @('invoke', 'NewCalendarButton') | Out-Null
+                Invoke-Ui @('wait-for', 'CalendarNameTextBox', '-t', '3000') | Out-Null
+                Save-Screenshot "04-novo-$Language.png"
+            } finally {
+                Restore-CalendarsPage
+            }
         }
-    }
+    } else {
+        $invariant = [Globalization.CultureInfo]::InvariantCulture
+        $today = [DateTime]::ParseExact((Get-Text 'PeriodStartPicker'), 'dd/MM/yyyy', $invariant)
+        $expectedJson = & dotnet run $ExpectedScript -- $today.ToString('yyyy-MM-dd', $invariant)
+        if ($LASTEXITCODE -ne 0) { throw "Expected.cs falhou: $expectedJson" }
+        $e = ($expectedJson | Select-Object -Last 1) | ConvertFrom-Json
 
-    Test-UI 'Todos os controles da página têm AutomationId' {
-        Assert-AutomationIds 10
-    }
+        Test-UI 'Captura inicial' { Save-Screenshot '01-inicial.png' }
 
-    # Segunda execução, sem apagar os dados: as escolhas voltam como foram deixadas
-    Test-UI 'As escolhas são lembradas ao reabrir' {
-        Stop-App
-        Start-App
-        Assert-Text 'CalendarComboBox' 'Estados Unidos - NYSE (Nova Iorque)'
-        Assert-Selected 'FullDaysRadioButton'
-        Assert-Selected 'ActualDaysRadioButton'
-        Assert-Selected 'AdjustModifiedFollowingRadioButton'
-        Assert-Text 'InputBox' "$($e.weekendTerm)"
-        Save-Screenshot '05-reaberto.png'
-    }
+        Test-UI 'Axe.Windows na página principal' { Assert-Axe 'principal' }
 
-    #region Fase 2: calendários editáveis
-
-    Test-UI 'Editar calendários abre no calendário escolhido, com os feriados do ano' {
-        Select-Calendar 'Brasil - Banco Central'
-        Invoke-Ui @('invoke', 'CalendarsButton') | Out-Null
-        Invoke-Ui @('wait-for', 'EditCalendarComboBox', '-t', '5000') | Out-Null
-        Assert-Text 'EditCalendarComboBox' 'Brasil - Banco Central'
-        Assert-Text 'CalendarKindText' 'Calendário da Elekto, sem alterações suas'
-        Assert-Text 'HolidaysSummaryText' $e.holidaysThisYear
-        Find-Holiday "$($e.christmasLong), $($e.christmasDescription), Da Elekto" | Out-Null
-        Save-Screenshot '07-calendarios.png'
-    }
-
-    Test-UI 'Axe.Windows na página de calendários e na caixa Novo' {
-        Assert-Axe 'calendarios'
-        try {
-            Invoke-Ui @('invoke', 'NewCalendarButton') | Out-Null
-            Invoke-Ui @('wait-for', 'CalendarNameTextBox', '-t', '3000') | Out-Null
-            Assert-Axe 'novo-calendario'
-        } finally {
-            Restore-CalendarsPage
+        Test-UI 'Padrões: br-BC, financeiro, dias úteis, sem ajuste, 252 dias' {
+            Assert-Text 'CalendarComboBox' 'Brasil - Banco Central'
+            Assert-Selected 'FinancialRadioButton'
+            Assert-Selected 'WorkDaysRadioButton'
+            Assert-Selected 'AdjustNoneRadioButton'
+            Assert-Property 'AdjustNoneRadioButton' 'IsEnabled' 'False'
+            Assert-Text 'InputBox' '252'
         }
-    }
 
-    Test-UI 'Criar um calendário derivado do br-BC' {
-        Invoke-Ui @('invoke', 'DeriveCalendarButton') | Out-Null
-        Invoke-Ui @('wait-for', 'CalendarNameTextBox', '-t', '3000') | Out-Null
-        Invoke-Ui @('set-value', 'CalendarNameTextBox', 'Fórum da Lapa') | Out-Null
-        Invoke-Ui @('invoke', 'PrimaryButton') | Out-Null
-        Invoke-Ui @('wait-for', 'CalendarNameTextBox', '--gone', '-t', '3000') | Out-Null
-        Assert-Text 'EditCalendarComboBox' 'Fórum da Lapa'
-        Assert-Text 'CalendarKindText' 'Derivado de Brasil - Banco Central, sem alterações suas'
-        Assert-Status 'Calendário “Fórum da Lapa” criado.'
-    }
-
-    Test-UI 'Incluir um feriado local' {
-        Invoke-Ui @('invoke', 'AddHolidayButton') | Out-Null
-        Invoke-Ui @('wait-for', 'HolidayDescriptionTextBox', '-t', '3000') | Out-Null
-        Select-Day 'HolidayDatePicker' $e.localDay
-        Invoke-Ui @('set-value', 'HolidayDescriptionTextBox', 'Feriado do fórum') | Out-Null
-        Save-Screenshot '08-incluir-feriado.png'
-        Invoke-Ui @('invoke', 'PrimaryButton') | Out-Null
-        Invoke-Ui @('wait-for', 'HolidayDescriptionTextBox', '--gone', '-t', '3000') | Out-Null
-        Find-Holiday "$($e.localLong), Feriado do fórum, Incluído por você" | Out-Null
-        Assert-Text 'CalendarKindText' 'Derivado de Brasil - Banco Central, com 1 alteração sua'
-    }
-
-    Test-UI 'Remover e restaurar um feriado herdado' {
-        Invoke-Ui @('invoke', (Find-Holiday "$($e.christmasLong), $($e.christmasDescription), Herdado")) | Out-Null
-        Invoke-Ui @('invoke', 'RemoveHolidayButton') | Out-Null
-        Find-Holiday "$($e.christmasLong), $($e.christmasDescription), Removido por você" | Out-Null
-        Assert-Text 'CalendarKindText' 'Derivado de Brasil - Banco Central, com 2 alterações suas'
-        Save-Screenshot '09-removido.png'
-        Invoke-Ui @('invoke', 'RestoreHolidayButton') | Out-Null
-        Find-Holiday "$($e.christmasLong), $($e.christmasDescription), Herdado" | Out-Null
-        Assert-Text 'CalendarKindText' 'Derivado de Brasil - Banco Central, com 1 alteração sua'
-    }
-
-    Test-UI 'Trocar a descrição do feriado local' {
-        Invoke-Ui @('invoke', (Find-Holiday "$($e.localLong), Feriado do fórum")) | Out-Null
-        Invoke-Ui @('invoke', 'EditHolidayButton') | Out-Null
-        Invoke-Ui @('wait-for', 'HolidayDescriptionTextBox', '-t', '3000') | Out-Null
-        Invoke-Ui @('set-value', 'HolidayDescriptionTextBox', 'Aniversário do fórum') | Out-Null
-        Invoke-Ui @('invoke', 'PrimaryButton') | Out-Null
-        Invoke-Ui @('wait-for', 'HolidayDescriptionTextBox', '--gone', '-t', '3000') | Out-Null
-        Find-Holiday "$($e.localLong), Aniversário do fórum, Incluído por você" | Out-Null
-    }
-
-    Test-UI 'Nome repetido é recusado sem fechar a caixa' {
-        Invoke-Ui @('invoke', 'NewCalendarButton') | Out-Null
-        Invoke-Ui @('wait-for', 'CalendarNameTextBox', '-t', '3000') | Out-Null
-        Invoke-Ui @('set-value', 'CalendarNameTextBox', 'brasil - banco central') | Out-Null
-        Invoke-Ui @('invoke', 'PrimaryButton') | Out-Null
-        Invoke-Ui @('wait-for', 'CalendarDialogErrorInfoBar', '-t', '3000') | Out-Null
-        if (-not @(Search-Ui 'Já existe um calendário chamado “brasil - banco central”.').Count) {
-            throw 'A mensagem de nome repetido não apareceu.'
+        Test-UI 'Padrões: de hoje a um ano depois, e 252 dias úteis a partir de hoje' {
+            Assert-Text 'PeriodEndPicker' $today.AddYears(1).ToString('dd/MM/yyyy', $invariant)
+            Assert-Text 'TermStartPicker' $today.ToString('dd/MM/yyyy', $invariant)
+            Assert-Text 'WorkDaysText' $e.todayWork
+            Assert-Text 'ActualDaysText' $e.todayActual
+            Assert-Text 'FinalDateText' $e.todayFinal
         }
-        Save-Screenshot '10-nome-repetido.png'
-        Invoke-Ui @('invoke', 'CloseButton') | Out-Null
-        Invoke-Ui @('wait-for', 'CalendarNameTextBox', '--gone', '-t', '3000') | Out-Null
-    }
 
-    Test-UI 'Renomear o calendário' {
-        Invoke-Ui @('invoke', 'RenameCalendarButton') | Out-Null
-        Invoke-Ui @('wait-for', 'CalendarNameTextBox', '-t', '3000') | Out-Null
-        Invoke-Ui @('set-value', 'CalendarNameTextBox', 'Fórum Regional da Lapa') | Out-Null
-        Invoke-Ui @('invoke', 'PrimaryButton') | Out-Null
-        Invoke-Ui @('wait-for', 'CalendarNameTextBox', '--gone', '-t', '3000') | Out-Null
-        Assert-Text 'EditCalendarComboBox' 'Fórum Regional da Lapa'
-    }
-
-    Test-UI 'O feriado local vale nas contas da página principal' {
-        Invoke-Ui @('invoke', 'PART_BackButton') | Out-Null
-        Invoke-Ui @('wait-for', 'CalendarComboBox', '-t', '3000') | Out-Null
-        Invoke-Ui @('invoke', 'FinancialRadioButton') | Out-Null
-        Select-Day15 'PeriodStartPicker'
-        Assert-Text 'WorkDaysText' $e.brBcFinancialFromD0
-        Select-Calendar 'Fórum Regional da Lapa'
-        Assert-Text 'WorkDaysText' $e.lapaFinancialFromD0
-        Save-Screenshot '11-principal-derivado.png'
-    }
-
-    # Fase 3: as datas do período e os feriados vão para a planilha
-    Test-UI 'Copiar as datas do período, em texto e em HTML' {
-        if ($Target -ne 'sandbox') { throw 'Este teste troca a área de transferência, por isso só roda no Sandbox.' }
-        Invoke-Ui @('invoke', 'CopyPeriodButton') | Out-Null
-        Assert-Status "$($e.periodDays) datas copiadas, de $($e.d0) a $($e.periodEnd)."
-        $clipboard = Get-TargetClipboard
-        if ($clipboard.Lines -ne [int]$e.periodDays + 1) { throw "A área de transferência tem $($clipboard.Lines) linhas." }
-        if (-not $clipboard.HasHtml) { throw 'A área de transferência não tem a versão em HTML.' }
-    }
-
-    Test-UI 'Exportar as datas do período numa planilha' {
-        if ($Target -ne 'sandbox') { throw 'Este teste grava na pasta Documentos, por isso só roda no Sandbox.' }
-        Invoke-Ui @('invoke', 'ExportPeriodButton') | Out-Null
-        Save-WithSuggestedName
-        $path = Join-Path (Get-TargetDocuments) "Fórum Regional da Lapa de $($e.periodFile).xlsx"
-        try {
-            Assert-Status "Planilha gravada em $path." -TimeoutSeconds 10
-            Assert-TargetFile $path
-            Save-Screenshot '15-datas-exportadas.png'
-        } finally {
-            Remove-TargetFile $path
+        Test-UI 'Escolher as datas do período no calendário' {
+            Select-Day15 'PeriodStartPicker'
+            Assert-Text 'PeriodStartPicker' $e.d0
+            Select-Day15 'PeriodEndPicker'
+            Assert-Text 'PeriodEndPicker' $e.d1
         }
-    }
 
-    Test-UI 'Exceção num calendário da Elekto, desfeita depois' {
-        try {
+        Test-UI 'Dias entre as datas, financeiro' {
+            Assert-Text 'WorkDaysText' $e.financialWork
+            Assert-Text 'ActualDaysText' $e.financialActual
+        }
+
+        Test-UI 'Dias entre as datas, dias cheios' {
+            Invoke-Ui @('invoke', 'FullDaysRadioButton') | Out-Null
+            Assert-Text 'WorkDaysText' $e.fullWork
+            Assert-Text 'ActualDaysText' $e.fullActual
+        }
+
+        Test-UI 'Data final de 30 dias úteis' {
+            Select-Day15 'TermStartPicker'
+            Assert-Text 'TermStartPicker' $e.d0
+            Set-Term 30
+            Assert-Text 'FinalDateText' $e.work30
+        }
+
+        Test-UI 'Prazo negativo conta para trás' {
+            Set-Term -10
+            Assert-Text 'FinalDateText' $e.workMinus10
+        }
+
+        Test-UI 'Dias corridos habilitam o ajuste; sem ajuste, avisa o dia não útil' {
+            Invoke-Ui @('invoke', 'ActualDaysRadioButton') | Out-Null
+            Assert-Property 'AdjustFollowingRadioButton' 'IsEnabled' 'True'
+            Set-Term $e.weekendTerm
+            Assert-Text 'FinalDateText' $e.actualNone
+            Assert-Property 'FinalDateText' 'Name' $e.actualNoneDescription
+        }
+
+        Test-UI 'Ajuste para o dia útil seguinte' {
+            Invoke-Ui @('invoke', 'AdjustFollowingRadioButton') | Out-Null
+            Assert-Text 'FinalDateText' $e.actualFollowing
+        }
+
+        Test-UI 'Ajuste para o dia útil seguinte modificado' {
+            Invoke-Ui @('invoke', 'AdjustModifiedFollowingRadioButton') | Out-Null
+            Assert-Text 'FinalDateText' $e.actualModified
+            Save-Screenshot '02-dias-corridos.png'
+        }
+
+        Test-UI 'Prazo além do calendário mostra o aviso, sem data' {
+            Invoke-Ui @('invoke', 'WorkDaysRadioButton') | Out-Null
+            Set-Term 100000
+            Invoke-Ui @('wait-for', 'TermErrorInfoBar', '-t', '3000') | Out-Null
+            Invoke-Ui @('wait-for', 'FinalDateText', '--gone', '-t', '3000') | Out-Null
+            Save-Screenshot '03-erro.png'
+            Invoke-Ui @('invoke', 'ActualDaysRadioButton') | Out-Null
+            Set-Term $e.weekendTerm
+            Assert-Text 'FinalDateText' $e.actualModified
+            Invoke-Ui @('wait-for', 'TermErrorInfoBar', '--gone', '-t', '3000') | Out-Null
+        }
+
+        Test-UI 'Trocar o calendário refaz as duas contas' {
+            Select-Calendar 'Estados Unidos - NYSE (Nova Iorque)'
+            Assert-Text 'CalendarComboBox' 'Estados Unidos - NYSE (Nova Iorque)'
+            Assert-Text 'WorkDaysText' $e.nyseFullWork
+            Assert-Text 'ActualDaysText' $e.nyseFullActual
+            Assert-Text 'FinalDateText' $e.nyseActualModified
+        }
+
+        Test-UI 'Página Sobre pelo botão, volta pelo botão da barra de título' {
+            try {
+                Invoke-Ui @('invoke', 'AboutButton') | Out-Null
+                Assert-Text 'VersionText' 'Versão 2.0.0'
+                foreach ($link in 'ElektoLink', 'SourceCodeLink', 'ElektoPrivacyLink', 'GitHubPrivacyLink') {
+                    Invoke-Ui @('wait-for', $link, '-t', '2000') | Out-Null
+                }
+                # Nenhuma dica solta com a tecla dos atalhos de voltar (ela aparecia logo depois de navegar)
+                Start-Sleep -Seconds 1
+                if (@(Search-Ui 'Esc' | Where-Object { $_.name -eq 'Esc' }).Count) { throw 'Apareceu a dica "Esc".' }
+                Save-Screenshot '04-sobre.png'
+                Invoke-Ui @('invoke', 'PART_BackButton') | Out-Null
+                Invoke-Ui @('wait-for', 'CalendarComboBox', '-t', '3000') | Out-Null
+            } finally {
+                Restore-MainPage
+            }
+        }
+
+        # O Sandbox não tem programa associado a .txt; a tradução, em HTML, abre no Edge, que existe nele
+        Test-UI 'A tradução da licença, que vem no pacote, abre no navegador' {
+            if ($Target -ne 'sandbox') { throw 'Este teste fecha o navegador ao final, por isso só roda no Sandbox.' }
+            try {
+                Invoke-Ui @('invoke', 'AboutButton') | Out-Null
+                Invoke-Ui @('invoke', 'LicenseTranslationButton') | Out-Null
+                $deadline = [DateTime]::UtcNow.AddSeconds(20)
+                do {
+                    $windows = @(ConvertFrom-WinAppJson (Invoke-WinAppChecked (@('ui', 'list-windows', '--json') + $ScopeArgs)))
+                    $browser = $windows | Where-Object { $_.processName -eq 'msedge' } | Select-Object -First 1
+                    if ($browser) { break }
+                    Start-Sleep -Milliseconds 500
+                } while ([DateTime]::UtcNow -lt $deadline)
+                if (-not $browser) { throw 'O navegador não abriu.' }
+                Invoke-Ui @('wait-for', 'OpenErrorInfoBar', '--gone', '-t', '1000') | Out-Null
+            } finally {
+                try { Invoke-WinAppChecked @('target', 'exec', 'sandbox', '--', 'taskkill', '/IM', 'msedge.exe', '/F') | Out-Null }
+                catch { Write-Verbose 'O navegador não estava aberto.' }
+                Restore-MainPage
+            }
+        }
+
+        # Com uma dica própria, o WinUI não acrescenta a tecla do atalho; o "(F1)" está no texto da dica
+        Test-UI 'A dica do botão Sobre mostra a tecla F1' {
+            Invoke-Ui @('hover', 'AboutButton') | Out-Null
+            $deadline = [DateTime]::UtcNow.AddSeconds(3)
+            do {
+                $tips = @(Search-Ui 'F1' | Where-Object { $_.type -eq 'ToolTip' })
+                if ($tips.Count) { return }
+                Start-Sleep -Milliseconds 200
+            } while ([DateTime]::UtcNow -lt $deadline)
+            throw 'A dica do botão Sobre não mostra F1.'
+        }
+
+        Test-UI 'Página Sobre pelo F1, volta pelo Esc' {
+            try {
+                Invoke-Ui @('send-keys', 'f1', '--target', 'CalendarComboBox', '--via', 'send-input') | Out-Null
+                Invoke-Ui @('wait-for', 'VersionText', '-t', '3000') | Out-Null
+                Invoke-Ui @('send-keys', 'escape', '--target', 'LicenseButton', '--via', 'send-input') | Out-Null
+                Invoke-Ui @('wait-for', 'CalendarComboBox', '-t', '3000') | Out-Null
+            } finally {
+                Restore-MainPage
+            }
+        }
+
+        Test-UI 'Axe.Windows na página Sobre' {
+            try {
+                if ($AxeCli) {
+                    Invoke-Ui @('invoke', 'AboutButton') | Out-Null
+                    Invoke-Ui @('wait-for', 'VersionText', '-t', '3000') | Out-Null
+                }
+                Assert-Axe 'sobre'
+            } finally {
+                Restore-MainPage
+            }
+        }
+
+        Test-UI 'Ao voltar da página Sobre, nada se perdeu' {
+            Assert-Text 'CalendarComboBox' 'Estados Unidos - NYSE (Nova Iorque)'
+            Assert-Text 'PeriodStartPicker' $e.d0
+            Assert-Text 'WorkDaysText' $e.nyseFullWork
+            Assert-Text 'FinalDateText' $e.nyseActualModified
+        }
+
+        Test-UI 'A janela não fica menor que o mínimo' {
+            try {
+                Set-WindowSize 200 200
+                $size = Get-WindowSize
+                if ($size.Width -lt 500 -or $size.Height -lt 400) { throw "A janela ficou com $($size.Width) x $($size.Height)." }
+                Save-Screenshot '06-minima.png'
+            } finally {
+                Set-WindowSize 960 600
+            }
+        }
+
+        Test-UI 'Todos os controles da página têm AutomationId' {
+            Assert-AutomationIds 10
+        }
+
+        # Segunda execução, sem apagar os dados: as escolhas voltam como foram deixadas
+        Test-UI 'As escolhas são lembradas ao reabrir' {
+            Stop-App
+            Start-App
+            Assert-Text 'CalendarComboBox' 'Estados Unidos - NYSE (Nova Iorque)'
+            Assert-Selected 'FullDaysRadioButton'
+            Assert-Selected 'ActualDaysRadioButton'
+            Assert-Selected 'AdjustModifiedFollowingRadioButton'
+            Assert-Text 'InputBox' "$($e.weekendTerm)"
+            Save-Screenshot '05-reaberto.png'
+        }
+
+        #region Fase 2: calendários editáveis
+
+        Test-UI 'Editar calendários abre no calendário escolhido, com os feriados do ano' {
             Select-Calendar 'Brasil - Banco Central'
             Invoke-Ui @('invoke', 'CalendarsButton') | Out-Null
             Invoke-Ui @('wait-for', 'EditCalendarComboBox', '-t', '5000') | Out-Null
-            Invoke-Ui @('invoke', (Find-Holiday "$($e.christmasLong), $($e.christmasDescription), Da Elekto")) | Out-Null
-            Invoke-Ui @('invoke', 'RemoveHolidayButton') | Out-Null
-            Assert-Text 'CalendarKindText' 'Calendário da Elekto, com 1 alteração sua'
-            Invoke-Ui @('invoke', 'RestoreCalendarButton') | Out-Null
-            Invoke-Ui @('wait-for', 'PrimaryButton', '-t', '3000') | Out-Null
-            Invoke-Ui @('invoke', 'PrimaryButton') | Out-Null
+            Assert-Text 'EditCalendarComboBox' 'Brasil - Banco Central'
             Assert-Text 'CalendarKindText' 'Calendário da Elekto, sem alterações suas'
-        } finally {
-            Restore-CalendarsPage
+            Assert-Text 'HolidaysSummaryText' $e.holidaysThisYear
+            Find-Holiday "$($e.christmasLong), $($e.christmasDescription), Da Elekto" | Out-Null
+            Save-Screenshot '07-calendarios.png'
         }
-    }
 
-    Test-UI 'Copiar os feriados do ano e exportar os do calendário numa planilha' {
-        if ($Target -ne 'sandbox') { throw 'Este teste troca a área de transferência e grava em Documentos, por isso só roda no Sandbox.' }
-        Invoke-Ui @('invoke', 'CopyHolidaysButton') | Out-Null
-        Assert-Status "$($e.holidaysThisYearCount) feriados de $($e.year) copiados."
-        $clipboard = Get-TargetClipboard
-        if ($clipboard.Lines -ne [int]$e.holidaysThisYearCount + 1) { throw "A área de transferência tem $($clipboard.Lines) linhas." }
-        Invoke-Ui @('invoke', 'ExportHolidaysButton') | Out-Null
-        Save-WithSuggestedName
-        $path = Join-Path (Get-TargetDocuments) 'Feriados de Brasil - Banco Central.xlsx'
-        try {
-            Assert-Status "Planilha gravada em $path." -TimeoutSeconds 10
-            Assert-TargetFile $path
-        } finally {
-            Remove-TargetFile $path
+        Test-UI 'Axe.Windows na página de calendários e na caixa Novo' {
+            Assert-Axe 'calendarios'
+            try {
+                Invoke-Ui @('invoke', 'NewCalendarButton') | Out-Null
+                Invoke-Ui @('wait-for', 'CalendarNameTextBox', '-t', '3000') | Out-Null
+                Assert-Axe 'novo-calendario'
+            } finally {
+                Restore-CalendarsPage
+            }
         }
-    }
 
-    Test-UI 'Exportar tudo para um arquivo' {
-        if ($Target -ne 'sandbox') { throw 'Este teste grava na pasta Documentos, por isso só roda no Sandbox.' }
-        Invoke-Ui @('invoke', 'ExportAllButton') | Out-Null
-        Save-WithSuggestedName
-        $documents = (Invoke-Target @('powershell', '-NoProfile', '-Command', "[Environment]::GetFolderPath('MyDocuments')") |
-            Select-Object -Last 1).Trim()
-        Assert-Status "Exportado para $(Join-Path $documents $ExportFileName)." -TimeoutSeconds 10
-    }
+        Test-UI 'Criar um calendário derivado do br-BC' {
+            Invoke-Ui @('invoke', 'DeriveCalendarButton') | Out-Null
+            Invoke-Ui @('wait-for', 'CalendarNameTextBox', '-t', '3000') | Out-Null
+            Invoke-Ui @('set-value', 'CalendarNameTextBox', 'Fórum da Lapa') | Out-Null
+            Invoke-Ui @('invoke', 'PrimaryButton') | Out-Null
+            Invoke-Ui @('wait-for', 'CalendarNameTextBox', '--gone', '-t', '3000') | Out-Null
+            Assert-Text 'EditCalendarComboBox' 'Fórum da Lapa'
+            Assert-Text 'CalendarKindText' 'Derivado de Brasil - Banco Central, sem alterações suas'
+            Assert-Status 'Calendário “Fórum da Lapa” criado.'
+        }
 
-    Test-UI 'Excluir o calendário pede confirmação' {
-        Select-EditCalendar 'Fórum Regional da Lapa'
-        Invoke-Ui @('invoke', 'DeleteCalendarButton') | Out-Null
-        Invoke-Ui @('wait-for', 'PrimaryButton', '-t', '3000') | Out-Null
-        Save-Screenshot '12-excluir.png'
-        Invoke-Ui @('invoke', 'PrimaryButton') | Out-Null
-        Assert-Status 'Calendário “Fórum Regional da Lapa” excluído.'
-        Assert-Text 'EditCalendarComboBox' 'Brasil - Banco Central'
-    }
-
-    Test-UI 'Importar o arquivo exportado traz o calendário de volta, com a herança' {
-        if ($Target -ne 'sandbox') { throw 'Este teste lê da pasta Documentos, por isso só roda no Sandbox.' }
-        Invoke-Ui @('invoke', 'ImportButton') | Out-Null
-        Open-FromDocuments $ExportFileName
-        Invoke-Ui @('wait-for', 'ImportDialog', '-t', '5000') | Out-Null
-        Save-Screenshot '13-importar.png'
-        Invoke-Ui @('invoke', 'PrimaryButton') | Out-Null
-        Assert-Status '1 calendário importado.'
-        Assert-Text 'EditCalendarComboBox' 'Fórum Regional da Lapa'
-        Assert-Text 'CalendarKindText' 'Derivado de Brasil - Banco Central, com 1 alteração sua'
-        Find-Holiday "$($e.localLong), Aniversário do fórum, Incluído por você" | Out-Null
-    }
-
-    Test-UI 'Importar um arquivo de calendário da versão 1' {
-        if ($Target -ne 'sandbox') { throw 'Este teste lê da pasta Documentos, por isso só roda no Sandbox.' }
-        Invoke-Ui @('invoke', 'ImportButton') | Out-Null
-        Open-FromDocuments $LegacyFileName
-        Invoke-Ui @('wait-for', 'ImportDialog', '-t', '5000') | Out-Null
-        Invoke-Ui @('invoke', 'PrimaryButton') | Out-Null
-        Assert-Status '1 calendário importado.'
-        Assert-Text 'EditCalendarComboBox' 'Cidade de São Paulo'
-        Assert-Text 'CalendarKindText' 'Calendário próprio, sem base, com 3 feriados'
-    }
-
-    # Os atalhos valem só com o foco na lista, e o Esc numa caixa de diálogo fecha a caixa sem sair da página
-    Test-UI 'Delete e F2 na lista de feriados, Esc na caixa de diálogo' {
-        try {
-            $july = Find-Holiday 'Revolução Constitucionalista' -Anywhere
-            Invoke-Ui @('invoke', $july) | Out-Null
-            Invoke-Ui @('send-keys', 'delete', '--target', $july, '--via', 'send-input') | Out-Null
-            Assert-Text 'CalendarKindText' 'Calendário próprio, sem base, com 2 feriados'
-            $january = Find-Holiday 'Aniversário de São Paulo' -Anywhere
-            Invoke-Ui @('invoke', $january) | Out-Null
-            Invoke-Ui @('send-keys', 'f2', '--target', $january, '--via', 'send-input') | Out-Null
+        Test-UI 'Incluir um feriado local' {
+            Invoke-Ui @('invoke', 'AddHolidayButton') | Out-Null
             Invoke-Ui @('wait-for', 'HolidayDescriptionTextBox', '-t', '3000') | Out-Null
-            Invoke-Ui @('send-keys', 'escape', '--target', 'HolidayDescriptionTextBox', '--via', 'send-input') | Out-Null
+            Select-Day 'HolidayDatePicker' $e.localDay
+            Invoke-Ui @('set-value', 'HolidayDescriptionTextBox', 'Feriado do fórum') | Out-Null
+            Save-Screenshot '08-incluir-feriado.png'
+            Invoke-Ui @('invoke', 'PrimaryButton') | Out-Null
             Invoke-Ui @('wait-for', 'HolidayDescriptionTextBox', '--gone', '-t', '3000') | Out-Null
-            Invoke-Ui @('wait-for', 'EditCalendarComboBox', '-t', '2000') | Out-Null
-        } finally {
-            Restore-CalendarsPage
+            Find-Holiday "$($e.localLong), Feriado do fórum, Incluído por você" | Out-Null
+            Assert-Text 'CalendarKindText' 'Derivado de Brasil - Banco Central, com 1 alteração sua'
         }
-    }
 
-    Test-UI 'Todos os controles da página de calendários têm AutomationId' {
-        Assert-AutomationIds 8
-    }
-
-    Test-UI 'A página de calendários na janela mínima' {
-        try {
-            Set-WindowSize 500 400
-            Save-Screenshot '14-calendarios-minima.png'
-        } finally {
-            Set-WindowSize 960 600
+        Test-UI 'Remover e restaurar um feriado herdado' {
+            Invoke-Ui @('invoke', (Find-Holiday "$($e.christmasLong), $($e.christmasDescription), Herdado")) | Out-Null
+            Invoke-Ui @('invoke', 'RemoveHolidayButton') | Out-Null
+            Find-Holiday "$($e.christmasLong), $($e.christmasDescription), Removido por você" | Out-Null
+            Assert-Text 'CalendarKindText' 'Derivado de Brasil - Banco Central, com 2 alterações suas'
+            Save-Screenshot '09-removido.png'
+            Invoke-Ui @('invoke', 'RestoreHolidayButton') | Out-Null
+            Find-Holiday "$($e.christmasLong), $($e.christmasDescription), Herdado" | Out-Null
+            Assert-Text 'CalendarKindText' 'Derivado de Brasil - Banco Central, com 1 alteração sua'
         }
-    }
 
-    # Terceira execução: os calendários do usuário ficam guardados no banco local
-    Test-UI 'Os calendários continuam ao reabrir' {
-        Stop-App
-        Start-App
-        Select-Calendar 'Fórum Regional da Lapa'
-        Assert-Text 'WorkDaysText' $e.lapaFinancialToday
-        Invoke-Ui @('invoke', 'CalendarsButton') | Out-Null
-        Invoke-Ui @('wait-for', 'EditCalendarComboBox', '-t', '5000') | Out-Null
-        Assert-Text 'EditCalendarComboBox' 'Fórum Regional da Lapa'
-        Find-Holiday "$($e.localLong), Aniversário do fórum, Incluído por você" | Out-Null
-    }
+        Test-UI 'Trocar a descrição do feriado local' {
+            Invoke-Ui @('invoke', (Find-Holiday "$($e.localLong), Feriado do fórum")) | Out-Null
+            Invoke-Ui @('invoke', 'EditHolidayButton') | Out-Null
+            Invoke-Ui @('wait-for', 'HolidayDescriptionTextBox', '-t', '3000') | Out-Null
+            Invoke-Ui @('set-value', 'HolidayDescriptionTextBox', 'Aniversário do fórum') | Out-Null
+            Invoke-Ui @('invoke', 'PrimaryButton') | Out-Null
+            Invoke-Ui @('wait-for', 'HolidayDescriptionTextBox', '--gone', '-t', '3000') | Out-Null
+            Find-Holiday "$($e.localLong), Aniversário do fórum, Incluído por você" | Out-Null
+        }
 
-    #endregion
+        Test-UI 'Nome repetido é recusado sem fechar a caixa' {
+            Invoke-Ui @('invoke', 'NewCalendarButton') | Out-Null
+            Invoke-Ui @('wait-for', 'CalendarNameTextBox', '-t', '3000') | Out-Null
+            Invoke-Ui @('set-value', 'CalendarNameTextBox', 'brasil - banco central') | Out-Null
+            Invoke-Ui @('invoke', 'PrimaryButton') | Out-Null
+            Invoke-Ui @('wait-for', 'CalendarDialogErrorInfoBar', '-t', '3000') | Out-Null
+            if (-not @(Search-Ui 'Já existe um calendário chamado “brasil - banco central”.').Count) {
+                throw 'A mensagem de nome repetido não apareceu.'
+            }
+            Save-Screenshot '10-nome-repetido.png'
+            Invoke-Ui @('invoke', 'CloseButton') | Out-Null
+            Invoke-Ui @('wait-for', 'CalendarNameTextBox', '--gone', '-t', '3000') | Out-Null
+        }
+
+        Test-UI 'Renomear o calendário' {
+            Invoke-Ui @('invoke', 'RenameCalendarButton') | Out-Null
+            Invoke-Ui @('wait-for', 'CalendarNameTextBox', '-t', '3000') | Out-Null
+            Invoke-Ui @('set-value', 'CalendarNameTextBox', 'Fórum Regional da Lapa') | Out-Null
+            Invoke-Ui @('invoke', 'PrimaryButton') | Out-Null
+            Invoke-Ui @('wait-for', 'CalendarNameTextBox', '--gone', '-t', '3000') | Out-Null
+            Assert-Text 'EditCalendarComboBox' 'Fórum Regional da Lapa'
+        }
+
+        Test-UI 'O feriado local vale nas contas da página principal' {
+            Invoke-Ui @('invoke', 'PART_BackButton') | Out-Null
+            Invoke-Ui @('wait-for', 'CalendarComboBox', '-t', '3000') | Out-Null
+            Invoke-Ui @('invoke', 'FinancialRadioButton') | Out-Null
+            Select-Day15 'PeriodStartPicker'
+            Assert-Text 'WorkDaysText' $e.brBcFinancialFromD0
+            Select-Calendar 'Fórum Regional da Lapa'
+            Assert-Text 'WorkDaysText' $e.lapaFinancialFromD0
+            Save-Screenshot '11-principal-derivado.png'
+        }
+
+        # Fase 3: as datas do período e os feriados vão para a planilha
+        Test-UI 'Copiar as datas do período, em texto e em HTML' {
+            if ($Target -ne 'sandbox') { throw 'Este teste troca a área de transferência, por isso só roda no Sandbox.' }
+            Invoke-Ui @('invoke', 'CopyPeriodButton') | Out-Null
+            Assert-Status "$($e.periodDays) datas copiadas, de $($e.d0) a $($e.periodEnd)."
+            $clipboard = Get-TargetClipboard
+            if ($clipboard.Lines -ne [int]$e.periodDays + 1) { throw "A área de transferência tem $($clipboard.Lines) linhas." }
+            if (-not $clipboard.HasHtml) { throw 'A área de transferência não tem a versão em HTML.' }
+        }
+
+        Test-UI 'Exportar as datas do período numa planilha' {
+            if ($Target -ne 'sandbox') { throw 'Este teste grava na pasta Documentos, por isso só roda no Sandbox.' }
+            Invoke-Ui @('invoke', 'ExportPeriodButton') | Out-Null
+            Save-WithSuggestedName
+            $path = Join-Path (Get-TargetDocuments) "Fórum Regional da Lapa de $($e.periodFile).xlsx"
+            try {
+                Assert-Status "Planilha gravada em $path." -TimeoutSeconds 10
+                Assert-TargetFile $path
+                Save-Screenshot '15-datas-exportadas.png'
+            } finally {
+                Remove-TargetFile $path
+            }
+        }
+
+        Test-UI 'Exceção num calendário da Elekto, desfeita depois' {
+            try {
+                Select-Calendar 'Brasil - Banco Central'
+                Invoke-Ui @('invoke', 'CalendarsButton') | Out-Null
+                Invoke-Ui @('wait-for', 'EditCalendarComboBox', '-t', '5000') | Out-Null
+                Invoke-Ui @('invoke', (Find-Holiday "$($e.christmasLong), $($e.christmasDescription), Da Elekto")) | Out-Null
+                Invoke-Ui @('invoke', 'RemoveHolidayButton') | Out-Null
+                Assert-Text 'CalendarKindText' 'Calendário da Elekto, com 1 alteração sua'
+                Invoke-Ui @('invoke', 'RestoreCalendarButton') | Out-Null
+                Invoke-Ui @('wait-for', 'PrimaryButton', '-t', '3000') | Out-Null
+                Invoke-Ui @('invoke', 'PrimaryButton') | Out-Null
+                Assert-Text 'CalendarKindText' 'Calendário da Elekto, sem alterações suas'
+            } finally {
+                Restore-CalendarsPage
+            }
+        }
+
+        Test-UI 'Copiar os feriados do ano e exportar os do calendário numa planilha' {
+            if ($Target -ne 'sandbox') { throw 'Este teste troca a área de transferência e grava em Documentos, por isso só roda no Sandbox.' }
+            Invoke-Ui @('invoke', 'CopyHolidaysButton') | Out-Null
+            Assert-Status "$($e.holidaysThisYearCount) feriados de $($e.year) copiados."
+            $clipboard = Get-TargetClipboard
+            if ($clipboard.Lines -ne [int]$e.holidaysThisYearCount + 1) { throw "A área de transferência tem $($clipboard.Lines) linhas." }
+            Invoke-Ui @('invoke', 'ExportHolidaysButton') | Out-Null
+            Save-WithSuggestedName
+            $path = Join-Path (Get-TargetDocuments) 'Feriados de Brasil - Banco Central.xlsx'
+            try {
+                Assert-Status "Planilha gravada em $path." -TimeoutSeconds 10
+                Assert-TargetFile $path
+            } finally {
+                Remove-TargetFile $path
+            }
+        }
+
+        Test-UI 'Exportar tudo para um arquivo' {
+            if ($Target -ne 'sandbox') { throw 'Este teste grava na pasta Documentos, por isso só roda no Sandbox.' }
+            Invoke-Ui @('invoke', 'ExportAllButton') | Out-Null
+            Save-WithSuggestedName
+            $documents = (Invoke-Target @('powershell', '-NoProfile', '-Command', "[Environment]::GetFolderPath('MyDocuments')") |
+                Select-Object -Last 1).Trim()
+            Assert-Status "Exportado para $(Join-Path $documents $ExportFileName)." -TimeoutSeconds 10
+        }
+
+        Test-UI 'Excluir o calendário pede confirmação' {
+            Select-EditCalendar 'Fórum Regional da Lapa'
+            Invoke-Ui @('invoke', 'DeleteCalendarButton') | Out-Null
+            Invoke-Ui @('wait-for', 'PrimaryButton', '-t', '3000') | Out-Null
+            Save-Screenshot '12-excluir.png'
+            Invoke-Ui @('invoke', 'PrimaryButton') | Out-Null
+            Assert-Status 'Calendário “Fórum Regional da Lapa” excluído.'
+            Assert-Text 'EditCalendarComboBox' 'Brasil - Banco Central'
+        }
+
+        Test-UI 'Importar o arquivo exportado traz o calendário de volta, com a herança' {
+            if ($Target -ne 'sandbox') { throw 'Este teste lê da pasta Documentos, por isso só roda no Sandbox.' }
+            Invoke-Ui @('invoke', 'ImportButton') | Out-Null
+            Open-FromDocuments $ExportFileName
+            Invoke-Ui @('wait-for', 'ImportDialog', '-t', '5000') | Out-Null
+            Save-Screenshot '13-importar.png'
+            Invoke-Ui @('invoke', 'PrimaryButton') | Out-Null
+            Assert-Status '1 calendário importado.'
+            Assert-Text 'EditCalendarComboBox' 'Fórum Regional da Lapa'
+            Assert-Text 'CalendarKindText' 'Derivado de Brasil - Banco Central, com 1 alteração sua'
+            Find-Holiday "$($e.localLong), Aniversário do fórum, Incluído por você" | Out-Null
+        }
+
+        Test-UI 'Importar um arquivo de calendário da versão 1' {
+            if ($Target -ne 'sandbox') { throw 'Este teste lê da pasta Documentos, por isso só roda no Sandbox.' }
+            Invoke-Ui @('invoke', 'ImportButton') | Out-Null
+            Open-FromDocuments $LegacyFileName
+            Invoke-Ui @('wait-for', 'ImportDialog', '-t', '5000') | Out-Null
+            Invoke-Ui @('invoke', 'PrimaryButton') | Out-Null
+            Assert-Status '1 calendário importado.'
+            Assert-Text 'EditCalendarComboBox' 'Cidade de São Paulo'
+            Assert-Text 'CalendarKindText' 'Calendário próprio, sem base, com 3 feriados'
+        }
+
+        # Os atalhos valem só com o foco na lista, e o Esc numa caixa de diálogo fecha a caixa sem sair da página
+        Test-UI 'Delete e F2 na lista de feriados, Esc na caixa de diálogo' {
+            try {
+                $july = Find-Holiday 'Revolução Constitucionalista' -Anywhere
+                Invoke-Ui @('invoke', $july) | Out-Null
+                Invoke-Ui @('send-keys', 'delete', '--target', $july, '--via', 'send-input') | Out-Null
+                Assert-Text 'CalendarKindText' 'Calendário próprio, sem base, com 2 feriados'
+                $january = Find-Holiday 'Aniversário de São Paulo' -Anywhere
+                Invoke-Ui @('invoke', $january) | Out-Null
+                Invoke-Ui @('send-keys', 'f2', '--target', $january, '--via', 'send-input') | Out-Null
+                Invoke-Ui @('wait-for', 'HolidayDescriptionTextBox', '-t', '3000') | Out-Null
+                Invoke-Ui @('send-keys', 'escape', '--target', 'HolidayDescriptionTextBox', '--via', 'send-input') | Out-Null
+                Invoke-Ui @('wait-for', 'HolidayDescriptionTextBox', '--gone', '-t', '3000') | Out-Null
+                Invoke-Ui @('wait-for', 'EditCalendarComboBox', '-t', '2000') | Out-Null
+            } finally {
+                Restore-CalendarsPage
+            }
+        }
+
+        Test-UI 'Todos os controles da página de calendários têm AutomationId' {
+            Assert-AutomationIds 8
+        }
+
+        Test-UI 'A página de calendários na janela mínima' {
+            try {
+                Set-WindowSize 500 400
+                Save-Screenshot '14-calendarios-minima.png'
+            } finally {
+                Set-WindowSize 960 600
+            }
+        }
+
+        # Terceira execução: os calendários do usuário ficam guardados no banco local
+        Test-UI 'Os calendários continuam ao reabrir' {
+            Stop-App
+            Start-App
+            Select-Calendar 'Fórum Regional da Lapa'
+            Assert-Text 'WorkDaysText' $e.lapaFinancialToday
+            Invoke-Ui @('invoke', 'CalendarsButton') | Out-Null
+            Invoke-Ui @('wait-for', 'EditCalendarComboBox', '-t', '5000') | Out-Null
+            Assert-Text 'EditCalendarComboBox' 'Fórum Regional da Lapa'
+            Find-Holiday "$($e.localLong), Aniversário do fórum, Incluído por você" | Out-Null
+        }
+
+        #endregion
+    }
 } catch {
     $results.Add([ordered]@{ name = 'Preparação ou execução dos testes'; status = 'FAIL'; detail = "$_" })
     Write-Host "FAIL  Preparação ou execução dos testes`n      $_" -ForegroundColor Red

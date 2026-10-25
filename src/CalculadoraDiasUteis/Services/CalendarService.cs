@@ -17,6 +17,7 @@
 
     Entre em contato com a Elekto em https://elekto.com.br/
  */
+using System.Runtime.InteropServices;
 using CalculadoraDiasUteis.Core;
 using Elekto.Calendars;
 using Windows.Storage;
@@ -54,7 +55,7 @@ public static class CalendarService
         }
 
         var provider = new TextsInFolderCalendarInfoProvider(path);
-        var originals = provider.All().ToList();
+        var originals = provider.All().Select(Localize).ToList();
         if (originals.Count == 0)
         {
             return (null, Strings.Format("ErrorNoCalendars", path));
@@ -73,5 +74,26 @@ public static class CalendarService
         {
             return (null, Strings.Format("ErrorDatabase", database, ex.Message));
         }
+    }
+
+    /// <summary>
+    ///     O nome do calendário da Elekto no idioma do aplicativo, que vem dos recursos pelo código; o arquivo traz o
+    ///     nome em português, que fica valendo se o recurso não existir.
+    /// </summary>
+    private static CalendarInfo Localize(CalendarInfo info)
+    {
+        string name;
+        try
+        {
+            name = Strings.Get("CalendarName_" + info.Name.Replace('-', '_'));
+        }
+        catch (COMException)
+        {
+            return info;
+        }
+
+        return string.IsNullOrEmpty(name)
+            ? info
+            : CalendarInfo.New(info.Name, info.Holidays, name, info.NonWorkDays, info.HolidayDescriptions);
     }
 }
