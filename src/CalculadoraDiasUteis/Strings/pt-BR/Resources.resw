@@ -994,4 +994,7 @@
   <data name="LicenseTranslationButton.Visibility" xml:space="preserve">
     <value>Visible</value>
   </data>
+  <data name="LicenseFile" xml:space="preserve">
+    <value>ms-appx:///Licenses/license.txt</value>
+  </data>
 </root>

@@ -50,7 +50,8 @@ public sealed partial class AboutPage : Page
 
     private async void LicenseButton_Click(object sender, RoutedEventArgs e)
     {
-        await OpenPackagedFileAsync("ms-appx:///Licenses/license.txt");
+        // o prefácio da Elekto, antes da GPL, está no idioma do aplicativo
+        await OpenPackagedFileAsync(Strings.Get("LicenseFile"));
     }
 
     private async void LicenseTranslationButton_Click(object sender, RoutedEventArgs e)

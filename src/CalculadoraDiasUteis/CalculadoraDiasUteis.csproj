@@ -27,9 +27,11 @@
     <Content Include="Assets\AppIcon.ico" />
   </ItemGroup>
 
-  <!-- A licença acompanha o aplicativo, no original e na tradução -->
+  <!-- A licença acompanha o aplicativo, no original e na tradução, com o prefácio da Elekto em cada idioma -->
   <ItemGroup>
     <Content Include="..\..\assets\license.txt" Link="Licenses\license.txt" />
+    <Content Include="..\..\assets\license-en.txt" Link="Licenses\license-en.txt" />
+    <Content Include="..\..\assets\license-es.txt" Link="Licenses\license-es.txt" />
     <Content Include="..\..\assets\licença.html" Link="Licenses\licenca.html" />
   </ItemGroup>
 
