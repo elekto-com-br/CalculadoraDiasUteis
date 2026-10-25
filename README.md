@@ -64,6 +64,8 @@ Os testes de interface usam o mesmo WinApp CLI e rodam no Windows Sandbox, sem m
 .\tests\UiTests\ui-tests.ps1 -Target sandbox
 ```
 
+Com `-AxeCli` e o zip do [Axe.Windows CLI](https://github.com/microsoft/axe-windows/releases), os testes também passam as telas pelas regras automáticas de acessibilidade do Accessibility Insights.
+
 O mesmo roteiro roda contra o pacote de publicação, em Release, gerado e assinado com um certificado de teste, que o `winapp` grava ao lado do pacote:
 
 ```

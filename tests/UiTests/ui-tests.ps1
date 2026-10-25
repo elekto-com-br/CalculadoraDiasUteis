@@ -30,6 +30,11 @@
     Requer o WinApp CLI 0.7 ou posterior, o SDK do .NET 10 e, no alvo sandbox, o Windows Sandbox habilitado
     e a sessão do Windows desbloqueada.
 
+.PARAMETER AxeCli
+    O zip do Axe.Windows CLI (AxeWindowsCLI-<versão>.zip, de https://github.com/microsoft/axe-windows/releases), o
+    verificador automático do Accessibility Insights. Com ele, as telas principais e uma caixa de diálogo são
+    verificadas no Sandbox, e qualquer erro de acessibilidade falha o teste; sem ele, esses testes são pulados.
+
 .PARAMETER Package
     Um pacote MSIX já gerado (winapp package), para testar o que vai para a Store em vez do projeto compilado em
     Debug. Só no Sandbox, junto com -Certificate, o certificado .pfx que assinou o pacote, de senha "password".
@@ -45,7 +50,8 @@ param(
     [string]$ArtifactDirectory = (Join-Path ([IO.Path]::GetTempPath()) "CalculadoraDiasUteis-ui-tests\$(Get-Date -Format 'yyyyMMdd-HHmmss')"),
     [ValidateNotNullOrEmpty()][string]$WorkflowId = [guid]::NewGuid().ToString('N'),
     [string]$Package,
-    [string]$Certificate
+    [string]$Certificate,
+    [string]$AxeCli
 )
 
 $ErrorActionPreference = 'Stop'
@@ -104,6 +110,13 @@ function Test-UI {
         if ("$_" -match 'No interactive desktop is available') {
             $results.Add([ordered]@{ name = $Name; status = 'SKIP'; detail = 'Exige a sessão do Windows desbloqueada.' })
             Write-Host "SKIP  $Name (exige a sessão do Windows desbloqueada)" -ForegroundColor Yellow
+            return
+        }
+        # Um teste que depende de um parâmetro não informado é pulado
+        if ("$_" -like 'PULAR:*') {
+            $reason = "$_".Substring(6).Trim()
+            $results.Add([ordered]@{ name = $Name; status = 'SKIP'; detail = $reason })
+            Write-Host "SKIP  $Name ($reason)" -ForegroundColor Yellow
             return
         }
         $results.Add([ordered]@{ name = $Name; status = 'FAIL'; detail = "$_" })
@@ -356,6 +369,30 @@ function Get-TargetClipboard {
     [pscustomobject]@{ Lines = [int]$lines[-2]; HasHtml = $lines[-1].Trim() -eq 'True' }
 }
 
+# Verifica a janela do aplicativo com o Axe.Windows, as regras automáticas do Accessibility Insights
+function Assert-Axe {
+    param([string]$ScanId)
+    if (-not $AxeCli) { throw 'PULAR: sem -AxeCli' }
+    if ($Target -ne 'sandbox') { throw 'PULAR: o Axe.Windows roda no Sandbox' }
+    if (-not $script:AxeExe) {
+        $push = ConvertFrom-WinAppJson (Invoke-WinAppChecked @('target', 'push', 'sandbox', [IO.Path]::GetFullPath($AxeCli), 'axe\AxeWindowsCLI.zip', '--json'))
+        $folder = Join-Path (Split-Path $push.targetPath) 'cli'
+        Invoke-Target @('powershell', '-NoProfile', '-Command',
+            "Expand-Archive -Path '$($push.targetPath)' -DestinationPath '$folder' -Force") | Out-Null
+        $script:AxeExe = Join-Path $folder 'AxeWindowsCLI.exe'
+    }
+    Start-Sleep -Milliseconds 500
+    $output = @(Invoke-Target @('powershell', '-NoProfile', '-Command',
+        "& '$script:AxeExe' --processId $script:AppPid --outputDirectory 'C:\WinApp\work\axe\$WorkflowId' --scanId '$ScanId'; exit 0"))
+    $line = $output | Where-Object { $_ -match '(\d+) errors? (was|were) found' } | Select-Object -Last 1
+    if (-not $line -or $line -notmatch '(\d+) errors? (was|were) found') {
+        throw "O Axe.Windows não deu resultado: $($output -join ' ')"
+    }
+    if ($Matches[1] -ne '0') {
+        throw "$line O relatório (.a11ytest) ficou no Sandbox, em C:\WinApp\work\axe\$WorkflowId, e abre no Accessibility Insights."
+    }
+}
+
 # Roda um comando onde o aplicativo está
 function Invoke-Target {
     param([string[]]$Command)
@@ -541,6 +578,8 @@ try {
 
     Test-UI 'Captura inicial' { Save-Screenshot '01-inicial.png' }
 
+    Test-UI 'Axe.Windows na página principal' { Assert-Axe 'principal' }
+
     Test-UI 'Padrões: br-BC, financeiro, dias úteis, sem ajuste, 252 dias' {
         Assert-Text 'CalendarComboBox' 'Brasil - Banco Central'
         Assert-Selected 'FinancialRadioButton'
@@ -690,6 +729,18 @@ try {
         }
     }
 
+    Test-UI 'Axe.Windows na página Sobre' {
+        try {
+            if ($AxeCli) {
+                Invoke-Ui @('invoke', 'AboutButton') | Out-Null
+                Invoke-Ui @('wait-for', 'VersionText', '-t', '3000') | Out-Null
+            }
+            Assert-Axe 'sobre'
+        } finally {
+            Restore-MainPage
+        }
+    }
+
     Test-UI 'Ao voltar da página Sobre, nada se perdeu' {
         Assert-Text 'CalendarComboBox' 'Estados Unidos - NYSE (Nova Iorque)'
         Assert-Text 'PeriodStartPicker' $e.d0
@@ -735,6 +786,17 @@ try {
         Assert-Text 'HolidaysSummaryText' $e.holidaysThisYear
         Find-Holiday "$($e.christmasLong), $($e.christmasDescription), Da Elekto" | Out-Null
         Save-Screenshot '07-calendarios.png'
+    }
+
+    Test-UI 'Axe.Windows na página de calendários e na caixa Novo' {
+        Assert-Axe 'calendarios'
+        try {
+            Invoke-Ui @('invoke', 'NewCalendarButton') | Out-Null
+            Invoke-Ui @('wait-for', 'CalendarNameTextBox', '-t', '3000') | Out-Null
+            Assert-Axe 'novo-calendario'
+        } finally {
+            Restore-CalendarsPage
+        }
     }
 
     Test-UI 'Criar um calendário derivado do br-BC' {

@@ -135,7 +135,7 @@ Decisões tomadas na fase:
 
 ### Revisão de acessibilidade
 
-Uma passada só, quando todas as telas estiverem prontas: o Accessibility Insights (verificação automática e ordem do Tab) e o Narrador em cada tela, por uma pessoa diante do computador e com som. Pelo acesso remoto o som do Narrador não chega, e não há como um agente ouvi-lo. O roteiro, em forma de lista para marcar, está em [ACESSIBILIDADE.md](ACESSIBILIDADE.md) e cresce a cada tela nova. O que falhar é corrigido antes do envio à Store.
+Uma passada só, quando todas as telas estiverem prontas: o Accessibility Insights (verificação automática e ordem do Tab) e o Narrador em cada tela, por uma pessoa diante do computador e com som. A parte automática já roda nos testes de interface: com `-AxeCli`, o Axe.Windows, que é o verificador do Accessibility Insights, confere as telas principais e uma caixa de diálogo e não achou erro em 25/10/2026. Pelo acesso remoto o som do Narrador não chega, e não há como um agente ouvi-lo. O roteiro, em forma de lista para marcar, está em [ACESSIBILIDADE.md](ACESSIBILIDADE.md) e cresce a cada tela nova. O que falhar é corrigido antes do envio à Store.
 
 ### Fase 4: Microsoft Store
 

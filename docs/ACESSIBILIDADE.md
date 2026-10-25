@@ -1,6 +1,6 @@
 # Verificação de acessibilidade
 
-Roteiro da [revisão de acessibilidade](ROADMAP.md#revisão-de-acessibilidade), feita uma vez só, com todas as telas prontas, antes do envio à Store. Precisa de uma pessoa diante do computador, com som: o Narrador fala, e pelo acesso remoto o som não chega. Cada tela nova acrescenta aqui os seus itens. Os testes automáticos (`tests/UiTests`) já cobrem os nomes e `AutomationId` dos controles, o teclado e o tamanho da janela; o que fica aqui é o que só se confere ouvindo e olhando.
+Roteiro da [revisão de acessibilidade](ROADMAP.md#revisão-de-acessibilidade), feita uma vez só, com todas as telas prontas, antes do envio à Store. Precisa de uma pessoa diante do computador, com som: o Narrador fala, e pelo acesso remoto o som não chega. Cada tela nova acrescenta aqui os seus itens. Os testes automáticos (`tests/UiTests`) já cobrem os nomes e `AutomationId` dos controles, o teclado e o tamanho da janela, e, com o parâmetro `-AxeCli`, rodam o Axe.Windows, as mesmas regras automáticas do FastPass do Accessibility Insights, na página principal, na "Sobre", na de calendários e na caixa "Novo". Em 25/10/2026, o Axe.Windows não achou erro nelas nem nas caixas "Incluir feriado" e "Excluir" e no aviso de nome repetido. O que fica aqui é o que só se confere ouvindo e olhando.
 
 Marque cada item ao terminar. O que falhar, anote embaixo do item, com um print se ajudar, para ser corrigido depois.
 
@@ -11,7 +11,7 @@ Marque cada item ao terminar. O que falhar, anote embaixo do item, com um print 
 
 ## Accessibility Insights
 
-Verificações automáticas (FastPass):
+Verificações automáticas (FastPass), para confirmar o que o Axe.Windows já viu nos testes:
 
 - [ ] No Accessibility Insights, escolher **FastPass**, com **What to select** em **Entire app**.
 - [ ] Voltar à calculadora com Alt+Tab e apertar **Shift+F8**. As falhas aparecem marcadas sobre uma captura da tela; clicando em cada uma, a aba **How to fix** diz o que corrigir.
