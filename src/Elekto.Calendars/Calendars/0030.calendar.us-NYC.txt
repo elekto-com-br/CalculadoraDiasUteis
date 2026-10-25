@@ -1,689 +1,689 @@
 ﻿Estados Unidos - NYSE (Nova Iorque)
-20000101
-20000117
-20000221
-20000421
-20000529
-20000704
-20000904
-20001123
-20001225
-20010101
-20010115
-20010219
-20010413
-20010528
-20010704
-20010903
-20010911
-20010912
-20010913
-20010914
-20011122
-20011225
-20020101
-20020121
-20020218
-20020329
-20020527
-20020704
-20020902
-20021128
-20021225
-20030101
-20030120
-20030217
-20030418
-20030526
-20030704
-20030901
-20031127
-20031225
-20040101
-20040119
-20040216
-20040409
-20040531
-20040611
-20040705
-20040906
-20041125
-20041224
-20050117
-20050221
-20050325
-20050530
-20050704
-20050905
-20051124
-20051226
-20060102
-20060116
-20060220
-20060414
-20060529
-20060704
-20060904
-20061123
-20061225
-20070101
-20070102
-20070115
-20070219
-20070406
-20070528
-20070704
-20070903
-20071122
-20071225
-20080101
-20080121
-20080218
-20080321
-20080526
-20080704
-20080901
-20081127
-20081225
-20090101
-20090119
-20090216
-20090410
-20090525
-20090703
-20090907
-20091126
-20091225
-20100101
-20100118
-20100215
-20100402
-20100531
-20100705
-20100906
-20101125
-20101224
-20110117
-20110221
-20110422
-20110530
-20110704
-20110905
-20111124
-20111226
-20120102
-20120116
-20120220
-20120406
-20120528
-20120704
-20120903
-20121029
-20121030
-20121122
-20121225
-20130101
-20130121
-20130218
-20130329
-20130527
-20130704
-20130902
-20131128
-20131225
-20140101
-20140120
-20140217
-20140418
-20140526
-20140704
-20140901
-20141127
-20141225
-20150101
-20150119
-20150216
-20150403
-20150525
-20150703
-20150907
-20151126
-20151225
-20160101
-20160118
-20160215
-20160325
-20160530
-20160704
-20160905
-20161124
-20161226
-20170102
-20170116
-20170220
-20170414
-20170529
-20170704
-20170904
-20171123
-20171225
-20180101
-20180115
-20180219
-20180330
-20180528
-20180704
-20180903
-20181122
-20181205
-20181225
-20190101
-20190121
-20190218
-20190419
-20190527
-20190704
-20190902
-20191128
-20191225
-20200101
-20200120
-20200217
-20200410
-20200525
-20200703
-20200907
-20201126
-20201225
-20210101
-20210118
-20210215
-20210402
-20210531
-20210705
-20210906
-20211125
-20211224
-20220117
-20220221
-20220415
-20220530
-20220620
-20220704
-20220905
-20221124
-20221226
-20230102
-20230116
-20230220
-20230407
-20230529
-20230619
-20230704
-20230904
-20231123
-20231225
-20240101
-20240115
-20240219
-20240329
-20240527
-20240619
-20240704
-20240902
-20241128
-20241225
-20250101
-20250109
-20250120
-20250217
-20250418
-20250526
-20250619
-20250704
-20250901
-20251127
-20251225
-20260101
-20260119
-20260216
-20260403
-20260525
-20260619
-20260703
-20260907
-20261126
-20261225
-20270101
-20270118
-20270215
-20270326
-20270531
-20270618
-20270705
-20270906
-20271125
-20271224
-20280117
-20280221
-20280414
-20280529
-20280619
-20280704
-20280904
-20281123
-20281225
-20290101
-20290115
-20290219
-20290330
-20290528
-20290619
-20290704
-20290903
-20291122
-20291225
-20300101
-20300121
-20300218
-20300419
-20300527
-20300619
-20300704
-20300902
-20301128
-20301225
-20310101
-20310120
-20310217
-20310411
-20310526
-20310619
-20310704
-20310901
-20311127
-20311225
-20320101
-20320119
-20320216
-20320326
-20320531
-20320618
-20320705
-20320906
-20321125
-20321224
-20330117
-20330221
-20330415
-20330530
-20330620
-20330704
-20330905
-20331124
-20331226
-20340102
-20340116
-20340220
-20340407
-20340529
-20340619
-20340704
-20340904
-20341123
-20341225
-20350101
-20350115
-20350219
-20350323
-20350528
-20350619
-20350704
-20350903
-20351122
-20351225
-20360101
-20360121
-20360218
-20360411
-20360526
-20360619
-20360704
-20360901
-20361127
-20361225
-20370101
-20370119
-20370216
-20370403
-20370525
-20370619
-20370703
-20370907
-20371126
-20371225
-20380101
-20380118
-20380215
-20380423
-20380531
-20380618
-20380705
-20380906
-20381125
-20381224
-20390117
-20390221
-20390408
-20390530
-20390620
-20390704
-20390905
-20391124
-20391226
-20400102
-20400116
-20400220
-20400330
-20400528
-20400619
-20400704
-20400903
-20401122
-20401225
-20410101
-20410121
-20410218
-20410419
-20410527
-20410619
-20410704
-20410902
-20411128
-20411225
-20420101
-20420120
-20420217
-20420404
-20420526
-20420619
-20420704
-20420901
-20421127
-20421225
-20430101
-20430119
-20430216
-20430327
-20430525
-20430619
-20430703
-20430907
-20431126
-20431225
-20440101
-20440118
-20440215
-20440415
-20440530
-20440620
-20440704
-20440905
-20441124
-20441226
-20450102
-20450116
-20450220
-20450407
-20450529
-20450619
-20450704
-20450904
-20451123
-20451225
-20460101
-20460115
-20460219
-20460323
-20460528
-20460619
-20460704
-20460903
-20461122
-20461225
-20470101
-20470121
-20470218
-20470412
-20470527
-20470619
-20470704
-20470902
-20471128
-20471225
-20480101
-20480120
-20480217
-20480403
-20480525
-20480619
-20480703
-20480907
-20481126
-20481225
-20490101
-20490118
-20490215
-20490416
-20490531
-20490618
-20490705
-20490906
-20491125
-20491224
-20500117
-20500221
-20500408
-20500530
-20500620
-20500704
-20500905
-20501124
-20501226
-20510102
-20510116
-20510220
-20510331
-20510529
-20510619
-20510704
-20510904
-20511123
-20511225
-20520101
-20520115
-20520219
-20520419
-20520527
-20520619
-20520704
-20520902
-20521128
-20521225
-20530101
-20530120
-20530217
-20530404
-20530526
-20530619
-20530704
-20530901
-20531127
-20531225
-20540101
-20540119
-20540216
-20540327
-20540525
-20540619
-20540703
-20540907
-20541126
-20541225
-20550101
-20550118
-20550215
-20550416
-20550531
-20550618
-20550705
-20550906
-20551125
-20551224
-20560117
-20560221
-20560331
-20560529
-20560619
-20560704
-20560904
-20561123
-20561225
-20570101
-20570115
-20570219
-20570420
-20570528
-20570619
-20570704
-20570903
-20571122
-20571225
-20580101
-20580121
-20580218
-20580412
-20580527
-20580619
-20580704
-20580902
-20581128
-20581225
-20590101
-20590120
-20590217
-20590328
-20590526
-20590619
-20590704
-20590901
-20591127
-20591225
-20600101
-20600119
-20600216
-20600416
-20600531
-20600618
-20600705
-20600906
-20601125
-20601224
-20610117
-20610221
-20610408
-20610530
-20610620
-20610704
-20610905
-20611124
-20611226
-20620102
-20620116
-20620220
-20620324
-20620529
-20620619
-20620704
-20620904
-20621123
-20621225
-20630101
-20630115
-20630219
-20630413
-20630528
-20630619
-20630704
-20630903
-20631122
-20631225
-20640101
-20640121
-20640218
-20640404
-20640526
-20640619
-20640704
-20640901
-20641127
-20641225
-20650101
-20650119
-20650216
-20650327
-20650525
-20650619
-20650703
-20650907
-20651126
-20651225
-20660101
-20660118
-20660215
-20660409
-20660531
-20660618
-20660705
-20660906
-20661125
-20661224
-20670117
-20670221
-20670401
-20670530
-20670620
-20670704
-20670905
-20671124
-20671226
-20680102
-20680116
-20680220
-20680420
-20680528
-20680619
-20680704
-20680903
-20681122
-20681225
-20690101
-20690121
-20690218
-20690412
-20690527
-20690619
-20690704
-20690902
-20691128
-20691225
-20700101
-20700120
-20700217
-20700328
-20700526
-20700619
-20700704
-20700901
-20701127
-20701225
+20000101;New Year's Day
+20000117;Martin Luther King Jr. Day
+20000221;Washington's Birthday
+20000421;Good Friday
+20000529;Memorial Day
+20000704;Independence Day
+20000904;Labor Day
+20001123;Thanksgiving Day
+20001225;Christmas Day
+20010101;New Year's Day
+20010115;Martin Luther King Jr. Day
+20010219;Washington's Birthday
+20010413;Good Friday
+20010528;Memorial Day
+20010704;Independence Day
+20010903;Labor Day
+20010911;September 11 attacks
+20010912;September 11 attacks
+20010913;September 11 attacks
+20010914;September 11 attacks
+20011122;Thanksgiving Day
+20011225;Christmas Day
+20020101;New Year's Day
+20020121;Martin Luther King Jr. Day
+20020218;Washington's Birthday
+20020329;Good Friday
+20020527;Memorial Day
+20020704;Independence Day
+20020902;Labor Day
+20021128;Thanksgiving Day
+20021225;Christmas Day
+20030101;New Year's Day
+20030120;Martin Luther King Jr. Day
+20030217;Washington's Birthday
+20030418;Good Friday
+20030526;Memorial Day
+20030704;Independence Day
+20030901;Labor Day
+20031127;Thanksgiving Day
+20031225;Christmas Day
+20040101;New Year's Day
+20040119;Martin Luther King Jr. Day
+20040216;Washington's Birthday
+20040409;Good Friday
+20040531;Memorial Day
+20040611;National Day of Mourning for Ronald Reagan
+20040705;Independence Day (observed)
+20040906;Labor Day
+20041125;Thanksgiving Day
+20041224;Christmas Day (observed)
+20050117;Martin Luther King Jr. Day
+20050221;Washington's Birthday
+20050325;Good Friday
+20050530;Memorial Day
+20050704;Independence Day
+20050905;Labor Day
+20051124;Thanksgiving Day
+20051226;Christmas Day (observed)
+20060102;New Year's Day (observed)
+20060116;Martin Luther King Jr. Day
+20060220;Washington's Birthday
+20060414;Good Friday
+20060529;Memorial Day
+20060704;Independence Day
+20060904;Labor Day
+20061123;Thanksgiving Day
+20061225;Christmas Day
+20070101;New Year's Day
+20070102;National Day of Mourning for Gerald Ford
+20070115;Martin Luther King Jr. Day
+20070219;Washington's Birthday
+20070406;Good Friday
+20070528;Memorial Day
+20070704;Independence Day
+20070903;Labor Day
+20071122;Thanksgiving Day
+20071225;Christmas Day
+20080101;New Year's Day
+20080121;Martin Luther King Jr. Day
+20080218;Washington's Birthday
+20080321;Good Friday
+20080526;Memorial Day
+20080704;Independence Day
+20080901;Labor Day
+20081127;Thanksgiving Day
+20081225;Christmas Day
+20090101;New Year's Day
+20090119;Martin Luther King Jr. Day
+20090216;Washington's Birthday
+20090410;Good Friday
+20090525;Memorial Day
+20090703;Independence Day (observed)
+20090907;Labor Day
+20091126;Thanksgiving Day
+20091225;Christmas Day
+20100101;New Year's Day
+20100118;Martin Luther King Jr. Day
+20100215;Washington's Birthday
+20100402;Good Friday
+20100531;Memorial Day
+20100705;Independence Day (observed)
+20100906;Labor Day
+20101125;Thanksgiving Day
+20101224;Christmas Day (observed)
+20110117;Martin Luther King Jr. Day
+20110221;Washington's Birthday
+20110422;Good Friday
+20110530;Memorial Day
+20110704;Independence Day
+20110905;Labor Day
+20111124;Thanksgiving Day
+20111226;Christmas Day (observed)
+20120102;New Year's Day (observed)
+20120116;Martin Luther King Jr. Day
+20120220;Washington's Birthday
+20120406;Good Friday
+20120528;Memorial Day
+20120704;Independence Day
+20120903;Labor Day
+20121029;Hurricane Sandy
+20121030;Hurricane Sandy
+20121122;Thanksgiving Day
+20121225;Christmas Day
+20130101;New Year's Day
+20130121;Martin Luther King Jr. Day
+20130218;Washington's Birthday
+20130329;Good Friday
+20130527;Memorial Day
+20130704;Independence Day
+20130902;Labor Day
+20131128;Thanksgiving Day
+20131225;Christmas Day
+20140101;New Year's Day
+20140120;Martin Luther King Jr. Day
+20140217;Washington's Birthday
+20140418;Good Friday
+20140526;Memorial Day
+20140704;Independence Day
+20140901;Labor Day
+20141127;Thanksgiving Day
+20141225;Christmas Day
+20150101;New Year's Day
+20150119;Martin Luther King Jr. Day
+20150216;Washington's Birthday
+20150403;Good Friday
+20150525;Memorial Day
+20150703;Independence Day (observed)
+20150907;Labor Day
+20151126;Thanksgiving Day
+20151225;Christmas Day
+20160101;New Year's Day
+20160118;Martin Luther King Jr. Day
+20160215;Washington's Birthday
+20160325;Good Friday
+20160530;Memorial Day
+20160704;Independence Day
+20160905;Labor Day
+20161124;Thanksgiving Day
+20161226;Christmas Day (observed)
+20170102;New Year's Day (observed)
+20170116;Martin Luther King Jr. Day
+20170220;Washington's Birthday
+20170414;Good Friday
+20170529;Memorial Day
+20170704;Independence Day
+20170904;Labor Day
+20171123;Thanksgiving Day
+20171225;Christmas Day
+20180101;New Year's Day
+20180115;Martin Luther King Jr. Day
+20180219;Washington's Birthday
+20180330;Good Friday
+20180528;Memorial Day
+20180704;Independence Day
+20180903;Labor Day
+20181122;Thanksgiving Day
+20181205;National Day of Mourning for George H. W. Bush
+20181225;Christmas Day
+20190101;New Year's Day
+20190121;Martin Luther King Jr. Day
+20190218;Washington's Birthday
+20190419;Good Friday
+20190527;Memorial Day
+20190704;Independence Day
+20190902;Labor Day
+20191128;Thanksgiving Day
+20191225;Christmas Day
+20200101;New Year's Day
+20200120;Martin Luther King Jr. Day
+20200217;Washington's Birthday
+20200410;Good Friday
+20200525;Memorial Day
+20200703;Independence Day (observed)
+20200907;Labor Day
+20201126;Thanksgiving Day
+20201225;Christmas Day
+20210101;New Year's Day
+20210118;Martin Luther King Jr. Day
+20210215;Washington's Birthday
+20210402;Good Friday
+20210531;Memorial Day
+20210705;Independence Day (observed)
+20210906;Labor Day
+20211125;Thanksgiving Day
+20211224;Christmas Day (observed)
+20220117;Martin Luther King Jr. Day
+20220221;Washington's Birthday
+20220415;Good Friday
+20220530;Memorial Day
+20220620;Juneteenth (observed)
+20220704;Independence Day
+20220905;Labor Day
+20221124;Thanksgiving Day
+20221226;Christmas Day (observed)
+20230102;New Year's Day (observed)
+20230116;Martin Luther King Jr. Day
+20230220;Washington's Birthday
+20230407;Good Friday
+20230529;Memorial Day
+20230619;Juneteenth
+20230704;Independence Day
+20230904;Labor Day
+20231123;Thanksgiving Day
+20231225;Christmas Day
+20240101;New Year's Day
+20240115;Martin Luther King Jr. Day
+20240219;Washington's Birthday
+20240329;Good Friday
+20240527;Memorial Day
+20240619;Juneteenth
+20240704;Independence Day
+20240902;Labor Day
+20241128;Thanksgiving Day
+20241225;Christmas Day
+20250101;New Year's Day
+20250109;National Day of Mourning for Jimmy Carter
+20250120;Martin Luther King Jr. Day
+20250217;Washington's Birthday
+20250418;Good Friday
+20250526;Memorial Day
+20250619;Juneteenth
+20250704;Independence Day
+20250901;Labor Day
+20251127;Thanksgiving Day
+20251225;Christmas Day
+20260101;New Year's Day
+20260119;Martin Luther King Jr. Day
+20260216;Washington's Birthday
+20260403;Good Friday
+20260525;Memorial Day
+20260619;Juneteenth
+20260703;Independence Day (observed)
+20260907;Labor Day
+20261126;Thanksgiving Day
+20261225;Christmas Day
+20270101;New Year's Day
+20270118;Martin Luther King Jr. Day
+20270215;Washington's Birthday
+20270326;Good Friday
+20270531;Memorial Day
+20270618;Juneteenth (observed)
+20270705;Independence Day (observed)
+20270906;Labor Day
+20271125;Thanksgiving Day
+20271224;Christmas Day (observed)
+20280117;Martin Luther King Jr. Day
+20280221;Washington's Birthday
+20280414;Good Friday
+20280529;Memorial Day
+20280619;Juneteenth
+20280704;Independence Day
+20280904;Labor Day
+20281123;Thanksgiving Day
+20281225;Christmas Day
+20290101;New Year's Day
+20290115;Martin Luther King Jr. Day
+20290219;Washington's Birthday
+20290330;Good Friday
+20290528;Memorial Day
+20290619;Juneteenth
+20290704;Independence Day
+20290903;Labor Day
+20291122;Thanksgiving Day
+20291225;Christmas Day
+20300101;New Year's Day
+20300121;Martin Luther King Jr. Day
+20300218;Washington's Birthday
+20300419;Good Friday
+20300527;Memorial Day
+20300619;Juneteenth
+20300704;Independence Day
+20300902;Labor Day
+20301128;Thanksgiving Day
+20301225;Christmas Day
+20310101;New Year's Day
+20310120;Martin Luther King Jr. Day
+20310217;Washington's Birthday
+20310411;Good Friday
+20310526;Memorial Day
+20310619;Juneteenth
+20310704;Independence Day
+20310901;Labor Day
+20311127;Thanksgiving Day
+20311225;Christmas Day
+20320101;New Year's Day
+20320119;Martin Luther King Jr. Day
+20320216;Washington's Birthday
+20320326;Good Friday
+20320531;Memorial Day
+20320618;Juneteenth (observed)
+20320705;Independence Day (observed)
+20320906;Labor Day
+20321125;Thanksgiving Day
+20321224;Christmas Day (observed)
+20330117;Martin Luther King Jr. Day
+20330221;Washington's Birthday
+20330415;Good Friday
+20330530;Memorial Day
+20330620;Juneteenth (observed)
+20330704;Independence Day
+20330905;Labor Day
+20331124;Thanksgiving Day
+20331226;Christmas Day (observed)
+20340102;New Year's Day (observed)
+20340116;Martin Luther King Jr. Day
+20340220;Washington's Birthday
+20340407;Good Friday
+20340529;Memorial Day
+20340619;Juneteenth
+20340704;Independence Day
+20340904;Labor Day
+20341123;Thanksgiving Day
+20341225;Christmas Day
+20350101;New Year's Day
+20350115;Martin Luther King Jr. Day
+20350219;Washington's Birthday
+20350323;Good Friday
+20350528;Memorial Day
+20350619;Juneteenth
+20350704;Independence Day
+20350903;Labor Day
+20351122;Thanksgiving Day
+20351225;Christmas Day
+20360101;New Year's Day
+20360121;Martin Luther King Jr. Day
+20360218;Washington's Birthday
+20360411;Good Friday
+20360526;Memorial Day
+20360619;Juneteenth
+20360704;Independence Day
+20360901;Labor Day
+20361127;Thanksgiving Day
+20361225;Christmas Day
+20370101;New Year's Day
+20370119;Martin Luther King Jr. Day
+20370216;Washington's Birthday
+20370403;Good Friday
+20370525;Memorial Day
+20370619;Juneteenth
+20370703;Independence Day (observed)
+20370907;Labor Day
+20371126;Thanksgiving Day
+20371225;Christmas Day
+20380101;New Year's Day
+20380118;Martin Luther King Jr. Day
+20380215;Washington's Birthday
+20380423;Good Friday
+20380531;Memorial Day
+20380618;Juneteenth (observed)
+20380705;Independence Day (observed)
+20380906;Labor Day
+20381125;Thanksgiving Day
+20381224;Christmas Day (observed)
+20390117;Martin Luther King Jr. Day
+20390221;Washington's Birthday
+20390408;Good Friday
+20390530;Memorial Day
+20390620;Juneteenth (observed)
+20390704;Independence Day
+20390905;Labor Day
+20391124;Thanksgiving Day
+20391226;Christmas Day (observed)
+20400102;New Year's Day (observed)
+20400116;Martin Luther King Jr. Day
+20400220;Washington's Birthday
+20400330;Good Friday
+20400528;Memorial Day
+20400619;Juneteenth
+20400704;Independence Day
+20400903;Labor Day
+20401122;Thanksgiving Day
+20401225;Christmas Day
+20410101;New Year's Day
+20410121;Martin Luther King Jr. Day
+20410218;Washington's Birthday
+20410419;Good Friday
+20410527;Memorial Day
+20410619;Juneteenth
+20410704;Independence Day
+20410902;Labor Day
+20411128;Thanksgiving Day
+20411225;Christmas Day
+20420101;New Year's Day
+20420120;Martin Luther King Jr. Day
+20420217;Washington's Birthday
+20420404;Good Friday
+20420526;Memorial Day
+20420619;Juneteenth
+20420704;Independence Day
+20420901;Labor Day
+20421127;Thanksgiving Day
+20421225;Christmas Day
+20430101;New Year's Day
+20430119;Martin Luther King Jr. Day
+20430216;Washington's Birthday
+20430327;Good Friday
+20430525;Memorial Day
+20430619;Juneteenth
+20430703;Independence Day (observed)
+20430907;Labor Day
+20431126;Thanksgiving Day
+20431225;Christmas Day
+20440101;New Year's Day
+20440118;Martin Luther King Jr. Day
+20440215;Washington's Birthday
+20440415;Good Friday
+20440530;Memorial Day
+20440620;Juneteenth (observed)
+20440704;Independence Day
+20440905;Labor Day
+20441124;Thanksgiving Day
+20441226;Christmas Day (observed)
+20450102;New Year's Day (observed)
+20450116;Martin Luther King Jr. Day
+20450220;Washington's Birthday
+20450407;Good Friday
+20450529;Memorial Day
+20450619;Juneteenth
+20450704;Independence Day
+20450904;Labor Day
+20451123;Thanksgiving Day
+20451225;Christmas Day
+20460101;New Year's Day
+20460115;Martin Luther King Jr. Day
+20460219;Washington's Birthday
+20460323;Good Friday
+20460528;Memorial Day
+20460619;Juneteenth
+20460704;Independence Day
+20460903;Labor Day
+20461122;Thanksgiving Day
+20461225;Christmas Day
+20470101;New Year's Day
+20470121;Martin Luther King Jr. Day
+20470218;Washington's Birthday
+20470412;Good Friday
+20470527;Memorial Day
+20470619;Juneteenth
+20470704;Independence Day
+20470902;Labor Day
+20471128;Thanksgiving Day
+20471225;Christmas Day
+20480101;New Year's Day
+20480120;Martin Luther King Jr. Day
+20480217;Washington's Birthday
+20480403;Good Friday
+20480525;Memorial Day
+20480619;Juneteenth
+20480703;Independence Day (observed)
+20480907;Labor Day
+20481126;Thanksgiving Day
+20481225;Christmas Day
+20490101;New Year's Day
+20490118;Martin Luther King Jr. Day
+20490215;Washington's Birthday
+20490416;Good Friday
+20490531;Memorial Day
+20490618;Juneteenth (observed)
+20490705;Independence Day (observed)
+20490906;Labor Day
+20491125;Thanksgiving Day
+20491224;Christmas Day (observed)
+20500117;Martin Luther King Jr. Day
+20500221;Washington's Birthday
+20500408;Good Friday
+20500530;Memorial Day
+20500620;Juneteenth (observed)
+20500704;Independence Day
+20500905;Labor Day
+20501124;Thanksgiving Day
+20501226;Christmas Day (observed)
+20510102;New Year's Day (observed)
+20510116;Martin Luther King Jr. Day
+20510220;Washington's Birthday
+20510331;Good Friday
+20510529;Memorial Day
+20510619;Juneteenth
+20510704;Independence Day
+20510904;Labor Day
+20511123;Thanksgiving Day
+20511225;Christmas Day
+20520101;New Year's Day
+20520115;Martin Luther King Jr. Day
+20520219;Washington's Birthday
+20520419;Good Friday
+20520527;Memorial Day
+20520619;Juneteenth
+20520704;Independence Day
+20520902;Labor Day
+20521128;Thanksgiving Day
+20521225;Christmas Day
+20530101;New Year's Day
+20530120;Martin Luther King Jr. Day
+20530217;Washington's Birthday
+20530404;Good Friday
+20530526;Memorial Day
+20530619;Juneteenth
+20530704;Independence Day
+20530901;Labor Day
+20531127;Thanksgiving Day
+20531225;Christmas Day
+20540101;New Year's Day
+20540119;Martin Luther King Jr. Day
+20540216;Washington's Birthday
+20540327;Good Friday
+20540525;Memorial Day
+20540619;Juneteenth
+20540703;Independence Day (observed)
+20540907;Labor Day
+20541126;Thanksgiving Day
+20541225;Christmas Day
+20550101;New Year's Day
+20550118;Martin Luther King Jr. Day
+20550215;Washington's Birthday
+20550416;Good Friday
+20550531;Memorial Day
+20550618;Juneteenth (observed)
+20550705;Independence Day (observed)
+20550906;Labor Day
+20551125;Thanksgiving Day
+20551224;Christmas Day (observed)
+20560117;Martin Luther King Jr. Day
+20560221;Washington's Birthday
+20560331;Good Friday
+20560529;Memorial Day
+20560619;Juneteenth
+20560704;Independence Day
+20560904;Labor Day
+20561123;Thanksgiving Day
+20561225;Christmas Day
+20570101;New Year's Day
+20570115;Martin Luther King Jr. Day
+20570219;Washington's Birthday
+20570420;Good Friday
+20570528;Memorial Day
+20570619;Juneteenth
+20570704;Independence Day
+20570903;Labor Day
+20571122;Thanksgiving Day
+20571225;Christmas Day
+20580101;New Year's Day
+20580121;Martin Luther King Jr. Day
+20580218;Washington's Birthday
+20580412;Good Friday
+20580527;Memorial Day
+20580619;Juneteenth
+20580704;Independence Day
+20580902;Labor Day
+20581128;Thanksgiving Day
+20581225;Christmas Day
+20590101;New Year's Day
+20590120;Martin Luther King Jr. Day
+20590217;Washington's Birthday
+20590328;Good Friday
+20590526;Memorial Day
+20590619;Juneteenth
+20590704;Independence Day
+20590901;Labor Day
+20591127;Thanksgiving Day
+20591225;Christmas Day
+20600101;New Year's Day
+20600119;Martin Luther King Jr. Day
+20600216;Washington's Birthday
+20600416;Good Friday
+20600531;Memorial Day
+20600618;Juneteenth (observed)
+20600705;Independence Day (observed)
+20600906;Labor Day
+20601125;Thanksgiving Day
+20601224;Christmas Day (observed)
+20610117;Martin Luther King Jr. Day
+20610221;Washington's Birthday
+20610408;Good Friday
+20610530;Memorial Day
+20610620;Juneteenth (observed)
+20610704;Independence Day
+20610905;Labor Day
+20611124;Thanksgiving Day
+20611226;Christmas Day (observed)
+20620102;New Year's Day (observed)
+20620116;Martin Luther King Jr. Day
+20620220;Washington's Birthday
+20620324;Good Friday
+20620529;Memorial Day
+20620619;Juneteenth
+20620704;Independence Day
+20620904;Labor Day
+20621123;Thanksgiving Day
+20621225;Christmas Day
+20630101;New Year's Day
+20630115;Martin Luther King Jr. Day
+20630219;Washington's Birthday
+20630413;Good Friday
+20630528;Memorial Day
+20630619;Juneteenth
+20630704;Independence Day
+20630903;Labor Day
+20631122;Thanksgiving Day
+20631225;Christmas Day
+20640101;New Year's Day
+20640121;Martin Luther King Jr. Day
+20640218;Washington's Birthday
+20640404;Good Friday
+20640526;Memorial Day
+20640619;Juneteenth
+20640704;Independence Day
+20640901;Labor Day
+20641127;Thanksgiving Day
+20641225;Christmas Day
+20650101;New Year's Day
+20650119;Martin Luther King Jr. Day
+20650216;Washington's Birthday
+20650327;Good Friday
+20650525;Memorial Day
+20650619;Juneteenth
+20650703;Independence Day (observed)
+20650907;Labor Day
+20651126;Thanksgiving Day
+20651225;Christmas Day
+20660101;New Year's Day
+20660118;Martin Luther King Jr. Day
+20660215;Washington's Birthday
+20660409;Good Friday
+20660531;Memorial Day
+20660618;Juneteenth (observed)
+20660705;Independence Day (observed)
+20660906;Labor Day
+20661125;Thanksgiving Day
+20661224;Christmas Day (observed)
+20670117;Martin Luther King Jr. Day
+20670221;Washington's Birthday
+20670401;Good Friday
+20670530;Memorial Day
+20670620;Juneteenth (observed)
+20670704;Independence Day
+20670905;Labor Day
+20671124;Thanksgiving Day
+20671226;Christmas Day (observed)
+20680102;New Year's Day (observed)
+20680116;Martin Luther King Jr. Day
+20680220;Washington's Birthday
+20680420;Good Friday
+20680528;Memorial Day
+20680619;Juneteenth
+20680704;Independence Day
+20680903;Labor Day
+20681122;Thanksgiving Day
+20681225;Christmas Day
+20690101;New Year's Day
+20690121;Martin Luther King Jr. Day
+20690218;Washington's Birthday
+20690412;Good Friday
+20690527;Memorial Day
+20690619;Juneteenth
+20690704;Independence Day
+20690902;Labor Day
+20691128;Thanksgiving Day
+20691225;Christmas Day
+20700101;New Year's Day
+20700120;Martin Luther King Jr. Day
+20700217;Washington's Birthday
+20700328;Good Friday
+20700526;Memorial Day
+20700619;Juneteenth
+20700704;Independence Day
+20700901;Labor Day
+20701127;Thanksgiving Day
+20701225;Christmas Day

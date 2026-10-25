@@ -1,1108 +1,1108 @@
 ﻿Brasil - B3 (São Paulo)
-20010101
-20010125
-20010226
-20010227
-20010413
-20010421
-20010501
-20010614
-20010709
-20010907
-20011012
-20011102
-20011115
-20011120
-20011224
-20011225
-20011231
-20020101
-20020125
-20020211
-20020212
-20020329
-20020421
-20020501
-20020530
-20020709
-20020907
-20021012
-20021102
-20021115
-20021120
-20021224
-20021225
-20021231
-20030101
-20030125
-20030303
-20030304
-20030418
-20030421
-20030501
-20030619
-20030709
-20030907
-20031012
-20031102
-20031115
-20031120
-20031224
-20031225
-20031231
-20040101
-20040125
-20040223
-20040224
-20040409
-20040421
-20040501
-20040610
-20040709
-20040907
-20041012
-20041102
-20041115
-20041120
-20041224
-20041225
-20041231
-20050101
-20050125
-20050207
-20050208
-20050325
-20050421
-20050501
-20050526
-20050709
-20050907
-20051012
-20051102
-20051115
-20051120
-20051224
-20051225
-20051231
-20060101
-20060125
-20060227
-20060228
-20060414
-20060421
-20060501
-20060615
-20060709
-20060907
-20061012
-20061102
-20061115
-20061120
-20061224
-20061225
-20061231
-20070101
-20070125
-20070219
-20070220
-20070406
-20070421
-20070501
-20070607
-20070709
-20070907
-20071012
-20071102
-20071115
-20071120
-20071224
-20071225
-20071231
-20080101
-20080125
-20080204
-20080205
-20080321
-20080421
-20080501
-20080522
-20080709
-20080907
-20081012
-20081102
-20081115
-20081120
-20081224
-20081225
-20081231
-20090101
-20090125
-20090223
-20090224
-20090410
-20090421
-20090501
-20090611
-20090709
-20090907
-20091012
-20091102
-20091115
-20091120
-20091224
-20091225
-20091231
-20100101
-20100125
-20100215
-20100216
-20100402
-20100421
-20100501
-20100603
-20100709
-20100907
-20101012
-20101102
-20101115
-20101120
-20101224
-20101225
-20101231
-20110101
-20110125
-20110307
-20110308
-20110421
-20110422
-20110501
-20110623
-20110709
-20110907
-20111012
-20111102
-20111115
-20111120
-20111224
-20111225
-20111230
-20111231
-20120101
-20120125
-20120220
-20120221
-20120406
-20120421
-20120501
-20120607
-20120709
-20120907
-20121012
-20121102
-20121115
-20121120
-20121224
-20121225
-20121231
-20130101
-20130125
-20130211
-20130212
-20130329
-20130421
-20130501
-20130530
-20130709
-20130907
-20131012
-20131102
-20131115
-20131120
-20131224
-20131225
-20131231
-20140101
-20140125
-20140303
-20140304
-20140418
-20140421
-20140501
-20140612
-20140619
-20140709
-20140907
-20141012
-20141102
-20141115
-20141120
-20141224
-20141225
-20141231
-20150101
-20150125
-20150216
-20150217
-20150403
-20150421
-20150501
-20150604
-20150709
-20150907
-20151012
-20151102
-20151115
-20151120
-20151224
-20151225
-20151231
-20160101
-20160125
-20160208
-20160209
-20160325
-20160421
-20160501
-20160526
-20160709
-20160907
-20161012
-20161102
-20161115
-20161120
-20161224
-20161225
-20161231
-20170101
-20170125
-20170227
-20170228
-20170414
-20170421
-20170501
-20170615
-20170709
-20170907
-20171012
-20171102
-20171115
-20171120
-20171224
-20171225
-20171231
-20180101
-20180125
-20180212
-20180213
-20180330
-20180421
-20180501
-20180531
-20180709
-20180907
-20181012
-20181102
-20181115
-20181120
-20181224
-20181225
-20181231
-20190101
-20190125
-20190304
-20190305
-20190419
-20190421
-20190501
-20190620
-20190709
-20190907
-20191012
-20191102
-20191115
-20191120
-20191224
-20191225
-20191231
-20200101
-20200125
-20200224
-20200225
-20200410
-20200421
-20200501
-20200611
-20200709
-20200907
-20201012
-20201102
-20201115
-20201120
-20201224
-20201225
-20201231
-20210101
-20210125
-20210215
-20210216
-20210402
-20210421
-20210501
-20210603
-20210709
-20210907
-20211012
-20211102
-20211115
-20211120
-20211224
-20211225
-20211231
-20220101
-20220228
-20220301
-20220415
-20220421
-20220501
-20220616
-20220907
-20221012
-20221102
-20221115
-20221224
-20221225
-20221231
-20230101
-20230220
-20230221
-20230407
-20230421
-20230501
-20230608
-20230907
-20231012
-20231102
-20231115
-20231224
-20231225
-20231231
-20240101
-20240212
-20240213
-20240329
-20240421
-20240501
-20240530
-20240907
-20241012
-20241102
-20241115
-20241120
-20241224
-20241225
-20241231
-20250101
-20250303
-20250304
-20250418
-20250421
-20250501
-20250619
-20250907
-20251012
-20251102
-20251115
-20251120
-20251224
-20251225
-20251231
-20260101
-20260216
-20260217
-20260403
-20260421
-20260501
-20260604
-20260907
-20261012
-20261102
-20261115
-20261120
-20261224
-20261225
-20261231
-20270101
-20270208
-20270209
-20270326
-20270421
-20270501
-20270527
-20270907
-20271012
-20271102
-20271115
-20271120
-20271224
-20271225
-20271231
-20280101
-20280228
-20280229
-20280414
-20280421
-20280501
-20280615
-20280907
-20281012
-20281102
-20281115
-20281120
-20281224
-20281225
-20281231
-20290101
-20290212
-20290213
-20290330
-20290421
-20290501
-20290531
-20290907
-20291012
-20291102
-20291115
-20291120
-20291224
-20291225
-20291231
-20300101
-20300304
-20300305
-20300419
-20300421
-20300501
-20300620
-20300907
-20301012
-20301102
-20301115
-20301120
-20301224
-20301225
-20301231
-20310101
-20310224
-20310225
-20310411
-20310421
-20310501
-20310612
-20310907
-20311012
-20311102
-20311115
-20311120
-20311224
-20311225
-20311231
-20320101
-20320209
-20320210
-20320326
-20320421
-20320527
-20320907
-20321012
-20321102
-20321115
-20321120
-20321224
-20321231
-20330228
-20330301
-20330415
-20330421
-20330616
-20330907
-20331012
-20331102
-20331115
-20331120
-20331224
-20331231
-20340220
-20340221
-20340407
-20340421
-20340501
-20340608
-20340907
-20341012
-20341102
-20341115
-20341120
-20341224
-20341225
-20341231
-20350101
-20350205
-20350206
-20350323
-20350501
-20350524
-20350907
-20351012
-20351102
-20351115
-20351120
-20351224
-20351225
-20351231
-20360101
-20360225
-20360226
-20360411
-20360421
-20360501
-20360612
-20361120
-20361224
-20361225
-20361231
-20370101
-20370216
-20370217
-20370403
-20370421
-20370501
-20370604
-20370907
-20371012
-20371102
-20371120
-20371224
-20371225
-20371231
-20380101
-20380308
-20380309
-20380421
-20380423
-20380624
-20380907
-20381012
-20381102
-20381115
-20381120
-20381224
-20381231
-20390221
-20390222
-20390408
-20390421
-20390609
-20390907
-20391012
-20391102
-20391115
-20391120
-20391224
-20391231
-20400213
-20400214
-20400330
-20400501
-20400531
-20400907
-20401012
-20401102
-20401115
-20401120
-20401224
-20401225
-20401231
-20410101
-20410304
-20410305
-20410419
-20410501
-20410620
-20411115
-20411120
-20411224
-20411225
-20411231
-20420101
-20420217
-20420218
-20420404
-20420421
-20420501
-20420605
-20421120
-20421224
-20421225
-20421231
-20430101
-20430209
-20430210
-20430327
-20430421
-20430501
-20430528
-20430907
-20431012
-20431102
-20431120
-20431224
-20431225
-20431231
-20440101
-20440229
-20440301
-20440415
-20440421
-20440616
-20440907
-20441012
-20441102
-20441115
-20441120
-20441224
-20441231
-20450220
-20450221
-20450407
-20450421
-20450501
-20450608
-20450907
-20451012
-20451102
-20451115
-20451120
-20451224
-20451225
-20451231
-20460101
-20460205
-20460206
-20460323
-20460501
-20460524
-20460907
-20461012
-20461102
-20461115
-20461120
-20461224
-20461225
-20461231
-20470101
-20470225
-20470226
-20470412
-20470501
-20470613
-20471115
-20471120
-20471224
-20471225
-20471231
-20480101
-20480217
-20480218
-20480403
-20480421
-20480501
-20480604
-20480907
-20481012
-20481102
-20481120
-20481224
-20481225
-20481231
-20490101
-20490301
-20490302
-20490416
-20490421
-20490617
-20490907
-20491012
-20491102
-20491115
-20491120
-20491224
-20491231
-20500221
-20500222
-20500408
-20500421
-20500609
-20500907
-20501012
-20501102
-20501115
-20501120
-20501224
-20501231
-20510213
-20510214
-20510331
-20510421
-20510501
-20510601
-20510907
-20511012
-20511102
-20511115
-20511120
-20511224
-20511225
-20511231
-20520101
-20520304
-20520305
-20520419
-20520501
-20520620
-20521115
-20521120
-20521224
-20521225
-20521231
-20530101
-20530217
-20530218
-20530404
-20530421
-20530501
-20530605
-20531120
-20531224
-20531225
-20531231
-20540101
-20540209
-20540210
-20540327
-20540421
-20540501
-20540528
-20540907
-20541012
-20541102
-20541120
-20541224
-20541225
-20541231
-20550101
-20550301
-20550302
-20550416
-20550421
-20550617
-20550907
-20551012
-20551102
-20551115
-20551120
-20551224
-20551231
-20560214
-20560215
-20560331
-20560421
-20560501
-20560601
-20560907
-20561012
-20561102
-20561115
-20561120
-20561224
-20561225
-20561231
-20570101
-20570305
-20570306
-20570420
-20570501
-20570621
-20570907
-20571012
-20571102
-20571115
-20571120
-20571224
-20571225
-20571231
-20580101
-20580225
-20580226
-20580412
-20580501
-20580613
-20581115
-20581120
-20581224
-20581225
-20581231
-20590101
-20590210
-20590211
-20590328
-20590421
-20590501
-20590529
-20591120
-20591224
-20591225
-20591231
-20600101
-20600301
-20600302
-20600416
-20600421
-20600617
-20600907
-20601012
-20601102
-20601115
-20601120
-20601224
-20601231
-20610221
-20610222
-20610408
-20610421
-20610609
-20610907
-20611012
-20611102
-20611115
-20611120
-20611224
-20611231
-20620206
-20620207
-20620324
-20620421
-20620501
-20620525
-20620907
-20621012
-20621102
-20621115
-20621120
-20621224
-20621225
-20621231
-20630101
-20630226
-20630227
-20630413
-20630501
-20630614
-20630907
-20631012
-20631102
-20631115
-20631120
-20631224
-20631225
-20631231
-20640101
-20640218
-20640219
-20640404
-20640421
-20640501
-20640605
-20641120
-20641224
-20641225
-20641231
-20650101
-20650209
-20650210
-20650327
-20650421
-20650501
-20650528
-20650907
-20651012
-20651102
-20651120
-20651224
-20651225
-20651231
-20660101
-20660222
-20660223
-20660409
-20660421
-20660610
-20660907
-20661012
-20661102
-20661115
-20661120
-20661224
-20661231
-20670214
-20670215
-20670401
-20670421
-20670602
-20670907
-20671012
-20671102
-20671115
-20671120
-20671224
-20671231
-20680305
-20680306
-20680420
-20680501
-20680621
-20680907
-20681012
-20681102
-20681115
-20681120
-20681224
-20681225
-20681231
-20690101
-20690225
-20690226
-20690412
-20690501
-20690613
-20691115
-20691120
-20691224
-20691225
-20691231
-20700101
-20700210
-20700211
-20700328
-20700421
-20700501
-20700529
-20701120
-20701224
-20701225
-20701231
-20710101
-20710302
-20710303
-20710417
-20710421
-20710501
-20710618
-20710907
-20711012
-20711102
-20711120
-20711224
-20711225
-20711231
-20720101
-20720222
-20720223
-20720408
-20720421
-20720609
-20720907
-20721012
-20721102
-20721115
-20721120
-20721224
-20721231
-20730206
-20730207
-20730324
-20730421
-20730501
-20730525
-20730907
-20731012
-20731102
-20731115
-20731120
-20731224
-20731225
-20731231
-20740101
-20740226
-20740227
-20740413
-20740501
-20740614
-20740907
-20741012
-20741102
-20741115
-20741120
-20741224
-20741225
-20741231
-20750101
-20750218
-20750219
-20750405
-20750501
-20750606
-20751115
-20751120
-20751224
-20751225
-20751231
-20760101
-20760302
-20760303
-20760417
-20760421
-20760501
-20760618
-20760907
-20761012
-20761102
-20761120
-20761224
-20761225
-20761231
-20770101
-20770222
-20770223
-20770409
-20770421
-20770610
-20770907
-20771012
-20771102
-20771115
-20771120
-20771224
-20771231
-20780214
-20780215
-20780401
-20780421
-20780602
-20780907
-20781012
-20781102
-20781115
-20781120
-20781224
-20781231
-20790101
+20010101;Confraternização Universal
+20010125;Aniversário de São Paulo
+20010226;Carnaval
+20010227;Carnaval
+20010413;Sexta-feira Santa
+20010421;Tiradentes
+20010501;Dia do Trabalho
+20010614;Corpus Christi
+20010709;Revolução Constitucionalista
+20010907;Independência
+20011012;Nossa Senhora Aparecida
+20011102;Finados
+20011115;Proclamação da República
+20011120;Dia da Consciência Negra
+20011224;Véspera de Natal
+20011225;Natal
+20011231;Véspera de Ano Novo
+20020101;Confraternização Universal
+20020125;Aniversário de São Paulo
+20020211;Carnaval
+20020212;Carnaval
+20020329;Sexta-feira Santa
+20020421;Tiradentes
+20020501;Dia do Trabalho
+20020530;Corpus Christi
+20020709;Revolução Constitucionalista
+20020907;Independência
+20021012;Nossa Senhora Aparecida
+20021102;Finados
+20021115;Proclamação da República
+20021120;Dia da Consciência Negra
+20021224;Véspera de Natal
+20021225;Natal
+20021231;Véspera de Ano Novo
+20030101;Confraternização Universal
+20030125;Aniversário de São Paulo
+20030303;Carnaval
+20030304;Carnaval
+20030418;Sexta-feira Santa
+20030421;Tiradentes
+20030501;Dia do Trabalho
+20030619;Corpus Christi
+20030709;Revolução Constitucionalista
+20030907;Independência
+20031012;Nossa Senhora Aparecida
+20031102;Finados
+20031115;Proclamação da República
+20031120;Dia da Consciência Negra
+20031224;Véspera de Natal
+20031225;Natal
+20031231;Véspera de Ano Novo
+20040101;Confraternização Universal
+20040125;Aniversário de São Paulo
+20040223;Carnaval
+20040224;Carnaval
+20040409;Sexta-feira Santa
+20040421;Tiradentes
+20040501;Dia do Trabalho
+20040610;Corpus Christi
+20040709;Revolução Constitucionalista
+20040907;Independência
+20041012;Nossa Senhora Aparecida
+20041102;Finados
+20041115;Proclamação da República
+20041120;Dia da Consciência Negra
+20041224;Véspera de Natal
+20041225;Natal
+20041231;Véspera de Ano Novo
+20050101;Confraternização Universal
+20050125;Aniversário de São Paulo
+20050207;Carnaval
+20050208;Carnaval
+20050325;Sexta-feira Santa
+20050421;Tiradentes
+20050501;Dia do Trabalho
+20050526;Corpus Christi
+20050709;Revolução Constitucionalista
+20050907;Independência
+20051012;Nossa Senhora Aparecida
+20051102;Finados
+20051115;Proclamação da República
+20051120;Dia da Consciência Negra
+20051224;Véspera de Natal
+20051225;Natal
+20051231;Véspera de Ano Novo
+20060101;Confraternização Universal
+20060125;Aniversário de São Paulo
+20060227;Carnaval
+20060228;Carnaval
+20060414;Sexta-feira Santa
+20060421;Tiradentes
+20060501;Dia do Trabalho
+20060615;Corpus Christi
+20060709;Revolução Constitucionalista
+20060907;Independência
+20061012;Nossa Senhora Aparecida
+20061102;Finados
+20061115;Proclamação da República
+20061120;Dia da Consciência Negra
+20061224;Véspera de Natal
+20061225;Natal
+20061231;Véspera de Ano Novo
+20070101;Confraternização Universal
+20070125;Aniversário de São Paulo
+20070219;Carnaval
+20070220;Carnaval
+20070406;Sexta-feira Santa
+20070421;Tiradentes
+20070501;Dia do Trabalho
+20070607;Corpus Christi
+20070709;Revolução Constitucionalista
+20070907;Independência
+20071012;Nossa Senhora Aparecida
+20071102;Finados
+20071115;Proclamação da República
+20071120;Dia da Consciência Negra
+20071224;Véspera de Natal
+20071225;Natal
+20071231;Véspera de Ano Novo
+20080101;Confraternização Universal
+20080125;Aniversário de São Paulo
+20080204;Carnaval
+20080205;Carnaval
+20080321;Sexta-feira Santa
+20080421;Tiradentes
+20080501;Dia do Trabalho
+20080522;Corpus Christi
+20080709;Revolução Constitucionalista
+20080907;Independência
+20081012;Nossa Senhora Aparecida
+20081102;Finados
+20081115;Proclamação da República
+20081120;Dia da Consciência Negra
+20081224;Véspera de Natal
+20081225;Natal
+20081231;Véspera de Ano Novo
+20090101;Confraternização Universal
+20090125;Aniversário de São Paulo
+20090223;Carnaval
+20090224;Carnaval
+20090410;Sexta-feira Santa
+20090421;Tiradentes
+20090501;Dia do Trabalho
+20090611;Corpus Christi
+20090709;Revolução Constitucionalista
+20090907;Independência
+20091012;Nossa Senhora Aparecida
+20091102;Finados
+20091115;Proclamação da República
+20091120;Dia da Consciência Negra
+20091224;Véspera de Natal
+20091225;Natal
+20091231;Véspera de Ano Novo
+20100101;Confraternização Universal
+20100125;Aniversário de São Paulo
+20100215;Carnaval
+20100216;Carnaval
+20100402;Sexta-feira Santa
+20100421;Tiradentes
+20100501;Dia do Trabalho
+20100603;Corpus Christi
+20100709;Revolução Constitucionalista
+20100907;Independência
+20101012;Nossa Senhora Aparecida
+20101102;Finados
+20101115;Proclamação da República
+20101120;Dia da Consciência Negra
+20101224;Véspera de Natal
+20101225;Natal
+20101231;Véspera de Ano Novo
+20110101;Confraternização Universal
+20110125;Aniversário de São Paulo
+20110307;Carnaval
+20110308;Carnaval
+20110421;Tiradentes
+20110422;Sexta-feira Santa
+20110501;Dia do Trabalho
+20110623;Corpus Christi
+20110709;Revolução Constitucionalista
+20110907;Independência
+20111012;Nossa Senhora Aparecida
+20111102;Finados
+20111115;Proclamação da República
+20111120;Dia da Consciência Negra
+20111224;Véspera de Natal
+20111225;Natal
+20111230;Sem pregão no fim de ano
+20111231;Véspera de Ano Novo
+20120101;Confraternização Universal
+20120125;Aniversário de São Paulo
+20120220;Carnaval
+20120221;Carnaval
+20120406;Sexta-feira Santa
+20120421;Tiradentes
+20120501;Dia do Trabalho
+20120607;Corpus Christi
+20120709;Revolução Constitucionalista
+20120907;Independência
+20121012;Nossa Senhora Aparecida
+20121102;Finados
+20121115;Proclamação da República
+20121120;Dia da Consciência Negra
+20121224;Véspera de Natal
+20121225;Natal
+20121231;Véspera de Ano Novo
+20130101;Confraternização Universal
+20130125;Aniversário de São Paulo
+20130211;Carnaval
+20130212;Carnaval
+20130329;Sexta-feira Santa
+20130421;Tiradentes
+20130501;Dia do Trabalho
+20130530;Corpus Christi
+20130709;Revolução Constitucionalista
+20130907;Independência
+20131012;Nossa Senhora Aparecida
+20131102;Finados
+20131115;Proclamação da República
+20131120;Dia da Consciência Negra
+20131224;Véspera de Natal
+20131225;Natal
+20131231;Véspera de Ano Novo
+20140101;Confraternização Universal
+20140125;Aniversário de São Paulo
+20140303;Carnaval
+20140304;Carnaval
+20140418;Sexta-feira Santa
+20140421;Tiradentes
+20140501;Dia do Trabalho
+20140612;Abertura da Copa do Mundo
+20140619;Corpus Christi
+20140709;Revolução Constitucionalista
+20140907;Independência
+20141012;Nossa Senhora Aparecida
+20141102;Finados
+20141115;Proclamação da República
+20141120;Dia da Consciência Negra
+20141224;Véspera de Natal
+20141225;Natal
+20141231;Véspera de Ano Novo
+20150101;Confraternização Universal
+20150125;Aniversário de São Paulo
+20150216;Carnaval
+20150217;Carnaval
+20150403;Sexta-feira Santa
+20150421;Tiradentes
+20150501;Dia do Trabalho
+20150604;Corpus Christi
+20150709;Revolução Constitucionalista
+20150907;Independência
+20151012;Nossa Senhora Aparecida
+20151102;Finados
+20151115;Proclamação da República
+20151120;Dia da Consciência Negra
+20151224;Véspera de Natal
+20151225;Natal
+20151231;Véspera de Ano Novo
+20160101;Confraternização Universal
+20160125;Aniversário de São Paulo
+20160208;Carnaval
+20160209;Carnaval
+20160325;Sexta-feira Santa
+20160421;Tiradentes
+20160501;Dia do Trabalho
+20160526;Corpus Christi
+20160709;Revolução Constitucionalista
+20160907;Independência
+20161012;Nossa Senhora Aparecida
+20161102;Finados
+20161115;Proclamação da República
+20161120;Dia da Consciência Negra
+20161224;Véspera de Natal
+20161225;Natal
+20161231;Véspera de Ano Novo
+20170101;Confraternização Universal
+20170125;Aniversário de São Paulo
+20170227;Carnaval
+20170228;Carnaval
+20170414;Sexta-feira Santa
+20170421;Tiradentes
+20170501;Dia do Trabalho
+20170615;Corpus Christi
+20170709;Revolução Constitucionalista
+20170907;Independência
+20171012;Nossa Senhora Aparecida
+20171102;Finados
+20171115;Proclamação da República
+20171120;Dia da Consciência Negra
+20171224;Véspera de Natal
+20171225;Natal
+20171231;Véspera de Ano Novo
+20180101;Confraternização Universal
+20180125;Aniversário de São Paulo
+20180212;Carnaval
+20180213;Carnaval
+20180330;Sexta-feira Santa
+20180421;Tiradentes
+20180501;Dia do Trabalho
+20180531;Corpus Christi
+20180709;Revolução Constitucionalista
+20180907;Independência
+20181012;Nossa Senhora Aparecida
+20181102;Finados
+20181115;Proclamação da República
+20181120;Dia da Consciência Negra
+20181224;Véspera de Natal
+20181225;Natal
+20181231;Véspera de Ano Novo
+20190101;Confraternização Universal
+20190125;Aniversário de São Paulo
+20190304;Carnaval
+20190305;Carnaval
+20190419;Sexta-feira Santa
+20190421;Tiradentes
+20190501;Dia do Trabalho
+20190620;Corpus Christi
+20190709;Revolução Constitucionalista
+20190907;Independência
+20191012;Nossa Senhora Aparecida
+20191102;Finados
+20191115;Proclamação da República
+20191120;Dia da Consciência Negra
+20191224;Véspera de Natal
+20191225;Natal
+20191231;Véspera de Ano Novo
+20200101;Confraternização Universal
+20200125;Aniversário de São Paulo
+20200224;Carnaval
+20200225;Carnaval
+20200410;Sexta-feira Santa
+20200421;Tiradentes
+20200501;Dia do Trabalho
+20200611;Corpus Christi
+20200709;Revolução Constitucionalista
+20200907;Independência
+20201012;Nossa Senhora Aparecida
+20201102;Finados
+20201115;Proclamação da República
+20201120;Dia da Consciência Negra
+20201224;Véspera de Natal
+20201225;Natal
+20201231;Véspera de Ano Novo
+20210101;Confraternização Universal
+20210125;Aniversário de São Paulo
+20210215;Carnaval
+20210216;Carnaval
+20210402;Sexta-feira Santa
+20210421;Tiradentes
+20210501;Dia do Trabalho
+20210603;Corpus Christi
+20210709;Revolução Constitucionalista
+20210907;Independência
+20211012;Nossa Senhora Aparecida
+20211102;Finados
+20211115;Proclamação da República
+20211120;Dia da Consciência Negra
+20211224;Véspera de Natal
+20211225;Natal
+20211231;Véspera de Ano Novo
+20220101;Confraternização Universal
+20220228;Carnaval
+20220301;Carnaval
+20220415;Sexta-feira Santa
+20220421;Tiradentes
+20220501;Dia do Trabalho
+20220616;Corpus Christi
+20220907;Independência
+20221012;Nossa Senhora Aparecida
+20221102;Finados
+20221115;Proclamação da República
+20221224;Véspera de Natal
+20221225;Natal
+20221231;Véspera de Ano Novo
+20230101;Confraternização Universal
+20230220;Carnaval
+20230221;Carnaval
+20230407;Sexta-feira Santa
+20230421;Tiradentes
+20230501;Dia do Trabalho
+20230608;Corpus Christi
+20230907;Independência
+20231012;Nossa Senhora Aparecida
+20231102;Finados
+20231115;Proclamação da República
+20231224;Véspera de Natal
+20231225;Natal
+20231231;Véspera de Ano Novo
+20240101;Confraternização Universal
+20240212;Carnaval
+20240213;Carnaval
+20240329;Sexta-feira Santa
+20240421;Tiradentes
+20240501;Dia do Trabalho
+20240530;Corpus Christi
+20240907;Independência
+20241012;Nossa Senhora Aparecida
+20241102;Finados
+20241115;Proclamação da República
+20241120;Dia Nacional de Zumbi e da Consciência Negra
+20241224;Véspera de Natal
+20241225;Natal
+20241231;Véspera de Ano Novo
+20250101;Confraternização Universal
+20250303;Carnaval
+20250304;Carnaval
+20250418;Sexta-feira Santa
+20250421;Tiradentes
+20250501;Dia do Trabalho
+20250619;Corpus Christi
+20250907;Independência
+20251012;Nossa Senhora Aparecida
+20251102;Finados
+20251115;Proclamação da República
+20251120;Dia Nacional de Zumbi e da Consciência Negra
+20251224;Véspera de Natal
+20251225;Natal
+20251231;Véspera de Ano Novo
+20260101;Confraternização Universal
+20260216;Carnaval
+20260217;Carnaval
+20260403;Sexta-feira Santa
+20260421;Tiradentes
+20260501;Dia do Trabalho
+20260604;Corpus Christi
+20260907;Independência
+20261012;Nossa Senhora Aparecida
+20261102;Finados
+20261115;Proclamação da República
+20261120;Dia Nacional de Zumbi e da Consciência Negra
+20261224;Véspera de Natal
+20261225;Natal
+20261231;Véspera de Ano Novo
+20270101;Confraternização Universal
+20270208;Carnaval
+20270209;Carnaval
+20270326;Sexta-feira Santa
+20270421;Tiradentes
+20270501;Dia do Trabalho
+20270527;Corpus Christi
+20270907;Independência
+20271012;Nossa Senhora Aparecida
+20271102;Finados
+20271115;Proclamação da República
+20271120;Dia Nacional de Zumbi e da Consciência Negra
+20271224;Véspera de Natal
+20271225;Natal
+20271231;Véspera de Ano Novo
+20280101;Confraternização Universal
+20280228;Carnaval
+20280229;Carnaval
+20280414;Sexta-feira Santa
+20280421;Tiradentes
+20280501;Dia do Trabalho
+20280615;Corpus Christi
+20280907;Independência
+20281012;Nossa Senhora Aparecida
+20281102;Finados
+20281115;Proclamação da República
+20281120;Dia Nacional de Zumbi e da Consciência Negra
+20281224;Véspera de Natal
+20281225;Natal
+20281231;Véspera de Ano Novo
+20290101;Confraternização Universal
+20290212;Carnaval
+20290213;Carnaval
+20290330;Sexta-feira Santa
+20290421;Tiradentes
+20290501;Dia do Trabalho
+20290531;Corpus Christi
+20290907;Independência
+20291012;Nossa Senhora Aparecida
+20291102;Finados
+20291115;Proclamação da República
+20291120;Dia Nacional de Zumbi e da Consciência Negra
+20291224;Véspera de Natal
+20291225;Natal
+20291231;Véspera de Ano Novo
+20300101;Confraternização Universal
+20300304;Carnaval
+20300305;Carnaval
+20300419;Sexta-feira Santa
+20300421;Tiradentes
+20300501;Dia do Trabalho
+20300620;Corpus Christi
+20300907;Independência
+20301012;Nossa Senhora Aparecida
+20301102;Finados
+20301115;Proclamação da República
+20301120;Dia Nacional de Zumbi e da Consciência Negra
+20301224;Véspera de Natal
+20301225;Natal
+20301231;Véspera de Ano Novo
+20310101;Confraternização Universal
+20310224;Carnaval
+20310225;Carnaval
+20310411;Sexta-feira Santa
+20310421;Tiradentes
+20310501;Dia do Trabalho
+20310612;Corpus Christi
+20310907;Independência
+20311012;Nossa Senhora Aparecida
+20311102;Finados
+20311115;Proclamação da República
+20311120;Dia Nacional de Zumbi e da Consciência Negra
+20311224;Véspera de Natal
+20311225;Natal
+20311231;Véspera de Ano Novo
+20320101;Confraternização Universal
+20320209;Carnaval
+20320210;Carnaval
+20320326;Sexta-feira Santa
+20320421;Tiradentes
+20320527;Corpus Christi
+20320907;Independência
+20321012;Nossa Senhora Aparecida
+20321102;Finados
+20321115;Proclamação da República
+20321120;Dia Nacional de Zumbi e da Consciência Negra
+20321224;Véspera de Natal
+20321231;Véspera de Ano Novo
+20330228;Carnaval
+20330301;Carnaval
+20330415;Sexta-feira Santa
+20330421;Tiradentes
+20330616;Corpus Christi
+20330907;Independência
+20331012;Nossa Senhora Aparecida
+20331102;Finados
+20331115;Proclamação da República
+20331120;Dia Nacional de Zumbi e da Consciência Negra
+20331224;Véspera de Natal
+20331231;Véspera de Ano Novo
+20340220;Carnaval
+20340221;Carnaval
+20340407;Sexta-feira Santa
+20340421;Tiradentes
+20340501;Dia do Trabalho
+20340608;Corpus Christi
+20340907;Independência
+20341012;Nossa Senhora Aparecida
+20341102;Finados
+20341115;Proclamação da República
+20341120;Dia Nacional de Zumbi e da Consciência Negra
+20341224;Véspera de Natal
+20341225;Natal
+20341231;Véspera de Ano Novo
+20350101;Confraternização Universal
+20350205;Carnaval
+20350206;Carnaval
+20350323;Sexta-feira Santa
+20350501;Dia do Trabalho
+20350524;Corpus Christi
+20350907;Independência
+20351012;Nossa Senhora Aparecida
+20351102;Finados
+20351115;Proclamação da República
+20351120;Dia Nacional de Zumbi e da Consciência Negra
+20351224;Véspera de Natal
+20351225;Natal
+20351231;Véspera de Ano Novo
+20360101;Confraternização Universal
+20360225;Carnaval
+20360226;Carnaval
+20360411;Sexta-feira Santa
+20360421;Tiradentes
+20360501;Dia do Trabalho
+20360612;Corpus Christi
+20361120;Dia Nacional de Zumbi e da Consciência Negra
+20361224;Véspera de Natal
+20361225;Natal
+20361231;Véspera de Ano Novo
+20370101;Confraternização Universal
+20370216;Carnaval
+20370217;Carnaval
+20370403;Sexta-feira Santa
+20370421;Tiradentes
+20370501;Dia do Trabalho
+20370604;Corpus Christi
+20370907;Independência
+20371012;Nossa Senhora Aparecida
+20371102;Finados
+20371120;Dia Nacional de Zumbi e da Consciência Negra
+20371224;Véspera de Natal
+20371225;Natal
+20371231;Véspera de Ano Novo
+20380101;Confraternização Universal
+20380308;Carnaval
+20380309;Carnaval
+20380421;Tiradentes
+20380423;Sexta-feira Santa
+20380624;Corpus Christi
+20380907;Independência
+20381012;Nossa Senhora Aparecida
+20381102;Finados
+20381115;Proclamação da República
+20381120;Dia Nacional de Zumbi e da Consciência Negra
+20381224;Véspera de Natal
+20381231;Véspera de Ano Novo
+20390221;Carnaval
+20390222;Carnaval
+20390408;Sexta-feira Santa
+20390421;Tiradentes
+20390609;Corpus Christi
+20390907;Independência
+20391012;Nossa Senhora Aparecida
+20391102;Finados
+20391115;Proclamação da República
+20391120;Dia Nacional de Zumbi e da Consciência Negra
+20391224;Véspera de Natal
+20391231;Véspera de Ano Novo
+20400213;Carnaval
+20400214;Carnaval
+20400330;Sexta-feira Santa
+20400501;Dia do Trabalho
+20400531;Corpus Christi
+20400907;Independência
+20401012;Nossa Senhora Aparecida
+20401102;Finados
+20401115;Proclamação da República
+20401120;Dia Nacional de Zumbi e da Consciência Negra
+20401224;Véspera de Natal
+20401225;Natal
+20401231;Véspera de Ano Novo
+20410101;Confraternização Universal
+20410304;Carnaval
+20410305;Carnaval
+20410419;Sexta-feira Santa
+20410501;Dia do Trabalho
+20410620;Corpus Christi
+20411115;Proclamação da República
+20411120;Dia Nacional de Zumbi e da Consciência Negra
+20411224;Véspera de Natal
+20411225;Natal
+20411231;Véspera de Ano Novo
+20420101;Confraternização Universal
+20420217;Carnaval
+20420218;Carnaval
+20420404;Sexta-feira Santa
+20420421;Tiradentes
+20420501;Dia do Trabalho
+20420605;Corpus Christi
+20421120;Dia Nacional de Zumbi e da Consciência Negra
+20421224;Véspera de Natal
+20421225;Natal
+20421231;Véspera de Ano Novo
+20430101;Confraternização Universal
+20430209;Carnaval
+20430210;Carnaval
+20430327;Sexta-feira Santa
+20430421;Tiradentes
+20430501;Dia do Trabalho
+20430528;Corpus Christi
+20430907;Independência
+20431012;Nossa Senhora Aparecida
+20431102;Finados
+20431120;Dia Nacional de Zumbi e da Consciência Negra
+20431224;Véspera de Natal
+20431225;Natal
+20431231;Véspera de Ano Novo
+20440101;Confraternização Universal
+20440229;Carnaval
+20440301;Carnaval
+20440415;Sexta-feira Santa
+20440421;Tiradentes
+20440616;Corpus Christi
+20440907;Independência
+20441012;Nossa Senhora Aparecida
+20441102;Finados
+20441115;Proclamação da República
+20441120;Dia Nacional de Zumbi e da Consciência Negra
+20441224;Véspera de Natal
+20441231;Véspera de Ano Novo
+20450220;Carnaval
+20450221;Carnaval
+20450407;Sexta-feira Santa
+20450421;Tiradentes
+20450501;Dia do Trabalho
+20450608;Corpus Christi
+20450907;Independência
+20451012;Nossa Senhora Aparecida
+20451102;Finados
+20451115;Proclamação da República
+20451120;Dia Nacional de Zumbi e da Consciência Negra
+20451224;Véspera de Natal
+20451225;Natal
+20451231;Véspera de Ano Novo
+20460101;Confraternização Universal
+20460205;Carnaval
+20460206;Carnaval
+20460323;Sexta-feira Santa
+20460501;Dia do Trabalho
+20460524;Corpus Christi
+20460907;Independência
+20461012;Nossa Senhora Aparecida
+20461102;Finados
+20461115;Proclamação da República
+20461120;Dia Nacional de Zumbi e da Consciência Negra
+20461224;Véspera de Natal
+20461225;Natal
+20461231;Véspera de Ano Novo
+20470101;Confraternização Universal
+20470225;Carnaval
+20470226;Carnaval
+20470412;Sexta-feira Santa
+20470501;Dia do Trabalho
+20470613;Corpus Christi
+20471115;Proclamação da República
+20471120;Dia Nacional de Zumbi e da Consciência Negra
+20471224;Véspera de Natal
+20471225;Natal
+20471231;Véspera de Ano Novo
+20480101;Confraternização Universal
+20480217;Carnaval
+20480218;Carnaval
+20480403;Sexta-feira Santa
+20480421;Tiradentes
+20480501;Dia do Trabalho
+20480604;Corpus Christi
+20480907;Independência
+20481012;Nossa Senhora Aparecida
+20481102;Finados
+20481120;Dia Nacional de Zumbi e da Consciência Negra
+20481224;Véspera de Natal
+20481225;Natal
+20481231;Véspera de Ano Novo
+20490101;Confraternização Universal
+20490301;Carnaval
+20490302;Carnaval
+20490416;Sexta-feira Santa
+20490421;Tiradentes
+20490617;Corpus Christi
+20490907;Independência
+20491012;Nossa Senhora Aparecida
+20491102;Finados
+20491115;Proclamação da República
+20491120;Dia Nacional de Zumbi e da Consciência Negra
+20491224;Véspera de Natal
+20491231;Véspera de Ano Novo
+20500221;Carnaval
+20500222;Carnaval
+20500408;Sexta-feira Santa
+20500421;Tiradentes
+20500609;Corpus Christi
+20500907;Independência
+20501012;Nossa Senhora Aparecida
+20501102;Finados
+20501115;Proclamação da República
+20501120;Dia Nacional de Zumbi e da Consciência Negra
+20501224;Véspera de Natal
+20501231;Véspera de Ano Novo
+20510213;Carnaval
+20510214;Carnaval
+20510331;Sexta-feira Santa
+20510421;Tiradentes
+20510501;Dia do Trabalho
+20510601;Corpus Christi
+20510907;Independência
+20511012;Nossa Senhora Aparecida
+20511102;Finados
+20511115;Proclamação da República
+20511120;Dia Nacional de Zumbi e da Consciência Negra
+20511224;Véspera de Natal
+20511225;Natal
+20511231;Véspera de Ano Novo
+20520101;Confraternização Universal
+20520304;Carnaval
+20520305;Carnaval
+20520419;Sexta-feira Santa
+20520501;Dia do Trabalho
+20520620;Corpus Christi
+20521115;Proclamação da República
+20521120;Dia Nacional de Zumbi e da Consciência Negra
+20521224;Véspera de Natal
+20521225;Natal
+20521231;Véspera de Ano Novo
+20530101;Confraternização Universal
+20530217;Carnaval
+20530218;Carnaval
+20530404;Sexta-feira Santa
+20530421;Tiradentes
+20530501;Dia do Trabalho
+20530605;Corpus Christi
+20531120;Dia Nacional de Zumbi e da Consciência Negra
+20531224;Véspera de Natal
+20531225;Natal
+20531231;Véspera de Ano Novo
+20540101;Confraternização Universal
+20540209;Carnaval
+20540210;Carnaval
+20540327;Sexta-feira Santa
+20540421;Tiradentes
+20540501;Dia do Trabalho
+20540528;Corpus Christi
+20540907;Independência
+20541012;Nossa Senhora Aparecida
+20541102;Finados
+20541120;Dia Nacional de Zumbi e da Consciência Negra
+20541224;Véspera de Natal
+20541225;Natal
+20541231;Véspera de Ano Novo
+20550101;Confraternização Universal
+20550301;Carnaval
+20550302;Carnaval
+20550416;Sexta-feira Santa
+20550421;Tiradentes
+20550617;Corpus Christi
+20550907;Independência
+20551012;Nossa Senhora Aparecida
+20551102;Finados
+20551115;Proclamação da República
+20551120;Dia Nacional de Zumbi e da Consciência Negra
+20551224;Véspera de Natal
+20551231;Véspera de Ano Novo
+20560214;Carnaval
+20560215;Carnaval
+20560331;Sexta-feira Santa
+20560421;Tiradentes
+20560501;Dia do Trabalho
+20560601;Corpus Christi
+20560907;Independência
+20561012;Nossa Senhora Aparecida
+20561102;Finados
+20561115;Proclamação da República
+20561120;Dia Nacional de Zumbi e da Consciência Negra
+20561224;Véspera de Natal
+20561225;Natal
+20561231;Véspera de Ano Novo
+20570101;Confraternização Universal
+20570305;Carnaval
+20570306;Carnaval
+20570420;Sexta-feira Santa
+20570501;Dia do Trabalho
+20570621;Corpus Christi
+20570907;Independência
+20571012;Nossa Senhora Aparecida
+20571102;Finados
+20571115;Proclamação da República
+20571120;Dia Nacional de Zumbi e da Consciência Negra
+20571224;Véspera de Natal
+20571225;Natal
+20571231;Véspera de Ano Novo
+20580101;Confraternização Universal
+20580225;Carnaval
+20580226;Carnaval
+20580412;Sexta-feira Santa
+20580501;Dia do Trabalho
+20580613;Corpus Christi
+20581115;Proclamação da República
+20581120;Dia Nacional de Zumbi e da Consciência Negra
+20581224;Véspera de Natal
+20581225;Natal
+20581231;Véspera de Ano Novo
+20590101;Confraternização Universal
+20590210;Carnaval
+20590211;Carnaval
+20590328;Sexta-feira Santa
+20590421;Tiradentes
+20590501;Dia do Trabalho
+20590529;Corpus Christi
+20591120;Dia Nacional de Zumbi e da Consciência Negra
+20591224;Véspera de Natal
+20591225;Natal
+20591231;Véspera de Ano Novo
+20600101;Confraternização Universal
+20600301;Carnaval
+20600302;Carnaval
+20600416;Sexta-feira Santa
+20600421;Tiradentes
+20600617;Corpus Christi
+20600907;Independência
+20601012;Nossa Senhora Aparecida
+20601102;Finados
+20601115;Proclamação da República
+20601120;Dia Nacional de Zumbi e da Consciência Negra
+20601224;Véspera de Natal
+20601231;Véspera de Ano Novo
+20610221;Carnaval
+20610222;Carnaval
+20610408;Sexta-feira Santa
+20610421;Tiradentes
+20610609;Corpus Christi
+20610907;Independência
+20611012;Nossa Senhora Aparecida
+20611102;Finados
+20611115;Proclamação da República
+20611120;Dia Nacional de Zumbi e da Consciência Negra
+20611224;Véspera de Natal
+20611231;Véspera de Ano Novo
+20620206;Carnaval
+20620207;Carnaval
+20620324;Sexta-feira Santa
+20620421;Tiradentes
+20620501;Dia do Trabalho
+20620525;Corpus Christi
+20620907;Independência
+20621012;Nossa Senhora Aparecida
+20621102;Finados
+20621115;Proclamação da República
+20621120;Dia Nacional de Zumbi e da Consciência Negra
+20621224;Véspera de Natal
+20621225;Natal
+20621231;Véspera de Ano Novo
+20630101;Confraternização Universal
+20630226;Carnaval
+20630227;Carnaval
+20630413;Sexta-feira Santa
+20630501;Dia do Trabalho
+20630614;Corpus Christi
+20630907;Independência
+20631012;Nossa Senhora Aparecida
+20631102;Finados
+20631115;Proclamação da República
+20631120;Dia Nacional de Zumbi e da Consciência Negra
+20631224;Véspera de Natal
+20631225;Natal
+20631231;Véspera de Ano Novo
+20640101;Confraternização Universal
+20640218;Carnaval
+20640219;Carnaval
+20640404;Sexta-feira Santa
+20640421;Tiradentes
+20640501;Dia do Trabalho
+20640605;Corpus Christi
+20641120;Dia Nacional de Zumbi e da Consciência Negra
+20641224;Véspera de Natal
+20641225;Natal
+20641231;Véspera de Ano Novo
+20650101;Confraternização Universal
+20650209;Carnaval
+20650210;Carnaval
+20650327;Sexta-feira Santa
+20650421;Tiradentes
+20650501;Dia do Trabalho
+20650528;Corpus Christi
+20650907;Independência
+20651012;Nossa Senhora Aparecida
+20651102;Finados
+20651120;Dia Nacional de Zumbi e da Consciência Negra
+20651224;Véspera de Natal
+20651225;Natal
+20651231;Véspera de Ano Novo
+20660101;Confraternização Universal
+20660222;Carnaval
+20660223;Carnaval
+20660409;Sexta-feira Santa
+20660421;Tiradentes
+20660610;Corpus Christi
+20660907;Independência
+20661012;Nossa Senhora Aparecida
+20661102;Finados
+20661115;Proclamação da República
+20661120;Dia Nacional de Zumbi e da Consciência Negra
+20661224;Véspera de Natal
+20661231;Véspera de Ano Novo
+20670214;Carnaval
+20670215;Carnaval
+20670401;Sexta-feira Santa
+20670421;Tiradentes
+20670602;Corpus Christi
+20670907;Independência
+20671012;Nossa Senhora Aparecida
+20671102;Finados
+20671115;Proclamação da República
+20671120;Dia Nacional de Zumbi e da Consciência Negra
+20671224;Véspera de Natal
+20671231;Véspera de Ano Novo
+20680305;Carnaval
+20680306;Carnaval
+20680420;Sexta-feira Santa
+20680501;Dia do Trabalho
+20680621;Corpus Christi
+20680907;Independência
+20681012;Nossa Senhora Aparecida
+20681102;Finados
+20681115;Proclamação da República
+20681120;Dia Nacional de Zumbi e da Consciência Negra
+20681224;Véspera de Natal
+20681225;Natal
+20681231;Véspera de Ano Novo
+20690101;Confraternização Universal
+20690225;Carnaval
+20690226;Carnaval
+20690412;Sexta-feira Santa
+20690501;Dia do Trabalho
+20690613;Corpus Christi
+20691115;Proclamação da República
+20691120;Dia Nacional de Zumbi e da Consciência Negra
+20691224;Véspera de Natal
+20691225;Natal
+20691231;Véspera de Ano Novo
+20700101;Confraternização Universal
+20700210;Carnaval
+20700211;Carnaval
+20700328;Sexta-feira Santa
+20700421;Tiradentes
+20700501;Dia do Trabalho
+20700529;Corpus Christi
+20701120;Dia Nacional de Zumbi e da Consciência Negra
+20701224;Véspera de Natal
+20701225;Natal
+20701231;Véspera de Ano Novo
+20710101;Confraternização Universal
+20710302;Carnaval
+20710303;Carnaval
+20710417;Sexta-feira Santa
+20710421;Tiradentes
+20710501;Dia do Trabalho
+20710618;Corpus Christi
+20710907;Independência
+20711012;Nossa Senhora Aparecida
+20711102;Finados
+20711120;Dia Nacional de Zumbi e da Consciência Negra
+20711224;Véspera de Natal
+20711225;Natal
+20711231;Véspera de Ano Novo
+20720101;Confraternização Universal
+20720222;Carnaval
+20720223;Carnaval
+20720408;Sexta-feira Santa
+20720421;Tiradentes
+20720609;Corpus Christi
+20720907;Independência
+20721012;Nossa Senhora Aparecida
+20721102;Finados
+20721115;Proclamação da República
+20721120;Dia Nacional de Zumbi e da Consciência Negra
+20721224;Véspera de Natal
+20721231;Véspera de Ano Novo
+20730206;Carnaval
+20730207;Carnaval
+20730324;Sexta-feira Santa
+20730421;Tiradentes
+20730501;Dia do Trabalho
+20730525;Corpus Christi
+20730907;Independência
+20731012;Nossa Senhora Aparecida
+20731102;Finados
+20731115;Proclamação da República
+20731120;Dia Nacional de Zumbi e da Consciência Negra
+20731224;Véspera de Natal
+20731225;Natal
+20731231;Véspera de Ano Novo
+20740101;Confraternização Universal
+20740226;Carnaval
+20740227;Carnaval
+20740413;Sexta-feira Santa
+20740501;Dia do Trabalho
+20740614;Corpus Christi
+20740907;Independência
+20741012;Nossa Senhora Aparecida
+20741102;Finados
+20741115;Proclamação da República
+20741120;Dia Nacional de Zumbi e da Consciência Negra
+20741224;Véspera de Natal
+20741225;Natal
+20741231;Véspera de Ano Novo
+20750101;Confraternização Universal
+20750218;Carnaval
+20750219;Carnaval
+20750405;Sexta-feira Santa
+20750501;Dia do Trabalho
+20750606;Corpus Christi
+20751115;Proclamação da República
+20751120;Dia Nacional de Zumbi e da Consciência Negra
+20751224;Véspera de Natal
+20751225;Natal
+20751231;Véspera de Ano Novo
+20760101;Confraternização Universal
+20760302;Carnaval
+20760303;Carnaval
+20760417;Sexta-feira Santa
+20760421;Tiradentes
+20760501;Dia do Trabalho
+20760618;Corpus Christi
+20760907;Independência
+20761012;Nossa Senhora Aparecida
+20761102;Finados
+20761120;Dia Nacional de Zumbi e da Consciência Negra
+20761224;Véspera de Natal
+20761225;Natal
+20761231;Véspera de Ano Novo
+20770101;Confraternização Universal
+20770222;Carnaval
+20770223;Carnaval
+20770409;Sexta-feira Santa
+20770421;Tiradentes
+20770610;Corpus Christi
+20770907;Independência
+20771012;Nossa Senhora Aparecida
+20771102;Finados
+20771115;Proclamação da República
+20771120;Dia Nacional de Zumbi e da Consciência Negra
+20771224;Véspera de Natal
+20771231;Véspera de Ano Novo
+20780214;Carnaval
+20780215;Carnaval
+20780401;Sexta-feira Santa
+20780421;Tiradentes
+20780602;Corpus Christi
+20780907;Independência
+20781012;Nossa Senhora Aparecida
+20781102;Finados
+20781115;Proclamação da República
+20781120;Dia Nacional de Zumbi e da Consciência Negra
+20781224;Véspera de Natal
+20781231;Véspera de Ano Novo
+20790101;Confraternização Universal
