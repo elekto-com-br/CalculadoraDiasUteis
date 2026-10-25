@@ -4,13 +4,13 @@ Levar a Calculadora de Dias Úteis para WinUI: bonita, acessível, moderna e dis
 
 É um projeto de baixa prioridade, tocado aos poucos. Por isso o plano está dividido em fases pequenas, e cada uma termina com algo que compila e funciona; dá para parar em qualquer fase sem deixar o projeto quebrado.
 
-Atualizado em 25/10/2026. Fases 0 e 1 concluídas; a fase 2 está em andamento.
+Atualizado em 25/10/2026. Fases 0, 1 e 2 concluídas; a próxima é a 3, de exportação para o Excel.
 
 ## Onde estamos
 
 - A linha 1.x (WinForms, .NET Framework 4.8) termina na 1.2.1. Ela fica no `master` até a 2.0 ficar pronta, recebendo apenas correção que não puder esperar.
 - O trabalho da 2.0 acontece neste branch, `winui`, aberto a quem quiser acompanhar.
-- **Ponto de parada (25/10/2026):** o aplicativo WinUI faz as contas da 1.2, passa em todos os testes de interface no Windows Sandbox e já foi usado fora dele. A fase 1 está marcada com o tag `v2.0.0-alpha.1`. Começa a fase 2, a dos calendários editáveis.
+- **Ponto de parada (25/10/2026):** o aplicativo faz as contas da 1.2 e edita calendários: cria derivados de um ou mais outros, inclui, remove e descreve feriados, desfaz alterações, exporta e importa, inclusive os arquivos da 1.x. As fases 1 e 2 estão marcadas com os tags `v2.0.0-alpha.1` e `v2.0.0-alpha.2`. A próxima é a fase 3, de copiar para o Excel e exportar em `.xlsx` e `.csv`.
 - **Sem release público até a Store.** Cada fase termina com um tag (`v2.0.0-alpha.1`, `alpha.2`...), para marcar o ponto no histórico, mas sem pacote para baixar: a 2.0.0 sai pela Microsoft Store, na fase 4.
 - **A revisão humana de acessibilidade é uma só**, com todas as telas prontas, [antes da Store](#revisão-de-acessibilidade). Até lá, o que pode ser feito sem uma pessoa diante do computador (os testes de interface, os nomes e `AutomationId`, o teclado, os temas por captura de tela) acompanha cada tela nova.
 
@@ -82,7 +82,7 @@ Decisões tomadas na fase:
 - **Links da página "Sobre":** o logotipo leva ao site da Elekto, e há um link para o código-fonte no GitHub. A privacidade aponta a política da Elekto, para o site dela, e a declaração do GitHub, pela qual a Elekto não responde. Os links em texto são sublinhados, porque o verde escuro do destaque fica perto da cor do texto comum.
 - **No tema escuro, o logotipo usa o verde clareado até 7:1** (`#9DAF99`): o mesmo matiz e croma do `#556652` no espaço OKLCH, só com a luminosidade aumentada, o que mantém a identidade suave da marca. No alto contraste, o logotipo todo vai na cor de texto do Windows. Para trocar as cores por tema, ele é desenhado em XAML (`ElektoLogo.xaml`) com os traços de `assets/logo-elekto.svg`.
 - **A janela tem tamanho mínimo, 500 × 400**, o menor em que os controles cabem com os cartões um embaixo do outro; a altura que faltar rola. Não há máximo: maximizar é direito do usuário, e o conteúdo é que para de crescer (1040 de largura na página principal, 720 na "Sobre").
-- **Ficam para a fase 2** o link "Definições de Calendários..." e o parâmetro `--calendars` da 1.2, que dependem de calendários fora do pacote.
+- **Ficaram para a fase 2** o link "Definições de Calendários..." e o parâmetro `--calendars` da 1.2, que dependem de calendários fora do pacote. Lá, o link virou o botão "Editar calendários", e o parâmetro deu lugar à importação.
 - **O editor é o VS Code**, com a configuração em `.vscode`: o F5 compila e usa a extensão WinApp, ainda em prévia, para abrir o app empacotado e anexar o depurador. A versão atual dela só aceita a pasta compilada; quando aceitar o projeto, a tarefa de compilação do `launch.json` deixa de ser necessária. A solução passou para o formato `.slnx`.
 
 A verificação com o Accessibility Insights e o Narrador, que estava aqui, passou para a [revisão de acessibilidade](#revisão-de-acessibilidade) única, antes da Store.
@@ -101,6 +101,21 @@ A verificação com o Accessibility Insights e o Narrador, que estava aqui, pass
 - **Muitos calendários.** Com 34 calendários, a lista de escolha abre por cima da janela, mostra uns 13 e rola, e digitar as primeiras letras com a lista em foco leva ao item. Para dezenas está bem; se os calendários próprios passarem disso, avaliar busca por texto ou agrupar por país, e ordenar pelo nome em vez do número do arquivo.
 
 **Pronto quando** dá para criar um calendário derivado, editá-lo, fechar e reabrir o app, receber uma atualização do original e restaurar, tudo coberto por testes.
+
+**Situação:** concluída em 25/10/2026 e marcada com o tag `v2.0.0-alpha.2`. O modelo, o banco e a importação e exportação ficam no projeto `CalculadoraDiasUteis.Core`, com 35 testes que rodam na integração contínua, inclusive o de receber uma versão nova do original com as alterações do usuário valendo por cima. No aplicativo, o botão "Editar calendários" abre a página de calendários no calendário escolhido. Os testes de interface ganharam 17 cenários: criar um derivado, incluir um feriado local e vê-lo valer nas contas da página principal, remover e restaurar um herdado, trocar a descrição, recusar um nome repetido, renomear, abrir uma exceção num calendário da Elekto e desfazê-la, exportar, excluir pedindo confirmação, importar de volta com a herança, importar um arquivo da 1.x, os atalhos da lista, os `AutomationId`, a janela mínima e reabrir o app com tudo guardado. No Sandbox passam todos os que não dependem do teclado. Os de teclado precisam da sessão do Windows desbloqueada; o novo, dos atalhos da lista e do Esc nas caixas de diálogo, ainda não rodou com ela.
+
+Decisões tomadas na fase:
+
+- **O período de um derivado é o trecho em que todas as bases valem.** Fora dele, os feriados de alguma base não são conhecidos, e a conta sairia errada sem aviso. Um calendário próprio sem base vale do primeiro ao último feriado, como na 1.x. Um feriado incluído fora do período é recusado.
+- **Cada calendário do usuário tem um código, tirado do nome na criação** ("Fórum da Lapa" vira `forum-da-lapa`), que não muda ao renomear e é o que as bases e a exportação usam. Os nomes não se repetem, nem com os da Elekto.
+- **Só as alterações ficam guardadas**, num arquivo SQLite (`calendarios.db`) na pasta local do app: os calendários do usuário, as bases e, por data, o feriado incluído, o removido e a descrição trocada. Uma alteração que deixa de se aplicar, porque a base mudou, fica guardada sem efeito; "Desfazer alterações" apaga as de um calendário da Elekto.
+- **Um calendário que é base de outro não pode ser excluído**; a mensagem diz quais dependem dele. Excluir pede confirmação; remover um feriado não, porque o herdado pode ser restaurado e o incluído é só incluir de novo.
+- **A exportação é um JSON completo**, descrito em [formato-da-exportacao.md](formato-da-exportacao.md): a herança de cada calendário e a lista de feriados em vigor. Exportar um calendário leva as bases dele que são do usuário e as da Elekto que ele alterou.
+- **A importação mostra antes o que vai fazer** com cada calendário e deixa desmarcar. De um arquivo exportado, um calendário com o mesmo código substitui o existente, as alterações nos da Elekto se juntam às que o usuário tem, e um calendário cuja base não existe vem com os feriados todos, sem a herança. De um arquivo da 1.x, o calendário vira um calendário próprio sem base; se ele tem o código e os mesmos feriados de um da Elekto, é uma cópia antiga dele e fica de fora, desmarcado.
+- **Descrições dos feriados da Elekto** no idioma da praça, com os nomes oficiais. O teste de regras confere, de 2000 em diante, que cada feriado tem a descrição da regra que o explica. No br-BC, antes de 2000, também os feriados bancários dos planos Collor, o lançamento do Real e as eleições de 1994 e 1996; só o 12 de outubro de 1950 a 1979, antes de ser o dia de Nossa Senhora Aparecida, ficou sem descrição.
+- **A data final que cai num feriado diz qual é**, como "terça-feira, feriado (Tiradentes)".
+- **Os atalhos Delete e F2 valem só com o foco na lista de feriados.** No WinUI, um atalho sem dono vale na janela inteira, e o Delete apagaria o feriado selecionado com o foco em outro controle.
+- **No Sandbox, o nome escrito por automação na caixa "Salvar como" do Windows não chega a ela.** Os testes de exportar e importar usam o nome sugerido, na pasta Documentos, e só rodam no Sandbox, para não mexer nos arquivos de quem os roda.
 
 ### Fase 3: exportação e integração
 

@@ -44,7 +44,7 @@ A aplicação não monitora o uso, não envia registros de erro nem telemetria e
 
 ## Compilando você mesmo
 
-Neste branch há o núcleo de cálculo (`src/Elekto.Calendars`), o aplicativo WinUI (`src/CalculadoraDiasUteis`) e os testes (`tests`). Para compilar tudo e rodar os testes do núcleo basta, no Windows, o [SDK do .NET 10](https://dotnet.microsoft.com/download), com qualquer editor:
+Neste branch há o núcleo de cálculo (`src/Elekto.Calendars`), os calendários do usuário, com o banco local, a importação e a exportação (`src/CalculadoraDiasUteis.Core`), o aplicativo WinUI (`src/CalculadoraDiasUteis`) e os testes (`tests`). Para compilar tudo e rodar os testes, menos os de interface, basta, no Windows, o [SDK do .NET 10](https://dotnet.microsoft.com/download), com qualquer editor:
 
 ```
 dotnet test
@@ -86,4 +86,4 @@ Mas aceitaremos contribuições de feriados de outras praças, basta mandar mens
 
 A ideia não é ter os feriados de todas as cidades do Brasil (ficaria horrível na interface de usuário atual), mas ao menos das principais praças comerciais, ou mesmo jurídicas. Também, a nosso critério, aceitaremos ou não a contribuição; se estiver na dúvida entre em contato antes de empenhar seu trabalho nisso.
 
-Tenha em mente que não é necessária nossa ajuda para adicionar feriados à sua instalação em particular, bastando colocar arquivos texto, com a formatação necessária, no diretório onde os calendários ficam, [conforme instruções](https://github.com/elekto-com-br/CalculadoraDiasUteis/blob/master/CalculadoraDiasUteis/Calendars/LeiaMe.txt) que estão no mesmo diretório.
+Tenha em mente que não é necessária nossa ajuda para adicionar feriados à sua instalação em particular. Na 1.2, basta colocar arquivos texto, com a formatação necessária, no diretório onde os calendários ficam, [conforme instruções](https://github.com/elekto-com-br/CalculadoraDiasUteis/blob/master/CalculadoraDiasUteis/Calendars/LeiaMe.txt) que estão no mesmo diretório. Na 2.0, os calendários são editados na própria aplicação, em "Editar calendários": dá para criar um a partir de outros, como o br-BC mais os feriados de uma cidade, que continua recebendo as atualizações da Elekto, e para incluir ou remover feriados nos da Elekto. Os arquivos da 1.2 podem ser importados, e tudo o que você cadastrar pode ser exportado num arquivo aberto, [descrito aqui](docs/formato-da-exportacao.md).

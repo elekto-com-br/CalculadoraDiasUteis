@@ -229,11 +229,11 @@ function Select-Day {
 
 # O seletor de um feriado da lista pelo começo do que o Narrador lê: a data por extenso, a descrição e a origem
 function Find-Holiday {
-    param([string]$Text)
+    param([string]$Text, [switch]$Anywhere)
     $deadline = [DateTime]::UtcNow.AddSeconds(3)
     do {
-        $match = @(Search-Ui $Text | Where-Object { $_.type -eq 'ListItem' -and $_.name.StartsWith($Text) }) |
-            Select-Object -First 1
+        $match = @(Search-Ui $Text | Where-Object {
+            $_.type -eq 'ListItem' -and ($Anywhere -or $_.name.StartsWith($Text)) }) | Select-Object -First 1
         if ($match) { return $match.selector }
         Start-Sleep -Milliseconds 150
     } while ([DateTime]::UtcNow -lt $deadline)
@@ -773,6 +773,25 @@ try {
         Assert-Status '1 calendário importado.'
         Assert-Text 'EditCalendarComboBox' 'Cidade de São Paulo'
         Assert-Text 'CalendarKindText' 'Calendário próprio, sem base, com 3 feriados'
+    }
+
+    # Os atalhos valem só com o foco na lista, e o Esc numa caixa de diálogo fecha a caixa sem sair da página
+    Test-UI 'Delete e F2 na lista de feriados, Esc na caixa de diálogo' {
+        try {
+            $july = Find-Holiday 'Revolução Constitucionalista' -Anywhere
+            Invoke-Ui @('invoke', $july) | Out-Null
+            Invoke-Ui @('send-keys', 'delete', '--target', $july, '--via', 'send-input') | Out-Null
+            Assert-Text 'CalendarKindText' 'Calendário próprio, sem base, com 2 feriados'
+            $january = Find-Holiday 'Aniversário de São Paulo' -Anywhere
+            Invoke-Ui @('invoke', $january) | Out-Null
+            Invoke-Ui @('send-keys', 'f2', '--target', $january, '--via', 'send-input') | Out-Null
+            Invoke-Ui @('wait-for', 'HolidayDescriptionTextBox', '-t', '3000') | Out-Null
+            Invoke-Ui @('send-keys', 'escape', '--target', 'HolidayDescriptionTextBox', '--via', 'send-input') | Out-Null
+            Invoke-Ui @('wait-for', 'HolidayDescriptionTextBox', '--gone', '-t', '3000') | Out-Null
+            Invoke-Ui @('wait-for', 'EditCalendarComboBox', '-t', '2000') | Out-Null
+        } finally {
+            Restore-CalendarsPage
+        }
     }
 
     Test-UI 'Todos os controles da página de calendários têm AutomationId' {

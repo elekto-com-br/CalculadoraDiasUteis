@@ -1,5 +1,12 @@
 ﻿#	Calculadora de Dias Úteis
 
+Este é o formato dos arquivos de calendário da versão 1.x, que liam os calendários
+desta pasta ou da indicada no parâmetro "--calendars". Na versão 2.0, os seus
+calendários são criados e editados na própria aplicação, em "Editar calendários";
+o formato continua sendo o dos calendários enviados pela Elekto, e a 2.0 importa
+os arquivos da 1.x feitos nele. A exportação da 2.0 usa outro formato, descrito
+em formato-da-exportacao.md.
+
 ##	Como Editar ou Adicionar novos feriados
 
 Os feriados devem ficar todos no mesmo diretório, que pode ser esse, enviado 
