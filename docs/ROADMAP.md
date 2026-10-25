@@ -8,8 +8,9 @@ Atualizado em 25/10/2026. Fase 0 concluída; a próxima é a 1.
 
 ## Onde estamos
 
-- A versão 1.2 (WinForms, .NET Framework 4.8) é a última dessa linha. Ela fica no `master` até a 2.0 ficar pronta, recebendo apenas correção de feriado que não puder esperar.
+- A linha 1.x (WinForms, .NET Framework 4.8) termina na 1.2.1. Ela fica no `master` até a 2.0 ficar pronta, recebendo apenas correção que não puder esperar.
 - O trabalho da 2.0 acontece neste branch, `winui`, aberto a quem quiser acompanhar.
+- **Ponto de parada (25/10/2026):** fase 0 concluída. O próximo passo é começar a fase 1: criar o projeto WinUI empacotado a partir do template oficial, ligá-lo à biblioteca `Elekto.Calendars` e montar a janela principal com as funções da 1.2.
 
 ## Princípios
 
