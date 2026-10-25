@@ -66,7 +66,7 @@ Ainda sem interface nova. O objetivo é proteger a lógica antes de mexer em qua
 
 **Pronto quando** a 2.0 faz tudo o que a 1.2 faz, menos editar calendários e exportar, e passa nos testes de interface e na verificação do Accessibility Insights.
 
-**Situação:** aplicativo pronto em 25/10/2026, em `src/CalculadoraDiasUteis`, criado com o template `winui-mvvm` do WinApp CLI (Windows App SDK 2.5, CommunityToolkit.Mvvm). Os testes de interface (`tests/UiTests`) cobrem 19 cenários: os padrões, a escolha de datas no calendário, os dois critérios de contagem, prazos em dias úteis (inclusive negativos) e corridos com os três ajustes, o aviso de prazo além do calendário, a troca de calendário, a página "Sobre", a licença no navegador, os `AutomationId` e as escolhas lembradas ao reabrir. Os resultados esperados saem da própria biblioteca (`Expected.cs`), para as datas que o teste escolhe. No Sandbox passam 18; o de teclado (F1 e Esc) só roda com a sessão do Windows desbloqueada. Os temas claro, escuro e de alto contraste e a janela estreita foram conferidos por captura de tela.
+**Situação:** aplicativo pronto em 25/10/2026, em `src/CalculadoraDiasUteis`, criado com o template `winui-mvvm` do WinApp CLI (Windows App SDK 2.5, CommunityToolkit.Mvvm). Os testes de interface (`tests/UiTests`) cobrem 19 cenários: os padrões, a escolha de datas no calendário, os dois critérios de contagem, prazos em dias úteis (inclusive negativos) e corridos com os três ajustes, o aviso de prazo além do calendário, a troca de calendário, a página "Sobre", a licença no navegador, os `AutomationId` e as escolhas lembradas ao reabrir. Os resultados esperados saem da própria biblioteca (`Expected.cs`), para as datas que o teste escolhe. No Sandbox passam 18; o de teclado (F1 e Esc) só roda com a sessão do Windows desbloqueada. Os temas claro, escuro e de alto contraste e a janela estreita foram conferidos por captura de tela. A integração contínua compila também o aplicativo.
 
 Decisões tomadas na fase:
 
@@ -86,7 +86,6 @@ Falta, para fechar a fase:
 - Verificar com o Accessibility Insights e percorrer a tela com o Narrador.
 - Revisar os textos da página "Sobre", adaptados da 1.2 (o original mandava baixar a aplicação do site da Elekto).
 - Decidir o logotipo no tema escuro: em verde sobre fundo escuro, ele fica legível, mas apagado.
-- Confirmar no GitHub Actions a compilação do aplicativo, que passou a fazer parte da solução.
 
 Fica para depois, sem impedir o fim da fase:
 

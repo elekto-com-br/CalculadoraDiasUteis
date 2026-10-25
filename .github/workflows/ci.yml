@@ -16,4 +16,6 @@ jobs:
       - uses: actions/setup-dotnet@v6
         with:
           global-json-file: global.json
-      - run: dotnet test CalculadoraDiasUteis.sln -c Release
+      # O dotnet test só compila os projetos de teste e o que eles usam; o build antes inclui o aplicativo
+      - run: dotnet build CalculadoraDiasUteis.sln -c Release
+      - run: dotnet test CalculadoraDiasUteis.sln -c Release --no-build
