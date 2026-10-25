@@ -4,13 +4,13 @@ Levar a Calculadora de Dias Úteis para WinUI: bonita, acessível, moderna e dis
 
 É um projeto de baixa prioridade, tocado aos poucos. Por isso o plano está dividido em fases pequenas, e cada uma termina com algo que compila e funciona; dá para parar em qualquer fase sem deixar o projeto quebrado.
 
-Atualizado em 25/10/2026. Fase 0 concluída; a próxima é a 1.
+Atualizado em 25/10/2026. Fase 0 concluída; na fase 1, o aplicativo está pronto e faltam as verificações que pedem alguém diante do computador.
 
 ## Onde estamos
 
 - A linha 1.x (WinForms, .NET Framework 4.8) termina na 1.2.1. Ela fica no `master` até a 2.0 ficar pronta, recebendo apenas correção que não puder esperar.
 - O trabalho da 2.0 acontece neste branch, `winui`, aberto a quem quiser acompanhar.
-- **Ponto de parada (25/10/2026):** fase 0 concluída. O próximo passo é começar a fase 1: criar o projeto WinUI empacotado a partir do template oficial, ligá-lo à biblioteca `Elekto.Calendars` e montar a janela principal com as funções da 1.2.
+- **Ponto de parada (25/10/2026):** o aplicativo WinUI faz as contas da 1.2 e passa nos testes de interface no Windows Sandbox. Para fechar a fase 1 falta o teste de teclado com a sessão do Windows desbloqueada, a verificação com o Accessibility Insights e o Narrador, além das pendências listadas na [situação da fase 1](#fase-1-aplicativo-winui-com-as-funções-da-12).
 
 ## Princípios
 
@@ -65,6 +65,26 @@ Ainda sem interface nova. O objetivo é proteger a lógica antes de mexer em qua
 - Testes de interface com `winapp ui`, rodando no Windows Sandbox.
 
 **Pronto quando** a 2.0 faz tudo o que a 1.2 faz, menos editar calendários e exportar, e passa nos testes de interface e na verificação do Accessibility Insights.
+
+**Situação:** aplicativo pronto em 25/10/2026, em `src/CalculadoraDiasUteis`, criado com o template `winui-mvvm` do WinApp CLI (Windows App SDK 2.5, CommunityToolkit.Mvvm). Os testes de interface (`tests/UiTests`) cobrem 19 cenários: os padrões, a escolha de datas no calendário, os dois critérios de contagem, prazos em dias úteis (inclusive negativos) e corridos com os três ajustes, o aviso de prazo além do calendário, a troca de calendário, a página "Sobre", a licença no navegador, os `AutomationId` e as escolhas lembradas ao reabrir. Os resultados esperados saem da própria biblioteca (`Expected.cs`), para as datas que o teste escolhe. No Sandbox passam 18; o de teclado (F1 e Esc) só roda com a sessão do Windows desbloqueada. Os temas claro, escuro e de alto contraste e a janela estreita foram conferidos por captura de tela.
+
+Decisões tomadas na fase:
+
+- **Windows 11 no manifesto**, para x64 e ARM64. Não há pacote para x86, que o Windows 11 não tem.
+- **Datas e números no idioma que o Windows escolhe para o aplicativo**, o mesmo dos textos e dos seletores de data. Por enquanto é sempre o português; num Windows em inglês, seguir só o formato regional deixaria a data final como 10/27/2027 ao lado de seletores em 27/10/2027. Na fase 5, com os três idiomas, o formato acompanha o idioma escolhido.
+- **Cor de destaque é o verde da marca**, com tons calculados para manter contraste de pelo menos 4,5:1 nos temas claro e escuro; o laranja fica no ícone e no logotipo. No alto contraste valem as cores do Windows.
+- **As escolhas lembradas são as da 1.2:** calendário, critério de contagem, tipo de prazo, ajuste e prazo. As datas começam sempre em hoje e daqui a um ano, como lá.
+- **Novidade pequena:** a data final mostra o dia da semana e avisa quando cai em feriado ou dia não útil, o que só acontece em dias corridos sem ajuste.
+- **A licença vai no pacote**, no original e na tradução, e abre no programa padrão do Windows para cada tipo de arquivo.
+- **Ficam para a fase 2** o link "Definições de Calendários..." e o parâmetro `--calendars` da 1.2, que dependem de calendários fora do pacote.
+
+Falta, para fechar a fase:
+
+- Rodar os testes de interface com a sessão do Windows desbloqueada, para o teste de teclado.
+- Verificar com o Accessibility Insights e percorrer a tela com o Narrador.
+- Revisar os textos da página "Sobre", adaptados da 1.2 (o original mandava baixar a aplicação do site da Elekto).
+- Decidir o logotipo no tema escuro: em verde sobre fundo escuro, ele fica legível, mas apagado.
+- Confirmar no GitHub Actions a compilação do aplicativo, que passou a fazer parte da solução.
 
 ### Fase 2: calendários editáveis
 

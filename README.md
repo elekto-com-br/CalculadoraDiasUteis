@@ -44,10 +44,22 @@ Nem a aplicação, e nem seu programa de setup, monitoram o uso, enviam logs de 
 
 ## Compilando você mesmo
 
-Neste branch há, por enquanto, o núcleo de cálculo (`src/Elekto.Calendars`) e os testes (`tests`). Basta o [SDK do .NET 10](https://dotnet.microsoft.com/download), com qualquer editor:
+Neste branch há o núcleo de cálculo (`src/Elekto.Calendars`), o aplicativo WinUI (`src/CalculadoraDiasUteis`) e os testes (`tests`). Para compilar tudo e rodar os testes do núcleo basta, no Windows, o [SDK do .NET 10](https://dotnet.microsoft.com/download), com qualquer editor:
 
 ```
 dotnet test
+```
+
+O aplicativo é empacotado (MSIX). Para executá-lo é preciso também o [WinApp CLI](https://github.com/microsoft/winappCli) e o Modo de Desenvolvedor do Windows ligado:
+
+```
+winapp run src/CalculadoraDiasUteis
+```
+
+Os testes de interface usam o mesmo WinApp CLI e rodam no Windows Sandbox, sem mexer na sua área de trabalho; o teste de teclado precisa da sessão do Windows desbloqueada:
+
+```
+.\tests\UiTests\ui-tests.ps1 -Target sandbox
 ```
 
 A versão 1.2, em WinForms, compila a partir do `master` com o Visual Studio 2019 ou posterior.
