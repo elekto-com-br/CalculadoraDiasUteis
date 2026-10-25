@@ -86,7 +86,8 @@ namespace Elekto.Calendars
         /// <param name="calendarInfo">The calendar info.</param>
         public Calendar(CalendarInfo calendarInfo)
         {
-            Initialize(calendarInfo.Name, calendarInfo.Description, calendarInfo.Holidays, calendarInfo.NonWorkDays);
+            Initialize(calendarInfo.Name, calendarInfo.Description, calendarInfo.Holidays, calendarInfo.NonWorkDays,
+                calendarInfo.MinDate, calendarInfo.MaxDate);
         }
 
         private void AdjustTerminalDates(DeltaTerminalDayAdjust adjust, ref DateTime ini, ref DateTime end)
@@ -147,8 +148,10 @@ namespace Elekto.Calendars
         /// <param name="description">The description.</param>
         /// <param name="holidays">The holidays.</param>
         /// <param name="nonWorkWeekDays"> </param>
+        /// <param name="minDate">Primeiro dia do período, se ele não for o do primeiro feriado</param>
+        /// <param name="maxDate">Último dia do período, se ele não for o do último feriado</param>
         private void Initialize(string businessCenterCode, string description, IEnumerable<DateTime> holidays,
-            IEnumerable<DayOfWeek> nonWorkWeekDays)
+            IEnumerable<DayOfWeek> nonWorkWeekDays, DateTime? minDate = null, DateTime? maxDate = null)
         {
             Name = businessCenterCode ?? string.Empty;
             Description = description ?? Name;
@@ -167,7 +170,19 @@ namespace Elekto.Calendars
 
             _hashHolidays.UnionWith(holidays.Select(d => d.Date.RemoveKind()));
 
-            if (_hashHolidays.Count == 0)
+            if (minDate.HasValue && maxDate.HasValue)
+            {
+                // período dado de fora, como o das bases de um calendário derivado; feriado fora dele não conta
+                MinDate = minDate.Value.NormalizeDate();
+                MaxDate = maxDate.Value.NormalizeDate();
+                if (MinDate > MaxDate)
+                {
+                    throw new ArgumentException(@"O primeiro dia do período é posterior ao último.", nameof(minDate));
+                }
+
+                _hashHolidays.RemoveWhere(d => d < MinDate || d > MaxDate);
+            }
+            else if (_hashHolidays.Count == 0)
             {
                 MinDate = DateExtensions.Today.AddYears(-25);
                 MaxDate = DateExtensions.Today.AddYears(+75);
@@ -612,11 +627,6 @@ namespace Elekto.Calendars
                 return AddWorkDaysOneByOne(date, workDays);
             }
 
-            if (workDays < 0)
-            {
-                date = GetNextOrSameWorkday(date);
-            }
-
             var initialIndex = (int)(date - MinDate).TotalDays;
             if (initialIndex < 0)
             {
@@ -630,7 +640,13 @@ namespace Elekto.Calendars
                     $@"A data inicial ultrapassou a máxima possível de {MaxDate:yyyy-MM-dd} para o calendário '{Name}'.");
             }
 
+            // num prazo negativo, a contagem parte do próximo dia útil, como no método tosco; o acumulado dele é o do
+            // dia não útil mais um, o que dispensa procurá-lo, e ele pode nem existir depois do último dia útil
             var initialPeriod = _period[initialIndex];
+            if (workDays < 0 && _days[initialIndex] == 0)
+            {
+                initialPeriod++;
+            }
             var finalPeriod = initialPeriod + workDays;
 
             if (finalPeriod < _period[0])

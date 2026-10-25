@@ -2,7 +2,7 @@
 
 `golden-1.2.csv.gz` guarda 32.065 chamadas ao núcleo de cálculo, com o resultado de cada uma, gravadas a partir do executável publicado no [release v1.2](https://github.com/elekto-com-br/CalculadoraDiasUteis/releases/tag/v1.2): o arquivo `CalculadoraDiasUteis.1_2_0_0.zip`, de sha-256 `f28e30cc34a0c65e99f071114e1394949ef542a9836222a26c410187e4c5b9f7`. A pasta `calendars-1.2` é a cópia dos calendários desse mesmo zip.
 
-O teste `GoldenMasterTests` refaz cada chamada na biblioteca nova e exige o mesmo resultado, inclusive a mesma exceção. Os calendários ficam congelados aqui para que uma atualização de feriados em `src` não quebre este teste: ele compara o código, não os dados.
+O teste `GoldenMasterTests` refaz cada chamada na biblioteca nova e exige o mesmo resultado, inclusive a mesma exceção. A única diferença é proposital: na 1.2, um prazo negativo de mais de 5 dias úteis contado de um dia não útil depois do último dia útil do calendário lançava exceção, enquanto um de até 5 devolvia a data; na 2.0 ele sempre devolve a data, e o teste espera a da contagem um a um. Os calendários ficam congelados aqui para que uma atualização de feriados em `src` não quebre este teste: ele compara o código, não os dados.
 
 ## O que é coberto
 

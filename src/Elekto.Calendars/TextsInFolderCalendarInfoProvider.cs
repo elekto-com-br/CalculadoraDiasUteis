@@ -20,7 +20,6 @@
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
-using System.Globalization;
 using System.IO;
 using System.Linq;
 using System.Text;
@@ -142,7 +141,7 @@ namespace Elekto.Calendars
             private string Description { get; }
 
 
-            private IEnumerable<DateTime> GetHolidays()
+            private Dictionary<DateTime, string> GetHolidays()
             {
                 if (!File.Exists(_filePath))
                 {
@@ -151,42 +150,18 @@ namespace Elekto.Calendars
 
                 var allLines = File.ReadAllLines(_filePath, Encoding.UTF8);
 
-                var l = new HashSet<DateTime>();
+                // a data leva a descrição, se houver; a primeira linha é a descrição do calendário
+                var holidays = new Dictionary<DateTime, string>();
                 for (var i = 1; i < allLines.Length; i++)
                 {
-                    var line = allLines[i].Trim();
-                    if (string.IsNullOrWhiteSpace(line))
+                    if (CalendarTextFile.TryParseHoliday(allLines[i], out var date, out var description) &&
+                        (!holidays.TryGetValue(date, out var known) || known == null))
                     {
-                        continue;
+                        holidays[date] = description;
                     }
-
-                    var fields = line.Split(new[] { ';', '\t', ',' }, StringSplitOptions.RemoveEmptyEntries);
-                    if (fields.Length <= 0)
-                    {
-                        continue;
-                    }
-                    var s = fields[0].Trim();
-                    if (string.IsNullOrWhiteSpace(s))
-                    {
-                        continue;
-                    }
-
-                    if (s[0] == ';' || s[0] == '/' || s[0] == '-')
-                    {
-                        // comentários
-                        continue;
-                    }
-
-                    if (!DateTime.TryParseExact(s, "yyyyMMdd", CultureInfo.InvariantCulture, DateTimeStyles.None, out var d))
-                    {
-                        continue;
-                    }
-
-                    d = DateTime.SpecifyKind(d.Date, DateTimeKind.Utc);
-                    l.Add(d);
                 }
 
-                return l;
+                return holidays;
             }
 
             public CalendarInfo GetCalendarInfo()
@@ -196,7 +171,8 @@ namespace Elekto.Calendars
                     return _info;
                 }
 
-                _info = CalendarInfo.New(Name, GetHolidays(), Description);
+                var holidays = GetHolidays();
+                _info = CalendarInfo.New(Name, holidays.Keys, Description, holidayDescriptions: holidays);
                 return _info;
             }
         }

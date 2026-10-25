@@ -38,4 +38,52 @@ public sealed class CalendarTests
         Assert.IsTrue(task.Wait(TimeSpan.FromSeconds(5)), "AddWorkDays não terminou em 5 segundos.");
         Assert.AreEqual(calendar.MaxDate, task.Result);
     }
+
+    /// <summary>
+    ///     Na 1.2, um prazo negativo contado de um dia não útil depois do último dia útil do calendário só funcionava até
+    ///     5 dias úteis; acima disso, o algoritmo rápido procurava o próximo dia útil, que não existe, e lançava exceção.
+    /// </summary>
+    [TestMethod]
+    [DataRow(-1)]
+    [DataRow(-5)]
+    [DataRow(-6)]
+    [DataRow(-300)]
+    public void PrazoNegativoAPartirDoUltimoDiaDoCalendario(int workDays)
+    {
+        // 25/12/2027 é um sábado, o último dia do calendário
+        var calendar = new Calendar([new DateTime(2026, 1, 1), new DateTime(2027, 12, 25)]);
+        Assert.IsFalse(calendar.IsWorkday(calendar.MaxDate), "O cenário exige que o último dia do calendário não seja útil.");
+
+        var expected = calendar.MaxDate;
+        for (var i = 0; i > workDays; i--)
+        {
+            expected = calendar.GetPrevWorkday(expected);
+        }
+
+        Assert.AreEqual(expected, calendar.AddWorkDays(calendar.MaxDate, workDays));
+    }
+
+    [TestMethod]
+    public void PeriodoExplicitoValeNoLugarDoDosFeriados()
+    {
+        var info = CalendarInfo.New("teste", [new DateTime(2026, 4, 21), new DateTime(2031, 1, 1)],
+            minDate: new DateTime(2026, 1, 1), maxDate: new DateTime(2027, 12, 31));
+
+        var calendar = new Calendar(info);
+
+        Assert.AreEqual(new DateTime(2026, 1, 1), calendar.MinDate);
+        Assert.AreEqual(new DateTime(2027, 12, 31), calendar.MaxDate);
+        CollectionAssert.AreEqual(new[] { new DateTime(2026, 4, 21) }, calendar.Holidays.ToArray(),
+            "O feriado fora do período não deveria contar.");
+        Assert.IsFalse(calendar.IsWorkday(new DateTime(2026, 4, 21)));
+    }
+
+    [TestMethod]
+    public void PeriodoExplicitoPrecisaDasDuasPontas()
+    {
+        Assert.ThrowsExactly<ArgumentException>(() =>
+            CalendarInfo.New("teste", [], minDate: new DateTime(2026, 1, 1)));
+        Assert.ThrowsExactly<ArgumentException>(() =>
+            CalendarInfo.New("teste", [], minDate: new DateTime(2027, 1, 1), maxDate: new DateTime(2026, 1, 1)));
+    }
 }

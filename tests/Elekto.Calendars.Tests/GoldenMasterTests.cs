@@ -54,14 +54,14 @@ public sealed class GoldenMasterTests
             : Server.Value.GetCalendar(calendarName);
 
         var rows = Rows.Value.Where(r => r.Calendar == calendarName).ToList();
-        var failures = rows.Select(r => (Row: r, Actual: Run(calendar, r)))
-                           .Where(x => x.Actual != x.Row.Expected)
+        var failures = rows.Select(r => (Row: r, Expected: ExpectedFor(calendar, r), Actual: Run(calendar, r)))
+                           .Where(x => x.Actual != x.Expected)
                            .ToList();
 
         Assert.IsTrue(rows.Count > 5000, $"Só {rows.Count} casos para {calendarName}; o arquivo de referência está incompleto?");
         Assert.AreEqual(0, failures.Count,
             $"{failures.Count} de {rows.Count} casos diferem da 1.2:{Environment.NewLine}" +
-            string.Join(Environment.NewLine, failures.Take(20).Select(f => $"{f.Row}: esperado {Cut(f.Row.Expected)}, obtido {Cut(f.Actual)}")));
+            string.Join(Environment.NewLine, failures.Take(20).Select(f => $"{f.Row}: esperado {Cut(f.Expected)}, obtido {Cut(f.Actual)}")));
     }
 
     [TestMethod]
@@ -69,6 +69,37 @@ public sealed class GoldenMasterTests
     {
         Assert.AreEqual(Expected("EnumCalendarNames"), string.Join(" ", Provider.Value.EnumCalendarNames()));
         Assert.AreEqual(Expected("DefaultCalendarName"), Provider.Value.DefaultCalendarName);
+    }
+
+    /// <summary>
+    ///     O resultado da 1.2, menos onde a 2.0 o corrigiu de propósito.
+    /// </summary>
+    /// <remarks>
+    ///     Na 1.2, um prazo negativo de mais de 5 dias úteis contado de um dia não útil depois do último dia útil do
+    ///     calendário lançava exceção, enquanto um de até 5 devolvia a data. Desde a fase 2 da 2.0, o resultado é sempre o
+    ///     da contagem um a um (ver docs/ROADMAP.md, fase 0).
+    /// </remarks>
+    private static string ExpectedFor(ICalendar c, Row r)
+    {
+        var workDays = r.Operation switch
+        {
+            "AddWorkDays" => r.Int(2),
+            "AddDays" when r.Enum<PeriodType>(3) == PeriodType.WorkDays => r.Int(2),
+            _ => 0
+        };
+
+        var date = workDays < -5 ? r.Date(1) : default;
+        if (workDays >= -5 || r.Expected != "!ArgumentOutOfRangeException" || date <= c.MaxWorkDate || date > c.MaxDate)
+        {
+            return r.Expected;
+        }
+
+        for (var i = 0; i > workDays; i--)
+        {
+            date = c.GetPrevWorkday(date);
+        }
+
+        return Format(date);
     }
 
     private static string Run(ICalendar c, Row r)

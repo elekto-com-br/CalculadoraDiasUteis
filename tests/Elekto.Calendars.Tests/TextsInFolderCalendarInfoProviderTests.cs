@@ -52,10 +52,52 @@ public sealed class TextsInFolderCalendarInfoProviderTests
                 new[] { new DateTime(2026, 1, 1), new DateTime(2026, 2, 16), new DateTime(2026, 2, 17), new DateTime(2026, 4, 3) },
                 info.Holidays);
             Assert.AreEqual("Calendário de teste", info.Description);
+            Assert.AreEqual("Confraternização Universal", info.HolidayDescriptions[new DateTime(2026, 1, 1)]);
+            Assert.AreEqual("Carnaval", info.HolidayDescriptions[new DateTime(2026, 2, 16)]);
+            Assert.AreEqual("Carnaval", info.HolidayDescriptions[new DateTime(2026, 2, 17)]);
+            Assert.IsFalse(info.HolidayDescriptions.ContainsKey(new DateTime(2026, 4, 3)));
         }
         finally
         {
             folder.Delete(true);
         }
+    }
+
+    /// <summary>
+    ///     A descrição é tudo o que vem depois do primeiro separador, mesmo com vírgulas no meio.
+    /// </summary>
+    [TestMethod]
+    [DataRow("20261225;Natal", "Natal")]
+    [DataRow("20261225 ; Natal, festa cristã", "Natal, festa cristã")]
+    [DataRow("20261225;;Natal", "Natal")]
+    [DataRow(";20261225;Natal", "Natal")]
+    [DataRow("20261225;", null)]
+    [DataRow("20261225", null)]
+    public void LinhaDeFeriadoComDescricao(string line, string? description)
+    {
+        Assert.IsTrue(CalendarTextFile.TryParseHoliday(line, out var date, out var actual));
+        Assert.AreEqual(new DateTime(2026, 12, 25), date);
+        Assert.AreEqual(description, actual);
+    }
+
+    [TestMethod]
+    [DataRow("")]
+    [DataRow("-- 20261225")]
+    [DataRow("/20261225")]
+    [DataRow("2026-12-25")]
+    [DataRow("20261225 Natal")]
+    public void LinhaSemFeriado(string line)
+    {
+        Assert.IsFalse(CalendarTextFile.TryParseHoliday(line, out _, out _));
+    }
+
+    [TestMethod]
+    [DataRow("0010.calendar.br-BC.txt", "br-BC")]
+    [DataRow(@"C:\Calendarios\00A1.calendar.fórum-lapa.txt", "fórum-lapa")]
+    [DataRow("feriados.txt", null)]
+    [DataRow("0010.calendar..txt", null)]
+    public void NomeDoCalendarioPeloArquivo(string fileName, string? name)
+    {
+        Assert.AreEqual(name, CalendarTextFile.NameFromFileName(fileName));
     }
 }

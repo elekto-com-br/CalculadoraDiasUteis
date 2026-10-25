@@ -52,7 +52,7 @@ Ainda sem interface nova. O objetivo é proteger a lógica antes de mexer em qua
 
 - **Corrigido:** a 1.2 descarta em silêncio o feriado que tiver descrição no arquivo, embora o formato documentado a permita.
 - **Corrigido:** num calendário com um só feriado, somar dias úteis até exatamente o último dia do calendário deixava o programa em laço infinito. Nos calendários da Elekto isso não acontece, mas aconteceria nos criados pelo usuário na fase 2.
-- **Decidido em 25/10/2026, para a fase 2:** a partir do último dia do calendário, um prazo negativo de mais de 5 dias úteis lança exceção, enquanto um de até 5 devolve a data; o resultado depende de qual dos dois algoritmos internos do `AddWorkDays` é usado. Passa a funcionar sempre, com o algoritmo rápido dando o mesmo resultado do lento, e os casos da referência da 1.2 que gravaram a exceção viram exceção documentada no teste.
+- **Corrigido na fase 2:** a partir do último dia do calendário, um prazo negativo de mais de 5 dias úteis lançava exceção, enquanto um de até 5 devolvia a data; o resultado dependia de qual dos dois algoritmos internos do `AddWorkDays` era usado. Agora funciona sempre, com o algoritmo rápido dando o mesmo resultado do lento. Os 27 casos da referência da 1.2 que gravaram a exceção ficaram documentados no teste.
 
 ### Fase 1: aplicativo WinUI com as funções da 1.2
 
