@@ -10,7 +10,7 @@ AppName=Calculadora de Dias Úteis
 AppPublisher=Elekto Produtos Financeiros Ltda.
 AppPublisherURL=https://elekto.com.br
 AppCopyright=Copyright (C) 2021-2026 Elekto Produtos Financeiros Ltda.
-AppVersion=1.2.0.0
+AppVersion=1.2.1.0
 WizardStyle=modern
 LicenseFile=bin\Release\license.txt
 SetupIconFile=Assets\elekto_icon.ico
@@ -24,7 +24,7 @@ SolidCompression=yes
 ChangesAssociations=yes
 PrivilegesRequiredOverridesAllowed=dialog
 OutputDir=bin\Setups
-OutputBaseFilename=CalculadoraDiasUteis1200
+OutputBaseFilename=CalculadoraDiasUteis1210
 
 [Files]
 Source: "bin\Release\CalculadoraDiasUteis.exe"; DestDir: "{app}"
