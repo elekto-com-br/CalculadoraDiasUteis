@@ -987,4 +987,7 @@
   <data name="CalendarName_uy_MVD" xml:space="preserve">
     <value>Uruguay - Central Bank</value>
   </data>
+  <data name="CalendarName_ar_BA" xml:space="preserve">
+    <value>Argentina - Central Bank</value>
+  </data>
 </root>

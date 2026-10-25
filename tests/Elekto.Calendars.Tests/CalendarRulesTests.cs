@@ -89,6 +89,7 @@ public sealed class CalendarRulesTests
     [DataRow("br-SP")]
     [DataRow("us-NYC")]
     [DataRow("gb-LND")]
+    [DataRow("ar-BA")]
     [DataRow("py-ASU")]
     [DataRow("uy-MVD")]
     public void CalendarioSegueAsRegrasDaPraca(string name)
@@ -111,6 +112,7 @@ public sealed class CalendarRulesTests
     [DataRow("br-SP")]
     [DataRow("us-NYC")]
     [DataRow("gb-LND")]
+    [DataRow("ar-BA")]
     [DataRow("py-ASU")]
     [DataRow("uy-MVD")]
     public void FeriadoTemADescricaoDaRegra(string name)
@@ -119,10 +121,12 @@ public sealed class CalendarRulesTests
         var descriptions = Provider.Value.GetCalendarInfo(name).HolidayDescriptions;
         var (first, last) = Years(calendar);
 
-        // uma data com duas regras, como a Sexta-feira Santa num 21 de abril, leva as duas descrições
+        // uma data com duas regras, como a Sexta-feira Santa num 21 de abril, leva as duas descrições, unidas na
+        // língua do calendário
+        var and = name is "ar-BA" or "py-ASU" or "uy-MVD" ? " y " : " e ";
         var expected = Expected(name, first, last)
                        .GroupBy(h => h.Date)
-                       .ToDictionary(g => g.Key, g => string.Join(" e ", g.Select(h => h.Name).Distinct()));
+                       .ToDictionary(g => g.Key, g => string.Join(and, g.Select(h => h.Name).Distinct()));
         var wrong = calendar.Holidays
                             .Where(d => d.Year >= first && d.Year <= last)
                             .Select(d => (Date: d, Expected: expected.GetValueOrDefault(d), Actual: descriptions.GetValueOrDefault(d)))
@@ -150,6 +154,7 @@ public sealed class CalendarRulesTests
             "br-SP" => B3,
             "us-NYC" => Nyse,
             "gb-LND" => England,
+            "ar-BA" => Argentina,
             "py-ASU" => Paraguay,
             "uy-MVD" => Uruguay,
             _ => throw new ArgumentOutOfRangeException(nameof(name), name, null)
@@ -288,6 +293,209 @@ public sealed class CalendarRulesTests
 
         return days.Concat(EnglandOneOff.Where(h => h.Date.Year == year));
     }
+
+    /// <summary>
+    ///     Feriados da Argentina levados por lei ou decreto a uma data que a regra do período não daria: a data legal e a
+    ///     efetiva. As fontes estão em docs/calendarios/ar-BA.md.
+    /// </summary>
+    private static readonly (DateTime Legal, DateTime Moved)[] ArgentinaMoved =
+    [
+        (new DateTime(2001, 10, 12), new DateTime(2001, 10, 8)), // Ley 25.442
+        (new DateTime(2002, 10, 12), new DateTime(2002, 10, 14)), // Decreto 1932/2002
+        (new DateTime(2003, 10, 12), new DateTime(2003, 10, 13)), // Decreto 810/2003
+        (new DateTime(2011, 8, 17), new DateTime(2011, 8, 22)), // Decreto 521/2011
+        (new DateTime(2015, 11, 20), new DateTime(2015, 11, 27)), // Decreto 2226/2015
+        (new DateTime(2020, 4, 2), new DateTime(2020, 3, 31)), // Decreto 297/2020
+        (new DateTime(2025, 10, 12), new DateTime(2025, 10, 10)) // Decreto 614/2025 e Resolución JGM 139/2025
+    ];
+
+    private static readonly Holiday[] ArgentinaOneOff =
+    [
+        new(new DateTime(2000, 12, 29), "Feriado bancario de fin de año"), // Decreto 24.879/1953, abrogado em 2001
+        new(new DateTime(2001, 11, 17), "Censo Nacional 2001"),
+        new(new DateTime(2001, 11, 18), "Censo Nacional 2001"),
+        new(new DateTime(2001, 12, 21), "Feriado bancario y cambiario"),
+        new(new DateTime(2001, 12, 24), "Feriado bancario y cambiario"),
+        new(new DateTime(2001, 12, 26), "Feriado bancario y cambiario"),
+        new(new DateTime(2002, 1, 7), "Feriado bancario y cambiario"),
+        new(new DateTime(2002, 1, 8), "Feriado bancario y cambiario"),
+        new(new DateTime(2002, 1, 9), "Feriado bancario y cambiario"),
+        new(new DateTime(2002, 1, 10), "Feriado bancario y cambiario"),
+        new(new DateTime(2002, 2, 4), "Feriado bancario y cambiario"),
+        new(new DateTime(2002, 2, 5), "Feriado bancario y cambiario"),
+        new(new DateTime(2002, 2, 6), "Feriado bancario y cambiario"),
+        new(new DateTime(2002, 2, 7), "Feriado bancario y cambiario"),
+        new(new DateTime(2002, 4, 22), "Feriado bancario y cambiario"),
+        new(new DateTime(2002, 4, 23), "Feriado bancario y cambiario"),
+        new(new DateTime(2002, 4, 24), "Feriado bancario y cambiario"),
+        new(new DateTime(2002, 4, 25), "Feriado bancario y cambiario"),
+        new(new DateTime(2002, 4, 26), "Feriado bancario y cambiario"),
+        new(new DateTime(2007, 12, 24), "Asueto bancario"),
+        new(new DateTime(2007, 12, 31), "Asueto bancario"),
+        new(new DateTime(2009, 7, 10), "Asueto por la gripe A (H1N1)"),
+        new(new DateTime(2010, 5, 24), "Bicentenario de la Revolución de Mayo"),
+        new(new DateTime(2010, 10, 27), "Censo Nacional 2010"),
+        new(new DateTime(2010, 12, 24), "Asueto bancario"),
+        new(new DateTime(2010, 12, 31), "Asueto bancario"),
+        new(new DateTime(2011, 12, 26), "Asueto bancario"),
+        new(new DateTime(2012, 1, 2), "Asueto bancario"),
+        new(new DateTime(2012, 2, 27), "Bicentenario de la Creación y Primera Jura de la Bandera"),
+        new(new DateTime(2012, 9, 24), "Bicentenario de la Batalla de Tucumán"),
+        new(new DateTime(2013, 1, 31), "Bicentenario de la Asamblea General Constituyente de 1813"),
+        new(new DateTime(2013, 2, 20), "Bicentenario de la Batalla de Salta"),
+        new(new DateTime(2013, 12, 24), "Asueto bancario"),
+        new(new DateTime(2013, 12, 31), "Asueto bancario"),
+        new(new DateTime(2014, 12, 31), "Asueto bancario"),
+        new(new DateTime(2018, 11, 30), "Cumbre de Líderes del G20"),
+        new(new DateTime(2019, 12, 24), "Asueto bancario"),
+        new(new DateTime(2019, 12, 31), "Asueto bancario"),
+        new(new DateTime(2020, 12, 24), "Asueto bancario"),
+        new(new DateTime(2020, 12, 31), "Asueto bancario"),
+        new(new DateTime(2021, 12, 24), "Asueto bancario"),
+        new(new DateTime(2021, 12, 31), "Asueto bancario"),
+        new(new DateTime(2022, 5, 18), "Censo Nacional 2022"),
+        new(new DateTime(2022, 9, 2), "Feriado nacional extraordinario (DNU 573/2022)"),
+        new(new DateTime(2024, 12, 24), "Asueto bancario"),
+        new(new DateTime(2024, 12, 31), "Asueto bancario"),
+        new(new DateTime(2025, 12, 24), "Asueto bancario"),
+        new(new DateTime(2025, 12, 31), "Asueto bancario"),
+        new(new DateTime(2026, 11, 9), "Visita de Su Santidad el Papa León XIV"),
+        new(new DateTime(2026, 11, 10), "Feriado bancario por la visita de Su Santidad el Papa León XIV")
+    ];
+
+    /// <summary>
+    ///     Os feriados ou dias não laboráveis com fins turísticos de cada ano, nos quais os bancos não abrem.
+    /// </summary>
+    private static readonly DateTime[] ArgentinaTourism =
+    [
+        new(2011, 3, 25), new(2011, 12, 9), new(2012, 4, 30), new(2012, 12, 24), new(2013, 4, 1), new(2013, 6, 21),
+        new(2014, 5, 2), new(2014, 12, 26), new(2015, 3, 23), new(2015, 12, 7), new(2016, 7, 8), new(2016, 12, 9),
+        new(2018, 4, 30), new(2018, 12, 24), new(2018, 12, 31), new(2019, 7, 8), new(2019, 8, 19), new(2019, 10, 14),
+        new(2020, 3, 23), new(2020, 7, 10), new(2020, 12, 7), new(2021, 5, 24), new(2021, 10, 8), new(2021, 11, 22),
+        new(2022, 10, 7), new(2022, 11, 21), new(2022, 12, 9), new(2023, 5, 26), new(2023, 6, 19), new(2023, 10, 13),
+        new(2024, 4, 1), new(2024, 6, 21), new(2024, 10, 11), new(2025, 5, 2), new(2025, 8, 15), new(2025, 11, 21),
+        new(2026, 3, 23), new(2026, 7, 10), new(2026, 12, 7)
+    ];
+
+    /// <summary>
+    ///     Dias sem expediente bancário na Argentina, segundo o BCRA: os feriados nacionais na data efetiva, a quinta-feira
+    ///     santa, o Día del Bancario, os dias turísticos, os feriados bancários e os asuetos de dia inteiro.
+    /// </summary>
+    private static IEnumerable<Holiday> Argentina(int year)
+    {
+        var easter = Easter(year);
+        var days = new List<Holiday> { new(new DateTime(year, 1, 1), "Año Nuevo") };
+
+        // Decreto 1584/2010 e Ley 27.399
+        if (year >= 2011)
+        {
+            days.Add(new Holiday(easter.AddDays(-48), "Carnaval"));
+            days.Add(new Holiday(easter.AddDays(-47), "Carnaval"));
+        }
+
+        // Ley 26.085
+        if (year >= 2006)
+        {
+            days.Add(new Holiday(new DateTime(year, 3, 24), "Día Nacional de la Memoria por la Verdad y la Justicia"));
+        }
+
+        // Ley 25.370; trasladável pela Ley 23.555 até a Ley 26.110, de 2006
+        if (year >= 2001)
+        {
+            var malvinas = new DateTime(year, 4, 2);
+            days.Add(new Holiday(ArgentinaEffective(malvinas, year <= 2006 ? ArgentinaMovable(malvinas) : malvinas),
+                "Día del Veterano y de los Caídos en la Guerra de Malvinas"));
+        }
+
+        days.Add(new Holiday(easter.AddDays(-3), "Jueves Santo"));
+        days.Add(new Holiday(easter.AddDays(-2), "Viernes Santo"));
+        days.Add(new Holiday(new DateTime(year, 5, 1), "Día del Trabajo"));
+        days.Add(new Holiday(new DateTime(year, 5, 25), "Día de la Revolución de Mayo"));
+
+        // revogado pela Ley 25.370
+        if (year <= 2000)
+        {
+            var afirmacion = new DateTime(year, 6, 10);
+            days.Add(new Holiday(ArgentinaMovable(afirmacion),
+                "Día de la Afirmación de los Derechos Argentinos sobre las Malvinas, Islas y Sector Antártico"));
+        }
+
+        // Ley 27.258: fixo em 2016; depois, trasladável, mas numa sexta fica (Decreto 789/2021)
+        if (year >= 2016)
+        {
+            var guemes = new DateTime(year, 6, 17);
+            days.Add(new Holiday(year == 2016 || guemes.DayOfWeek == DayOfWeek.Friday ? guemes : ArgentinaMovable(guemes),
+                "Paso a la Inmortalidad del General Don Martín Miguel de Güemes"));
+        }
+
+        // Ley 24.445: terceira segunda-feira de junho até 2010
+        days.Add(new Holiday(year <= 2010 ? NthWeekday(year, 6, DayOfWeek.Monday, 3) : new DateTime(year, 6, 20),
+            "Paso a la Inmortalidad del General Don Manuel Belgrano"));
+        days.Add(new Holiday(new DateTime(year, 7, 9), "Día de la Independencia"));
+
+        // terceira segunda-feira de agosto até 2016; depois, Ley 27.399
+        var sanMartin = new DateTime(year, 8, 17);
+        days.Add(new Holiday(ArgentinaEffective(sanMartin,
+                year <= 2016 ? NthWeekday(year, 8, DayOfWeek.Monday, 3) : ArgentinaMovable(sanMartin)),
+            "Paso a la Inmortalidad del General Don José de San Martín"));
+
+        var raza = new DateTime(year, 10, 12);
+        var razaDate = year switch
+        {
+            <= 2007 => ArgentinaMovable(raza),
+            <= 2010 => raza.DayOfWeek switch // Ley 26.416
+            {
+                DayOfWeek.Tuesday => raza.AddDays(-1),
+                DayOfWeek.Wednesday => raza.AddDays(-2),
+                DayOfWeek.Monday => raza,
+                _ => raza.AddDays(((int)DayOfWeek.Monday - (int)raza.DayOfWeek + 7) % 7)
+            },
+            <= 2016 => NthWeekday(year, 10, DayOfWeek.Monday, 2), // Decreto 1584/2010
+            _ => ArgentinaMovable(raza)
+        };
+        days.Add(new Holiday(ArgentinaEffective(raza, razaDate),
+            year <= 2010 ? "Día de la Raza" : "Día del Respeto a la Diversidad Cultural"));
+
+        // Convenio Colectivo 18/75, art. 50
+        days.Add(new Holiday(new DateTime(year, 11, 6), "Día del Bancario"));
+
+        // Decreto 1584/2010: quarta segunda-feira de novembro até 2016; depois, Ley 27.399
+        if (year >= 2010)
+        {
+            var soberania = new DateTime(year, 11, 20);
+            days.Add(new Holiday(ArgentinaEffective(soberania,
+                    year <= 2016 ? NthWeekday(year, 11, DayOfWeek.Monday, 4) : ArgentinaMovable(soberania)),
+                "Día de la Soberanía Nacional"));
+        }
+
+        days.Add(new Holiday(new DateTime(year, 12, 8), "Día de la Inmaculada Concepción de María"));
+        days.Add(new Holiday(new DateTime(year, 12, 25), "Navidad"));
+
+        // a descrição segue a norma de cada ano
+        var tourism = year is 2018 or 2019 or >= 2025 ? "Día no laborable con fines turísticos" : "Feriado con fines turísticos";
+        days.AddRange(ArgentinaTourism.Where(d => d.Year == year).Select(d => new Holiday(d, tourism)));
+        days.AddRange(ArgentinaOneOff.Where(h => h.Date.Year == year));
+        return days;
+    }
+
+    /// <summary>
+    ///     A data efetiva: a da tabela de exceções, se houver, ou a da regra do período.
+    /// </summary>
+    private static DateTime ArgentinaEffective(DateTime legal, DateTime byRule) =>
+        ArgentinaMoved.Where(m => m.Legal == legal).Select(m => m.Moved).DefaultIfEmpty(byRule).First();
+
+    /// <summary>
+    ///     O traslado da Ley 23.555 (até 2010) e da Ley 27.399 (desde 2017): terça e quarta vão para a segunda anterior,
+    ///     quinta e sexta para a segunda seguinte, sábado e domingo ficam.
+    /// </summary>
+    private static DateTime ArgentinaMovable(DateTime date) => date.DayOfWeek switch
+    {
+        DayOfWeek.Tuesday => date.AddDays(-1),
+        DayOfWeek.Wednesday => date.AddDays(-2),
+        DayOfWeek.Thursday => date.AddDays(4),
+        DayOfWeek.Friday => date.AddDays(3),
+        _ => date
+    };
 
     /// <summary>
     ///     Traslados de feriados do Paraguai decretados ano a ano (Ley 1.723/2001 e Ley 7.544/2025): a data legal e a

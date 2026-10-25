@@ -19,7 +19,7 @@ Rascunho do material da página do app na Store, para a [fase 4](ROADMAP.md#fase
 
 **Nome:** Calculadora de Dias Úteis
 
-**Descrição curta:** Prazos e datas finais em dias úteis, com os feriados do Banco Central, da B3, da NYSE, de Londres e os seus.
+**Descrição curta:** Prazos e datas finais em dias úteis, com os feriados do Banco Central, da B3, da NYSE, de Londres, dos bancos da Argentina, do Paraguai e do Uruguai, e os seus.
 
 **Descrição:**
 
@@ -27,7 +27,7 @@ A Calculadora de Dias Úteis conta os dias úteis e corridos entre duas datas e 
 
 Para tesouraria, finanças e jurídico: conte prazos no critério financeiro do Banco Central (conta a data inicial e não a final) ou em dias cheios, some dias úteis ou corridos com ajuste para o dia útil seguinte ou o seguinte modificado, e veja na hora em que dia da semana a data cai e se é feriado.
 
-Os calendários da Elekto vêm com o aplicativo e são atualizados com ele: Brasil (Banco Central e B3), Estados Unidos (NYSE) e Inglaterra (Londres), com a descrição de cada feriado. Você pode criar os seus a partir deles, como o calendário do Banco Central mais os feriados da sua cidade ou do seu fórum, e eles continuam recebendo as atualizações da Elekto. Também dá para somar calendários, como Brasil e Estados Unidos para a liquidação de câmbio.
+Os calendários da Elekto vêm com o aplicativo e são atualizados com ele: Brasil (Banco Central e B3), Estados Unidos (NYSE), Inglaterra (Londres) e os bancos da Argentina, do Paraguai e do Uruguai, com a descrição de cada feriado. Você pode criar os seus a partir deles, como o calendário do Banco Central mais os feriados da sua cidade ou do seu fórum, e eles continuam recebendo as atualizações da Elekto. Também dá para somar calendários, como Brasil e Estados Unidos para a liquidação de câmbio.
 
 Copie as datas de um período ou os feriados de um ano e cole no Excel como datas, ou exporte para .xlsx e .csv. Exporte e importe os seus calendários num arquivo aberto, e importe os arquivos da versão anterior.
 
@@ -37,7 +37,7 @@ Privacidade: o aplicativo não coleta nada, não envia nada e não se comunica c
 
 - Dias úteis e corridos entre duas datas, no critério financeiro ou em dias cheios
 - Data final de um prazo em dias úteis ou corridos, com ajuste para o dia útil seguinte ou o seguinte modificado
-- Calendários do Banco Central, da B3, da NYSE e de Londres, com a descrição de cada feriado
+- Calendários do Banco Central, da B3, da NYSE, de Londres e dos bancos da Argentina, do Paraguai e do Uruguai, com a descrição de cada feriado
 - Calendários próprios, vazios ou derivados de um ou mais outros, que recebem as atualizações da Elekto
 - Feriados locais, exceções e descrições nos calendários da Elekto, que podem ser desfeitas
 - Cópia para o Excel com as datas como datas, e exportação em .xlsx e .csv
@@ -52,7 +52,7 @@ Privacidade: o aplicativo não coleta nada, não envia nada e não se comunica c
 
 **Name:** Business Days Calculator
 
-**Short description:** Business day counts and due dates with the holidays of the Central Bank of Brazil, B3, NYSE, London and your own.
+**Short description:** Business day counts and due dates with the holidays of the Central Bank of Brazil, B3, NYSE, London, the banks of Argentina, Paraguay and Uruguay, and your own.
 
 **Description:**
 
@@ -60,7 +60,7 @@ Business Days Calculator counts the business and calendar days between two dates
 
 For treasury, finance and legal work: count terms with the financial convention of the Central Bank of Brazil (the start date counts, the end date does not) or in full days, add business or calendar days with following or modified following adjustment, and see right away which weekday the date falls on and whether it is a holiday.
 
-The Elekto calendars come with the app and are updated with it: Brazil (Central Bank and B3), United States (NYSE) and England (London), with a description for each holiday. You can create your own from them, such as the Central Bank calendar plus the holidays of your city, and they keep receiving the Elekto updates. You can also combine calendars, such as Brazil and the United States for foreign exchange settlement.
+The Elekto calendars come with the app and are updated with it: Brazil (Central Bank and B3), United States (NYSE), England (London) and the banks of Argentina, Paraguay and Uruguay, with a description for each holiday. You can create your own from them, such as the Central Bank calendar plus the holidays of your city, and they keep receiving the Elekto updates. You can also combine calendars, such as Brazil and the United States for foreign exchange settlement.
 
 Copy the dates of a period or the holidays of a year and paste them into Excel as dates, or export them to .xlsx and .csv. Export and import your calendars in an open file, and import the files of the previous version.
 
@@ -70,7 +70,7 @@ Privacy: the app collects nothing, sends nothing and does not communicate with t
 
 - Business and calendar days between two dates, with the financial convention or in full days
 - End date of a term in business or calendar days, with following or modified following adjustment
-- Calendars of the Central Bank of Brazil, B3, NYSE and London, with a description for each holiday
+- Calendars of the Central Bank of Brazil, B3, NYSE, London and the banks of Argentina, Paraguay and Uruguay, with a description for each holiday
 - Your own calendars, empty or derived from one or more others, which receive the Elekto updates
 - Local holidays, exceptions and descriptions on the Elekto calendars, which can be undone
 - Copy to Excel with dates as dates, and export to .xlsx and .csv
@@ -85,7 +85,7 @@ Privacy: the app collects nothing, sends nothing and does not communicate with t
 
 **Nombre:** Calculadora de Días Hábiles
 
-**Descripción corta:** Plazos y fechas finales en días hábiles, con los feriados del Banco Central de Brasil, B3, NYSE, Londres y los suyos.
+**Descripción corta:** Plazos y fechas finales en días hábiles, con los feriados del Banco Central de Brasil, B3, NYSE, Londres, los bancos de Argentina, Paraguay y Uruguay, y los suyos.
 
 **Descripción:**
 
@@ -93,7 +93,7 @@ La Calculadora de Días Hábiles cuenta los días hábiles y corridos entre dos 
 
 Para tesorería, finanzas y estudios jurídicos: cuente plazos con el criterio financiero del Banco Central de Brasil (cuenta la fecha inicial y no la final) o en días completos, sume días hábiles o corridos con ajuste al día hábil siguiente o al siguiente modificado, y vea en el momento qué día de la semana es la fecha y si es feriado.
 
-Los calendarios de Elekto vienen con la aplicación y se actualizan con ella: Brasil (Banco Central y B3), Estados Unidos (NYSE) e Inglaterra (Londres), con la descripción de cada feriado. Puede crear los suyos a partir de ellos, como el calendario del Banco Central más los feriados de su ciudad, y siguen recibiendo las actualizaciones de Elekto. También puede sumar calendarios, como Brasil y Estados Unidos para la liquidación de cambio.
+Los calendarios de Elekto vienen con la aplicación y se actualizan con ella: Brasil (Banco Central y B3), Estados Unidos (NYSE), Inglaterra (Londres) y los bancos de Argentina, Paraguay y Uruguay, con la descripción de cada feriado. Puede crear los suyos a partir de ellos, como el calendario del Banco Central más los feriados de su ciudad, y siguen recibiendo las actualizaciones de Elekto. También puede sumar calendarios, como Brasil y Estados Unidos para la liquidación de cambio.
 
 Copie las fechas de un período o los feriados de un año y péguelos en Excel como fechas, o expórtelos a .xlsx y .csv. Exporte e importe sus calendarios en un archivo abierto, e importe los archivos de la versión anterior.
 
@@ -103,7 +103,7 @@ Privacidad: la aplicación no recopila nada, no envía nada y no se comunica con
 
 - Días hábiles y corridos entre dos fechas, con el criterio financiero o en días completos
 - Fecha final de un plazo en días hábiles o corridos, con ajuste al día hábil siguiente o al siguiente modificado
-- Calendarios del Banco Central de Brasil, B3, NYSE y Londres, con la descripción de cada feriado
+- Calendarios del Banco Central de Brasil, B3, NYSE, Londres y los bancos de Argentina, Paraguay y Uruguay, con la descripción de cada feriado
 - Calendarios propios, vacíos o derivados de uno o más, que reciben las actualizaciones de Elekto
 - Feriados locales, excepciones y descripciones en los calendarios de Elekto, que se pueden deshacer
 - Copia a Excel con las fechas como fechas, y exportación a .xlsx y .csv
@@ -112,8 +112,4 @@ Privacidad: la aplicación no recopila nada, no envía nada y no se comunica con
 - Portugués, inglés y español
 - Sin recopilación de datos, sin cuenta y sin Internet
 
-**Palabras clave:** días hábiles, plazo, feriados, calendario, fecha final, finanzas, Brasil
-
-## Quando os calendários dos vizinhos entrarem
-
-Acrescentar Argentina, Paraguai e Uruguai à descrição, aos recursos e às palavras-chave, nos três idiomas.
+**Palabras clave:** días hábiles, plazo, feriados bancarios, fecha final, Argentina, Uruguay, Paraguay

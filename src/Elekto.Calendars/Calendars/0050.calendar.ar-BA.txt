@@ -1,0 +1,535 @@
+﻿Argentina - Banco Central
+20000101;Año Nuevo
+20000420;Jueves Santo
+20000421;Viernes Santo
+20000501;Día del Trabajo
+20000525;Día de la Revolución de Mayo
+20000610;Día de la Afirmación de los Derechos Argentinos sobre las Malvinas, Islas y Sector Antártico
+20000619;Paso a la Inmortalidad del General Don Manuel Belgrano
+20000709;Día de la Independencia
+20000821;Paso a la Inmortalidad del General Don José de San Martín
+20001016;Día de la Raza
+20001106;Día del Bancario
+20001208;Día de la Inmaculada Concepción de María
+20001225;Navidad
+20001229;Feriado bancario de fin de año
+20010101;Año Nuevo
+20010402;Día del Veterano y de los Caídos en la Guerra de Malvinas
+20010412;Jueves Santo
+20010413;Viernes Santo
+20010501;Día del Trabajo
+20010525;Día de la Revolución de Mayo
+20010618;Paso a la Inmortalidad del General Don Manuel Belgrano
+20010709;Día de la Independencia
+20010820;Paso a la Inmortalidad del General Don José de San Martín
+20011008;Día de la Raza
+20011106;Día del Bancario
+20011117;Censo Nacional 2001
+20011118;Censo Nacional 2001
+20011208;Día de la Inmaculada Concepción de María
+20011221;Feriado bancario y cambiario
+20011224;Feriado bancario y cambiario
+20011225;Navidad
+20011226;Feriado bancario y cambiario
+20020101;Año Nuevo
+20020107;Feriado bancario y cambiario
+20020108;Feriado bancario y cambiario
+20020109;Feriado bancario y cambiario
+20020110;Feriado bancario y cambiario
+20020204;Feriado bancario y cambiario
+20020205;Feriado bancario y cambiario
+20020206;Feriado bancario y cambiario
+20020207;Feriado bancario y cambiario
+20020328;Jueves Santo
+20020329;Viernes Santo
+20020401;Día del Veterano y de los Caídos en la Guerra de Malvinas
+20020422;Feriado bancario y cambiario
+20020423;Feriado bancario y cambiario
+20020424;Feriado bancario y cambiario
+20020425;Feriado bancario y cambiario
+20020426;Feriado bancario y cambiario
+20020501;Día del Trabajo
+20020525;Día de la Revolución de Mayo
+20020617;Paso a la Inmortalidad del General Don Manuel Belgrano
+20020709;Día de la Independencia
+20020819;Paso a la Inmortalidad del General Don José de San Martín
+20021014;Día de la Raza
+20021106;Día del Bancario
+20021208;Día de la Inmaculada Concepción de María
+20021225;Navidad
+20030101;Año Nuevo
+20030331;Día del Veterano y de los Caídos en la Guerra de Malvinas
+20030417;Jueves Santo
+20030418;Viernes Santo
+20030501;Día del Trabajo
+20030525;Día de la Revolución de Mayo
+20030616;Paso a la Inmortalidad del General Don Manuel Belgrano
+20030709;Día de la Independencia
+20030818;Paso a la Inmortalidad del General Don José de San Martín
+20031013;Día de la Raza
+20031106;Día del Bancario
+20031208;Día de la Inmaculada Concepción de María
+20031225;Navidad
+20040101;Año Nuevo
+20040405;Día del Veterano y de los Caídos en la Guerra de Malvinas
+20040408;Jueves Santo
+20040409;Viernes Santo
+20040501;Día del Trabajo
+20040525;Día de la Revolución de Mayo
+20040621;Paso a la Inmortalidad del General Don Manuel Belgrano
+20040709;Día de la Independencia
+20040816;Paso a la Inmortalidad del General Don José de San Martín
+20041011;Día de la Raza
+20041106;Día del Bancario
+20041208;Día de la Inmaculada Concepción de María
+20041225;Navidad
+20050101;Año Nuevo
+20050324;Jueves Santo
+20050325;Viernes Santo
+20050402;Día del Veterano y de los Caídos en la Guerra de Malvinas
+20050501;Día del Trabajo
+20050525;Día de la Revolución de Mayo
+20050620;Paso a la Inmortalidad del General Don Manuel Belgrano
+20050709;Día de la Independencia
+20050815;Paso a la Inmortalidad del General Don José de San Martín
+20051010;Día de la Raza
+20051106;Día del Bancario
+20051208;Día de la Inmaculada Concepción de María
+20051225;Navidad
+20060101;Año Nuevo
+20060324;Día Nacional de la Memoria por la Verdad y la Justicia
+20060402;Día del Veterano y de los Caídos en la Guerra de Malvinas
+20060413;Jueves Santo
+20060414;Viernes Santo
+20060501;Día del Trabajo
+20060525;Día de la Revolución de Mayo
+20060619;Paso a la Inmortalidad del General Don Manuel Belgrano
+20060709;Día de la Independencia
+20060821;Paso a la Inmortalidad del General Don José de San Martín
+20061016;Día de la Raza
+20061106;Día del Bancario
+20061208;Día de la Inmaculada Concepción de María
+20061225;Navidad
+20070101;Año Nuevo
+20070324;Día Nacional de la Memoria por la Verdad y la Justicia
+20070402;Día del Veterano y de los Caídos en la Guerra de Malvinas
+20070405;Jueves Santo
+20070406;Viernes Santo
+20070501;Día del Trabajo
+20070525;Día de la Revolución de Mayo
+20070618;Paso a la Inmortalidad del General Don Manuel Belgrano
+20070709;Día de la Independencia
+20070820;Paso a la Inmortalidad del General Don José de San Martín
+20071015;Día de la Raza
+20071106;Día del Bancario
+20071208;Día de la Inmaculada Concepción de María
+20071224;Asueto bancario
+20071225;Navidad
+20071231;Asueto bancario
+20080101;Año Nuevo
+20080320;Jueves Santo
+20080321;Viernes Santo
+20080324;Día Nacional de la Memoria por la Verdad y la Justicia
+20080402;Día del Veterano y de los Caídos en la Guerra de Malvinas
+20080501;Día del Trabajo
+20080525;Día de la Revolución de Mayo
+20080616;Paso a la Inmortalidad del General Don Manuel Belgrano
+20080709;Día de la Independencia
+20080818;Paso a la Inmortalidad del General Don José de San Martín
+20081013;Día de la Raza
+20081106;Día del Bancario
+20081208;Día de la Inmaculada Concepción de María
+20081225;Navidad
+20090101;Año Nuevo
+20090324;Día Nacional de la Memoria por la Verdad y la Justicia
+20090402;Día del Veterano y de los Caídos en la Guerra de Malvinas
+20090409;Jueves Santo
+20090410;Viernes Santo
+20090501;Día del Trabajo
+20090525;Día de la Revolución de Mayo
+20090615;Paso a la Inmortalidad del General Don Manuel Belgrano
+20090709;Día de la Independencia
+20090710;Asueto por la gripe A (H1N1)
+20090817;Paso a la Inmortalidad del General Don José de San Martín
+20091012;Día de la Raza
+20091106;Día del Bancario
+20091208;Día de la Inmaculada Concepción de María
+20091225;Navidad
+20100101;Año Nuevo
+20100324;Día Nacional de la Memoria por la Verdad y la Justicia
+20100401;Jueves Santo
+20100402;Día del Veterano y de los Caídos en la Guerra de Malvinas y Viernes Santo
+20100501;Día del Trabajo
+20100524;Bicentenario de la Revolución de Mayo
+20100525;Día de la Revolución de Mayo
+20100621;Paso a la Inmortalidad del General Don Manuel Belgrano
+20100709;Día de la Independencia
+20100816;Paso a la Inmortalidad del General Don José de San Martín
+20101011;Día de la Raza
+20101027;Censo Nacional 2010
+20101106;Día del Bancario
+20101122;Día de la Soberanía Nacional
+20101208;Día de la Inmaculada Concepción de María
+20101224;Asueto bancario
+20101225;Navidad
+20101231;Asueto bancario
+20110101;Año Nuevo
+20110307;Carnaval
+20110308;Carnaval
+20110324;Día Nacional de la Memoria por la Verdad y la Justicia
+20110325;Feriado con fines turísticos
+20110402;Día del Veterano y de los Caídos en la Guerra de Malvinas
+20110421;Jueves Santo
+20110422;Viernes Santo
+20110501;Día del Trabajo
+20110525;Día de la Revolución de Mayo
+20110620;Paso a la Inmortalidad del General Don Manuel Belgrano
+20110709;Día de la Independencia
+20110822;Paso a la Inmortalidad del General Don José de San Martín
+20111010;Día del Respeto a la Diversidad Cultural
+20111106;Día del Bancario
+20111128;Día de la Soberanía Nacional
+20111208;Día de la Inmaculada Concepción de María
+20111209;Feriado con fines turísticos
+20111225;Navidad
+20111226;Asueto bancario
+20120101;Año Nuevo
+20120102;Asueto bancario
+20120220;Carnaval
+20120221;Carnaval
+20120227;Bicentenario de la Creación y Primera Jura de la Bandera
+20120324;Día Nacional de la Memoria por la Verdad y la Justicia
+20120402;Día del Veterano y de los Caídos en la Guerra de Malvinas
+20120405;Jueves Santo
+20120406;Viernes Santo
+20120430;Feriado con fines turísticos
+20120501;Día del Trabajo
+20120525;Día de la Revolución de Mayo
+20120620;Paso a la Inmortalidad del General Don Manuel Belgrano
+20120709;Día de la Independencia
+20120820;Paso a la Inmortalidad del General Don José de San Martín
+20120924;Bicentenario de la Batalla de Tucumán
+20121008;Día del Respeto a la Diversidad Cultural
+20121106;Día del Bancario
+20121126;Día de la Soberanía Nacional
+20121208;Día de la Inmaculada Concepción de María
+20121224;Feriado con fines turísticos
+20121225;Navidad
+20130101;Año Nuevo
+20130131;Bicentenario de la Asamblea General Constituyente de 1813
+20130211;Carnaval
+20130212;Carnaval
+20130220;Bicentenario de la Batalla de Salta
+20130324;Día Nacional de la Memoria por la Verdad y la Justicia
+20130328;Jueves Santo
+20130329;Viernes Santo
+20130401;Feriado con fines turísticos
+20130402;Día del Veterano y de los Caídos en la Guerra de Malvinas
+20130501;Día del Trabajo
+20130525;Día de la Revolución de Mayo
+20130620;Paso a la Inmortalidad del General Don Manuel Belgrano
+20130621;Feriado con fines turísticos
+20130709;Día de la Independencia
+20130819;Paso a la Inmortalidad del General Don José de San Martín
+20131014;Día del Respeto a la Diversidad Cultural
+20131106;Día del Bancario
+20131125;Día de la Soberanía Nacional
+20131208;Día de la Inmaculada Concepción de María
+20131224;Asueto bancario
+20131225;Navidad
+20131231;Asueto bancario
+20140101;Año Nuevo
+20140303;Carnaval
+20140304;Carnaval
+20140324;Día Nacional de la Memoria por la Verdad y la Justicia
+20140402;Día del Veterano y de los Caídos en la Guerra de Malvinas
+20140417;Jueves Santo
+20140418;Viernes Santo
+20140501;Día del Trabajo
+20140502;Feriado con fines turísticos
+20140525;Día de la Revolución de Mayo
+20140620;Paso a la Inmortalidad del General Don Manuel Belgrano
+20140709;Día de la Independencia
+20140818;Paso a la Inmortalidad del General Don José de San Martín
+20141013;Día del Respeto a la Diversidad Cultural
+20141106;Día del Bancario
+20141124;Día de la Soberanía Nacional
+20141208;Día de la Inmaculada Concepción de María
+20141225;Navidad
+20141226;Feriado con fines turísticos
+20141231;Asueto bancario
+20150101;Año Nuevo
+20150216;Carnaval
+20150217;Carnaval
+20150323;Feriado con fines turísticos
+20150324;Día Nacional de la Memoria por la Verdad y la Justicia
+20150402;Día del Veterano y de los Caídos en la Guerra de Malvinas y Jueves Santo
+20150403;Viernes Santo
+20150501;Día del Trabajo
+20150525;Día de la Revolución de Mayo
+20150620;Paso a la Inmortalidad del General Don Manuel Belgrano
+20150709;Día de la Independencia
+20150817;Paso a la Inmortalidad del General Don José de San Martín
+20151012;Día del Respeto a la Diversidad Cultural
+20151106;Día del Bancario
+20151127;Día de la Soberanía Nacional
+20151207;Feriado con fines turísticos
+20151208;Día de la Inmaculada Concepción de María
+20151225;Navidad
+20160101;Año Nuevo
+20160208;Carnaval
+20160209;Carnaval
+20160324;Día Nacional de la Memoria por la Verdad y la Justicia y Jueves Santo
+20160325;Viernes Santo
+20160402;Día del Veterano y de los Caídos en la Guerra de Malvinas
+20160501;Día del Trabajo
+20160525;Día de la Revolución de Mayo
+20160617;Paso a la Inmortalidad del General Don Martín Miguel de Güemes
+20160620;Paso a la Inmortalidad del General Don Manuel Belgrano
+20160708;Feriado con fines turísticos
+20160709;Día de la Independencia
+20160815;Paso a la Inmortalidad del General Don José de San Martín
+20161010;Día del Respeto a la Diversidad Cultural
+20161106;Día del Bancario
+20161128;Día de la Soberanía Nacional
+20161208;Día de la Inmaculada Concepción de María
+20161209;Feriado con fines turísticos
+20161225;Navidad
+20170101;Año Nuevo
+20170227;Carnaval
+20170228;Carnaval
+20170324;Día Nacional de la Memoria por la Verdad y la Justicia
+20170402;Día del Veterano y de los Caídos en la Guerra de Malvinas
+20170413;Jueves Santo
+20170414;Viernes Santo
+20170501;Día del Trabajo
+20170525;Día de la Revolución de Mayo
+20170617;Paso a la Inmortalidad del General Don Martín Miguel de Güemes
+20170620;Paso a la Inmortalidad del General Don Manuel Belgrano
+20170709;Día de la Independencia
+20170821;Paso a la Inmortalidad del General Don José de San Martín
+20171016;Día del Respeto a la Diversidad Cultural
+20171106;Día del Bancario
+20171120;Día de la Soberanía Nacional
+20171208;Día de la Inmaculada Concepción de María
+20171225;Navidad
+20180101;Año Nuevo
+20180212;Carnaval
+20180213;Carnaval
+20180324;Día Nacional de la Memoria por la Verdad y la Justicia
+20180329;Jueves Santo
+20180330;Viernes Santo
+20180402;Día del Veterano y de los Caídos en la Guerra de Malvinas
+20180430;Día no laborable con fines turísticos
+20180501;Día del Trabajo
+20180525;Día de la Revolución de Mayo
+20180617;Paso a la Inmortalidad del General Don Martín Miguel de Güemes
+20180620;Paso a la Inmortalidad del General Don Manuel Belgrano
+20180709;Día de la Independencia
+20180820;Paso a la Inmortalidad del General Don José de San Martín
+20181015;Día del Respeto a la Diversidad Cultural
+20181106;Día del Bancario
+20181119;Día de la Soberanía Nacional
+20181130;Cumbre de Líderes del G20
+20181208;Día de la Inmaculada Concepción de María
+20181224;Día no laborable con fines turísticos
+20181225;Navidad
+20181231;Día no laborable con fines turísticos
+20190101;Año Nuevo
+20190304;Carnaval
+20190305;Carnaval
+20190324;Día Nacional de la Memoria por la Verdad y la Justicia
+20190402;Día del Veterano y de los Caídos en la Guerra de Malvinas
+20190418;Jueves Santo
+20190419;Viernes Santo
+20190501;Día del Trabajo
+20190525;Día de la Revolución de Mayo
+20190617;Paso a la Inmortalidad del General Don Martín Miguel de Güemes
+20190620;Paso a la Inmortalidad del General Don Manuel Belgrano
+20190708;Día no laborable con fines turísticos
+20190709;Día de la Independencia
+20190817;Paso a la Inmortalidad del General Don José de San Martín
+20190819;Día no laborable con fines turísticos
+20191012;Día del Respeto a la Diversidad Cultural
+20191014;Día no laborable con fines turísticos
+20191106;Día del Bancario
+20191118;Día de la Soberanía Nacional
+20191208;Día de la Inmaculada Concepción de María
+20191224;Asueto bancario
+20191225;Navidad
+20191231;Asueto bancario
+20200101;Año Nuevo
+20200224;Carnaval
+20200225;Carnaval
+20200323;Feriado con fines turísticos
+20200324;Día Nacional de la Memoria por la Verdad y la Justicia
+20200331;Día del Veterano y de los Caídos en la Guerra de Malvinas
+20200409;Jueves Santo
+20200410;Viernes Santo
+20200501;Día del Trabajo
+20200525;Día de la Revolución de Mayo
+20200615;Paso a la Inmortalidad del General Don Martín Miguel de Güemes
+20200620;Paso a la Inmortalidad del General Don Manuel Belgrano
+20200709;Día de la Independencia
+20200710;Feriado con fines turísticos
+20200817;Paso a la Inmortalidad del General Don José de San Martín
+20201012;Día del Respeto a la Diversidad Cultural
+20201106;Día del Bancario
+20201123;Día de la Soberanía Nacional
+20201207;Feriado con fines turísticos
+20201208;Día de la Inmaculada Concepción de María
+20201224;Asueto bancario
+20201225;Navidad
+20201231;Asueto bancario
+20210101;Año Nuevo
+20210215;Carnaval
+20210216;Carnaval
+20210324;Día Nacional de la Memoria por la Verdad y la Justicia
+20210401;Jueves Santo
+20210402;Día del Veterano y de los Caídos en la Guerra de Malvinas y Viernes Santo
+20210501;Día del Trabajo
+20210524;Feriado con fines turísticos
+20210525;Día de la Revolución de Mayo
+20210620;Paso a la Inmortalidad del General Don Manuel Belgrano
+20210621;Paso a la Inmortalidad del General Don Martín Miguel de Güemes
+20210709;Día de la Independencia
+20210816;Paso a la Inmortalidad del General Don José de San Martín
+20211008;Feriado con fines turísticos
+20211011;Día del Respeto a la Diversidad Cultural
+20211106;Día del Bancario
+20211120;Día de la Soberanía Nacional
+20211122;Feriado con fines turísticos
+20211208;Día de la Inmaculada Concepción de María
+20211224;Asueto bancario
+20211225;Navidad
+20211231;Asueto bancario
+20220101;Año Nuevo
+20220228;Carnaval
+20220301;Carnaval
+20220324;Día Nacional de la Memoria por la Verdad y la Justicia
+20220402;Día del Veterano y de los Caídos en la Guerra de Malvinas
+20220414;Jueves Santo
+20220415;Viernes Santo
+20220501;Día del Trabajo
+20220518;Censo Nacional 2022
+20220525;Día de la Revolución de Mayo
+20220617;Paso a la Inmortalidad del General Don Martín Miguel de Güemes
+20220620;Paso a la Inmortalidad del General Don Manuel Belgrano
+20220709;Día de la Independencia
+20220815;Paso a la Inmortalidad del General Don José de San Martín
+20220902;Feriado nacional extraordinario (DNU 573/2022)
+20221007;Feriado con fines turísticos
+20221010;Día del Respeto a la Diversidad Cultural
+20221106;Día del Bancario
+20221120;Día de la Soberanía Nacional
+20221121;Feriado con fines turísticos
+20221208;Día de la Inmaculada Concepción de María
+20221209;Feriado con fines turísticos
+20221225;Navidad
+20230101;Año Nuevo
+20230220;Carnaval
+20230221;Carnaval
+20230324;Día Nacional de la Memoria por la Verdad y la Justicia
+20230402;Día del Veterano y de los Caídos en la Guerra de Malvinas
+20230406;Jueves Santo
+20230407;Viernes Santo
+20230501;Día del Trabajo
+20230525;Día de la Revolución de Mayo
+20230526;Feriado con fines turísticos
+20230617;Paso a la Inmortalidad del General Don Martín Miguel de Güemes
+20230619;Feriado con fines turísticos
+20230620;Paso a la Inmortalidad del General Don Manuel Belgrano
+20230709;Día de la Independencia
+20230821;Paso a la Inmortalidad del General Don José de San Martín
+20231013;Feriado con fines turísticos
+20231016;Día del Respeto a la Diversidad Cultural
+20231106;Día del Bancario
+20231120;Día de la Soberanía Nacional
+20231208;Día de la Inmaculada Concepción de María
+20231225;Navidad
+20240101;Año Nuevo
+20240212;Carnaval
+20240213;Carnaval
+20240324;Día Nacional de la Memoria por la Verdad y la Justicia
+20240328;Jueves Santo
+20240329;Viernes Santo
+20240401;Feriado con fines turísticos
+20240402;Día del Veterano y de los Caídos en la Guerra de Malvinas
+20240501;Día del Trabajo
+20240525;Día de la Revolución de Mayo
+20240617;Paso a la Inmortalidad del General Don Martín Miguel de Güemes
+20240620;Paso a la Inmortalidad del General Don Manuel Belgrano
+20240621;Feriado con fines turísticos
+20240709;Día de la Independencia
+20240817;Paso a la Inmortalidad del General Don José de San Martín
+20241011;Feriado con fines turísticos
+20241012;Día del Respeto a la Diversidad Cultural
+20241106;Día del Bancario
+20241118;Día de la Soberanía Nacional
+20241208;Día de la Inmaculada Concepción de María
+20241224;Asueto bancario
+20241225;Navidad
+20241231;Asueto bancario
+20250101;Año Nuevo
+20250303;Carnaval
+20250304;Carnaval
+20250324;Día Nacional de la Memoria por la Verdad y la Justicia
+20250402;Día del Veterano y de los Caídos en la Guerra de Malvinas
+20250417;Jueves Santo
+20250418;Viernes Santo
+20250501;Día del Trabajo
+20250502;Día no laborable con fines turísticos
+20250525;Día de la Revolución de Mayo
+20250616;Paso a la Inmortalidad del General Don Martín Miguel de Güemes
+20250620;Paso a la Inmortalidad del General Don Manuel Belgrano
+20250709;Día de la Independencia
+20250815;Día no laborable con fines turísticos
+20250817;Paso a la Inmortalidad del General Don José de San Martín
+20251010;Día del Respeto a la Diversidad Cultural
+20251106;Día del Bancario
+20251121;Día no laborable con fines turísticos
+20251124;Día de la Soberanía Nacional
+20251208;Día de la Inmaculada Concepción de María
+20251224;Asueto bancario
+20251225;Navidad
+20251231;Asueto bancario
+20260101;Año Nuevo
+20260216;Carnaval
+20260217;Carnaval
+20260323;Día no laborable con fines turísticos
+20260324;Día Nacional de la Memoria por la Verdad y la Justicia
+20260402;Día del Veterano y de los Caídos en la Guerra de Malvinas y Jueves Santo
+20260403;Viernes Santo
+20260501;Día del Trabajo
+20260525;Día de la Revolución de Mayo
+20260615;Paso a la Inmortalidad del General Don Martín Miguel de Güemes
+20260620;Paso a la Inmortalidad del General Don Manuel Belgrano
+20260709;Día de la Independencia
+20260710;Día no laborable con fines turísticos
+20260817;Paso a la Inmortalidad del General Don José de San Martín
+20261012;Día del Respeto a la Diversidad Cultural
+20261106;Día del Bancario
+20261109;Visita de Su Santidad el Papa León XIV
+20261110;Feriado bancario por la visita de Su Santidad el Papa León XIV
+20261123;Día de la Soberanía Nacional
+20261207;Día no laborable con fines turísticos
+20261208;Día de la Inmaculada Concepción de María
+20261225;Navidad
+20270101;Año Nuevo
+20270208;Carnaval
+20270209;Carnaval
+20270324;Día Nacional de la Memoria por la Verdad y la Justicia
+20270325;Jueves Santo
+20270326;Viernes Santo
+20270402;Día del Veterano y de los Caídos en la Guerra de Malvinas
+20270501;Día del Trabajo
+20270525;Día de la Revolución de Mayo
+20270620;Paso a la Inmortalidad del General Don Manuel Belgrano
+20270621;Paso a la Inmortalidad del General Don Martín Miguel de Güemes
+20270709;Día de la Independencia
+20270816;Paso a la Inmortalidad del General Don José de San Martín
+20271011;Día del Respeto a la Diversidad Cultural
+20271106;Día del Bancario
+20271120;Día de la Soberanía Nacional
+20271208;Día de la Inmaculada Concepción de María
+20271225;Navidad

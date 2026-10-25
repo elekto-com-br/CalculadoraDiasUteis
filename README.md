@@ -87,6 +87,8 @@ Em termos de estilo, mantenha o que existe em código atualmente, que é basicam
 
 A Elekto monitora ativamente apenas os feriados `br-BC` (Banco Central do Brasil) e `br-SP` (B3 em São Paulo), essenciais aos nossos negócios e sempre que houver alteração relevante nestes iremos fazer um novo release.
 
+A 2.0 traz também os dias sem expediente bancário da Argentina (`ar-BA`), do Paraguai (`py-ASU`) e do Uruguai (`uy-MVD`), segundo o banco central de cada país; as regras, as exceções e as fontes de cada um estão em [docs/calendarios](docs/calendarios).
+
 Mas aceitaremos contribuições de feriados de outras praças, basta mandar mensagem para suporte-csl@elekto.com.br contendo:
 
 * os feriados (com as descrições dos não óbvios), em Excel ou arquivo texto, 

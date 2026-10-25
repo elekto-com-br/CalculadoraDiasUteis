@@ -4,7 +4,7 @@ Levar a Calculadora de Dias Úteis para WinUI: bonita, acessível, moderna e dis
 
 É um projeto de baixa prioridade, tocado aos poucos. Por isso o plano está dividido em fases pequenas, e cada uma termina com algo que compila e funciona; dá para parar em qualquer fase sem deixar o projeto quebrado.
 
-Atualizado em 25/10/2026. Fases 0 a 3 concluídas e a 5 em andamento, com a interface já em inglês e espanhol; faltam a revisão de acessibilidade, a fase 4, a da Store, e os calendários dos vizinhos.
+Atualizado em 25/10/2026. Fases 0 a 3 concluídas e a 5 quase pronta, com a interface em inglês e espanhol e os calendários da Argentina, do Paraguai e do Uruguai; faltam a revisão de acessibilidade e a fase 4, a da Store.
 
 ## Onde estamos
 
@@ -160,16 +160,19 @@ Esses calendários dão mais trabalho que os atuais. A Argentina define por decr
 
 **Pronto quando** o app troca de idioma junto com o Windows, sem texto em português sobrando, e os três calendários novos passam no teste de regras.
 
-**Situação:** a interface em inglês e espanhol ficou pronta em 25/10/2026. Os textos estão em `Strings/en-US` e `Strings/es-ES`, com os mesmos recursos do português; o espanhol é o da Argentina, do Paraguai e do Uruguai (feriado, días hábiles, días corridos). O Windows escolhe o idioma pela lista de idiomas do usuário: num Windows em espanhol da Argentina, o app vem em espanhol com as datas no formato argentino. Os testes de interface conferem os dois idiomas com `-Language`. Falta:
+**Situação:** a interface em inglês e espanhol ficou pronta em 25/10/2026. Os textos estão em `Strings/en-US` e `Strings/es-ES`, com os mesmos recursos do português; o espanhol é o da Argentina, do Paraguai e do Uruguai (feriado, días hábiles, días corridos). O Windows escolhe o idioma pela lista de idiomas do usuário: num Windows em espanhol da Argentina, o app vem em espanhol com as datas no formato argentino. Os testes de interface conferem os dois idiomas com `-Language`.
 
-- os calendários dos vizinhos;
-- a página da Store nos três idiomas, junto com a fase 4.
+Os calendários dos vizinhos entraram em 25/10/2026: `ar-BA`, `py-ASU` e `uy-MVD`, de 2000 a 2027, com o nome traduzido ("Argentina - Banco Central") e as descrições em espanhol. Cada um foi montado a partir das normas e conferido data a data contra as séries diárias do banco central do país (o que só existe em dia útil bancário), e o teste de regras confere o arquivo contra uma regra escrita de novo a partir do documento de fontes. As regras, as exceções ano a ano, as datas duvidosas e as fontes estão em [docs/calendarios](calendarios).
+
+Falta a página da Store nos três idiomas, junto com a fase 4; o rascunho dos textos está em [STORE.md](STORE.md).
 
 Decisões tomadas:
 
 - **Os nomes dos calendários da Elekto são traduzidos** ("Brazil - Central Bank", "Inglaterra - Londres"), pelos recursos, a partir do código do calendário; o arquivo continua com o nome em português, que vale se faltar a tradução. As descrições dos feriados continuam no idioma da praça.
 - **A licença tem o prefácio da Elekto em cada idioma** (`license-en.txt`, `license-es.txt`), seguido do texto original da GPL; o botão da tradução da licença some nos outros idiomas, porque a tradução da GPL que acompanha o app é só para o português.
 - **No inglês, os três ajustes da data final ocupam duas colunas**, porque "Modified following" é comprido; a ordem de leitura continua a mesma.
+- **Nos vizinhos, conta o dia em que o banco central não operou**, sem liquidação interbancária nem compensação de cheques. Por isso entram os 17 dias de greve em que o Banco Central del Uruguay não operou, cada um com documento do BCU, e ficam de fora os dias do isolamento de março de 2020 na Argentina, em que as agências fecharam mas o BCRA operou. As quintas-feiras da Semana de Turismo de 2000 a 2008 seguem como dias úteis no Uruguai, porque o BCU operou nelas.
+- **Data sem confirmação fica de fora**, listada no documento do calendário: o asueto de 24 e 31 de dezembro na Argentina, que o BCRA anuncia em dezembro, e os dias turísticos argentinos de 2027, que o governo ainda não fixou. A revisão de dezembro os acrescenta.
 
 ### Fora de escopo: versão web
 
@@ -197,7 +200,9 @@ A Elekto revisa os calendários todo ano em 1º de dezembro, com uma segunda pas
 - br-BC e br-SP: conferir o calendário da B3 e se houve lei criando ou mudando feriado nacional;
 - us-NYC: conferir o calendário de feriados da NYSE, publicado com três anos de antecedência;
 - gb-LND: conferir os feriados bancários da Inglaterra e do País de Gales no gov.uk;
-- ar-BA, py-ASU e uy-MVD, a partir da fase 5: conferir o decreto anual de feriados da Argentina e o calendário bancário publicado pelo banco central de cada um dos três países;
+- ar-BA: conferir a Comunicación "C" do BCRA com os feriados do ano seguinte, os dias turísticos e os traslados decididos pela Jefatura de Gabinete, e, na passada de 15 de dezembro, o asueto bancário de 24 e 31 de dezembro;
+- py-ASU: conferir os decretos de traslado de feriados do Paraguai e os feriados extraordinários;
+- uy-MVD: conferir as leis de feriados avulsos do Uruguai e as comunicações do BCU sobre a Semana de Turismo, o 31 de dezembro e os dias de greve sem operação;
 - rodar o teste de regras e publicar versão nova se algo mudou.
 
 ## Decisões em aberto
