@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Page
+    x:Class="CalculadoraDiasUteis.AboutPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:local="using:CalculadoraDiasUteis"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d">
+
+    <ScrollViewer>
+        <StackPanel
+            MaxWidth="720"
+            Padding="24,8,24,24"
+            HorizontalAlignment="Left"
+            Spacing="16">
+
+            <Image
+                x:Uid="AboutLogo"
+                Height="64"
+                HorizontalAlignment="Left"
+                AutomationProperties.AutomationId="AboutLogo">
+                <Image.Source>
+                    <SvgImageSource UriSource="ms-appx:///Assets/logo-elekto.svg" />
+                </Image.Source>
+            </Image>
+
+            <StackPanel Spacing="4">
+                <TextBlock
+                    x:Uid="AboutTitle"
+                    AutomationProperties.HeadingLevel="Level1"
+                    Style="{StaticResource TitleTextBlockStyle}" />
+                <TextBlock
+                    AutomationProperties.AutomationId="VersionText"
+                    IsTextSelectionEnabled="True"
+                    Text="{x:Bind Version, Mode=OneTime}" />
+                <TextBlock x:Uid="AboutCopyright" Foreground="{ThemeResource TextFillColorSecondaryBrush}" />
+            </StackPanel>
+
+            <TextBlock x:Uid="AboutPurpose" TextWrapping="Wrap" />
+            <TextBlock x:Uid="AboutFree" TextWrapping="Wrap" />
+            <TextBlock x:Uid="AboutLicense" TextWrapping="Wrap" />
+            <TextBlock x:Uid="AboutAlternativeLicense" TextWrapping="Wrap" />
+
+            <TextBlock
+                x:Uid="AboutPrivacyTitle"
+                AutomationProperties.HeadingLevel="Level2"
+                Style="{StaticResource SubtitleTextBlockStyle}" />
+            <TextBlock x:Uid="AboutPrivacy" TextWrapping="Wrap" />
+
+            <StackPanel Orientation="Horizontal" Spacing="8">
+                <Button
+                    x:Uid="LicenseButton"
+                    AutomationProperties.AutomationId="LicenseButton"
+                    Click="LicenseButton_Click" />
+                <Button
+                    x:Uid="LicenseTranslationButton"
+                    AutomationProperties.AutomationId="LicenseTranslationButton"
+                    Click="LicenseTranslationButton_Click" />
+            </StackPanel>
+
+            <HyperlinkButton
+                x:Uid="SiteLink"
+                Padding="0"
+                AutomationProperties.AutomationId="SiteLink"
+                NavigateUri="https://elekto.com.br/" />
+
+            <InfoBar
+                x:Name="OpenErrorInfoBar"
+                AutomationProperties.AutomationId="OpenErrorInfoBar"
+                Severity="Warning" />
+        </StackPanel>
+    </ScrollViewer>
+</Page>

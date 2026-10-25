@@ -1,0 +1,279 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Page
+    x:Class="CalculadoraDiasUteis.MainPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:local="using:CalculadoraDiasUteis"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    NavigationCacheMode="Required"
+    mc:Ignorable="d">
+
+    <Page.Resources>
+        <Style
+            x:Key="ResultValueStyle"
+            BasedOn="{StaticResource TitleTextBlockStyle}"
+            TargetType="TextBlock">
+            <Setter Property="IsTextSelectionEnabled" Value="True" />
+        </Style>
+        <Style
+            x:Key="ResultCaptionStyle"
+            BasedOn="{StaticResource CaptionTextBlockStyle}"
+            TargetType="TextBlock">
+            <Setter Property="Foreground" Value="{ThemeResource TextFillColorSecondaryBrush}" />
+        </Style>
+    </Page.Resources>
+
+    <ScrollViewer>
+        <VisualStateManager.VisualStateGroups>
+            <VisualStateGroup>
+                <!-- Lado a lado quando cabe; um embaixo do outro na janela estreita -->
+                <VisualState x:Name="Wide">
+                    <VisualState.StateTriggers>
+                        <AdaptiveTrigger MinWindowWidth="880" />
+                    </VisualState.StateTriggers>
+                </VisualState>
+                <VisualState x:Name="Narrow">
+                    <VisualState.StateTriggers>
+                        <AdaptiveTrigger MinWindowWidth="0" />
+                    </VisualState.StateTriggers>
+                    <VisualState.Setters>
+                        <Setter Target="PeriodCard.(Grid.ColumnSpan)" Value="2" />
+                        <Setter Target="TermCard.(Grid.Row)" Value="3" />
+                        <Setter Target="TermCard.(Grid.Column)" Value="0" />
+                        <Setter Target="TermCard.(Grid.ColumnSpan)" Value="2" />
+                    </VisualState.Setters>
+                </VisualState>
+            </VisualStateGroup>
+        </VisualStateManager.VisualStateGroups>
+
+        <Grid
+            MaxWidth="1040"
+            Padding="24,8,24,24"
+            ColumnSpacing="16"
+            RowSpacing="16">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="*" />
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+            </Grid.RowDefinitions>
+
+            <!-- Só aparece se os calendários não puderem ser lidos -->
+            <InfoBar
+                x:Uid="LoadErrorInfoBar"
+                Grid.ColumnSpan="2"
+                AutomationProperties.AutomationId="LoadErrorInfoBar"
+                IsClosable="False"
+                IsOpen="{x:Bind local:MainPage.Not(ViewModel.IsReady), Mode=OneTime}"
+                Message="{x:Bind ViewModel.LoadError, Mode=OneTime}"
+                Severity="Error" />
+
+            <Grid
+                Grid.Row="1"
+                Grid.ColumnSpan="2"
+                ColumnSpacing="16">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="Auto" />
+                </Grid.ColumnDefinitions>
+
+                <ComboBox
+                    x:Name="CalendarComboBox"
+                    x:Uid="CalendarComboBox"
+                    MinWidth="320"
+                    AutomationProperties.AutomationId="CalendarComboBox"
+                    IsEnabled="{x:Bind ViewModel.IsReady, Mode=OneTime}"
+                    ItemsSource="{x:Bind ViewModel.Calendars, Mode=OneTime}"
+                    SelectedIndex="{x:Bind ViewModel.SelectedCalendarIndex, Mode=TwoWay}" />
+
+                <Button
+                    x:Name="AboutButton"
+                    x:Uid="AboutButton"
+                    Grid.Column="1"
+                    VerticalAlignment="Bottom"
+                    AutomationProperties.AutomationId="AboutButton"
+                    Click="AboutButton_Click"
+                    Style="{StaticResource SubtleButtonStyle}">
+                    <Button.KeyboardAccelerators>
+                        <KeyboardAccelerator Key="F1" />
+                    </Button.KeyboardAccelerators>
+                    <StackPanel Orientation="Horizontal" Spacing="8">
+                        <FontIcon FontSize="16" Glyph="&#xE946;" />
+                        <TextBlock x:Uid="AboutButtonText" />
+                    </StackPanel>
+                </Button>
+            </Grid>
+
+            <!-- Dias entre duas datas -->
+            <Border
+                x:Name="PeriodCard"
+                Grid.Row="2"
+                Style="{StaticResource CardStyle}">
+                <StackPanel Spacing="16">
+                    <TextBlock
+                        x:Uid="PeriodTitle"
+                        AutomationProperties.HeadingLevel="Level2"
+                        Style="{StaticResource SubtitleTextBlockStyle}" />
+
+                    <Grid ColumnSpacing="12">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*" />
+                            <ColumnDefinition Width="*" />
+                        </Grid.ColumnDefinitions>
+                        <CalendarDatePicker
+                            x:Uid="PeriodStartPicker"
+                            HorizontalAlignment="Stretch"
+                            AutomationProperties.AutomationId="PeriodStartPicker"
+                            Date="{x:Bind ViewModel.PeriodStart, Mode=TwoWay}"
+                            IsEnabled="{x:Bind ViewModel.IsReady, Mode=OneTime}"
+                            MaxDate="{x:Bind ViewModel.MaxDate, Mode=OneWay}"
+                            MinDate="{x:Bind ViewModel.MinDate, Mode=OneWay}" />
+                        <CalendarDatePicker
+                            x:Uid="PeriodEndPicker"
+                            Grid.Column="1"
+                            HorizontalAlignment="Stretch"
+                            AutomationProperties.AutomationId="PeriodEndPicker"
+                            Date="{x:Bind ViewModel.PeriodEnd, Mode=TwoWay}"
+                            IsEnabled="{x:Bind ViewModel.IsReady, Mode=OneTime}"
+                            MaxDate="{x:Bind ViewModel.MaxDate, Mode=OneWay}"
+                            MinDate="{x:Bind ViewModel.MinDate, Mode=OneWay}" />
+                    </Grid>
+
+                    <RadioButtons
+                        x:Uid="CountingRadioButtons"
+                        AutomationProperties.AutomationId="CountingRadioButtons"
+                        IsEnabled="{x:Bind ViewModel.IsReady, Mode=OneTime}"
+                        MaxColumns="2"
+                        SelectedIndex="{x:Bind ViewModel.CountingIndex, Mode=TwoWay}">
+                        <RadioButton x:Uid="FinancialRadioButton" AutomationProperties.AutomationId="FinancialRadioButton" />
+                        <RadioButton x:Uid="FullDaysRadioButton" AutomationProperties.AutomationId="FullDaysRadioButton" />
+                    </RadioButtons>
+
+                    <Grid ColumnSpacing="12" Visibility="{x:Bind local:MainPage.CollapsedIf(ViewModel.HasPeriodError), Mode=OneWay}">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*" />
+                            <ColumnDefinition Width="*" />
+                        </Grid.ColumnDefinitions>
+                        <StackPanel>
+                            <TextBlock
+                                x:Name="WorkDaysText"
+                                AutomationProperties.AutomationId="WorkDaysText"
+                                AutomationProperties.Name="{x:Bind local:MainPage.Join(ViewModel.WorkDays, ViewModel.WorkDaysCaption), Mode=OneWay}"
+                                Style="{StaticResource ResultValueStyle}"
+                                Text="{x:Bind ViewModel.WorkDays, Mode=OneWay}" />
+                            <TextBlock
+                                AutomationProperties.AccessibilityView="Raw"
+                                Style="{StaticResource ResultCaptionStyle}"
+                                Text="{x:Bind ViewModel.WorkDaysCaption, Mode=OneWay}" />
+                        </StackPanel>
+                        <StackPanel Grid.Column="1">
+                            <TextBlock
+                                x:Name="ActualDaysText"
+                                AutomationProperties.AutomationId="ActualDaysText"
+                                AutomationProperties.Name="{x:Bind local:MainPage.Join(ViewModel.ActualDays, ViewModel.ActualDaysCaption), Mode=OneWay}"
+                                Style="{StaticResource ResultValueStyle}"
+                                Text="{x:Bind ViewModel.ActualDays, Mode=OneWay}" />
+                            <TextBlock
+                                AutomationProperties.AccessibilityView="Raw"
+                                Style="{StaticResource ResultCaptionStyle}"
+                                Text="{x:Bind ViewModel.ActualDaysCaption, Mode=OneWay}" />
+                        </StackPanel>
+                    </Grid>
+
+                    <InfoBar
+                        AutomationProperties.AutomationId="PeriodErrorInfoBar"
+                        IsClosable="False"
+                        IsOpen="{x:Bind ViewModel.HasPeriodError, Mode=OneWay}"
+                        Message="{x:Bind ViewModel.PeriodError, Mode=OneWay}"
+                        Severity="Warning" />
+                </StackPanel>
+            </Border>
+
+            <!-- Data final de um prazo -->
+            <Border
+                x:Name="TermCard"
+                Grid.Row="2"
+                Grid.Column="1"
+                Style="{StaticResource CardStyle}">
+                <StackPanel Spacing="16">
+                    <TextBlock
+                        x:Uid="TermTitle"
+                        AutomationProperties.HeadingLevel="Level2"
+                        Style="{StaticResource SubtitleTextBlockStyle}" />
+
+                    <Grid ColumnSpacing="12">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*" />
+                            <ColumnDefinition Width="*" />
+                        </Grid.ColumnDefinitions>
+                        <CalendarDatePicker
+                            x:Uid="TermStartPicker"
+                            HorizontalAlignment="Stretch"
+                            AutomationProperties.AutomationId="TermStartPicker"
+                            Date="{x:Bind ViewModel.TermStart, Mode=TwoWay}"
+                            IsEnabled="{x:Bind ViewModel.IsReady, Mode=OneTime}"
+                            MaxDate="{x:Bind ViewModel.MaxDate, Mode=OneWay}"
+                            MinDate="{x:Bind ViewModel.MinDate, Mode=OneWay}" />
+                        <NumberBox
+                            x:Name="TermNumberBox"
+                            x:Uid="TermNumberBox"
+                            Grid.Column="1"
+                            AutomationProperties.AutomationId="TermNumberBox"
+                            IsEnabled="{x:Bind ViewModel.IsReady, Mode=OneTime}"
+                            Maximum="100000"
+                            Minimum="-100000"
+                            SpinButtonPlacementMode="Inline"
+                            ValidationMode="InvalidInputOverwritten"
+                            Value="{x:Bind ViewModel.Term, Mode=TwoWay}" />
+                    </Grid>
+
+                    <RadioButtons
+                        x:Uid="TermTypeRadioButtons"
+                        AutomationProperties.AutomationId="TermTypeRadioButtons"
+                        IsEnabled="{x:Bind ViewModel.IsReady, Mode=OneTime}"
+                        MaxColumns="2"
+                        SelectedIndex="{x:Bind ViewModel.TermTypeIndex, Mode=TwoWay}">
+                        <RadioButton x:Uid="WorkDaysRadioButton" AutomationProperties.AutomationId="WorkDaysRadioButton" />
+                        <RadioButton x:Uid="ActualDaysRadioButton" AutomationProperties.AutomationId="ActualDaysRadioButton" />
+                    </RadioButtons>
+
+                    <RadioButtons
+                        x:Uid="AdjustRadioButtons"
+                        AutomationProperties.AutomationId="AdjustRadioButtons"
+                        IsEnabled="{x:Bind ViewModel.IsAdjustEnabled, Mode=OneWay}"
+                        MaxColumns="3"
+                        SelectedIndex="{x:Bind ViewModel.AdjustIndex, Mode=TwoWay}">
+                        <RadioButton x:Uid="AdjustNoneRadioButton" AutomationProperties.AutomationId="AdjustNoneRadioButton" />
+                        <RadioButton x:Uid="AdjustFollowingRadioButton" AutomationProperties.AutomationId="AdjustFollowingRadioButton" />
+                        <RadioButton x:Uid="AdjustModifiedFollowingRadioButton" AutomationProperties.AutomationId="AdjustModifiedFollowingRadioButton" />
+                    </RadioButtons>
+
+                    <StackPanel Visibility="{x:Bind local:MainPage.CollapsedIf(ViewModel.HasTermError), Mode=OneWay}">
+                        <TextBlock
+                            x:Name="FinalDateText"
+                            AutomationProperties.AutomationId="FinalDateText"
+                            AutomationProperties.Name="{x:Bind ViewModel.FinalDateDescription, Mode=OneWay}"
+                            Style="{StaticResource ResultValueStyle}"
+                            Text="{x:Bind ViewModel.FinalDate, Mode=OneWay}" />
+                        <TextBlock
+                            AutomationProperties.AccessibilityView="Raw"
+                            Style="{StaticResource ResultCaptionStyle}"
+                            Text="{x:Bind ViewModel.FinalDateCaption, Mode=OneWay}" />
+                    </StackPanel>
+
+                    <InfoBar
+                        AutomationProperties.AutomationId="TermErrorInfoBar"
+                        IsClosable="False"
+                        IsOpen="{x:Bind ViewModel.HasTermError, Mode=OneWay}"
+                        Message="{x:Bind ViewModel.TermError, Mode=OneWay}"
+                        Severity="Warning" />
+                </StackPanel>
+            </Border>
+        </Grid>
+    </ScrollViewer>
+</Page>

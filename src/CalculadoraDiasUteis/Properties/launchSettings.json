@@ -1,0 +1,10 @@
+{
+  "profiles": {
+    "CalculadoraDiasUteis (Package)": {
+      "commandName": "MsixPackage"
+    },
+    "CalculadoraDiasUteis (Unpackaged)": {
+      "commandName": "Project"
+    }
+  }
+}

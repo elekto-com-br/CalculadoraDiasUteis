@@ -1,0 +1,379 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+
+  <!-- Aplicativo (também usados pelo Package.appxmanifest) -->
+  <data name="AppDisplayName" xml:space="preserve">
+    <value>Calculadora de Dias Úteis</value>
+  </data>
+  <data name="AppDescription" xml:space="preserve">
+    <value>Cálculo de dias úteis e prazos com calendários de feriados.</value>
+  </data>
+  <data name="AppTitleBar.Title" xml:space="preserve">
+    <value>Calculadora de Dias Úteis</value>
+  </data>
+
+  <!-- Página principal -->
+  <data name="LoadErrorInfoBar.Title" xml:space="preserve">
+    <value>Os calendários não puderam ser lidos</value>
+  </data>
+  <data name="CalendarComboBox.Header" xml:space="preserve">
+    <value>Calendário</value>
+  </data>
+  <data name="CalendarComboBox.AccessKey" xml:space="preserve">
+    <value>C</value>
+  </data>
+  <data name="CalendarComboBox.[using:Microsoft.UI.Xaml.Automation]AutomationProperties.Name" xml:space="preserve">
+    <value>Calendário</value>
+  </data>
+  <data name="CalendarComboBox.[using:Microsoft.UI.Xaml.Automation]AutomationProperties.HelpText" xml:space="preserve">
+    <value>Cada calendário tem seus próprios feriados, que valem para as duas contas.</value>
+  </data>
+  <data name="CalendarComboBox.[using:Microsoft.UI.Xaml.Controls]ToolTipService.ToolTip" xml:space="preserve">
+    <value>Cada calendário tem seus próprios feriados, que valem para as duas contas.</value>
+  </data>
+  <data name="AboutButton.AccessKey" xml:space="preserve">
+    <value>B</value>
+  </data>
+  <data name="AboutButton.[using:Microsoft.UI.Xaml.Automation]AutomationProperties.Name" xml:space="preserve">
+    <value>Sobre</value>
+  </data>
+  <data name="AboutButton.[using:Microsoft.UI.Xaml.Controls]ToolTipService.ToolTip" xml:space="preserve">
+    <value>Versão, licença e privacidade</value>
+  </data>
+  <data name="AboutButtonText.Text" xml:space="preserve">
+    <value>Sobre</value>
+  </data>
+
+  <!-- Dias entre duas datas -->
+  <data name="PeriodTitle.Text" xml:space="preserve">
+    <value>Dias entre duas datas</value>
+  </data>
+  <data name="PeriodStartPicker.Header" xml:space="preserve">
+    <value>Data inicial</value>
+  </data>
+  <data name="PeriodStartPicker.AccessKey" xml:space="preserve">
+    <value>I</value>
+  </data>
+  <data name="PeriodStartPicker.[using:Microsoft.UI.Xaml.Automation]AutomationProperties.Name" xml:space="preserve">
+    <value>Data inicial do período</value>
+  </data>
+  <data name="PeriodEndPicker.Header" xml:space="preserve">
+    <value>Data final</value>
+  </data>
+  <data name="PeriodEndPicker.AccessKey" xml:space="preserve">
+    <value>F</value>
+  </data>
+  <data name="PeriodEndPicker.[using:Microsoft.UI.Xaml.Automation]AutomationProperties.Name" xml:space="preserve">
+    <value>Data final do período</value>
+  </data>
+  <data name="CountingRadioButtons.Header" xml:space="preserve">
+    <value>Tipo de cálculo</value>
+  </data>
+  <data name="CountingRadioButtons.[using:Microsoft.UI.Xaml.Automation]AutomationProperties.Name" xml:space="preserve">
+    <value>Tipo de cálculo</value>
+  </data>
+  <data name="FinancialRadioButton.Content" xml:space="preserve">
+    <value>Financeiro</value>
+  </data>
+  <data name="FinancialRadioButton.AccessKey" xml:space="preserve">
+    <value>N</value>
+  </data>
+  <data name="FinancialRadioButton.[using:Microsoft.UI.Xaml.Automation]AutomationProperties.Name" xml:space="preserve">
+    <value>Financeiro</value>
+  </data>
+  <data name="FinancialRadioButton.[using:Microsoft.UI.Xaml.Automation]AutomationProperties.HelpText" xml:space="preserve">
+    <value>Conta a data inicial e não conta a final, como manda a Circular 2.456 do Banco Central.</value>
+  </data>
+  <data name="FinancialRadioButton.[using:Microsoft.UI.Xaml.Controls]ToolTipService.ToolTip" xml:space="preserve">
+    <value>Conta a data inicial e não conta a final, como manda a Circular 2.456 do Banco Central.</value>
+  </data>
+  <data name="FullDaysRadioButton.Content" xml:space="preserve">
+    <value>Dias cheios</value>
+  </data>
+  <data name="FullDaysRadioButton.AccessKey" xml:space="preserve">
+    <value>H</value>
+  </data>
+  <data name="FullDaysRadioButton.[using:Microsoft.UI.Xaml.Automation]AutomationProperties.Name" xml:space="preserve">
+    <value>Dias cheios</value>
+  </data>
+  <data name="FullDaysRadioButton.[using:Microsoft.UI.Xaml.Automation]AutomationProperties.HelpText" xml:space="preserve">
+    <value>Conta a data inicial e a final.</value>
+  </data>
+  <data name="FullDaysRadioButton.[using:Microsoft.UI.Xaml.Controls]ToolTipService.ToolTip" xml:space="preserve">
+    <value>Conta a data inicial e a final.</value>
+  </data>
+
+  <!-- Data final de um prazo -->
+  <data name="TermTitle.Text" xml:space="preserve">
+    <value>Data final de um prazo</value>
+  </data>
+  <data name="TermStartPicker.Header" xml:space="preserve">
+    <value>Data inicial</value>
+  </data>
+  <data name="TermStartPicker.AccessKey" xml:space="preserve">
+    <value>D</value>
+  </data>
+  <data name="TermStartPicker.[using:Microsoft.UI.Xaml.Automation]AutomationProperties.Name" xml:space="preserve">
+    <value>Data inicial do prazo</value>
+  </data>
+  <data name="TermNumberBox.Header" xml:space="preserve">
+    <value>Prazo</value>
+  </data>
+  <data name="TermNumberBox.AccessKey" xml:space="preserve">
+    <value>P</value>
+  </data>
+  <data name="TermNumberBox.[using:Microsoft.UI.Xaml.Automation]AutomationProperties.Name" xml:space="preserve">
+    <value>Prazo</value>
+  </data>
+  <data name="TermNumberBox.[using:Microsoft.UI.Xaml.Automation]AutomationProperties.HelpText" xml:space="preserve">
+    <value>Em dias úteis ou corridos, conforme o tipo de prazo. Um prazo negativo conta para trás.</value>
+  </data>
+  <data name="TermNumberBox.[using:Microsoft.UI.Xaml.Controls]ToolTipService.ToolTip" xml:space="preserve">
+    <value>Em dias úteis ou corridos, conforme o tipo de prazo. Um prazo negativo conta para trás.</value>
+  </data>
+  <data name="TermTypeRadioButtons.Header" xml:space="preserve">
+    <value>Tipo de prazo</value>
+  </data>
+  <data name="TermTypeRadioButtons.[using:Microsoft.UI.Xaml.Automation]AutomationProperties.Name" xml:space="preserve">
+    <value>Tipo de prazo</value>
+  </data>
+  <data name="WorkDaysRadioButton.Content" xml:space="preserve">
+    <value>Dias úteis</value>
+  </data>
+  <data name="WorkDaysRadioButton.AccessKey" xml:space="preserve">
+    <value>T</value>
+  </data>
+  <data name="WorkDaysRadioButton.[using:Microsoft.UI.Xaml.Automation]AutomationProperties.Name" xml:space="preserve">
+    <value>Dias úteis</value>
+  </data>
+  <data name="WorkDaysRadioButton.[using:Microsoft.UI.Xaml.Automation]AutomationProperties.HelpText" xml:space="preserve">
+    <value>O prazo é contado em dias úteis a partir da data inicial; a data final é sempre um dia útil.</value>
+  </data>
+  <data name="WorkDaysRadioButton.[using:Microsoft.UI.Xaml.Controls]ToolTipService.ToolTip" xml:space="preserve">
+    <value>O prazo é contado em dias úteis a partir da data inicial; a data final é sempre um dia útil.</value>
+  </data>
+  <data name="ActualDaysRadioButton.Content" xml:space="preserve">
+    <value>Dias corridos</value>
+  </data>
+  <data name="ActualDaysRadioButton.AccessKey" xml:space="preserve">
+    <value>O</value>
+  </data>
+  <data name="ActualDaysRadioButton.[using:Microsoft.UI.Xaml.Automation]AutomationProperties.Name" xml:space="preserve">
+    <value>Dias corridos</value>
+  </data>
+  <data name="ActualDaysRadioButton.[using:Microsoft.UI.Xaml.Automation]AutomationProperties.HelpText" xml:space="preserve">
+    <value>O prazo é contado em dias corridos a partir da data inicial; a data final segue o ajuste escolhido.</value>
+  </data>
+  <data name="ActualDaysRadioButton.[using:Microsoft.UI.Xaml.Controls]ToolTipService.ToolTip" xml:space="preserve">
+    <value>O prazo é contado em dias corridos a partir da data inicial; a data final segue o ajuste escolhido.</value>
+  </data>
+  <data name="AdjustRadioButtons.Header" xml:space="preserve">
+    <value>Ajuste da data final (só em dias corridos)</value>
+  </data>
+  <data name="AdjustRadioButtons.[using:Microsoft.UI.Xaml.Automation]AutomationProperties.Name" xml:space="preserve">
+    <value>Ajuste da data final, só em dias corridos</value>
+  </data>
+  <data name="AdjustNoneRadioButton.Content" xml:space="preserve">
+    <value>Nenhum</value>
+  </data>
+  <data name="AdjustNoneRadioButton.AccessKey" xml:space="preserve">
+    <value>E</value>
+  </data>
+  <data name="AdjustNoneRadioButton.[using:Microsoft.UI.Xaml.Automation]AutomationProperties.Name" xml:space="preserve">
+    <value>Nenhum ajuste</value>
+  </data>
+  <data name="AdjustNoneRadioButton.[using:Microsoft.UI.Xaml.Automation]AutomationProperties.HelpText" xml:space="preserve">
+    <value>A data final fica como está, mesmo que não seja dia útil.</value>
+  </data>
+  <data name="AdjustNoneRadioButton.[using:Microsoft.UI.Xaml.Controls]ToolTipService.ToolTip" xml:space="preserve">
+    <value>A data final fica como está, mesmo que não seja dia útil.</value>
+  </data>
+  <data name="AdjustFollowingRadioButton.Content" xml:space="preserve">
+    <value>Útil seguinte</value>
+  </data>
+  <data name="AdjustFollowingRadioButton.AccessKey" xml:space="preserve">
+    <value>S</value>
+  </data>
+  <data name="AdjustFollowingRadioButton.[using:Microsoft.UI.Xaml.Automation]AutomationProperties.Name" xml:space="preserve">
+    <value>Dia útil seguinte</value>
+  </data>
+  <data name="AdjustFollowingRadioButton.[using:Microsoft.UI.Xaml.Automation]AutomationProperties.HelpText" xml:space="preserve">
+    <value>Se a data final não for dia útil, passa para o dia útil seguinte.</value>
+  </data>
+  <data name="AdjustFollowingRadioButton.[using:Microsoft.UI.Xaml.Controls]ToolTipService.ToolTip" xml:space="preserve">
+    <value>Se a data final não for dia útil, passa para o dia útil seguinte.</value>
+  </data>
+  <data name="AdjustModifiedFollowingRadioButton.Content" xml:space="preserve">
+    <value>Útil modificado</value>
+  </data>
+  <data name="AdjustModifiedFollowingRadioButton.AccessKey" xml:space="preserve">
+    <value>M</value>
+  </data>
+  <data name="AdjustModifiedFollowingRadioButton.[using:Microsoft.UI.Xaml.Automation]AutomationProperties.Name" xml:space="preserve">
+    <value>Dia útil seguinte modificado</value>
+  </data>
+  <data name="AdjustModifiedFollowingRadioButton.[using:Microsoft.UI.Xaml.Automation]AutomationProperties.HelpText" xml:space="preserve">
+    <value>Se a data final não for dia útil, passa para o dia útil seguinte, a não ser que isso mude o mês; nesse caso, passa para o dia útil anterior.</value>
+  </data>
+  <data name="AdjustModifiedFollowingRadioButton.[using:Microsoft.UI.Xaml.Controls]ToolTipService.ToolTip" xml:space="preserve">
+    <value>Se a data final não for dia útil, passa para o dia útil seguinte, a não ser que isso mude o mês; nesse caso, passa para o dia útil anterior.</value>
+  </data>
+
+  <!-- Resultados, montados pelo código -->
+  <data name="WorkDayCaption" xml:space="preserve">
+    <value>dia útil</value>
+  </data>
+  <data name="WorkDaysCaption" xml:space="preserve">
+    <value>dias úteis</value>
+  </data>
+  <data name="ActualDayCaption" xml:space="preserve">
+    <value>dia corrido</value>
+  </data>
+  <data name="ActualDaysCaption" xml:space="preserve">
+    <value>dias corridos</value>
+  </data>
+  <data name="ValueWithCaption" xml:space="preserve">
+    <value>{0} {1}</value>
+    <comment>Nome de um resultado para leitores de tela: {0} é o número e {1}, a legenda, como "252 dias úteis".</comment>
+  </data>
+  <data name="PeriodDescription" xml:space="preserve">
+    <value>{0} {1} e {2} {3}</value>
+    <comment>{0} e {2} são os números de dias; {1} e {3}, as legendas "dias úteis" e "dias corridos".</comment>
+  </data>
+  <data name="FinalDateDescription" xml:space="preserve">
+    <value>Data final: {0}</value>
+    <comment>{0} é a data por extenso.</comment>
+  </data>
+  <data name="TextWithNote" xml:space="preserve">
+    <value>{0}, {1}</value>
+    <comment>Acrescenta uma observação, como "feriado", ao dia da semana ou à data.</comment>
+  </data>
+  <data name="HolidayNote" xml:space="preserve">
+    <value>feriado</value>
+  </data>
+  <data name="NonWorkDayNote" xml:space="preserve">
+    <value>dia não útil</value>
+  </data>
+
+  <!-- Erros -->
+  <data name="ErrorOutsideCalendar" xml:space="preserve">
+    <value>A conta sai do período coberto pelo calendário, de {0} a {1}.</value>
+  </data>
+  <data name="ErrorCalendarsFolderMissing" xml:space="preserve">
+    <value>A pasta dos calendários, '{0}', não foi encontrada. Tente reinstalar o aplicativo.</value>
+  </data>
+  <data name="ErrorNoCalendars" xml:space="preserve">
+    <value>Nenhum calendário válido foi encontrado em '{0}'. Tente reinstalar o aplicativo.</value>
+  </data>
+  <data name="ErrorOpenFile" xml:space="preserve">
+    <value>Não foi possível abrir o arquivo '{0}'.</value>
+  </data>
+
+  <!-- Página Sobre -->
+  <data name="AboutLogo.[using:Microsoft.UI.Xaml.Automation]AutomationProperties.Name" xml:space="preserve">
+    <value>Logotipo da Elekto</value>
+  </data>
+  <data name="AboutTitle.Text" xml:space="preserve">
+    <value>Calculadora de Dias Úteis</value>
+  </data>
+  <data name="AboutVersion" xml:space="preserve">
+    <value>Versão {0}</value>
+  </data>
+  <data name="AboutCopyright.Text" xml:space="preserve">
+    <value>Copyright © 2021-2026 by Elekto Produtos Financeiros Ltda.</value>
+  </data>
+  <data name="AboutPurpose.Text" xml:space="preserve">
+    <value>Aplicação livre para o cálculo de prazos e datas finais considerando os dias úteis de calendários.</value>
+  </data>
+  <data name="AboutFree.Text" xml:space="preserve">
+    <value>Essa aplicação é livre! O código-fonte está disponível e, se você pagou por este aplicativo, peça seu dinheiro de volta, porque a Elekto o distribui gratuitamente.</value>
+  </data>
+  <data name="AboutLicense.Text" xml:space="preserve">
+    <value>Esta aplicação usa a licença GPLv3: você é livre para usá-la como quiser, mas nenhuma garantia, de espécie alguma, é dada pelo uso correto ou não dela, e nenhum prejuízo, de qualquer natureza, será atribuído à Elekto Produtos Financeiros. A licença permite que você incorpore o código em seus aplicativos, desde que os licencie pela mesma licença.</value>
+  </data>
+  <data name="AboutAlternativeLicense.Text" xml:space="preserve">
+    <value>Se você precisa incorporar essa aplicação, na forma de binário ou de fonte, em software proprietário, procure a Elekto para negociar um licenciamento alternativo.</value>
+  </data>
+  <data name="AboutPrivacyTitle.Text" xml:space="preserve">
+    <value>Privacidade</value>
+  </data>
+  <data name="AboutPrivacy.Text" xml:space="preserve">
+    <value>A aplicação não monitora o uso, não envia registros de erro nem telemetria e não se comunica com a Internet. Ela contém um único link, para o site da Elekto, que abre no seu navegador e não rastreia a origem do acesso.</value>
+  </data>
+  <data name="LicenseButton.Content" xml:space="preserve">
+    <value>Ler a licença</value>
+  </data>
+  <data name="LicenseButton.AccessKey" xml:space="preserve">
+    <value>L</value>
+  </data>
+  <data name="LicenseTranslationButton.Content" xml:space="preserve">
+    <value>Ler a tradução da licença</value>
+  </data>
+  <data name="LicenseTranslationButton.AccessKey" xml:space="preserve">
+    <value>T</value>
+  </data>
+  <data name="SiteLink.Content" xml:space="preserve">
+    <value>Site da Elekto: elekto.com.br</value>
+  </data>
+  <data name="SiteLink.AccessKey" xml:space="preserve">
+    <value>S</value>
+  </data>
+</root>
