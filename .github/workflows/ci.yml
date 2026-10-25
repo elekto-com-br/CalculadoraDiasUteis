@@ -17,5 +17,5 @@ jobs:
         with:
           global-json-file: global.json
       # O dotnet test só compila os projetos de teste e o que eles usam; o build antes inclui o aplicativo
-      - run: dotnet build CalculadoraDiasUteis.sln -c Release
-      - run: dotnet test CalculadoraDiasUteis.sln -c Release --no-build
+      - run: dotnet build CalculadoraDiasUteis.slnx -c Release
+      - run: dotnet test CalculadoraDiasUteis.slnx -c Release --no-build
